@@ -1,0 +1,7 @@
+@startuml (id=SingleImplementationArtifactDescription)
+!include NamedImplementationArtifact.wsd!NamedImplementationArtifact
+class SingleImplementationArtifactDescription
+
+SingleImplementationArtifactDescription --> NamedImplementationArtifact
+
+@enduml

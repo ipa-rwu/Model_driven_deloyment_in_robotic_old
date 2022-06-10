@@ -1,0 +1,15 @@
+@startuml (id=NodeShort)
+
+class Node{
+  uuid
+}
+@enduml
+
+@startuml (id=Node)
+!include Node.wsd!NodeShort
+!include Resource.wsd!Resource
+!include InterConnection.wsd!InterConnectionShort
+
+Node "[0..*]"*--> "resource" Resource
+Node "[*]connection"-- "[1..*]connect" InterConnection
+@enduml

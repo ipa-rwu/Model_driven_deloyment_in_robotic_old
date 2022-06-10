@@ -1,0 +1,9 @@
+@startuml (id=Resource)
+
+class Resource{
+    names
+    type
+}
+
+Resource "[1..*]" *--> "+property"Property
+@enduml

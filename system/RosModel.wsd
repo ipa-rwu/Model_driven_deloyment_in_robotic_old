@@ -1,0 +1,45 @@
+@startuml
+
+abstract RosModel as "RosMode(.ros)"
+
+class PackageSet
+
+class Package {
+    name
+    fromGitRepo
+}
+
+class Artifact{
+    name
+}
+
+class Node {
+    name
+}
+
+class Publisher
+
+class Subscriber
+
+class ActionClient
+
+class ActionServer
+
+class ServiceClient
+
+class ServiceServer
+
+Node "[0..*]"*-- Publisher
+Node "[0..*]"*-- Subscriber
+Node "[0..*]"*-- ActionClient
+Node "[0..*]"*-- ActionServer
+Node "[0..*]"*-- ServiceClient
+Node "[0..*]"*-- ServiceServer
+
+Artifact "[0..1]"*-- Node
+Package "[0..*]"*-- Artifact
+PackageSet "[0..*]"*-- Package
+
+RosModel "1"*-- PackageSet
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml (id=FuntionilityImplemtationShort)
+class FuntionilityImplemtation <<Developer>>{
+    label
+    UUID
+}
+@enduml
+
+@startuml (id=FuntionilityImplemtation)
+!include FuntionilityInterface.wsd!FuntionilityInterface
+!include FuntionilityImplemtation.wsd!FuntionilityImplemtationShort
+!include Capability.wsd!Capability
+!include StackImplementationArtifactDescription.wsd!StackImplementationArtifactDescription
+!include SingleImplementationArtifactDescription.wsd!SingleImplementationArtifactDescription
+
+FuntionilityImplemtation "[0..1]"*--> "+use" FuntionilityInterface
+FuntionilityImplemtation "1"*--> "+hasCapability" Capability
+FuntionilityImplemtation  "[0..1]"*--> "+implements" SingleImplementationArtifactDescription
+FuntionilityImplemtation  "[0..1]"*--> "+implements" StackImplementationArtifactDescription
+
+@enduml
+
+@startuml  (id=FuntionilityImplemtationWithNote)
+!include FuntionilityImplemtation.wsd!FuntionilityImplemtation
+
+note top of FuntionilityImplemtation
+    describes a specific implementation of a single Component(.ros) or Componentstack(?)
+end note
+
+@enduml

@@ -1,0 +1,12 @@
+ComponentStack {
+			name interlock_generator
+		    RosComponents (
+		        ComponentInterface { name "collision_checker"
+		            RosPublishers {}
+		            RosSubscribers {}
+		        },
+	  			ComponentInterface { name "trajectory_server"
+				  	RosSubscribers {}
+		  			RosParameters {}
+			)
+		}

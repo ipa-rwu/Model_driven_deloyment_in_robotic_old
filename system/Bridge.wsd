@@ -1,0 +1,16 @@
+@startuml (id=BridgeShort)
+class Bridge{
+  uuid
+}
+
+@enduml
+
+@startuml (id=Bridge)
+!include Bridge.wsd!BridgeShort
+!include Resource.wsd!Resource
+!include InterConnection.wsd!InterConnectionShort
+
+Bridge "[*]connection"-- "[1..*]connect" InterConnection
+Bridge "[0..*]"*--> "resource" Resource
+
+@enduml

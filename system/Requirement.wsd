@@ -1,0 +1,12 @@
+@startuml (id=RequirementShort)
+class Requirement{
+    name
+    resourceType
+}
+@enduml
+
+@startuml (id=Requirement)
+!include Requirement.wsd!RequirementShort
+!include Property.wsd!Property
+Requirement "[1..*]" *--> "+property"Property
+@enduml

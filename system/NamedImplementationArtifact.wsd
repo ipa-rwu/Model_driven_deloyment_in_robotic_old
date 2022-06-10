@@ -1,0 +1,15 @@
+
+@startuml (id=NamedImplementationArtifactShort)
+
+class NamedImplementationArtifact{
+    name
+}
+
+@enduml
+
+@startuml (id=NamedImplementationArtifact)
+!include NamedImplementationArtifact.wsd!NamedImplementationArtifactShort
+!include ImplementationArtifactDescription.wsd!ImplementationArtifactDescription
+
+NamedImplementationArtifact "1"-->"+referencedArtifact" ImplementationArtifactDescription
+@enduml

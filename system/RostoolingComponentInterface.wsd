@@ -1,0 +1,28 @@
+@startuml (id=ComponentInterface)
+class ComponentInterface{
+    FromRosNode:Node
+}
+@enduml
+
+@startuml
+!include RostoolingComponentInterface.wsd!ComponentInterface
+class RosPublisher
+
+class RosSubscriber
+
+class RosActionClient
+
+class RosActionServer
+
+class RosServiceClient
+
+class RosServiceServer
+
+ComponentInterface  "[0..*]"*-- RosPublisher
+ComponentInterface  "[0..*]"*-- RosSubscriber
+ComponentInterface  "[0..*]"*-- RosActionClient
+ComponentInterface  "[0..*]"*-- RosActionServer
+ComponentInterface  "[0..*]"*-- RosServiceClient
+ComponentInterface  "[0..*]"*-- RosServiceServer
+
+@enduml

@@ -1,0 +1,63 @@
+@startuml (id=FuntionilityPortDescription)
+
+class FuntionilityPortDescription{
+    name
+    provider: Boolean
+}
+
+@enduml
+
+@startuml (id=FuntionilityPortDescriptionWithDetail)
+!include FuntionilityInterface.wsd!FuntionilityPortDescription
+
+class RosPublisher
+
+class RosSubscriber
+
+class RosActionClient
+
+class RosActionServer
+
+class RosServiceClient
+
+class RosServiceServer
+
+FuntionilityPortDescription "1"*--> "+port" RosPublisher
+FuntionilityPortDescription "1"*--> "+port" RosSubscriber
+FuntionilityPortDescription "1"*--> "+port" RosActionClient
+FuntionilityPortDescription "1"*--> "+port" RosActionServer
+FuntionilityPortDescription "1"*--> "+port" RosServiceClient
+FuntionilityPortDescription "1"*--> "+port" RosServiceServer
+
+note right of FuntionilityPortDescription::port
+    The port is provided or required by a Funtionility
+end note
+
+@enduml
+
+@startuml (id=FuntionilityInterface)
+!include FuntionilityInterface.wsd!FuntionilityPortDescription
+
+class FuntionilityInterface{
+    UUID
+    label
+}
+
+FuntionilityInterface  "[0..*]"*--> "+port" FuntionilityPortDescription
+
+
+@enduml
+
+@startuml (id=FuntionilityInterfaceWithNote)
+!include FuntionilityInterface.wsd!FuntionilityInterface
+!include RostoolingComponentInterface.wsd!ComponentInterface
+
+note right of FuntionilityInterface::UUID
+    unique name for this interface
+end note
+
+note right of FuntionilityInterface::label
+    The description of this function interface
+end note
+
+@enduml

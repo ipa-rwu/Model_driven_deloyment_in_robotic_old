@@ -1,0 +1,24 @@
+@startuml (id=InterConnectionShort)
+
+class InterConnection{
+name
+}
+
+@enduml
+
+@startuml (id=InterConnection)
+!include InterConnection.wsd!InterConnectionShort
+
+InterConnection "[*]connection"-- Node : connect[1..*]
+InterConnection "connect[1..*]"-- Bridge: connection[*]
+
+@enduml
+
+@startuml (id=InterConnectionWithNote)
+!include InterConnection.wsd!InterConnection
+note left on link
+connect: Node [1..*] The nodes that this interconnect provides a connection in between.
+connection: Bridge [*] The bridges that provide connectivity to other interconnects.
+end note
+
+@enduml

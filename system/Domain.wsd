@@ -1,0 +1,15 @@
+@startuml (id=Domain)
+!include InterConnection.wsd!InterConnectionShort
+!include Node.wsd!NodeShort
+!include Bridge.wsd!BridgeShort
+
+class Domain <<DomainAdministrator>>{
+    UUID
+    description
+}
+
+Domain "[0..*]"*-->"node"Node
+Domain "[0..*]"*-->"bridge"Bridge
+Domain "[1..*]"*-->"interConnection"InterConnection
+
+@enduml

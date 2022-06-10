@@ -1,0 +1,27 @@
+@startuml (id=ImageDescription)
+class ImageDescription{
+    name
+    type
+    imageVersion
+    generated: Boolean
+}
+@enduml
+
+
+@startuml (id=PackageDescription)
+!include FuntionilityImplemtation.wsd!FuntionilityImplemtationShort
+!include PackageDescription.wsd!ImageDescription
+!include RepositoryeDescription.wsd!RepositoryeDescriptionshort
+
+class PackageDescription <<Packager>>{
+    name
+}
+
+PackageDescription "1"*--> "referencedImplementation" FuntionilityImplemtation
+PackageDescription "[1..*]"*-->"creates"ImageDescription
+PackageDescription "[1..*]"*-->"use"RepositoryeDescription
+@enduml
+
+@startuml (id=PackageDescriptionWithNote)
+
+@enduml

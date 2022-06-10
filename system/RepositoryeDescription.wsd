@@ -1,0 +1,14 @@
+@startuml (id=RepositoryeDescriptionshort)
+class RepositoryeDescription{
+    name
+    targetImages
+    path
+}
+@enduml
+
+@startuml (id=RepositoryeDescription)
+!include RepositoryeDescription.wsd!RepositoryeDescriptionshort
+!include Property.wsd!Property
+
+RepositoryeDescription "[0..*]"*--> Property
+@enduml

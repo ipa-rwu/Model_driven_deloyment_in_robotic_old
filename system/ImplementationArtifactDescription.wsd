@@ -1,0 +1,61 @@
+@startuml (id=ImplementationArtifactDescriptionShort)
+abstract class ImplementationArtifactDescription {
+    UUID
+    description
+    location [FromGitRepo or local path]
+}
+
+@enduml
+
+@startuml (id=ImplementationArtifactDescription)
+!include Requirement.wsd!Requirement
+!include NamedImplementationArtifact.wsd!NamedImplementationArtifactShort
+!include ImplementationArtifactDescription.wsd!ImplementationArtifactDescriptionShort
+
+class SystemRequirement{
+    name: os
+    resourceType: OperatingSystem
+}
+
+class RosRequirement{
+    name: rosdistro
+    resourceType: RosDistribution
+}
+
+class ProgrammingLanguageRequirement{
+    name: program_language
+    resourceType: ProgrammingLanguage
+}
+
+class ExtraAptRepositoryRequirement{
+    name: apt_repo
+    resourceType: Repository
+}
+
+class ResourceRequirement{
+    name
+    resourceType
+}
+
+SystemRequirement --> Requirement
+RosRequirement --> Requirement
+ProgrammingLanguageRequirement --> Requirement
+ExtraAptRepositoryRequirement --> Requirement
+ResourceRequirement --> Requirement
+
+ImplementationArtifactDescription "[0..1]"*-->"+deployRequirement" SystemRequirement
+ImplementationArtifactDescription "[0..1]"*-->"+deployRequirement" RosRequirement
+ImplementationArtifactDescription "[0..1]"*-->"+deployRequirement" ProgrammingLanguageRequirement
+ImplementationArtifactDescription "[0..1]"*-->"+deployRequirement" ExtraAptRepositoryRequirement
+ImplementationArtifactDescription "[0..*]"*-->"+dependsOn" NamedImplementationArtifact
+ImplementationArtifactDescription "[0..*]"*-->"+deployRequirement" ResourceRequirement
+@enduml
+
+@startuml (id=ImplementationArtifactDescriptionWithNote)
+!include ImplementationArtifactDescription.wsd!ImplementationArtifactDescription
+
+note right of ImplementationArtifactDescription::location
+  The list location of the Component artifact in this !function
+end note
+
+@enduml

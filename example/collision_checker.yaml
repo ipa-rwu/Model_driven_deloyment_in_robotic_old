@@ -1,0 +1,54 @@
+- Type: SingleImplementationDescription
+  uuid: ?
+  description: "check collison between target compoent and other components in URDF"
+  implements: "collision_checker.ros"
+  mode: debug
+  branch: any
+
+- Type: ImplementationArtfactDescrption
+  name: collision_checker
+  location: git@gitlab.cc-asp.fraunhofer.de:ipa326/dtgs/collision_check.git/collision_checker
+  dependsOn:
+    - dtgs_msgs
+  deployRequirement:
+    - name: os
+      resourceType: OpertingSystem
+      value: ubuntu_20
+    - name: processor_architecture
+      resourceType: processor_architectures
+      value:
+        - x86
+        - arm64
+    - name: rosdistro
+      resourceType: RosDistro
+      value:
+        - galactic
+        - foxy
+  resourceRequirement:
+    - name: cpus
+      resourceType: cpus
+      value: 0.5
+    - name: memory
+      discription: "The maximum amount of memory the container can use"
+      resourceType: memory
+      value: 1m
+    - name: memory-swap
+      discription: "The amount of memory this container is allowed to swap to disk"
+      resourceType: memory
+      value: 1g
+    - name: oom-kill-disable
+      discription: "disable kernel kills processes in a container when an out-of-memory (OOM) error occurs"
+      resourceType: memory
+    value: false
+
+- Type: PackageDescription
+  imageDescription:
+    - type: docker
+      name: collision_checker
+      imageVersion:
+        - branch
+  repositoryDescription:
+    - name: gitlab_registry
+      value: registry.gitlab.cc-asp.fraunhofer.de/ipa326/dtgs/collision_check
+    - name: local_repo
+      value: inspiron:8000

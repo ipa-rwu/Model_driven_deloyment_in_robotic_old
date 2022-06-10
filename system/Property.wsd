@@ -1,0 +1,7 @@
+@startuml (id=Property)
+
+class Property{
+    name
+    value
+}
+@enduml
