@@ -1,0 +1,338 @@
+grammar de.fraunhofer.ipa.deployment.DeployModel with org.eclipse.xtext.common.Terminals
+
+generate deployModel "http://www.fraunhofer.de/ipa/deployment/DeployModel"
+
+import 'http://www.eclipse.org/emf/2002/Ecore' as ecore
+
+Yaml: {Yaml}
+  (content+=YamlContent)*
+;
+
+YamlContent:
+  rootContent=(MonolithicImplementationDescription|
+    StackImplementationDescription|
+    PackageDescription
+  )
+;
+
+MonolithicImplementationDescription:
+  type='MonolithicImplementationDescription:'
+  INDENT
+    'name:' name=QualifiedName
+  //  TODO: link to rosmodel
+    ('implementsRosModel:'impRosmodel=STRING)?
+    'description:' description=STRING
+    'mode:' mode=ImplementationModeType
+    'branch:' branch=BranchType
+    (impl=ImplementationArtifactDescription)?
+  DEDENT
+;
+
+enum ImplementationModeType:
+  DebugMode='debug'|
+  ReleaseMode='release'
+;
+
+BranchType:
+  STRING|'any'
+;
+
+
+QualifiedName:
+    ID ('.' ID)*;
+
+NewImplementationArtifact:
+  'location'':'name=(LOCALPATH|URL)
+  deployRequirements = DeploymentRequirements
+  (resourceRequirements = ResourceRequirements)?
+  (buildRequirements = BuildRequirements)?
+  startCommands = StartCommands
+;
+
+ImplementationArtifactDescription:
+  type='ImplementationArtifactDescription'':'
+  INDENT
+    impl=(NewImplementationArtifact | ReuseImplementationArtifact) 
+  DEDENT
+;
+
+ReuseImplementationArtifact:
+  'use:' lists+= (ImplementationArtifactAbstract)+
+;
+
+ImplementationArtifactAbstract:
+  PreListElement 'import:' importedNamespace=QualifiedName
+  INDENT
+    'name:' name=[MonolithicImplementationDescription|QualifiedName]
+    (startCommands = StartCommands)
+  DEDENT
+;
+
+DeploymentRequirements:
+  name='deployRequirements'':'
+  operatingSystem = ReqOperatingSystem
+  processorArchitecture = ReqProcessorArchitecture
+  (rosDistro= ReqRosDistro)?
+;
+
+ResourceRequirements:
+  name='resourceRequirements'':'
+  requirements += (ResourceRequirement)+
+;
+
+ResourceRequirement:
+  PreListElement 'name:' name=ResourceReqTypes
+  INDENT
+    'value:' value=ScalarNumber
+  DEDENT
+;
+
+enum ResourceReqTypes:
+  CPU="cpus"|
+  Memory='memory'|
+  MemorySawp='memory_swap'|
+  OomKillDisable='oom_kill_disable'
+;
+
+ReqOperatingSystem:
+  PreListElement 'name:' name='os'
+  INDENT
+    'value:' value=OperatingSystemTypeList
+  DEDENT
+;
+
+OperatingSystemTypeList:
+  (PreListElement children+=( OperatingSystemTypes))
+  (PreListElement children+=(OperatingSystemTypes)*)?
+;
+
+ReqProcessorArchitecture:
+  PreListElement 'name:' name='processor_architecture'
+  INDENT
+    'value:' value=ProcessorArchitectureTypeList
+  DEDENT
+;
+
+ProcessorArchitectureTypeList:
+  (PreListElement children+=( ProcessorArchitectureTypes))
+  (PreListElement children+=(ProcessorArchitectureTypes)*)?
+;
+
+
+ReqRosDistro:
+  PreListElement 'name:' name='ros_distro'
+  INDENT
+    'value:' value=RosDistroList
+  DEDENT
+;
+
+RosDistroList:
+  (PreListElement children+=( RosDistro))
+  (PreListElement children+=(RosDistro)*)?
+;
+
+enum OperatingSystemTypes:
+  ubuntu18='ubuntu18'|
+  ubuntu20='ubuntu20'
+;
+
+enum RosDistro:
+  melodic='melodic'|noetic='noetic'|foxy='foxy'|galactic="galactic"
+;
+
+enum ProcessorArchitectureTypes:
+  arm64='arm64'|
+  x86='x86'
+;
+
+BuildRequirements:
+  name='buildRequirements'':'
+  INDENT
+  (buildDependencies = ReqBuildDependencies)?
+  (dependencyRepositories = ReqDependencyRepositories)?
+  DEDENT
+;
+
+ReqBuildDependencies:
+  name = 'dependOn:'
+    (dependencies+=Dependency)+
+;
+
+Dependency:
+  LocalPackage|GitPackage
+;
+
+LocalPackage:
+  PreListElement 'from:' importedNamespace=QualifiedName
+  INDENT
+  'name:' name = [MonolithicImplementationDescription|QualifiedName]
+  DEDENT
+;
+
+GitPackage:
+  PreListElement  'from:' path = URL
+  INDENT
+ 'name:' name = ID
+ ('branch:' branch = STRING)?
+ DEDENT
+;
+
+ReqDependencyRepositories:
+  name='aptRepositories'':'
+  children+=(AptRepositoryInstance)+
+;
+
+AptRepositoryInstance:
+  PreListElement 'name:' name=ID
+  INDENT
+    'keyLink:' keyLink=URL
+    'repositoryPath:' repositoryPath=URL
+    ('updateRosDep:' updateRosDep=URL)?
+  DEDENT
+;
+
+StartCommands:
+  name = 'startCommands:'
+  startCommands=ListStartCommands
+
+;
+
+ListStartCommands:
+  (PreListElement children+=(STRING))
+  (PreListElement children+=(STRING)*)?
+;
+
+StackImplementationDescription:
+  type='StackImplementationDescription'':'
+  INDENT
+    'name:' name=QualifiedName
+  //  TODO: link to rosmodel
+    ('implementsRosModel:'impRosmodel=QualifiedName)?
+    'description:' description=STRING
+    'mode:' mode=ImplementationModeType
+    impl=ImplementationArtifactDescription
+  DEDENT
+;
+
+PackageDescription:
+  type='PackageDescription'':'
+  INDENT
+    'imageDescription:'
+  INDENT
+    imageDescription=ImageDescription
+  DEDENT
+    'repositoryDescription:'
+    repositoryDescription=RepositoryDescription
+  DEDENT
+;
+
+ImageDescription:
+  'types:' types += ImageTypeList
+  'name:' name= [MonolithicImplementationDescription|QualifiedName]
+  'imageVersions:' imageVersions = ImageVersionList
+;
+
+ImageTypeList:
+  '[' (children+=(ImageTypes)) (',' children+=(ImageTypes)*)? ']'
+;
+
+enum ImageTypes:
+  DockerImage='docker'|
+  SnapImage='snap'
+;
+
+ImageVersionList:
+  (PreListElement children+=( ImageVersionTypes))
+  (PreListElement children+=(ImageVersionTypes)*)?
+;
+
+enum ImageVersionTypes:
+  branch='branch'|
+  commitHash='commit'|
+  latest='latest'|
+  release='release'
+;
+
+RepositoryDescription:
+  (spec+=RepositorySpec)+
+;
+
+RepositorySpec:
+  PreListElement 'name:' name=ID
+  INDENT
+      repository=Repository
+  DEDENT
+;
+
+Repository:
+  'type:' type = RepositoryTypes
+  ('path:' path=STRING)?
+;
+
+enum RepositoryTypes:
+  local="local"|
+  remote="remote"|
+  gitlab="gitlab"
+;
+
+PreListElement hidden(SL_COMMENT):
+  '-';
+
+ScalarNumber:
+  (Number Unit?)
+;
+
+Number:
+  INT|
+  FLOAT
+;
+
+Unit:
+  ScalarUnitSize|ScalarUnitTime|ScalarUnitFrequency
+;
+
+// 3.2.6.4 scalar-unit.size
+ScalarUnitSize:
+  ('B'|'b'
+  'KB'|'kb'|'kB'|'Kb'|
+  'MB'|'mb'|'mB'|'Mb'|
+  'GB'|'gb'|'Gb'|'gB'|
+  'TB'|'tb'|'Tb'|'tB')
+;
+
+// 3.2.6.5 scalar-unit.time
+ScalarUnitTime:
+  ('d'|'h'|'m'|'s'|'ms'|'us'|'ns')
+;
+
+ScalarUnitFrequency:
+  ('Hz'|'kHz'|'MHz'|'GHz')
+;
+
+terminal LOCALPATH:
+   (
+    '"'(('/')|('./')|('../')|('.'))
+    ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'-')*
+    '"'
+   )
+;
+
+terminal FLOAT returns ecore::EFloat: INT '.' INT;
+
+terminal URL:
+  (
+    '"'
+    (
+      (('http'('s')?'://')|('git@'))
+      ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\\'|'/'|'='|'?'|'!'|'('|')'|'.'|'-'|':')*
+    )'"'|
+    'localhost'|
+    '"'('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'-')*':'
+    ('0'..'9')*'"'
+  )
+;
+
+terminal SL_COMMENT: '#' !('\n'|'\r')*;
+
+terminal INDENT: 'synthetic:INDENT';
+terminal DEDENT: 'synthetic:DEDENT';
