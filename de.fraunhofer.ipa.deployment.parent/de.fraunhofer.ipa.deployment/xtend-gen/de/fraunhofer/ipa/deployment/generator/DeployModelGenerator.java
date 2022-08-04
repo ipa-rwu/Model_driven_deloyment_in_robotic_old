@@ -3,10 +3,16 @@
  */
 package de.fraunhofer.ipa.deployment.generator;
 
+import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
+import de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -15,7 +21,18 @@ import org.eclipse.xtext.generator.IGeneratorContext;
  */
 @SuppressWarnings("all")
 public class DeployModelGenerator extends AbstractGenerator {
+  @Inject
+  @Extension
+  private GitLabCICompiler _gitLabCICompiler;
+
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    Iterable<MonolithicImplementationDescription> _filter = Iterables.<MonolithicImplementationDescription>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), MonolithicImplementationDescription.class);
+    for (final MonolithicImplementationDescription monolithicImpl : _filter) {
+      String _name = monolithicImpl.getName();
+      String _plus = (_name + ".gitlab_ci.yml");
+      fsa.generateFile(_plus, 
+        this._gitLabCICompiler.compileGitlabCi(monolithicImpl));
+    }
   }
 }

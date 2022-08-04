@@ -7,6 +7,8 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription
+import com.google.inject.Inject
 
 /**
  * Generates code from your model files on save.
@@ -14,12 +16,14 @@ import org.eclipse.xtext.generator.IGeneratorContext
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class DeployModelGenerator extends AbstractGenerator {
-
+  
+  @Inject extension GitLabCICompiler
+  
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+    for (monolithicImpl : resource.allContents.toIterable.filter(MonolithicImplementationDescription)) {
+        fsa.generateFile(
+            monolithicImpl.getName() + ".gitlab_ci.yml",
+            monolithicImpl.compileGitlabCi())
+    }
 	}
 }
