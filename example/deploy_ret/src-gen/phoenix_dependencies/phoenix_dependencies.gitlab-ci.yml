@@ -1,0 +1,136 @@
+variables:
+  SUFFIX: ""
+  PREFIX: "${CI_REGISTRY_IMAGE}/${CI_PIPELINE_ID}:"
+  BUILDER_PREFIX: "ghcr.io/ipa-rwu/"
+  BUILDER_SUFFIX: ":latest"
+  FOLDER: ${CI_JOB_NAME}
+  NAME: ${CI_JOB_NAME}
+  DOCKER_BUILDKIT: 1
+  DOCKER_TLS_CERTDIR: ""
+  TARGET_BRANCH: "${CI_REGISTRY_IMAGE}/${NAME}:${CI_COMMIT_REF_NAME//\//-}"
+  TARGET_LATEST: "${CI_REGISTRY_IMAGE}/${NAME}:latest"
+  TARGET_RELEASE: "${CI_REGISTRY_IMAGE}/${NAME}:${CI_COMMIT_TAG//\//-}"
+  DEFAULT_ROS_DISTROS: noetic foxy galactic
+
+.common:
+  docker_login_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  services: &docker_service
+    - "docker:dind"
+  tags: &docker_runner_save_cache
+    - "docker-build"
+  tags: &simple_runner
+    - asprunner
+
+.build:
+  stage: ${CI_JOB_NAME}
+  services: *docker_service
+  tags: *docker_runner
+  before_script:
+    - !reference [.common, docker_login_script]
+    - echo "CI_PIPELINE_SOURCE=$CI_PIPELINE_SOURCE"
+  script:
+    - >
+      TARGET=${CI_REGISTRY_IMAGE}/${NAME}:${CI_COMMIT_REF_NAME//\//-};
+      docker build --cache-from $TARGET --cache-from $TARGET_LATEST --cache-from $TARGET_BRANCH
+      --build-arg SUFFIX
+      --build-arg PREFIX
+      --build-arg BUILDER_PREFIX
+      --build-arg BUILDER_SUFFIX
+      --build-arg ROS_DISTRO
+      --build-arg ROSINSTALL_CI_JOB_TOKEN=$ROSINSTALL_CI_JOB_TOKEN
+      --build-arg CI_JOB_TOKEN=$CI_JOB_TOKEN
+      --build-arg BUILDKIT_INLINE_CACHE=1
+      --build-arg CMAKE_ARGS
+      -t ${PREFIX}${NAME}${SUFFIX} ${FOLDER}
+  needs:
+    - prepare
+  variables:
+    NAME: ${CI_JOB_NAME}_${ROS_DISTRO}
+
+phoenix_dependencies:ros2:
+  extends:
+    - .build
+    - .on_ros2
+  variables:
+    NAME: phoenix_dependencies_${ROS_DISTRO}
+    FOLDER: "examples/phoenix_dependencies"
+  parallel:
+    matrix:
+      - ROS_DISTRO:
+      	- humble
+      	- foxy
+      	- galactic
+
+phoenix_dependencies:ros1:
+  extends:
+    - .build
+    - .on_ros1
+  variables:
+    NAME: phoenix_dependencies_${ROS_DISTRO}
+    FOLDER: "examples/phoenix_dependencies"
+  parallel:
+    matrix:
+      - ROS_DISTRO:
+      	- melodic
+      	- noetic
+      	- kinetic
+
+
+.publish:
+  stage: publish
+services: *docker_service
+tags: *docker_runner
+  before_script:
+    - !reference [.common, docker_login_script]
+  script:
+    - |
+      TARGET=${CI_REGISTRY_IMAGE}/${NAME}:${CI_COMMIT_REF_NAME//\//-}
+      if [ "$CI_COMMIT_REF_NAME" = "main" ]; then
+        TARGET=$TARGET_LATEST
+      fi
+      if [ "$CI_COMMIT_REF_NAME" = "${ROS_DISTRO}/devel" ]; then
+        TARGET=$TARGET_LATEST
+      fi
+      if [ $CI_COMMIT_TAG ]; then
+        convert_tag=${CI_COMMIT_TAG//\//-}
+        distro_prefix=${ROS_DISTRO}-
+        remove_distro_tag=${convert_tag#"$distro_prefix"}
+        TARGET_RELEASE=${CI_REGISTRY_IMAGE}/${NAME}:${remove_distro_tag}
+        TARGET=$TARGET_RELEASE
+      fi
+      docker tag ${PREFIX}${NAME}${SUFFIX} ${TARGET} && docker push ${TARGET}
+  needs:
+    - build
+
+publish:phoenix_dependencies:ros2:
+  extends:
+    - .publish
+  - .on_ros2_merge_tag
+  variables:
+    NAME: phoenix_dependencies_${ROS_DISTRO}
+  needs:
+    - phoenix_dependencies:ros2
+  parallel:
+    matrix:
+      - ROS_DISTRO:
+      	- humble
+      	- foxy
+      	- galactic
+
+publish:phoenix_dependencies:ros1:
+  extends:
+    - .publish
+  - .on_ros1_merge_tag
+  variables:
+    NAME: phoenix_dependencies_${ROS_DISTRO}
+  needs:
+    - phoenix_dependencies:ros1
+  parallel:
+    matrix:
+      - ROS_DISTRO:
+      	- melodic
+      	- noetic
+      	- kinetic
+
+

@@ -1,0 +1,70 @@
+MonolithicImplementationDescription:
+  name: phoenix_dependencies
+  description: "phoenix dependencies"
+  mode: debug
+  branch: any
+  ImplementationArtifactDescription:
+    location: "examples/phoenix_dependencies"
+    deployRequirements:
+	    - name: os
+	      value:
+	        - ubuntu 
+	    - name: processor_architecture
+	      value:
+	      	- x86_64
+    resourceRequirements:
+	    - name: cpus
+	      value: 0.5
+	    - name: memory
+	      value: 1.5m 
+    buildRequirements:
+    	rosDistros:
+	      - noetic
+  	    - foxy
+  	    - galactic 
+  	  testRosDistros:
+  	  	- humble
+  	  	- ros1
+    startCommands:
+	   	- "roslaunch ret ret_application.launch robot:=ur_ros sim:=false"
+
+PackageDescription:
+  imageDescription:  
+    types: [docker]
+    name: phoenix_dependencies
+    imageTags: 
+	    - branch  
+	    - latest 
+	    - commit_tag
+  repositoryDescription:
+  	- name: container_registry
+    	type: gitlab
+   
+CISetting:
+	ciTypes:
+		- gitlab 
+		- github 
+	appliedRepos:
+		- phoenix_dependencies
+		- ret
+	branchPrefixType: ros_version
+	gitlab:
+		services: 
+			- name: docker_service
+				value: "docker:dind"
+		tags:	
+			- name: docker_runner_save_cache
+					value: "docker-build"
+			- name: simple_runner
+				value: asprunner
+	github:
+		services:
+			- name: docker_service
+				value: "docker:dind"
+		tags: 
+			- name: docker_runner
+				value: "docker-build"
+			- name: simple_runner
+				value: asprunner
+
+	

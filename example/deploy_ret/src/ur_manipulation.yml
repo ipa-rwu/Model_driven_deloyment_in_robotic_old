@@ -1,39 +1,34 @@
 MonolithicImplementationDescription:
-  name: ur_manipulation
-  description: "bring up ur5e"
+  name: ur_manipulation 
+  description: "bring up ur5e, including driver" 
   mode: debug
-  branch: any
+  branch: any 
   ImplementationArtifactDescription:
     location: "https://github.com/ipa-rwu/ur_manipulation.git"
     deployRequirements:
-    - name: os
-      value: 
-      - ubuntu20
-      - ubuntu18
-    - name: processor_architecture
-      value:
-      - x86
-    - name: ros_distro
-      value: 
-      - noetic
-      - melodic
-    resourceRequirements:
-    - name: cpus
-      value: 0.5
-    - name: memory
-      value: 1.5m
+	    - name: os 
+	      value: 
+	        - ubuntu
+	    - name: processor_architecture
+	      value:
+	      	- x86_64
+    buildRequirements: 
+    	rosDistros:
+	      - noetic
+  	    - foxy
+  	    - galactic 
     startCommands:
-    - "roslaunch ur_manipulation ur5e_bringup.launch"
-      
+    	- "roslaunch ur_manipulation ur5e_bringup.launch"
 PackageDescription:
   imageDescription:
     types: [docker]
     name: ur_manipulation 
-    imageVersions:
-    - branch
-    - latest 
+    imageTags: 
+	    - branch  
+	    - latest 
+	    - commit_tag
   repositoryDescription:
-  - name: container_registry
-    type: gitlab
+	  - name: container_registry
+	    type: gitlab
   
 

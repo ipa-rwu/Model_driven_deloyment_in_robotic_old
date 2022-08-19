@@ -6,37 +6,42 @@ MonolithicImplementationDescription:
   ImplementationArtifactDescription:
     location: "https://github.com/ipa-kut/ur5e_egp50_moveit_config.git"
     deployRequirements:
-    - name: os
-      value: 
-      - ubuntu20
-      - ubuntu18
-    - name: processor_architecture
-      value:
-      - x86
-    - name: ros_distro
-      value: 
-      - noetic
-      - melodic
+	    - name: os
+	      value: 
+		      - ubuntu20
+		      - ubuntu18
+	    - name: processor_architecture
+	      value:
+	      	- x86
+	    - name: ros_distro
+	      value: 
+		      - noetic
+		      - melodic
     resourceRequirements:
-    - name: cpus
-      value: 0.5
-    - name: memory
-      value: 1.5m
+	    - name: cpus
+	      value: 0.5
+	    - name: memory
+	      value: 1.5m
     buildRequirements:
-      dependOn:
-      - from: ur_manipulation
-        name: ur_manipulation
+    	rosDistros:
+	      - noetic
+  	    - foxy
+  	    - galactic
+  	  dependOn:
+      	- name: ur_manipulation
+	      	location: "https://gitlab.cc-asp.fraunhofer.de/ipa326/phoenix_dependencies.git"
+	      	visibility: privat
     startCommands:
-    - "roslaunch ur5e_egp50_moveit_config ur5e_egp50_moveit_planning_execution.launch"
+   		- "roslaunch ur5e_egp50_moveit_config ur5e_egp50_moveit_planning_execution.launch"
 
 PackageDescription:
   imageDescription:
     types: [docker]
     name: ur5e_egp50_moveit_config 
-    imageVersions:
-    - branch
-    - latest 
+    imageTags:
+	    - branch
+	    - latest 
   repositoryDescription:
-  - name: container_registry
-    type: gitlab
+	  - name: container_registry
+	    type: gitlab
 
