@@ -1,7 +1,0 @@
-package de.fraunhofer.ipa.deployment.generator
-
-class GitLabCICompiler {
-  
-  def compileGitlabCi(MonolithicImplementationDescription impl)
-  
-}

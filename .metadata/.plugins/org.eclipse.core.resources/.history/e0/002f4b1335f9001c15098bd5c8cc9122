@@ -1,9 +1,0 @@
-grammar de.fraunhofer.ipa.deployment.DeployModel with org.eclipse.xtext.common.Terminals
-
-generate deployModel "http://www.fraunhofer.de/ipa/deployment/DeployModel"
-
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
