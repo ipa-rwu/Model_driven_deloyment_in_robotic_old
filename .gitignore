@@ -1,3 +1,4 @@
 *.xtendbin
 *._trace
 .metadata/*
+**/**/bin/*
