@@ -13,91 +13,71 @@ import org.eclipse.xtext.parser.antlr.Lexer;
 
 MonolithicImplementationDescription : 'MonolithicImplementationDescription:';
 
-ImplementationArtifactDescription : 'ImplementationArtifactDescription';
+ImplementationArtifactDescription : 'ImplementationArtifactDescription:';
 
-StackImplementationDescription : 'StackImplementationDescription';
-
-Processor_architecture : 'processor_architecture';
+StackImplementationDescription : 'StackImplementationDescription:';
 
 RepositoryDescription : 'repositoryDescription:';
 
-ResourceRequirements : 'resourceRequirements';
+ResourceRequirements : 'resourceRequirements:';
+
+DeployRequirements : 'deployRequirements:';
 
 ImplementsRosModel : 'implementsRosModel:';
 
 PackageDescription : 'PackageDescription';
 
-DeployRequirements : 'deployRequirements';
+BuildRequirements : 'buildRequirements:';
 
-BuildRequirements : 'buildRequirements';
+BranchPrefixType : 'branchPrefixType:';
 
 ImageDescription : 'imageDescription:';
 
-Oom_kill_disable : 'oom_kill_disable';
-
-AptRepositories : 'aptRepositories';
+AptRepositories : 'aptRepositories:';
 
 RepositoryPath : 'repositoryPath:';
 
-ImageVersions : 'imageVersions:';
+TestRosDistros : 'testRosDistros:';
 
 StartCommands : 'startCommands:';
+
+AppliedRepos : 'appliedRepos:';
 
 UpdateRosDep : 'updateRosDep:';
 
 Description : 'description:';
 
-Memory_swap : 'memory_swap';
+RosDistros : 'rosDistros:';
 
-Ros_distro : 'ros_distro';
+Visibility : 'visibility:';
+
+CISetting : 'CISetting:';
+
+CMakeArgs : 'cMakeArgs:';
+
+ImageTags : 'imageTags:';
 
 DependOn : 'dependOn:';
 
-Galactic : 'galactic';
+Location : 'location:';
+
+CiTypes : 'ciTypes:';
 
 KeyLink : 'keyLink:';
 
-Location : 'location';
-
-Ubuntu18 : 'ubuntu18';
-
-Ubuntu20 : 'ubuntu20';
-
-Branch_1 : 'branch:';
+Branch : 'branch:';
 
 Import : 'import:';
 
-Melodic : 'melodic';
-
 Release : 'release';
-
-Branch : 'branch';
-
-Commit : 'commit';
-
-Docker : 'docker';
-
-Gitlab : 'gitlab';
-
-Latest : 'latest';
-
-Memory : 'memory';
-
-Noetic : 'noetic';
-
-Remote : 'remote';
 
 Types : 'types:';
 
 Value : 'value:';
 
-Arm64 : 'arm64';
-
 Debug : 'debug';
 
-From : 'from:';
-
-Local : 'local';
+False : 'false';
 
 Mode : 'mode:';
 
@@ -107,11 +87,7 @@ Path : 'path:';
 
 Type : 'type:';
 
-Cpus : 'cpus';
-
-Foxy : 'foxy';
-
-Snap : 'snap';
+True : 'true';
 
 Use : 'use:';
 
@@ -122,8 +98,6 @@ MHz : 'MHz';
 Any : 'any';
 
 KHz : 'kHz';
-
-X86 : 'x86';
 
 GB : 'GB';
 
@@ -158,8 +132,6 @@ Mb_1 : 'mb';
 Ms : 'ms';
 
 Ns : 'ns';
-
-Os : 'os';
 
 TB_1 : 'tB';
 

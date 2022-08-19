@@ -26,28 +26,25 @@ public interface Repository extends EObject
 {
   /**
    * Returns the value of the '<em><b>Type</b></em>' attribute.
-   * The literals are from the enumeration {@link de.fraunhofer.ipa.deployment.deployModel.RepositoryTypes}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' attribute.
-   * @see de.fraunhofer.ipa.deployment.deployModel.RepositoryTypes
-   * @see #setType(RepositoryTypes)
+   * @see #setType(String)
    * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getRepository_Type()
    * @model
    * @generated
    */
-  RepositoryTypes getType();
+  String getType();
 
   /**
    * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.Repository#getType <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Type</em>' attribute.
-   * @see de.fraunhofer.ipa.deployment.deployModel.RepositoryTypes
    * @see #getType()
    * @generated
    */
-  void setType(RepositoryTypes value);
+  void setType(String value);
 
   /**
    * Returns the value of the '<em><b>Path</b></em>' attribute.

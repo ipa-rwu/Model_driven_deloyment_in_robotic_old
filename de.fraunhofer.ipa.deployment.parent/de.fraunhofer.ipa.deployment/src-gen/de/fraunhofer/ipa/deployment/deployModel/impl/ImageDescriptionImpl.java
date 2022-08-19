@@ -5,25 +5,17 @@ package de.fraunhofer.ipa.deployment.deployModel.impl;
 
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
 import de.fraunhofer.ipa.deployment.deployModel.ImageDescription;
-import de.fraunhofer.ipa.deployment.deployModel.ImageTypeList;
-import de.fraunhofer.ipa.deployment.deployModel.ImageVersionList;
 import de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription;
-
-import java.util.Collection;
+import de.fraunhofer.ipa.deployment.deployModel.MultiValueList;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +27,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageDescriptionImpl#getTypes <em>Types</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageDescriptionImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageDescriptionImpl#getImageVersions <em>Image Versions</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageDescriptionImpl#getImageTags <em>Image Tags</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,14 +35,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implements ImageDescription
 {
   /**
-   * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
+   * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTypes()
    * @generated
    * @ordered
    */
-  protected EList<ImageTypeList> types;
+  protected MultiValueList types;
 
   /**
    * The cached value of the '{@link #getName() <em>Name</em>}' reference.
@@ -63,14 +55,14 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
   protected MonolithicImplementationDescription name;
 
   /**
-   * The cached value of the '{@link #getImageVersions() <em>Image Versions</em>}' containment reference.
+   * The cached value of the '{@link #getImageTags() <em>Image Tags</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getImageVersions()
+   * @see #getImageTags()
    * @generated
    * @ordered
    */
-  protected ImageVersionList imageVersions;
+  protected MultiValueList imageTags;
 
   /**
    * <!-- begin-user-doc -->
@@ -99,13 +91,48 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
    * @generated
    */
   @Override
-  public EList<ImageTypeList> getTypes()
+  public MultiValueList getTypes()
   {
-    if (types == null)
-    {
-      types = new EObjectContainmentEList<ImageTypeList>(ImageTypeList.class, this, DeployModelPackage.IMAGE_DESCRIPTION__TYPES);
-    }
     return types;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTypes(MultiValueList newTypes, NotificationChain msgs)
+  {
+    MultiValueList oldTypes = types;
+    types = newTypes;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.IMAGE_DESCRIPTION__TYPES, oldTypes, newTypes);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTypes(MultiValueList newTypes)
+  {
+    if (newTypes != types)
+    {
+      NotificationChain msgs = null;
+      if (types != null)
+        msgs = ((InternalEObject)types).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.IMAGE_DESCRIPTION__TYPES, null, msgs);
+      if (newTypes != null)
+        msgs = ((InternalEObject)newTypes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.IMAGE_DESCRIPTION__TYPES, null, msgs);
+      msgs = basicSetTypes(newTypes, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.IMAGE_DESCRIPTION__TYPES, newTypes, newTypes));
   }
 
   /**
@@ -159,9 +186,9 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
    * @generated
    */
   @Override
-  public ImageVersionList getImageVersions()
+  public MultiValueList getImageTags()
   {
-    return imageVersions;
+    return imageTags;
   }
 
   /**
@@ -169,13 +196,13 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetImageVersions(ImageVersionList newImageVersions, NotificationChain msgs)
+  public NotificationChain basicSetImageTags(MultiValueList newImageTags, NotificationChain msgs)
   {
-    ImageVersionList oldImageVersions = imageVersions;
-    imageVersions = newImageVersions;
+    MultiValueList oldImageTags = imageTags;
+    imageTags = newImageTags;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_VERSIONS, oldImageVersions, newImageVersions);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS, oldImageTags, newImageTags);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -187,20 +214,20 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
    * @generated
    */
   @Override
-  public void setImageVersions(ImageVersionList newImageVersions)
+  public void setImageTags(MultiValueList newImageTags)
   {
-    if (newImageVersions != imageVersions)
+    if (newImageTags != imageTags)
     {
       NotificationChain msgs = null;
-      if (imageVersions != null)
-        msgs = ((InternalEObject)imageVersions).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_VERSIONS, null, msgs);
-      if (newImageVersions != null)
-        msgs = ((InternalEObject)newImageVersions).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_VERSIONS, null, msgs);
-      msgs = basicSetImageVersions(newImageVersions, msgs);
+      if (imageTags != null)
+        msgs = ((InternalEObject)imageTags).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS, null, msgs);
+      if (newImageTags != null)
+        msgs = ((InternalEObject)newImageTags).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS, null, msgs);
+      msgs = basicSetImageTags(newImageTags, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_VERSIONS, newImageVersions, newImageVersions));
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS, newImageTags, newImageTags));
   }
 
   /**
@@ -214,9 +241,9 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
     switch (featureID)
     {
       case DeployModelPackage.IMAGE_DESCRIPTION__TYPES:
-        return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
-      case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_VERSIONS:
-        return basicSetImageVersions(null, msgs);
+        return basicSetTypes(null, msgs);
+      case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS:
+        return basicSetImageTags(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -236,8 +263,8 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
       case DeployModelPackage.IMAGE_DESCRIPTION__NAME:
         if (resolve) return getName();
         return basicGetName();
-      case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_VERSIONS:
-        return getImageVersions();
+      case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS:
+        return getImageTags();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -247,21 +274,19 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case DeployModelPackage.IMAGE_DESCRIPTION__TYPES:
-        getTypes().clear();
-        getTypes().addAll((Collection<? extends ImageTypeList>)newValue);
+        setTypes((MultiValueList)newValue);
         return;
       case DeployModelPackage.IMAGE_DESCRIPTION__NAME:
         setName((MonolithicImplementationDescription)newValue);
         return;
-      case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_VERSIONS:
-        setImageVersions((ImageVersionList)newValue);
+      case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS:
+        setImageTags((MultiValueList)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -278,13 +303,13 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
     switch (featureID)
     {
       case DeployModelPackage.IMAGE_DESCRIPTION__TYPES:
-        getTypes().clear();
+        setTypes((MultiValueList)null);
         return;
       case DeployModelPackage.IMAGE_DESCRIPTION__NAME:
         setName((MonolithicImplementationDescription)null);
         return;
-      case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_VERSIONS:
-        setImageVersions((ImageVersionList)null);
+      case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS:
+        setImageTags((MultiValueList)null);
         return;
     }
     super.eUnset(featureID);
@@ -301,11 +326,11 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
     switch (featureID)
     {
       case DeployModelPackage.IMAGE_DESCRIPTION__TYPES:
-        return types != null && !types.isEmpty();
+        return types != null;
       case DeployModelPackage.IMAGE_DESCRIPTION__NAME:
         return name != null;
-      case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_VERSIONS:
-        return imageVersions != null;
+      case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS:
+        return imageTags != null;
     }
     return super.eIsSet(featureID);
   }

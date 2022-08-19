@@ -11,5 +11,5 @@ package de.fraunhofer.ipa.deployment.scoping;
  * on how and when to use it.
  */
 public class DeployModelScopeProvider extends AbstractDeployModelScopeProvider {
-
+	
 }

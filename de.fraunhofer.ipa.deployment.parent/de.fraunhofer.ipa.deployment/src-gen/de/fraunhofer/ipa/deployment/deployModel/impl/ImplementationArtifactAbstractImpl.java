@@ -6,7 +6,7 @@ package de.fraunhofer.ipa.deployment.deployModel.impl;
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
 import de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactAbstract;
 import de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription;
-import de.fraunhofer.ipa.deployment.deployModel.StartCommands;
+import de.fraunhofer.ipa.deployment.deployModel.MultiValueList;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -72,7 +72,7 @@ public class ImplementationArtifactAbstractImpl extends MinimalEObjectImpl.Conta
    * @generated
    * @ordered
    */
-  protected StartCommands startCommands;
+  protected MultiValueList startCommands;
 
   /**
    * <!-- begin-user-doc -->
@@ -171,7 +171,7 @@ public class ImplementationArtifactAbstractImpl extends MinimalEObjectImpl.Conta
    * @generated
    */
   @Override
-  public StartCommands getStartCommands()
+  public MultiValueList getStartCommands()
   {
     return startCommands;
   }
@@ -181,9 +181,9 @@ public class ImplementationArtifactAbstractImpl extends MinimalEObjectImpl.Conta
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetStartCommands(StartCommands newStartCommands, NotificationChain msgs)
+  public NotificationChain basicSetStartCommands(MultiValueList newStartCommands, NotificationChain msgs)
   {
-    StartCommands oldStartCommands = startCommands;
+    MultiValueList oldStartCommands = startCommands;
     startCommands = newStartCommands;
     if (eNotificationRequired())
     {
@@ -199,7 +199,7 @@ public class ImplementationArtifactAbstractImpl extends MinimalEObjectImpl.Conta
    * @generated
    */
   @Override
-  public void setStartCommands(StartCommands newStartCommands)
+  public void setStartCommands(MultiValueList newStartCommands)
   {
     if (newStartCommands != startCommands)
     {
@@ -269,7 +269,7 @@ public class ImplementationArtifactAbstractImpl extends MinimalEObjectImpl.Conta
         setName((MonolithicImplementationDescription)newValue);
         return;
       case DeployModelPackage.IMPLEMENTATION_ARTIFACT_ABSTRACT__START_COMMANDS:
-        setStartCommands((StartCommands)newValue);
+        setStartCommands((MultiValueList)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -292,7 +292,7 @@ public class ImplementationArtifactAbstractImpl extends MinimalEObjectImpl.Conta
         setName((MonolithicImplementationDescription)null);
         return;
       case DeployModelPackage.IMPLEMENTATION_ARTIFACT_ABSTRACT__START_COMMANDS:
-        setStartCommands((StartCommands)null);
+        setStartCommands((MultiValueList)null);
         return;
     }
     super.eUnset(featureID);

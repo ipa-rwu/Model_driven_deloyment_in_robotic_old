@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription#getDescription <em>Description</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription#getMode <em>Mode</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription#getBranch <em>Branch</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription#getImpl <em>Impl</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription#getImplementation <em>Implementation</em>}</li>
  * </ul>
  *
  * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getMonolithicImplementationDescription()
@@ -165,25 +165,25 @@ public interface MonolithicImplementationDescription extends EObject
   void setBranch(String value);
 
   /**
-   * Returns the value of the '<em><b>Impl</b></em>' containment reference.
+   * Returns the value of the '<em><b>Implementation</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Impl</em>' containment reference.
-   * @see #setImpl(ImplementationArtifactDescription)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getMonolithicImplementationDescription_Impl()
+   * @return the value of the '<em>Implementation</em>' containment reference.
+   * @see #setImplementation(NewImplementationArtifact)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getMonolithicImplementationDescription_Implementation()
    * @model containment="true"
    * @generated
    */
-  ImplementationArtifactDescription getImpl();
+  NewImplementationArtifact getImplementation();
 
   /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription#getImpl <em>Impl</em>}' containment reference.
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription#getImplementation <em>Implementation</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Impl</em>' containment reference.
-   * @see #getImpl()
+   * @param value the new value of the '<em>Implementation</em>' containment reference.
+   * @see #getImplementation()
    * @generated
    */
-  void setImpl(ImplementationArtifactDescription value);
+  void setImplementation(NewImplementationArtifact value);
 
 } // MonolithicImplementationDescription

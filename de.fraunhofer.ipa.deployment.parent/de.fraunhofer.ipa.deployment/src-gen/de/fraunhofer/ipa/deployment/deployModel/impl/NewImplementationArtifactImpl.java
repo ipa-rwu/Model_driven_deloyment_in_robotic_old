@@ -6,9 +6,9 @@ package de.fraunhofer.ipa.deployment.deployModel.impl;
 import de.fraunhofer.ipa.deployment.deployModel.BuildRequirements;
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
 import de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements;
+import de.fraunhofer.ipa.deployment.deployModel.MultiValueList;
 import de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact;
 import de.fraunhofer.ipa.deployment.deployModel.ResourceRequirements;
-import de.fraunhofer.ipa.deployment.deployModel.StartCommands;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.NewImplementationArtifactImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.NewImplementationArtifactImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.NewImplementationArtifactImpl#getDeployRequirements <em>Deploy Requirements</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.NewImplementationArtifactImpl#getResourceRequirements <em>Resource Requirements</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.NewImplementationArtifactImpl#getBuildRequirements <em>Build Requirements</em>}</li>
@@ -39,24 +39,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container implements NewImplementationArtifact
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getLocation()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String LOCATION_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getLocation()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String location = LOCATION_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getDeployRequirements() <em>Deploy Requirements</em>}' containment reference.
@@ -96,7 +96,7 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
    * @generated
    * @ordered
    */
-  protected StartCommands startCommands;
+  protected MultiValueList startCommands;
 
   /**
    * <!-- begin-user-doc -->
@@ -125,9 +125,9 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
    * @generated
    */
   @Override
-  public String getName()
+  public String getLocation()
   {
-    return name;
+    return location;
   }
 
   /**
@@ -136,12 +136,12 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
    * @generated
    */
   @Override
-  public void setName(String newName)
+  public void setLocation(String newLocation)
   {
-    String oldName = name;
-    name = newName;
+    String oldLocation = location;
+    location = newLocation;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__LOCATION, oldLocation, location));
   }
 
   /**
@@ -300,7 +300,7 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
    * @generated
    */
   @Override
-  public StartCommands getStartCommands()
+  public MultiValueList getStartCommands()
   {
     return startCommands;
   }
@@ -310,9 +310,9 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetStartCommands(StartCommands newStartCommands, NotificationChain msgs)
+  public NotificationChain basicSetStartCommands(MultiValueList newStartCommands, NotificationChain msgs)
   {
-    StartCommands oldStartCommands = startCommands;
+    MultiValueList oldStartCommands = startCommands;
     startCommands = newStartCommands;
     if (eNotificationRequired())
     {
@@ -328,7 +328,7 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
    * @generated
    */
   @Override
-  public void setStartCommands(StartCommands newStartCommands)
+  public void setStartCommands(MultiValueList newStartCommands)
   {
     if (newStartCommands != startCommands)
     {
@@ -376,8 +376,8 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
   {
     switch (featureID)
     {
-      case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__NAME:
-        return getName();
+      case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__LOCATION:
+        return getLocation();
       case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__DEPLOY_REQUIREMENTS:
         return getDeployRequirements();
       case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__RESOURCE_REQUIREMENTS:
@@ -400,8 +400,8 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
   {
     switch (featureID)
     {
-      case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__NAME:
-        setName((String)newValue);
+      case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__LOCATION:
+        setLocation((String)newValue);
         return;
       case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__DEPLOY_REQUIREMENTS:
         setDeployRequirements((DeploymentRequirements)newValue);
@@ -413,7 +413,7 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
         setBuildRequirements((BuildRequirements)newValue);
         return;
       case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__START_COMMANDS:
-        setStartCommands((StartCommands)newValue);
+        setStartCommands((MultiValueList)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -429,8 +429,8 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
   {
     switch (featureID)
     {
-      case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__NAME:
-        setName(NAME_EDEFAULT);
+      case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__LOCATION:
+        setLocation(LOCATION_EDEFAULT);
         return;
       case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__DEPLOY_REQUIREMENTS:
         setDeployRequirements((DeploymentRequirements)null);
@@ -442,7 +442,7 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
         setBuildRequirements((BuildRequirements)null);
         return;
       case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__START_COMMANDS:
-        setStartCommands((StartCommands)null);
+        setStartCommands((MultiValueList)null);
         return;
     }
     super.eUnset(featureID);
@@ -458,8 +458,8 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
   {
     switch (featureID)
     {
-      case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__LOCATION:
+        return LOCATION_EDEFAULT == null ? location != null : !LOCATION_EDEFAULT.equals(location);
       case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__DEPLOY_REQUIREMENTS:
         return deployRequirements != null;
       case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT__RESOURCE_REQUIREMENTS:
@@ -483,8 +483,8 @@ public class NewImplementationArtifactImpl extends MinimalEObjectImpl.Container 
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (location: ");
+    result.append(location);
     result.append(')');
     return result.toString();
   }

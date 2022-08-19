@@ -75,30 +75,31 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
       case DeployModelPackage.IMPLEMENTATION_ARTIFACT_ABSTRACT: return createImplementationArtifactAbstract();
       case DeployModelPackage.DEPLOYMENT_REQUIREMENTS: return createDeploymentRequirements();
       case DeployModelPackage.RESOURCE_REQUIREMENTS: return createResourceRequirements();
-      case DeployModelPackage.RESOURCE_REQUIREMENT: return createResourceRequirement();
-      case DeployModelPackage.REQ_OPERATING_SYSTEM: return createReqOperatingSystem();
-      case DeployModelPackage.OPERATING_SYSTEM_TYPE_LIST: return createOperatingSystemTypeList();
-      case DeployModelPackage.REQ_PROCESSOR_ARCHITECTURE: return createReqProcessorArchitecture();
-      case DeployModelPackage.PROCESSOR_ARCHITECTURE_TYPE_LIST: return createProcessorArchitectureTypeList();
-      case DeployModelPackage.REQ_ROS_DISTRO: return createReqRosDistro();
-      case DeployModelPackage.ROS_DISTRO_LIST: return createRosDistroList();
+      case DeployModelPackage.PROPERTY_EXPRESS_TYPE: return createPropertyExpressType();
+      case DeployModelPackage.COMMON_PROPERTY_SINGLE_VALUE: return createCommonPropertySingleValue();
+      case DeployModelPackage.COMMON_PROPERTY_MULTI_VALUE: return createCommonPropertyMultiValue();
+      case DeployModelPackage.MULTI_VALUE_LIST: return createMultiValueList();
+      case DeployModelPackage.MULTI_VALUE_LIST_PRE_LIST: return createMultiValueListPreList();
+      case DeployModelPackage.MULTI_VALUE_LIST_BRACKET: return createMultiValueListBracket();
       case DeployModelPackage.BUILD_REQUIREMENTS: return createBuildRequirements();
       case DeployModelPackage.REQ_BUILD_DEPENDENCIES: return createReqBuildDependencies();
-      case DeployModelPackage.DEPENDENCY: return createDependency();
+      case DeployModelPackage.DEPENDENCY_TYPES: return createDependencyTypes();
       case DeployModelPackage.LOCAL_PACKAGE: return createLocalPackage();
       case DeployModelPackage.GIT_PACKAGE: return createGitPackage();
       case DeployModelPackage.REQ_DEPENDENCY_REPOSITORIES: return createReqDependencyRepositories();
       case DeployModelPackage.APT_REPOSITORY_INSTANCE: return createAptRepositoryInstance();
-      case DeployModelPackage.START_COMMANDS: return createStartCommands();
-      case DeployModelPackage.LIST_START_COMMANDS: return createListStartCommands();
       case DeployModelPackage.STACK_IMPLEMENTATION_DESCRIPTION: return createStackImplementationDescription();
       case DeployModelPackage.PACKAGE_DESCRIPTION: return createPackageDescription();
       case DeployModelPackage.IMAGE_DESCRIPTION: return createImageDescription();
-      case DeployModelPackage.IMAGE_TYPE_LIST: return createImageTypeList();
-      case DeployModelPackage.IMAGE_VERSION_LIST: return createImageVersionList();
       case DeployModelPackage.REPOSITORY_DESCRIPTION: return createRepositoryDescription();
       case DeployModelPackage.REPOSITORY_SPEC: return createRepositorySpec();
       case DeployModelPackage.REPOSITORY: return createRepository();
+      case DeployModelPackage.CI_SETTING: return createCISetting();
+      case DeployModelPackage.MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST: return createMultiMonolithicImplementationNameList();
+      case DeployModelPackage.MULTI_MONOLITHIC_IMPLEMENTATION_NAME_PRE_LIST: return createMultiMonolithicImplementationNamePreList();
+      case DeployModelPackage.MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST_BRACKET: return createMultiMonolithicImplementationNameListBracket();
+      case DeployModelPackage.CI_PARAMETERS: return createCIParameters();
+      case DeployModelPackage.GROUPED_PROPERTIES: return createGroupedProperties();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -116,20 +117,8 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
     {
       case DeployModelPackage.IMPLEMENTATION_MODE_TYPE:
         return createImplementationModeTypeFromString(eDataType, initialValue);
-      case DeployModelPackage.RESOURCE_REQ_TYPES:
-        return createResourceReqTypesFromString(eDataType, initialValue);
-      case DeployModelPackage.OPERATING_SYSTEM_TYPES:
-        return createOperatingSystemTypesFromString(eDataType, initialValue);
-      case DeployModelPackage.ROS_DISTRO:
-        return createRosDistroFromString(eDataType, initialValue);
-      case DeployModelPackage.PROCESSOR_ARCHITECTURE_TYPES:
-        return createProcessorArchitectureTypesFromString(eDataType, initialValue);
-      case DeployModelPackage.IMAGE_TYPES:
-        return createImageTypesFromString(eDataType, initialValue);
-      case DeployModelPackage.IMAGE_VERSION_TYPES:
-        return createImageVersionTypesFromString(eDataType, initialValue);
-      case DeployModelPackage.REPOSITORY_TYPES:
-        return createRepositoryTypesFromString(eDataType, initialValue);
+      case DeployModelPackage.BOOLEAN:
+        return createBOOLEANFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -147,20 +136,8 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
     {
       case DeployModelPackage.IMPLEMENTATION_MODE_TYPE:
         return convertImplementationModeTypeToString(eDataType, instanceValue);
-      case DeployModelPackage.RESOURCE_REQ_TYPES:
-        return convertResourceReqTypesToString(eDataType, instanceValue);
-      case DeployModelPackage.OPERATING_SYSTEM_TYPES:
-        return convertOperatingSystemTypesToString(eDataType, instanceValue);
-      case DeployModelPackage.ROS_DISTRO:
-        return convertRosDistroToString(eDataType, instanceValue);
-      case DeployModelPackage.PROCESSOR_ARCHITECTURE_TYPES:
-        return convertProcessorArchitectureTypesToString(eDataType, instanceValue);
-      case DeployModelPackage.IMAGE_TYPES:
-        return convertImageTypesToString(eDataType, instanceValue);
-      case DeployModelPackage.IMAGE_VERSION_TYPES:
-        return convertImageVersionTypesToString(eDataType, instanceValue);
-      case DeployModelPackage.REPOSITORY_TYPES:
-        return convertRepositoryTypesToString(eDataType, instanceValue);
+      case DeployModelPackage.BOOLEAN:
+        return convertBOOLEANToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -280,10 +257,10 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
    * @generated
    */
   @Override
-  public ResourceRequirement createResourceRequirement()
+  public PropertyExpressType createPropertyExpressType()
   {
-    ResourceRequirementImpl resourceRequirement = new ResourceRequirementImpl();
-    return resourceRequirement;
+    PropertyExpressTypeImpl propertyExpressType = new PropertyExpressTypeImpl();
+    return propertyExpressType;
   }
 
   /**
@@ -292,10 +269,10 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
    * @generated
    */
   @Override
-  public ReqOperatingSystem createReqOperatingSystem()
+  public CommonPropertySingleValue createCommonPropertySingleValue()
   {
-    ReqOperatingSystemImpl reqOperatingSystem = new ReqOperatingSystemImpl();
-    return reqOperatingSystem;
+    CommonPropertySingleValueImpl commonPropertySingleValue = new CommonPropertySingleValueImpl();
+    return commonPropertySingleValue;
   }
 
   /**
@@ -304,10 +281,10 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
    * @generated
    */
   @Override
-  public OperatingSystemTypeList createOperatingSystemTypeList()
+  public CommonPropertyMultiValue createCommonPropertyMultiValue()
   {
-    OperatingSystemTypeListImpl operatingSystemTypeList = new OperatingSystemTypeListImpl();
-    return operatingSystemTypeList;
+    CommonPropertyMultiValueImpl commonPropertyMultiValue = new CommonPropertyMultiValueImpl();
+    return commonPropertyMultiValue;
   }
 
   /**
@@ -316,10 +293,10 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
    * @generated
    */
   @Override
-  public ReqProcessorArchitecture createReqProcessorArchitecture()
+  public MultiValueList createMultiValueList()
   {
-    ReqProcessorArchitectureImpl reqProcessorArchitecture = new ReqProcessorArchitectureImpl();
-    return reqProcessorArchitecture;
+    MultiValueListImpl multiValueList = new MultiValueListImpl();
+    return multiValueList;
   }
 
   /**
@@ -328,10 +305,10 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
    * @generated
    */
   @Override
-  public ProcessorArchitectureTypeList createProcessorArchitectureTypeList()
+  public MultiValueListPreList createMultiValueListPreList()
   {
-    ProcessorArchitectureTypeListImpl processorArchitectureTypeList = new ProcessorArchitectureTypeListImpl();
-    return processorArchitectureTypeList;
+    MultiValueListPreListImpl multiValueListPreList = new MultiValueListPreListImpl();
+    return multiValueListPreList;
   }
 
   /**
@@ -340,22 +317,10 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
    * @generated
    */
   @Override
-  public ReqRosDistro createReqRosDistro()
+  public MultiValueListBracket createMultiValueListBracket()
   {
-    ReqRosDistroImpl reqRosDistro = new ReqRosDistroImpl();
-    return reqRosDistro;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public RosDistroList createRosDistroList()
-  {
-    RosDistroListImpl rosDistroList = new RosDistroListImpl();
-    return rosDistroList;
+    MultiValueListBracketImpl multiValueListBracket = new MultiValueListBracketImpl();
+    return multiValueListBracket;
   }
 
   /**
@@ -388,10 +353,10 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
    * @generated
    */
   @Override
-  public Dependency createDependency()
+  public DependencyTypes createDependencyTypes()
   {
-    DependencyImpl dependency = new DependencyImpl();
-    return dependency;
+    DependencyTypesImpl dependencyTypes = new DependencyTypesImpl();
+    return dependencyTypes;
   }
 
   /**
@@ -448,30 +413,6 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
    * @generated
    */
   @Override
-  public StartCommands createStartCommands()
-  {
-    StartCommandsImpl startCommands = new StartCommandsImpl();
-    return startCommands;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ListStartCommands createListStartCommands()
-  {
-    ListStartCommandsImpl listStartCommands = new ListStartCommandsImpl();
-    return listStartCommands;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public StackImplementationDescription createStackImplementationDescription()
   {
     StackImplementationDescriptionImpl stackImplementationDescription = new StackImplementationDescriptionImpl();
@@ -500,30 +441,6 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
   {
     ImageDescriptionImpl imageDescription = new ImageDescriptionImpl();
     return imageDescription;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ImageTypeList createImageTypeList()
-  {
-    ImageTypeListImpl imageTypeList = new ImageTypeListImpl();
-    return imageTypeList;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ImageVersionList createImageVersionList()
-  {
-    ImageVersionListImpl imageVersionList = new ImageVersionListImpl();
-    return imageVersionList;
   }
 
   /**
@@ -567,6 +484,78 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  @Override
+  public CISetting createCISetting()
+  {
+    CISettingImpl ciSetting = new CISettingImpl();
+    return ciSetting;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MultiMonolithicImplementationNameList createMultiMonolithicImplementationNameList()
+  {
+    MultiMonolithicImplementationNameListImpl multiMonolithicImplementationNameList = new MultiMonolithicImplementationNameListImpl();
+    return multiMonolithicImplementationNameList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MultiMonolithicImplementationNamePreList createMultiMonolithicImplementationNamePreList()
+  {
+    MultiMonolithicImplementationNamePreListImpl multiMonolithicImplementationNamePreList = new MultiMonolithicImplementationNamePreListImpl();
+    return multiMonolithicImplementationNamePreList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MultiMonolithicImplementationNameListBracket createMultiMonolithicImplementationNameListBracket()
+  {
+    MultiMonolithicImplementationNameListBracketImpl multiMonolithicImplementationNameListBracket = new MultiMonolithicImplementationNameListBracketImpl();
+    return multiMonolithicImplementationNameListBracket;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CIParameters createCIParameters()
+  {
+    CIParametersImpl ciParameters = new CIParametersImpl();
+    return ciParameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public GroupedProperties createGroupedProperties()
+  {
+    GroupedPropertiesImpl groupedProperties = new GroupedPropertiesImpl();
+    return groupedProperties;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ImplementationModeType createImplementationModeTypeFromString(EDataType eDataType, String initialValue)
   {
     ImplementationModeType result = ImplementationModeType.get(initialValue);
@@ -589,9 +578,9 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ResourceReqTypes createResourceReqTypesFromString(EDataType eDataType, String initialValue)
+  public BOOLEAN createBOOLEANFromString(EDataType eDataType, String initialValue)
   {
-    ResourceReqTypes result = ResourceReqTypes.get(initialValue);
+    BOOLEAN result = BOOLEAN.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -601,139 +590,7 @@ public class DeployModelFactoryImpl extends EFactoryImpl implements DeployModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertResourceReqTypesToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public OperatingSystemTypes createOperatingSystemTypesFromString(EDataType eDataType, String initialValue)
-  {
-    OperatingSystemTypes result = OperatingSystemTypes.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertOperatingSystemTypesToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RosDistro createRosDistroFromString(EDataType eDataType, String initialValue)
-  {
-    RosDistro result = RosDistro.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertRosDistroToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ProcessorArchitectureTypes createProcessorArchitectureTypesFromString(EDataType eDataType, String initialValue)
-  {
-    ProcessorArchitectureTypes result = ProcessorArchitectureTypes.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertProcessorArchitectureTypesToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ImageTypes createImageTypesFromString(EDataType eDataType, String initialValue)
-  {
-    ImageTypes result = ImageTypes.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertImageTypesToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ImageVersionTypes createImageVersionTypesFromString(EDataType eDataType, String initialValue)
-  {
-    ImageVersionTypes result = ImageVersionTypes.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertImageVersionTypesToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RepositoryTypes createRepositoryTypesFromString(EDataType eDataType, String initialValue)
-  {
-    RepositoryTypes result = RepositoryTypes.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertRepositoryTypesToString(EDataType eDataType, Object instanceValue)
+  public String convertBOOLEANToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

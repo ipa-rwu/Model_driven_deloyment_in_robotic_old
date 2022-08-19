@@ -5,7 +5,6 @@ package de.fraunhofer.ipa.deployment.deployModel.impl;
 
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
 import de.fraunhofer.ipa.deployment.deployModel.Repository;
-import de.fraunhofer.ipa.deployment.deployModel.RepositoryTypes;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -38,7 +37,7 @@ public class RepositoryImpl extends MinimalEObjectImpl.Container implements Repo
    * @generated
    * @ordered
    */
-  protected static final RepositoryTypes TYPE_EDEFAULT = RepositoryTypes.LOCAL;
+  protected static final String TYPE_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -48,7 +47,7 @@ public class RepositoryImpl extends MinimalEObjectImpl.Container implements Repo
    * @generated
    * @ordered
    */
-  protected RepositoryTypes type = TYPE_EDEFAULT;
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
@@ -97,7 +96,7 @@ public class RepositoryImpl extends MinimalEObjectImpl.Container implements Repo
    * @generated
    */
   @Override
-  public RepositoryTypes getType()
+  public String getType()
   {
     return type;
   }
@@ -108,10 +107,10 @@ public class RepositoryImpl extends MinimalEObjectImpl.Container implements Repo
    * @generated
    */
   @Override
-  public void setType(RepositoryTypes newType)
+  public void setType(String newType)
   {
-    RepositoryTypes oldType = type;
-    type = newType == null ? TYPE_EDEFAULT : newType;
+    String oldType = type;
+    type = newType;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.REPOSITORY__TYPE, oldType, type));
   }
@@ -170,7 +169,7 @@ public class RepositoryImpl extends MinimalEObjectImpl.Container implements Repo
     switch (featureID)
     {
       case DeployModelPackage.REPOSITORY__TYPE:
-        setType((RepositoryTypes)newValue);
+        setType((String)newValue);
         return;
       case DeployModelPackage.REPOSITORY__PATH:
         setPath((String)newValue);
@@ -210,7 +209,7 @@ public class RepositoryImpl extends MinimalEObjectImpl.Container implements Repo
     switch (featureID)
     {
       case DeployModelPackage.REPOSITORY__TYPE:
-        return type != TYPE_EDEFAULT;
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case DeployModelPackage.REPOSITORY__PATH:
         return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
     }

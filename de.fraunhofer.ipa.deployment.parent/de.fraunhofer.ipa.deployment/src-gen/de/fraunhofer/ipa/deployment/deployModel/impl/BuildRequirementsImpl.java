@@ -5,6 +5,7 @@ package de.fraunhofer.ipa.deployment.deployModel.impl;
 
 import de.fraunhofer.ipa.deployment.deployModel.BuildRequirements;
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
+import de.fraunhofer.ipa.deployment.deployModel.MultiValueList;
 import de.fraunhofer.ipa.deployment.deployModel.ReqBuildDependencies;
 import de.fraunhofer.ipa.deployment.deployModel.ReqDependencyRepositories;
 
@@ -25,9 +26,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.BuildRequirementsImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.BuildRequirementsImpl#getBuildDependencies <em>Build Dependencies</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.BuildRequirementsImpl#getDependencyRepositories <em>Dependency Repositories</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.BuildRequirementsImpl#getReqRosDistros <em>Req Ros Distros</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.BuildRequirementsImpl#getReqTestRosDistros <em>Req Test Ros Distros</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.BuildRequirementsImpl#getReqBuildDependencies <em>Req Build Dependencies</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.BuildRequirementsImpl#getReqDependencyRepositories <em>Req Dependency Repositories</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.BuildRequirementsImpl#getReqCMakeArgs <em>Req CMake Args</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,44 +38,54 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class BuildRequirementsImpl extends MinimalEObjectImpl.Container implements BuildRequirements
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getReqRosDistros() <em>Req Ros Distros</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getReqRosDistros()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected MultiValueList reqRosDistros;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getReqTestRosDistros() <em>Req Test Ros Distros</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getReqTestRosDistros()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected MultiValueList reqTestRosDistros;
 
   /**
-   * The cached value of the '{@link #getBuildDependencies() <em>Build Dependencies</em>}' containment reference.
+   * The cached value of the '{@link #getReqBuildDependencies() <em>Req Build Dependencies</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBuildDependencies()
+   * @see #getReqBuildDependencies()
    * @generated
    * @ordered
    */
-  protected ReqBuildDependencies buildDependencies;
+  protected ReqBuildDependencies reqBuildDependencies;
 
   /**
-   * The cached value of the '{@link #getDependencyRepositories() <em>Dependency Repositories</em>}' containment reference.
+   * The cached value of the '{@link #getReqDependencyRepositories() <em>Req Dependency Repositories</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDependencyRepositories()
+   * @see #getReqDependencyRepositories()
    * @generated
    * @ordered
    */
-  protected ReqDependencyRepositories dependencyRepositories;
+  protected ReqDependencyRepositories reqDependencyRepositories;
+
+  /**
+   * The cached value of the '{@link #getReqCMakeArgs() <em>Req CMake Args</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReqCMakeArgs()
+   * @generated
+   * @ordered
+   */
+  protected MultiValueList reqCMakeArgs;
 
   /**
    * <!-- begin-user-doc -->
@@ -101,9 +114,9 @@ public class BuildRequirementsImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public String getName()
+  public MultiValueList getReqRosDistros()
   {
-    return name;
+    return reqRosDistros;
   }
 
   /**
@@ -111,38 +124,13 @@ public class BuildRequirementsImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setName(String newName)
+  public NotificationChain basicSetReqRosDistros(MultiValueList newReqRosDistros, NotificationChain msgs)
   {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ReqBuildDependencies getBuildDependencies()
-  {
-    return buildDependencies;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetBuildDependencies(ReqBuildDependencies newBuildDependencies, NotificationChain msgs)
-  {
-    ReqBuildDependencies oldBuildDependencies = buildDependencies;
-    buildDependencies = newBuildDependencies;
+    MultiValueList oldReqRosDistros = reqRosDistros;
+    reqRosDistros = newReqRosDistros;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__BUILD_DEPENDENCIES, oldBuildDependencies, newBuildDependencies);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__REQ_ROS_DISTROS, oldReqRosDistros, newReqRosDistros);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -154,20 +142,20 @@ public class BuildRequirementsImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public void setBuildDependencies(ReqBuildDependencies newBuildDependencies)
+  public void setReqRosDistros(MultiValueList newReqRosDistros)
   {
-    if (newBuildDependencies != buildDependencies)
+    if (newReqRosDistros != reqRosDistros)
     {
       NotificationChain msgs = null;
-      if (buildDependencies != null)
-        msgs = ((InternalEObject)buildDependencies).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__BUILD_DEPENDENCIES, null, msgs);
-      if (newBuildDependencies != null)
-        msgs = ((InternalEObject)newBuildDependencies).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__BUILD_DEPENDENCIES, null, msgs);
-      msgs = basicSetBuildDependencies(newBuildDependencies, msgs);
+      if (reqRosDistros != null)
+        msgs = ((InternalEObject)reqRosDistros).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__REQ_ROS_DISTROS, null, msgs);
+      if (newReqRosDistros != null)
+        msgs = ((InternalEObject)newReqRosDistros).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__REQ_ROS_DISTROS, null, msgs);
+      msgs = basicSetReqRosDistros(newReqRosDistros, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__BUILD_DEPENDENCIES, newBuildDependencies, newBuildDependencies));
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__REQ_ROS_DISTROS, newReqRosDistros, newReqRosDistros));
   }
 
   /**
@@ -176,9 +164,9 @@ public class BuildRequirementsImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public ReqDependencyRepositories getDependencyRepositories()
+  public MultiValueList getReqTestRosDistros()
   {
-    return dependencyRepositories;
+    return reqTestRosDistros;
   }
 
   /**
@@ -186,13 +174,13 @@ public class BuildRequirementsImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDependencyRepositories(ReqDependencyRepositories newDependencyRepositories, NotificationChain msgs)
+  public NotificationChain basicSetReqTestRosDistros(MultiValueList newReqTestRosDistros, NotificationChain msgs)
   {
-    ReqDependencyRepositories oldDependencyRepositories = dependencyRepositories;
-    dependencyRepositories = newDependencyRepositories;
+    MultiValueList oldReqTestRosDistros = reqTestRosDistros;
+    reqTestRosDistros = newReqTestRosDistros;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__DEPENDENCY_REPOSITORIES, oldDependencyRepositories, newDependencyRepositories);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__REQ_TEST_ROS_DISTROS, oldReqTestRosDistros, newReqTestRosDistros);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -204,20 +192,170 @@ public class BuildRequirementsImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public void setDependencyRepositories(ReqDependencyRepositories newDependencyRepositories)
+  public void setReqTestRosDistros(MultiValueList newReqTestRosDistros)
   {
-    if (newDependencyRepositories != dependencyRepositories)
+    if (newReqTestRosDistros != reqTestRosDistros)
     {
       NotificationChain msgs = null;
-      if (dependencyRepositories != null)
-        msgs = ((InternalEObject)dependencyRepositories).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__DEPENDENCY_REPOSITORIES, null, msgs);
-      if (newDependencyRepositories != null)
-        msgs = ((InternalEObject)newDependencyRepositories).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__DEPENDENCY_REPOSITORIES, null, msgs);
-      msgs = basicSetDependencyRepositories(newDependencyRepositories, msgs);
+      if (reqTestRosDistros != null)
+        msgs = ((InternalEObject)reqTestRosDistros).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__REQ_TEST_ROS_DISTROS, null, msgs);
+      if (newReqTestRosDistros != null)
+        msgs = ((InternalEObject)newReqTestRosDistros).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__REQ_TEST_ROS_DISTROS, null, msgs);
+      msgs = basicSetReqTestRosDistros(newReqTestRosDistros, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__DEPENDENCY_REPOSITORIES, newDependencyRepositories, newDependencyRepositories));
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__REQ_TEST_ROS_DISTROS, newReqTestRosDistros, newReqTestRosDistros));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ReqBuildDependencies getReqBuildDependencies()
+  {
+    return reqBuildDependencies;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetReqBuildDependencies(ReqBuildDependencies newReqBuildDependencies, NotificationChain msgs)
+  {
+    ReqBuildDependencies oldReqBuildDependencies = reqBuildDependencies;
+    reqBuildDependencies = newReqBuildDependencies;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__REQ_BUILD_DEPENDENCIES, oldReqBuildDependencies, newReqBuildDependencies);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setReqBuildDependencies(ReqBuildDependencies newReqBuildDependencies)
+  {
+    if (newReqBuildDependencies != reqBuildDependencies)
+    {
+      NotificationChain msgs = null;
+      if (reqBuildDependencies != null)
+        msgs = ((InternalEObject)reqBuildDependencies).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__REQ_BUILD_DEPENDENCIES, null, msgs);
+      if (newReqBuildDependencies != null)
+        msgs = ((InternalEObject)newReqBuildDependencies).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__REQ_BUILD_DEPENDENCIES, null, msgs);
+      msgs = basicSetReqBuildDependencies(newReqBuildDependencies, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__REQ_BUILD_DEPENDENCIES, newReqBuildDependencies, newReqBuildDependencies));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ReqDependencyRepositories getReqDependencyRepositories()
+  {
+    return reqDependencyRepositories;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetReqDependencyRepositories(ReqDependencyRepositories newReqDependencyRepositories, NotificationChain msgs)
+  {
+    ReqDependencyRepositories oldReqDependencyRepositories = reqDependencyRepositories;
+    reqDependencyRepositories = newReqDependencyRepositories;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__REQ_DEPENDENCY_REPOSITORIES, oldReqDependencyRepositories, newReqDependencyRepositories);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setReqDependencyRepositories(ReqDependencyRepositories newReqDependencyRepositories)
+  {
+    if (newReqDependencyRepositories != reqDependencyRepositories)
+    {
+      NotificationChain msgs = null;
+      if (reqDependencyRepositories != null)
+        msgs = ((InternalEObject)reqDependencyRepositories).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__REQ_DEPENDENCY_REPOSITORIES, null, msgs);
+      if (newReqDependencyRepositories != null)
+        msgs = ((InternalEObject)newReqDependencyRepositories).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__REQ_DEPENDENCY_REPOSITORIES, null, msgs);
+      msgs = basicSetReqDependencyRepositories(newReqDependencyRepositories, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__REQ_DEPENDENCY_REPOSITORIES, newReqDependencyRepositories, newReqDependencyRepositories));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MultiValueList getReqCMakeArgs()
+  {
+    return reqCMakeArgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetReqCMakeArgs(MultiValueList newReqCMakeArgs, NotificationChain msgs)
+  {
+    MultiValueList oldReqCMakeArgs = reqCMakeArgs;
+    reqCMakeArgs = newReqCMakeArgs;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__REQ_CMAKE_ARGS, oldReqCMakeArgs, newReqCMakeArgs);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setReqCMakeArgs(MultiValueList newReqCMakeArgs)
+  {
+    if (newReqCMakeArgs != reqCMakeArgs)
+    {
+      NotificationChain msgs = null;
+      if (reqCMakeArgs != null)
+        msgs = ((InternalEObject)reqCMakeArgs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__REQ_CMAKE_ARGS, null, msgs);
+      if (newReqCMakeArgs != null)
+        msgs = ((InternalEObject)newReqCMakeArgs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.BUILD_REQUIREMENTS__REQ_CMAKE_ARGS, null, msgs);
+      msgs = basicSetReqCMakeArgs(newReqCMakeArgs, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.BUILD_REQUIREMENTS__REQ_CMAKE_ARGS, newReqCMakeArgs, newReqCMakeArgs));
   }
 
   /**
@@ -230,10 +368,16 @@ public class BuildRequirementsImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case DeployModelPackage.BUILD_REQUIREMENTS__BUILD_DEPENDENCIES:
-        return basicSetBuildDependencies(null, msgs);
-      case DeployModelPackage.BUILD_REQUIREMENTS__DEPENDENCY_REPOSITORIES:
-        return basicSetDependencyRepositories(null, msgs);
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_ROS_DISTROS:
+        return basicSetReqRosDistros(null, msgs);
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_TEST_ROS_DISTROS:
+        return basicSetReqTestRosDistros(null, msgs);
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_BUILD_DEPENDENCIES:
+        return basicSetReqBuildDependencies(null, msgs);
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_DEPENDENCY_REPOSITORIES:
+        return basicSetReqDependencyRepositories(null, msgs);
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_CMAKE_ARGS:
+        return basicSetReqCMakeArgs(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -248,12 +392,16 @@ public class BuildRequirementsImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case DeployModelPackage.BUILD_REQUIREMENTS__NAME:
-        return getName();
-      case DeployModelPackage.BUILD_REQUIREMENTS__BUILD_DEPENDENCIES:
-        return getBuildDependencies();
-      case DeployModelPackage.BUILD_REQUIREMENTS__DEPENDENCY_REPOSITORIES:
-        return getDependencyRepositories();
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_ROS_DISTROS:
+        return getReqRosDistros();
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_TEST_ROS_DISTROS:
+        return getReqTestRosDistros();
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_BUILD_DEPENDENCIES:
+        return getReqBuildDependencies();
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_DEPENDENCY_REPOSITORIES:
+        return getReqDependencyRepositories();
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_CMAKE_ARGS:
+        return getReqCMakeArgs();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -268,14 +416,20 @@ public class BuildRequirementsImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case DeployModelPackage.BUILD_REQUIREMENTS__NAME:
-        setName((String)newValue);
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_ROS_DISTROS:
+        setReqRosDistros((MultiValueList)newValue);
         return;
-      case DeployModelPackage.BUILD_REQUIREMENTS__BUILD_DEPENDENCIES:
-        setBuildDependencies((ReqBuildDependencies)newValue);
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_TEST_ROS_DISTROS:
+        setReqTestRosDistros((MultiValueList)newValue);
         return;
-      case DeployModelPackage.BUILD_REQUIREMENTS__DEPENDENCY_REPOSITORIES:
-        setDependencyRepositories((ReqDependencyRepositories)newValue);
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_BUILD_DEPENDENCIES:
+        setReqBuildDependencies((ReqBuildDependencies)newValue);
+        return;
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_DEPENDENCY_REPOSITORIES:
+        setReqDependencyRepositories((ReqDependencyRepositories)newValue);
+        return;
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_CMAKE_ARGS:
+        setReqCMakeArgs((MultiValueList)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -291,14 +445,20 @@ public class BuildRequirementsImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case DeployModelPackage.BUILD_REQUIREMENTS__NAME:
-        setName(NAME_EDEFAULT);
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_ROS_DISTROS:
+        setReqRosDistros((MultiValueList)null);
         return;
-      case DeployModelPackage.BUILD_REQUIREMENTS__BUILD_DEPENDENCIES:
-        setBuildDependencies((ReqBuildDependencies)null);
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_TEST_ROS_DISTROS:
+        setReqTestRosDistros((MultiValueList)null);
         return;
-      case DeployModelPackage.BUILD_REQUIREMENTS__DEPENDENCY_REPOSITORIES:
-        setDependencyRepositories((ReqDependencyRepositories)null);
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_BUILD_DEPENDENCIES:
+        setReqBuildDependencies((ReqBuildDependencies)null);
+        return;
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_DEPENDENCY_REPOSITORIES:
+        setReqDependencyRepositories((ReqDependencyRepositories)null);
+        return;
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_CMAKE_ARGS:
+        setReqCMakeArgs((MultiValueList)null);
         return;
     }
     super.eUnset(featureID);
@@ -314,31 +474,18 @@ public class BuildRequirementsImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case DeployModelPackage.BUILD_REQUIREMENTS__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case DeployModelPackage.BUILD_REQUIREMENTS__BUILD_DEPENDENCIES:
-        return buildDependencies != null;
-      case DeployModelPackage.BUILD_REQUIREMENTS__DEPENDENCY_REPOSITORIES:
-        return dependencyRepositories != null;
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_ROS_DISTROS:
+        return reqRosDistros != null;
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_TEST_ROS_DISTROS:
+        return reqTestRosDistros != null;
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_BUILD_DEPENDENCIES:
+        return reqBuildDependencies != null;
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_DEPENDENCY_REPOSITORIES:
+        return reqDependencyRepositories != null;
+      case DeployModelPackage.BUILD_REQUIREMENTS__REQ_CMAKE_ARGS:
+        return reqCMakeArgs != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //BuildRequirementsImpl

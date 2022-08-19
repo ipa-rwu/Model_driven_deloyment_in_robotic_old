@@ -4,12 +4,11 @@
 package de.fraunhofer.ipa.deployment.deployModel.impl;
 
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
-import de.fraunhofer.ipa.deployment.deployModel.ResourceRequirement;
+import de.fraunhofer.ipa.deployment.deployModel.PropertyExpressType;
 import de.fraunhofer.ipa.deployment.deployModel.ResourceRequirements;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -31,7 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ResourceRequirementsImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ResourceRequirementsImpl#getRequirements <em>Requirements</em>}</li>
  * </ul>
  *
@@ -40,26 +37,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ResourceRequirementsImpl extends MinimalEObjectImpl.Container implements ResourceRequirements
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
-  /**
    * The cached value of the '{@link #getRequirements() <em>Requirements</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -67,7 +44,7 @@ public class ResourceRequirementsImpl extends MinimalEObjectImpl.Container imple
    * @generated
    * @ordered
    */
-  protected EList<ResourceRequirement> requirements;
+  protected EList<PropertyExpressType> requirements;
 
   /**
    * <!-- begin-user-doc -->
@@ -96,36 +73,11 @@ public class ResourceRequirementsImpl extends MinimalEObjectImpl.Container imple
    * @generated
    */
   @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.RESOURCE_REQUIREMENTS__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<ResourceRequirement> getRequirements()
+  public EList<PropertyExpressType> getRequirements()
   {
     if (requirements == null)
     {
-      requirements = new EObjectContainmentEList<ResourceRequirement>(ResourceRequirement.class, this, DeployModelPackage.RESOURCE_REQUIREMENTS__REQUIREMENTS);
+      requirements = new EObjectContainmentEList<PropertyExpressType>(PropertyExpressType.class, this, DeployModelPackage.RESOURCE_REQUIREMENTS__REQUIREMENTS);
     }
     return requirements;
   }
@@ -156,8 +108,6 @@ public class ResourceRequirementsImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case DeployModelPackage.RESOURCE_REQUIREMENTS__NAME:
-        return getName();
       case DeployModelPackage.RESOURCE_REQUIREMENTS__REQUIREMENTS:
         return getRequirements();
     }
@@ -175,12 +125,9 @@ public class ResourceRequirementsImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case DeployModelPackage.RESOURCE_REQUIREMENTS__NAME:
-        setName((String)newValue);
-        return;
       case DeployModelPackage.RESOURCE_REQUIREMENTS__REQUIREMENTS:
         getRequirements().clear();
-        getRequirements().addAll((Collection<? extends ResourceRequirement>)newValue);
+        getRequirements().addAll((Collection<? extends PropertyExpressType>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -196,9 +143,6 @@ public class ResourceRequirementsImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case DeployModelPackage.RESOURCE_REQUIREMENTS__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case DeployModelPackage.RESOURCE_REQUIREMENTS__REQUIREMENTS:
         getRequirements().clear();
         return;
@@ -216,29 +160,10 @@ public class ResourceRequirementsImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case DeployModelPackage.RESOURCE_REQUIREMENTS__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DeployModelPackage.RESOURCE_REQUIREMENTS__REQUIREMENTS:
         return requirements != null && !requirements.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //ResourceRequirementsImpl

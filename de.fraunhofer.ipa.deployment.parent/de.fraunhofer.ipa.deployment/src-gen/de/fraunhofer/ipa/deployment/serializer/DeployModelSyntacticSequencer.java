@@ -20,22 +20,14 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class DeployModelSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected DeployModelGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_ImageTypeList_CommaKeyword_2_0_q;
-	protected AbstractElementAlias match_ImageVersionList_PreListElementParserRuleCall_1_0_q;
-	protected AbstractElementAlias match_ListStartCommands_PreListElementParserRuleCall_1_0_q;
-	protected AbstractElementAlias match_OperatingSystemTypeList_PreListElementParserRuleCall_1_0_q;
-	protected AbstractElementAlias match_ProcessorArchitectureTypeList_PreListElementParserRuleCall_1_0_q;
-	protected AbstractElementAlias match_RosDistroList_PreListElementParserRuleCall_1_0_q;
+	protected AbstractElementAlias match_MultiMonolithicImplementationNameListBracket_CommaKeyword_2_0_q;
+	protected AbstractElementAlias match_MultiValueListBracket_CommaKeyword_2_0_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (DeployModelGrammarAccess) access;
-		match_ImageTypeList_CommaKeyword_2_0_q = new TokenAlias(false, true, grammarAccess.getImageTypeListAccess().getCommaKeyword_2_0());
-		match_ImageVersionList_PreListElementParserRuleCall_1_0_q = new TokenAlias(false, true, grammarAccess.getImageVersionListAccess().getPreListElementParserRuleCall_1_0());
-		match_ListStartCommands_PreListElementParserRuleCall_1_0_q = new TokenAlias(false, true, grammarAccess.getListStartCommandsAccess().getPreListElementParserRuleCall_1_0());
-		match_OperatingSystemTypeList_PreListElementParserRuleCall_1_0_q = new TokenAlias(false, true, grammarAccess.getOperatingSystemTypeListAccess().getPreListElementParserRuleCall_1_0());
-		match_ProcessorArchitectureTypeList_PreListElementParserRuleCall_1_0_q = new TokenAlias(false, true, grammarAccess.getProcessorArchitectureTypeListAccess().getPreListElementParserRuleCall_1_0());
-		match_RosDistroList_PreListElementParserRuleCall_1_0_q = new TokenAlias(false, true, grammarAccess.getRosDistroListAccess().getPreListElementParserRuleCall_1_0());
+		match_MultiMonolithicImplementationNameListBracket_CommaKeyword_2_0_q = new TokenAlias(false, true, grammarAccess.getMultiMonolithicImplementationNameListBracketAccess().getCommaKeyword_2_0());
+		match_MultiValueListBracket_CommaKeyword_2_0_q = new TokenAlias(false, true, grammarAccess.getMultiValueListBracketAccess().getCommaKeyword_2_0());
 	}
 	
 	@Override
@@ -77,18 +69,10 @@ public class DeployModelSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_ImageTypeList_CommaKeyword_2_0_q.equals(syntax))
-				emit_ImageTypeList_CommaKeyword_2_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ImageVersionList_PreListElementParserRuleCall_1_0_q.equals(syntax))
-				emit_ImageVersionList_PreListElementParserRuleCall_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ListStartCommands_PreListElementParserRuleCall_1_0_q.equals(syntax))
-				emit_ListStartCommands_PreListElementParserRuleCall_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_OperatingSystemTypeList_PreListElementParserRuleCall_1_0_q.equals(syntax))
-				emit_OperatingSystemTypeList_PreListElementParserRuleCall_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ProcessorArchitectureTypeList_PreListElementParserRuleCall_1_0_q.equals(syntax))
-				emit_ProcessorArchitectureTypeList_PreListElementParserRuleCall_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_RosDistroList_PreListElementParserRuleCall_1_0_q.equals(syntax))
-				emit_RosDistroList_PreListElementParserRuleCall_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_MultiMonolithicImplementationNameListBracket_CommaKeyword_2_0_q.equals(syntax))
+				emit_MultiMonolithicImplementationNameListBracket_CommaKeyword_2_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_MultiValueListBracket_CommaKeyword_2_0_q.equals(syntax))
+				emit_MultiValueListBracket_CommaKeyword_2_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -99,81 +83,25 @@ public class DeployModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ','?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     children+=ImageTypes (ambiguity) ']' (rule end)
+	 *     values+=[MonolithicImplementationDescription|QualifiedName] (ambiguity) ']' (rule end)
 	 
 	 * </pre>
 	 */
-	protected void emit_ImageTypeList_CommaKeyword_2_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_MultiMonolithicImplementationNameListBracket_CommaKeyword_2_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
-	 *     PreListElement?
+	 *     ','?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     children+=ImageVersionTypes (ambiguity) (rule end)
+	 *     values+=ValueTypes (ambiguity) ']' (rule end)
 	 
 	 * </pre>
 	 */
-	protected void emit_ImageVersionList_PreListElementParserRuleCall_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * <pre>
-	 * Ambiguous syntax:
-	 *     PreListElement?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     children+=STRING (ambiguity) (rule end)
-	 
-	 * </pre>
-	 */
-	protected void emit_ListStartCommands_PreListElementParserRuleCall_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * <pre>
-	 * Ambiguous syntax:
-	 *     PreListElement?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     children+=OperatingSystemTypes (ambiguity) (rule end)
-	 
-	 * </pre>
-	 */
-	protected void emit_OperatingSystemTypeList_PreListElementParserRuleCall_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * <pre>
-	 * Ambiguous syntax:
-	 *     PreListElement?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     children+=ProcessorArchitectureTypes (ambiguity) (rule end)
-	 
-	 * </pre>
-	 */
-	protected void emit_ProcessorArchitectureTypeList_PreListElementParserRuleCall_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * <pre>
-	 * Ambiguous syntax:
-	 *     PreListElement?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     children+=RosDistro (ambiguity) (rule end)
-	 
-	 * </pre>
-	 */
-	protected void emit_RosDistroList_PreListElementParserRuleCall_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_MultiValueListBracket_CommaKeyword_2_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

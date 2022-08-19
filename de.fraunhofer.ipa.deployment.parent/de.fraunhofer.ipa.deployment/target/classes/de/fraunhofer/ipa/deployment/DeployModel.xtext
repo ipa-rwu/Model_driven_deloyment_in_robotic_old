@@ -11,7 +11,8 @@ Yaml: {Yaml}
 YamlContent:
   rootContent=(MonolithicImplementationDescription|
     StackImplementationDescription|
-    PackageDescription
+    PackageDescription| 
+    CISetting
   )
 ;
 
@@ -24,7 +25,7 @@ MonolithicImplementationDescription:
     'description:' description=STRING
     'mode:' mode=ImplementationModeType
     'branch:' branch=BranchType
-    (impl=ImplementationArtifactDescription)?
+    ('ImplementationArtifactDescription:' implementation=NewImplementationArtifact)?
   DEDENT
 ;
 
@@ -37,20 +38,20 @@ BranchType:
   STRING|'any'
 ;
 
-
 QualifiedName:
     ID ('.' ID)*;
 
 NewImplementationArtifact:
-  'location'':'name=(LOCALPATH|URL)
-  deployRequirements = DeploymentRequirements
-  (resourceRequirements = ResourceRequirements)?
-  (buildRequirements = BuildRequirements)?
-  startCommands = StartCommands
+	INDENT
+	  'location:' location=(STRING|LOCALPATH|URL)
+	  'deployRequirements:' deployRequirements = DeploymentRequirements
+	  ('resourceRequirements:' resourceRequirements = ResourceRequirements)?
+	  ('buildRequirements:' buildRequirements = BuildRequirements)?
+	  ('startCommands:' startCommands = MultiValueList)?
+  DEDENT
 ;
 
 ImplementationArtifactDescription:
-  type='ImplementationArtifactDescription'':'
   INDENT
     impl=(NewImplementationArtifact | ReuseImplementationArtifact) 
   DEDENT
@@ -64,122 +65,104 @@ ImplementationArtifactAbstract:
   PreListElement 'import:' importedNamespace=QualifiedName
   INDENT
     'name:' name=[MonolithicImplementationDescription|QualifiedName]
-    (startCommands = StartCommands)
+    ('startCommands:' startCommands = MultiValueList)?
   DEDENT
 ;
 
 DeploymentRequirements:
-  name='deployRequirements'':'
-  operatingSystem = ReqOperatingSystem
-  processorArchitecture = ReqProcessorArchitecture
-  (rosDistro= ReqRosDistro)?
+  {DeploymentRequirements} 
+  INDENT
+	  requirements += PropertyExpressType+
+  DEDENT
 ;
 
 ResourceRequirements:
-  name='resourceRequirements'':'
-  requirements += (ResourceRequirement)+
-;
-
-ResourceRequirement:
-  PreListElement 'name:' name=ResourceReqTypes
+	{ResourceRequirements}
   INDENT
-    'value:' value=ScalarNumber
+  	requirements += PropertyExpressType+
   DEDENT
 ;
 
-enum ResourceReqTypes:
-  CPU="cpus"|
-  Memory='memory'|
-  MemorySawp='memory_swap'|
-  OomKillDisable='oom_kill_disable'
+
+
+PropertyExpressType:
+	CommonPropertySingleValue
+	| CommonPropertyMultiValue
 ;
 
-ReqOperatingSystem:
-  PreListElement 'name:' name='os'
+CommonPropertySingleValue:
+  PreListElement 'name:' name=ID
   INDENT
-    'value:' value=OperatingSystemTypeList
+    'value:' value = ValueTypes
   DEDENT
 ;
 
-OperatingSystemTypeList:
-  (PreListElement children+=( OperatingSystemTypes))
-  (PreListElement children+=(OperatingSystemTypes)*)?
-;
-
-ReqProcessorArchitecture:
-  PreListElement 'name:' name='processor_architecture'
+CommonPropertyMultiValue:
+  PreListElement 'name:' name=ID
   INDENT
-    'value:' value=ProcessorArchitectureTypeList
+    'value:' value=MultiValueList
   DEDENT
 ;
 
-ProcessorArchitectureTypeList:
-  (PreListElement children+=( ProcessorArchitectureTypes))
-  (PreListElement children+=(ProcessorArchitectureTypes)*)?
+MultiValueList:
+	MultiValueListPreList 
+	|MultiValueListBracket
 ;
 
-
-ReqRosDistro:
-  PreListElement 'name:' name='ros_distro'
-  INDENT
-    'value:' value=RosDistroList
+MultiValueListPreList:
+	{MultiValueListPreList} 
+	INDENT
+	  (PreListElement values+=ValueTypes)*
   DEDENT
 ;
 
-RosDistroList:
-  (PreListElement children+=( RosDistro))
-  (PreListElement children+=(RosDistro)*)?
+MultiValueListBracket:
+  '[' (values+=ValueTypes) (',' values+=ValueTypes*)? ']'
 ;
 
-enum OperatingSystemTypes:
-  ubuntu18='ubuntu18'|
-  ubuntu20='ubuntu20'
-;
-
-enum RosDistro:
-  melodic='melodic'|noetic='noetic'|foxy='foxy'|galactic="galactic"
-;
-
-enum ProcessorArchitectureTypes:
-  arm64='arm64'|
-  x86='x86'
+ValueTypes:
+	ID | STRING | ScalarNumber
 ;
 
 BuildRequirements:
-  name='buildRequirements'':'
+  {BuildRequirements} 
   INDENT
-  (buildDependencies = ReqBuildDependencies)?
-  (dependencyRepositories = ReqDependencyRepositories)?
+  	'rosDistros:' ReqRosDistros= MultiValueList
+  	('testRosDistros:' ReqTestRosDistros= MultiValueList)?
+	  ('dependOn:' ReqBuildDependencies = ReqBuildDependencies)?
+	  ('aptRepositories:' ReqDependencyRepositories = ReqDependencyRepositories)?
+	  ('cMakeArgs:' ReqCMakeArgs=MultiValueList)?
   DEDENT
 ;
 
+
 ReqBuildDependencies:
-  name = 'dependOn:'
-    (dependencies+=Dependency)+
+  {ReqBuildDependencies} 
+  INDENT
+    (dependencies+=DependencyTypes)*
+  DEDENT
 ;
 
-Dependency:
-  LocalPackage|GitPackage
+DependencyTypes:
+  LocalPackage | GitPackage
 ;
 
 LocalPackage:
-  PreListElement 'from:' importedNamespace=QualifiedName
-  INDENT
-  'name:' name = [MonolithicImplementationDescription|QualifiedName]
-  DEDENT
+	PreListElement 'name:' name = [MonolithicImplementationDescription|QualifiedName]
 ;
 
 GitPackage:
-  PreListElement  'from:' path = URL
+	PreListElement 'name:' name = ID
   INDENT
- 'name:' name = ID
- ('branch:' branch = STRING)?
- DEDENT
+  	'location:' path = URL
+  	('visibility:' visibility = ID)?
+  DEDENT
 ;
 
 ReqDependencyRepositories:
-  name='aptRepositories'':'
+  INDENT
   children+=(AptRepositoryInstance)+
+	DEDENT
 ;
 
 AptRepositoryInstance:
@@ -191,26 +174,15 @@ AptRepositoryInstance:
   DEDENT
 ;
 
-StartCommands:
-  name = 'startCommands:'
-  startCommands=ListStartCommands
-
-;
-
-ListStartCommands:
-  (PreListElement children+=(STRING))
-  (PreListElement children+=(STRING)*)?
-;
-
 StackImplementationDescription:
-  type='StackImplementationDescription'':'
+  type='StackImplementationDescription:'
   INDENT
     'name:' name=QualifiedName
   //  TODO: link to rosmodel
     ('implementsRosModel:'impRosmodel=QualifiedName)?
     'description:' description=STRING
     'mode:' mode=ImplementationModeType
-    impl=ImplementationArtifactDescription
+    "ImplementationArtifactDescription:" impl=ImplementationArtifactDescription
   DEDENT
 ;
 
@@ -218,43 +190,24 @@ PackageDescription:
   type='PackageDescription'':'
   INDENT
     'imageDescription:'
-  INDENT
-    imageDescription=ImageDescription
-  DEDENT
+	  INDENT
+	    imageDescription=ImageDescription
+	  DEDENT
     'repositoryDescription:'
-    repositoryDescription=RepositoryDescription
+	    repositoryDescription=RepositoryDescription
   DEDENT
 ;
 
 ImageDescription:
-  'types:' types += ImageTypeList
+  'types:' types = MultiValueList
   'name:' name= [MonolithicImplementationDescription|QualifiedName]
-  'imageVersions:' imageVersions = ImageVersionList
-;
-
-ImageTypeList:
-  '[' (children+=(ImageTypes)) (',' children+=(ImageTypes)*)? ']'
-;
-
-enum ImageTypes:
-  DockerImage='docker'|
-  SnapImage='snap'
-;
-
-ImageVersionList:
-  (PreListElement children+=( ImageVersionTypes))
-  (PreListElement children+=(ImageVersionTypes)*)?
-;
-
-enum ImageVersionTypes:
-  branch='branch'|
-  commitHash='commit'|
-  latest='latest'|
-  release='release'
+  'imageTags:' imageTags = MultiValueList
 ;
 
 RepositoryDescription:
-  (spec+=RepositorySpec)+
+	INDENT
+  	(spec+=RepositorySpec)+
+  DEDENT
 ;
 
 RepositorySpec:
@@ -265,14 +218,52 @@ RepositorySpec:
 ;
 
 Repository:
-  'type:' type = RepositoryTypes
+  'type:' type = ID
   ('path:' path=STRING)?
 ;
 
-enum RepositoryTypes:
-  local="local"|
-  remote="remote"|
-  gitlab="gitlab"
+
+CISetting:
+  type='CISetting:'
+  INDENT
+  	'ciTypes:' ciTypes = MultiValueList
+  	'appliedRepos:' appliedRepos=MultiMonolithicImplementationNameList
+  	'branchPrefixType:' reqBranchPrefix=ID
+  	ciParameters+=(CIParameters)*
+  DEDENT
+;
+
+MultiMonolithicImplementationNameList:
+	MultiMonolithicImplementationNamePreList|
+	MultiMonolithicImplementationNameListBracket
+;
+
+MultiMonolithicImplementationNamePreList:
+	{MultiMonolithicImplementationNamePreList} INDENT
+	  (PreListElement values+=[MonolithicImplementationDescription|QualifiedName])*
+  DEDENT
+;
+
+MultiMonolithicImplementationNameListBracket:
+  '[' (values+=[MonolithicImplementationDescription|QualifiedName]) (',' values+=[MonolithicImplementationDescription|QualifiedName]*)? ']'
+;
+
+CIParameters:
+	type = ID":"
+	INDENT
+	(parameters += GroupedProperties)+
+	DEDENT
+;
+
+GroupedProperties:
+	type = ID":"
+  INDENT
+  	(properties += PropertyExpressType)+
+  DEDENT
+;
+
+enum BOOLEAN: 
+	FALSE='false'|TRUE='true'
 ;
 
 PreListElement hidden(SL_COMMENT):

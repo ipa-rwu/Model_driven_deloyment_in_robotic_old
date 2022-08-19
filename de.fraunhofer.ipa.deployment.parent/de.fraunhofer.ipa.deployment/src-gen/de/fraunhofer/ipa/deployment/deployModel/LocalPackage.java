@@ -13,7 +13,6 @@ package de.fraunhofer.ipa.deployment.deployModel;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.LocalPackage#getImportedNamespace <em>Imported Namespace</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.LocalPackage#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -21,30 +20,8 @@ package de.fraunhofer.ipa.deployment.deployModel;
  * @model
  * @generated
  */
-public interface LocalPackage extends Dependency
+public interface LocalPackage extends DependencyTypes
 {
-  /**
-   * Returns the value of the '<em><b>Imported Namespace</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Imported Namespace</em>' attribute.
-   * @see #setImportedNamespace(String)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getLocalPackage_ImportedNamespace()
-   * @model
-   * @generated
-   */
-  String getImportedNamespace();
-
-  /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.LocalPackage#getImportedNamespace <em>Imported Namespace</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Imported Namespace</em>' attribute.
-   * @see #getImportedNamespace()
-   * @generated
-   */
-  void setImportedNamespace(String value);
-
   /**
    * Returns the value of the '<em><b>Name</b></em>' reference.
    * <!-- begin-user-doc -->

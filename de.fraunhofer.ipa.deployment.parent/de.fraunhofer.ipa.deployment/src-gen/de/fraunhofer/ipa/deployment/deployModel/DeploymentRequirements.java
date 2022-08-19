@@ -3,6 +3,8 @@
  */
 package de.fraunhofer.ipa.deployment.deployModel;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,10 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getName <em>Name</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getOperatingSystem <em>Operating System</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getProcessorArchitecture <em>Processor Architecture</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getRosDistro <em>Ros Distro</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getRequirements <em>Requirements</em>}</li>
  * </ul>
  *
  * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getDeploymentRequirements()
@@ -27,91 +26,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface DeploymentRequirements extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Requirements</b></em>' containment reference list.
+   * The list contents are of type {@link de.fraunhofer.ipa.deployment.deployModel.PropertyExpressType}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getDeploymentRequirements_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Operating System</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Operating System</em>' containment reference.
-   * @see #setOperatingSystem(ReqOperatingSystem)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getDeploymentRequirements_OperatingSystem()
+   * @return the value of the '<em>Requirements</em>' containment reference list.
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getDeploymentRequirements_Requirements()
    * @model containment="true"
    * @generated
    */
-  ReqOperatingSystem getOperatingSystem();
-
-  /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getOperatingSystem <em>Operating System</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Operating System</em>' containment reference.
-   * @see #getOperatingSystem()
-   * @generated
-   */
-  void setOperatingSystem(ReqOperatingSystem value);
-
-  /**
-   * Returns the value of the '<em><b>Processor Architecture</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Processor Architecture</em>' containment reference.
-   * @see #setProcessorArchitecture(ReqProcessorArchitecture)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getDeploymentRequirements_ProcessorArchitecture()
-   * @model containment="true"
-   * @generated
-   */
-  ReqProcessorArchitecture getProcessorArchitecture();
-
-  /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getProcessorArchitecture <em>Processor Architecture</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Processor Architecture</em>' containment reference.
-   * @see #getProcessorArchitecture()
-   * @generated
-   */
-  void setProcessorArchitecture(ReqProcessorArchitecture value);
-
-  /**
-   * Returns the value of the '<em><b>Ros Distro</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Ros Distro</em>' containment reference.
-   * @see #setRosDistro(ReqRosDistro)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getDeploymentRequirements_RosDistro()
-   * @model containment="true"
-   * @generated
-   */
-  ReqRosDistro getRosDistro();
-
-  /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getRosDistro <em>Ros Distro</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ros Distro</em>' containment reference.
-   * @see #getRosDistro()
-   * @generated
-   */
-  void setRosDistro(ReqRosDistro value);
+  EList<PropertyExpressType> getRequirements();
 
 } // DeploymentRequirements

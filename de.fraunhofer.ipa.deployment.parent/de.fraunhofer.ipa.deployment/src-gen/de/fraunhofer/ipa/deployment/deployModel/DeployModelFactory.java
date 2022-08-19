@@ -105,67 +105,58 @@ public interface DeployModelFactory extends EFactory
   ResourceRequirements createResourceRequirements();
 
   /**
-   * Returns a new object of class '<em>Resource Requirement</em>'.
+   * Returns a new object of class '<em>Property Express Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Resource Requirement</em>'.
+   * @return a new object of class '<em>Property Express Type</em>'.
    * @generated
    */
-  ResourceRequirement createResourceRequirement();
+  PropertyExpressType createPropertyExpressType();
 
   /**
-   * Returns a new object of class '<em>Req Operating System</em>'.
+   * Returns a new object of class '<em>Common Property Single Value</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Req Operating System</em>'.
+   * @return a new object of class '<em>Common Property Single Value</em>'.
    * @generated
    */
-  ReqOperatingSystem createReqOperatingSystem();
+  CommonPropertySingleValue createCommonPropertySingleValue();
 
   /**
-   * Returns a new object of class '<em>Operating System Type List</em>'.
+   * Returns a new object of class '<em>Common Property Multi Value</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Operating System Type List</em>'.
+   * @return a new object of class '<em>Common Property Multi Value</em>'.
    * @generated
    */
-  OperatingSystemTypeList createOperatingSystemTypeList();
+  CommonPropertyMultiValue createCommonPropertyMultiValue();
 
   /**
-   * Returns a new object of class '<em>Req Processor Architecture</em>'.
+   * Returns a new object of class '<em>Multi Value List</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Req Processor Architecture</em>'.
+   * @return a new object of class '<em>Multi Value List</em>'.
    * @generated
    */
-  ReqProcessorArchitecture createReqProcessorArchitecture();
+  MultiValueList createMultiValueList();
 
   /**
-   * Returns a new object of class '<em>Processor Architecture Type List</em>'.
+   * Returns a new object of class '<em>Multi Value List Pre List</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Processor Architecture Type List</em>'.
+   * @return a new object of class '<em>Multi Value List Pre List</em>'.
    * @generated
    */
-  ProcessorArchitectureTypeList createProcessorArchitectureTypeList();
+  MultiValueListPreList createMultiValueListPreList();
 
   /**
-   * Returns a new object of class '<em>Req Ros Distro</em>'.
+   * Returns a new object of class '<em>Multi Value List Bracket</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Req Ros Distro</em>'.
+   * @return a new object of class '<em>Multi Value List Bracket</em>'.
    * @generated
    */
-  ReqRosDistro createReqRosDistro();
-
-  /**
-   * Returns a new object of class '<em>Ros Distro List</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Ros Distro List</em>'.
-   * @generated
-   */
-  RosDistroList createRosDistroList();
+  MultiValueListBracket createMultiValueListBracket();
 
   /**
    * Returns a new object of class '<em>Build Requirements</em>'.
@@ -186,13 +177,13 @@ public interface DeployModelFactory extends EFactory
   ReqBuildDependencies createReqBuildDependencies();
 
   /**
-   * Returns a new object of class '<em>Dependency</em>'.
+   * Returns a new object of class '<em>Dependency Types</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Dependency</em>'.
+   * @return a new object of class '<em>Dependency Types</em>'.
    * @generated
    */
-  Dependency createDependency();
+  DependencyTypes createDependencyTypes();
 
   /**
    * Returns a new object of class '<em>Local Package</em>'.
@@ -231,24 +222,6 @@ public interface DeployModelFactory extends EFactory
   AptRepositoryInstance createAptRepositoryInstance();
 
   /**
-   * Returns a new object of class '<em>Start Commands</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Start Commands</em>'.
-   * @generated
-   */
-  StartCommands createStartCommands();
-
-  /**
-   * Returns a new object of class '<em>List Start Commands</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>List Start Commands</em>'.
-   * @generated
-   */
-  ListStartCommands createListStartCommands();
-
-  /**
    * Returns a new object of class '<em>Stack Implementation Description</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -276,24 +249,6 @@ public interface DeployModelFactory extends EFactory
   ImageDescription createImageDescription();
 
   /**
-   * Returns a new object of class '<em>Image Type List</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Image Type List</em>'.
-   * @generated
-   */
-  ImageTypeList createImageTypeList();
-
-  /**
-   * Returns a new object of class '<em>Image Version List</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Image Version List</em>'.
-   * @generated
-   */
-  ImageVersionList createImageVersionList();
-
-  /**
    * Returns a new object of class '<em>Repository Description</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -319,6 +274,60 @@ public interface DeployModelFactory extends EFactory
    * @generated
    */
   Repository createRepository();
+
+  /**
+   * Returns a new object of class '<em>CI Setting</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>CI Setting</em>'.
+   * @generated
+   */
+  CISetting createCISetting();
+
+  /**
+   * Returns a new object of class '<em>Multi Monolithic Implementation Name List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multi Monolithic Implementation Name List</em>'.
+   * @generated
+   */
+  MultiMonolithicImplementationNameList createMultiMonolithicImplementationNameList();
+
+  /**
+   * Returns a new object of class '<em>Multi Monolithic Implementation Name Pre List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multi Monolithic Implementation Name Pre List</em>'.
+   * @generated
+   */
+  MultiMonolithicImplementationNamePreList createMultiMonolithicImplementationNamePreList();
+
+  /**
+   * Returns a new object of class '<em>Multi Monolithic Implementation Name List Bracket</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multi Monolithic Implementation Name List Bracket</em>'.
+   * @generated
+   */
+  MultiMonolithicImplementationNameListBracket createMultiMonolithicImplementationNameListBracket();
+
+  /**
+   * Returns a new object of class '<em>CI Parameters</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>CI Parameters</em>'.
+   * @generated
+   */
+  CIParameters createCIParameters();
+
+  /**
+   * Returns a new object of class '<em>Grouped Properties</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Grouped Properties</em>'.
+   * @generated
+   */
+  GroupedProperties createGroupedProperties();
 
   /**
    * Returns the package supported by this factory.

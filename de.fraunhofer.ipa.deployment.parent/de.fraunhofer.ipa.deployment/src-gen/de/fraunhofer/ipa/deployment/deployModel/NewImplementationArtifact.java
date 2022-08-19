@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getName <em>Name</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getLocation <em>Location</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getDeployRequirements <em>Deploy Requirements</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getResourceRequirements <em>Resource Requirements</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getBuildRequirements <em>Build Requirements</em>}</li>
@@ -28,26 +28,26 @@ import org.eclipse.emf.ecore.EObject;
 public interface NewImplementationArtifact extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Location</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getNewImplementationArtifact_Name()
+   * @return the value of the '<em>Location</em>' attribute.
+   * @see #setLocation(String)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getNewImplementationArtifact_Location()
    * @model
    * @generated
    */
-  String getName();
+  String getLocation();
 
   /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getLocation <em>Location</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Location</em>' attribute.
+   * @see #getLocation()
    * @generated
    */
-  void setName(String value);
+  void setLocation(String value);
 
   /**
    * Returns the value of the '<em><b>Deploy Requirements</b></em>' containment reference.
@@ -120,12 +120,12 @@ public interface NewImplementationArtifact extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Start Commands</em>' containment reference.
-   * @see #setStartCommands(StartCommands)
+   * @see #setStartCommands(MultiValueList)
    * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getNewImplementationArtifact_StartCommands()
    * @model containment="true"
    * @generated
    */
-  StartCommands getStartCommands();
+  MultiValueList getStartCommands();
 
   /**
    * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getStartCommands <em>Start Commands</em>}' containment reference.
@@ -135,6 +135,6 @@ public interface NewImplementationArtifact extends EObject
    * @see #getStartCommands()
    * @generated
    */
-  void setStartCommands(StartCommands value);
+  void setStartCommands(MultiValueList value);
 
 } // NewImplementationArtifact

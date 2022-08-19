@@ -3,13 +3,12 @@
  */
 package de.fraunhofer.ipa.deployment.deployModel.impl;
 
-import de.fraunhofer.ipa.deployment.deployModel.Dependency;
+import de.fraunhofer.ipa.deployment.deployModel.DependencyTypes;
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
 import de.fraunhofer.ipa.deployment.deployModel.ReqBuildDependencies;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -31,7 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqBuildDependenciesImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqBuildDependenciesImpl#getDependencies <em>Dependencies</em>}</li>
  * </ul>
  *
@@ -40,26 +37,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ReqBuildDependenciesImpl extends MinimalEObjectImpl.Container implements ReqBuildDependencies
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
-  /**
    * The cached value of the '{@link #getDependencies() <em>Dependencies</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -67,7 +44,7 @@ public class ReqBuildDependenciesImpl extends MinimalEObjectImpl.Container imple
    * @generated
    * @ordered
    */
-  protected EList<Dependency> dependencies;
+  protected EList<DependencyTypes> dependencies;
 
   /**
    * <!-- begin-user-doc -->
@@ -96,36 +73,11 @@ public class ReqBuildDependenciesImpl extends MinimalEObjectImpl.Container imple
    * @generated
    */
   @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.REQ_BUILD_DEPENDENCIES__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<Dependency> getDependencies()
+  public EList<DependencyTypes> getDependencies()
   {
     if (dependencies == null)
     {
-      dependencies = new EObjectContainmentEList<Dependency>(Dependency.class, this, DeployModelPackage.REQ_BUILD_DEPENDENCIES__DEPENDENCIES);
+      dependencies = new EObjectContainmentEList<DependencyTypes>(DependencyTypes.class, this, DeployModelPackage.REQ_BUILD_DEPENDENCIES__DEPENDENCIES);
     }
     return dependencies;
   }
@@ -156,8 +108,6 @@ public class ReqBuildDependenciesImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case DeployModelPackage.REQ_BUILD_DEPENDENCIES__NAME:
-        return getName();
       case DeployModelPackage.REQ_BUILD_DEPENDENCIES__DEPENDENCIES:
         return getDependencies();
     }
@@ -175,12 +125,9 @@ public class ReqBuildDependenciesImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case DeployModelPackage.REQ_BUILD_DEPENDENCIES__NAME:
-        setName((String)newValue);
-        return;
       case DeployModelPackage.REQ_BUILD_DEPENDENCIES__DEPENDENCIES:
         getDependencies().clear();
-        getDependencies().addAll((Collection<? extends Dependency>)newValue);
+        getDependencies().addAll((Collection<? extends DependencyTypes>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -196,9 +143,6 @@ public class ReqBuildDependenciesImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case DeployModelPackage.REQ_BUILD_DEPENDENCIES__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case DeployModelPackage.REQ_BUILD_DEPENDENCIES__DEPENDENCIES:
         getDependencies().clear();
         return;
@@ -216,29 +160,10 @@ public class ReqBuildDependenciesImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case DeployModelPackage.REQ_BUILD_DEPENDENCIES__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DeployModelPackage.REQ_BUILD_DEPENDENCIES__DEPENDENCIES:
         return dependencies != null && !dependencies.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //ReqBuildDependenciesImpl

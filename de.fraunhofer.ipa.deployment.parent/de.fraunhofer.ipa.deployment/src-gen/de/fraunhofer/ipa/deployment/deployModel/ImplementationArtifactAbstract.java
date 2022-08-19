@@ -74,12 +74,12 @@ public interface ImplementationArtifactAbstract extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Start Commands</em>' containment reference.
-   * @see #setStartCommands(StartCommands)
+   * @see #setStartCommands(MultiValueList)
    * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getImplementationArtifactAbstract_StartCommands()
    * @model containment="true"
    * @generated
    */
-  StartCommands getStartCommands();
+  MultiValueList getStartCommands();
 
   /**
    * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactAbstract#getStartCommands <em>Start Commands</em>}' containment reference.
@@ -89,6 +89,6 @@ public interface ImplementationArtifactAbstract extends EObject
    * @see #getStartCommands()
    * @generated
    */
-  void setStartCommands(StartCommands value);
+  void setStartCommands(MultiValueList value);
 
 } // ImplementationArtifactAbstract

@@ -121,39 +121,34 @@ public class DeployModelAdapterFactory extends AdapterFactoryImpl
         return createResourceRequirementsAdapter();
       }
       @Override
-      public Adapter caseResourceRequirement(ResourceRequirement object)
+      public Adapter casePropertyExpressType(PropertyExpressType object)
       {
-        return createResourceRequirementAdapter();
+        return createPropertyExpressTypeAdapter();
       }
       @Override
-      public Adapter caseReqOperatingSystem(ReqOperatingSystem object)
+      public Adapter caseCommonPropertySingleValue(CommonPropertySingleValue object)
       {
-        return createReqOperatingSystemAdapter();
+        return createCommonPropertySingleValueAdapter();
       }
       @Override
-      public Adapter caseOperatingSystemTypeList(OperatingSystemTypeList object)
+      public Adapter caseCommonPropertyMultiValue(CommonPropertyMultiValue object)
       {
-        return createOperatingSystemTypeListAdapter();
+        return createCommonPropertyMultiValueAdapter();
       }
       @Override
-      public Adapter caseReqProcessorArchitecture(ReqProcessorArchitecture object)
+      public Adapter caseMultiValueList(MultiValueList object)
       {
-        return createReqProcessorArchitectureAdapter();
+        return createMultiValueListAdapter();
       }
       @Override
-      public Adapter caseProcessorArchitectureTypeList(ProcessorArchitectureTypeList object)
+      public Adapter caseMultiValueListPreList(MultiValueListPreList object)
       {
-        return createProcessorArchitectureTypeListAdapter();
+        return createMultiValueListPreListAdapter();
       }
       @Override
-      public Adapter caseReqRosDistro(ReqRosDistro object)
+      public Adapter caseMultiValueListBracket(MultiValueListBracket object)
       {
-        return createReqRosDistroAdapter();
-      }
-      @Override
-      public Adapter caseRosDistroList(RosDistroList object)
-      {
-        return createRosDistroListAdapter();
+        return createMultiValueListBracketAdapter();
       }
       @Override
       public Adapter caseBuildRequirements(BuildRequirements object)
@@ -166,9 +161,9 @@ public class DeployModelAdapterFactory extends AdapterFactoryImpl
         return createReqBuildDependenciesAdapter();
       }
       @Override
-      public Adapter caseDependency(Dependency object)
+      public Adapter caseDependencyTypes(DependencyTypes object)
       {
-        return createDependencyAdapter();
+        return createDependencyTypesAdapter();
       }
       @Override
       public Adapter caseLocalPackage(LocalPackage object)
@@ -191,16 +186,6 @@ public class DeployModelAdapterFactory extends AdapterFactoryImpl
         return createAptRepositoryInstanceAdapter();
       }
       @Override
-      public Adapter caseStartCommands(StartCommands object)
-      {
-        return createStartCommandsAdapter();
-      }
-      @Override
-      public Adapter caseListStartCommands(ListStartCommands object)
-      {
-        return createListStartCommandsAdapter();
-      }
-      @Override
       public Adapter caseStackImplementationDescription(StackImplementationDescription object)
       {
         return createStackImplementationDescriptionAdapter();
@@ -216,16 +201,6 @@ public class DeployModelAdapterFactory extends AdapterFactoryImpl
         return createImageDescriptionAdapter();
       }
       @Override
-      public Adapter caseImageTypeList(ImageTypeList object)
-      {
-        return createImageTypeListAdapter();
-      }
-      @Override
-      public Adapter caseImageVersionList(ImageVersionList object)
-      {
-        return createImageVersionListAdapter();
-      }
-      @Override
       public Adapter caseRepositoryDescription(RepositoryDescription object)
       {
         return createRepositoryDescriptionAdapter();
@@ -239,6 +214,36 @@ public class DeployModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseRepository(Repository object)
       {
         return createRepositoryAdapter();
+      }
+      @Override
+      public Adapter caseCISetting(CISetting object)
+      {
+        return createCISettingAdapter();
+      }
+      @Override
+      public Adapter caseMultiMonolithicImplementationNameList(MultiMonolithicImplementationNameList object)
+      {
+        return createMultiMonolithicImplementationNameListAdapter();
+      }
+      @Override
+      public Adapter caseMultiMonolithicImplementationNamePreList(MultiMonolithicImplementationNamePreList object)
+      {
+        return createMultiMonolithicImplementationNamePreListAdapter();
+      }
+      @Override
+      public Adapter caseMultiMonolithicImplementationNameListBracket(MultiMonolithicImplementationNameListBracket object)
+      {
+        return createMultiMonolithicImplementationNameListBracketAdapter();
+      }
+      @Override
+      public Adapter caseCIParameters(CIParameters object)
+      {
+        return createCIParametersAdapter();
+      }
+      @Override
+      public Adapter caseGroupedProperties(GroupedProperties object)
+      {
+        return createGroupedPropertiesAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -398,106 +403,91 @@ public class DeployModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.ResourceRequirement <em>Resource Requirement</em>}'.
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.PropertyExpressType <em>Property Express Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ResourceRequirement
+   * @see de.fraunhofer.ipa.deployment.deployModel.PropertyExpressType
    * @generated
    */
-  public Adapter createResourceRequirementAdapter()
+  public Adapter createPropertyExpressTypeAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.ReqOperatingSystem <em>Req Operating System</em>}'.
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.CommonPropertySingleValue <em>Common Property Single Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqOperatingSystem
+   * @see de.fraunhofer.ipa.deployment.deployModel.CommonPropertySingleValue
    * @generated
    */
-  public Adapter createReqOperatingSystemAdapter()
+  public Adapter createCommonPropertySingleValueAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypeList <em>Operating System Type List</em>}'.
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.CommonPropertyMultiValue <em>Common Property Multi Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypeList
+   * @see de.fraunhofer.ipa.deployment.deployModel.CommonPropertyMultiValue
    * @generated
    */
-  public Adapter createOperatingSystemTypeListAdapter()
+  public Adapter createCommonPropertyMultiValueAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.ReqProcessorArchitecture <em>Req Processor Architecture</em>}'.
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.MultiValueList <em>Multi Value List</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqProcessorArchitecture
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiValueList
    * @generated
    */
-  public Adapter createReqProcessorArchitectureAdapter()
+  public Adapter createMultiValueListAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypeList <em>Processor Architecture Type List</em>}'.
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.MultiValueListPreList <em>Multi Value List Pre List</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypeList
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiValueListPreList
    * @generated
    */
-  public Adapter createProcessorArchitectureTypeListAdapter()
+  public Adapter createMultiValueListPreListAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.ReqRosDistro <em>Req Ros Distro</em>}'.
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.MultiValueListBracket <em>Multi Value List Bracket</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqRosDistro
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiValueListBracket
    * @generated
    */
-  public Adapter createReqRosDistroAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.RosDistroList <em>Ros Distro List</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.fraunhofer.ipa.deployment.deployModel.RosDistroList
-   * @generated
-   */
-  public Adapter createRosDistroListAdapter()
+  public Adapter createMultiValueListBracketAdapter()
   {
     return null;
   }
@@ -533,16 +523,16 @@ public class DeployModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.Dependency <em>Dependency</em>}'.
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.DependencyTypes <em>Dependency Types</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.fraunhofer.ipa.deployment.deployModel.Dependency
+   * @see de.fraunhofer.ipa.deployment.deployModel.DependencyTypes
    * @generated
    */
-  public Adapter createDependencyAdapter()
+  public Adapter createDependencyTypesAdapter()
   {
     return null;
   }
@@ -608,36 +598,6 @@ public class DeployModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.StartCommands <em>Start Commands</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.fraunhofer.ipa.deployment.deployModel.StartCommands
-   * @generated
-   */
-  public Adapter createStartCommandsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.ListStartCommands <em>List Start Commands</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ListStartCommands
-   * @generated
-   */
-  public Adapter createListStartCommandsAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.StackImplementationDescription <em>Stack Implementation Description</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -683,36 +643,6 @@ public class DeployModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.ImageTypeList <em>Image Type List</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImageTypeList
-   * @generated
-   */
-  public Adapter createImageTypeListAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.ImageVersionList <em>Image Version List</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImageVersionList
-   * @generated
-   */
-  public Adapter createImageVersionListAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.RepositoryDescription <em>Repository Description</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -753,6 +683,96 @@ public class DeployModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createRepositoryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.CISetting <em>CI Setting</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CISetting
+   * @generated
+   */
+  public Adapter createCISettingAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameList <em>Multi Monolithic Implementation Name List</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameList
+   * @generated
+   */
+  public Adapter createMultiMonolithicImplementationNameListAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNamePreList <em>Multi Monolithic Implementation Name Pre List</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNamePreList
+   * @generated
+   */
+  public Adapter createMultiMonolithicImplementationNamePreListAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameListBracket <em>Multi Monolithic Implementation Name List Bracket</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameListBracket
+   * @generated
+   */
+  public Adapter createMultiMonolithicImplementationNameListBracketAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.CIParameters <em>CI Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CIParameters
+   * @generated
+   */
+  public Adapter createCIParametersAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.fraunhofer.ipa.deployment.deployModel.GroupedProperties <em>Grouped Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.fraunhofer.ipa.deployment.deployModel.GroupedProperties
+   * @generated
+   */
+  public Adapter createGroupedPropertiesAdapter()
   {
     return null;
   }

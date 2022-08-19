@@ -9,7 +9,6 @@ import de.fraunhofer.ipa.deployment.deployModel.ReqDependencyRepositories;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -31,7 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqDependencyRepositoriesImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqDependencyRepositoriesImpl#getChildren <em>Children</em>}</li>
  * </ul>
  *
@@ -39,26 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ReqDependencyRepositoriesImpl extends MinimalEObjectImpl.Container implements ReqDependencyRepositories
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -88,31 +65,6 @@ public class ReqDependencyRepositoriesImpl extends MinimalEObjectImpl.Container 
   protected EClass eStaticClass()
   {
     return DeployModelPackage.Literals.REQ_DEPENDENCY_REPOSITORIES;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.REQ_DEPENDENCY_REPOSITORIES__NAME, oldName, name));
   }
 
   /**
@@ -156,8 +108,6 @@ public class ReqDependencyRepositoriesImpl extends MinimalEObjectImpl.Container 
   {
     switch (featureID)
     {
-      case DeployModelPackage.REQ_DEPENDENCY_REPOSITORIES__NAME:
-        return getName();
       case DeployModelPackage.REQ_DEPENDENCY_REPOSITORIES__CHILDREN:
         return getChildren();
     }
@@ -175,9 +125,6 @@ public class ReqDependencyRepositoriesImpl extends MinimalEObjectImpl.Container 
   {
     switch (featureID)
     {
-      case DeployModelPackage.REQ_DEPENDENCY_REPOSITORIES__NAME:
-        setName((String)newValue);
-        return;
       case DeployModelPackage.REQ_DEPENDENCY_REPOSITORIES__CHILDREN:
         getChildren().clear();
         getChildren().addAll((Collection<? extends AptRepositoryInstance>)newValue);
@@ -196,9 +143,6 @@ public class ReqDependencyRepositoriesImpl extends MinimalEObjectImpl.Container 
   {
     switch (featureID)
     {
-      case DeployModelPackage.REQ_DEPENDENCY_REPOSITORIES__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case DeployModelPackage.REQ_DEPENDENCY_REPOSITORIES__CHILDREN:
         getChildren().clear();
         return;
@@ -216,29 +160,10 @@ public class ReqDependencyRepositoriesImpl extends MinimalEObjectImpl.Container 
   {
     switch (featureID)
     {
-      case DeployModelPackage.REQ_DEPENDENCY_REPOSITORIES__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DeployModelPackage.REQ_DEPENDENCY_REPOSITORIES__CHILDREN:
         return children != null && !children.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //ReqDependencyRepositoriesImpl

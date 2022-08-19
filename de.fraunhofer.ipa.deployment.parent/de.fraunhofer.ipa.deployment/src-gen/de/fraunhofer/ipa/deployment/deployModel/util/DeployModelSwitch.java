@@ -136,52 +136,49 @@ public class DeployModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DeployModelPackage.RESOURCE_REQUIREMENT:
+      case DeployModelPackage.PROPERTY_EXPRESS_TYPE:
       {
-        ResourceRequirement resourceRequirement = (ResourceRequirement)theEObject;
-        T result = caseResourceRequirement(resourceRequirement);
+        PropertyExpressType propertyExpressType = (PropertyExpressType)theEObject;
+        T result = casePropertyExpressType(propertyExpressType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DeployModelPackage.REQ_OPERATING_SYSTEM:
+      case DeployModelPackage.COMMON_PROPERTY_SINGLE_VALUE:
       {
-        ReqOperatingSystem reqOperatingSystem = (ReqOperatingSystem)theEObject;
-        T result = caseReqOperatingSystem(reqOperatingSystem);
+        CommonPropertySingleValue commonPropertySingleValue = (CommonPropertySingleValue)theEObject;
+        T result = caseCommonPropertySingleValue(commonPropertySingleValue);
+        if (result == null) result = casePropertyExpressType(commonPropertySingleValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DeployModelPackage.OPERATING_SYSTEM_TYPE_LIST:
+      case DeployModelPackage.COMMON_PROPERTY_MULTI_VALUE:
       {
-        OperatingSystemTypeList operatingSystemTypeList = (OperatingSystemTypeList)theEObject;
-        T result = caseOperatingSystemTypeList(operatingSystemTypeList);
+        CommonPropertyMultiValue commonPropertyMultiValue = (CommonPropertyMultiValue)theEObject;
+        T result = caseCommonPropertyMultiValue(commonPropertyMultiValue);
+        if (result == null) result = casePropertyExpressType(commonPropertyMultiValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DeployModelPackage.REQ_PROCESSOR_ARCHITECTURE:
+      case DeployModelPackage.MULTI_VALUE_LIST:
       {
-        ReqProcessorArchitecture reqProcessorArchitecture = (ReqProcessorArchitecture)theEObject;
-        T result = caseReqProcessorArchitecture(reqProcessorArchitecture);
+        MultiValueList multiValueList = (MultiValueList)theEObject;
+        T result = caseMultiValueList(multiValueList);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DeployModelPackage.PROCESSOR_ARCHITECTURE_TYPE_LIST:
+      case DeployModelPackage.MULTI_VALUE_LIST_PRE_LIST:
       {
-        ProcessorArchitectureTypeList processorArchitectureTypeList = (ProcessorArchitectureTypeList)theEObject;
-        T result = caseProcessorArchitectureTypeList(processorArchitectureTypeList);
+        MultiValueListPreList multiValueListPreList = (MultiValueListPreList)theEObject;
+        T result = caseMultiValueListPreList(multiValueListPreList);
+        if (result == null) result = caseMultiValueList(multiValueListPreList);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DeployModelPackage.REQ_ROS_DISTRO:
+      case DeployModelPackage.MULTI_VALUE_LIST_BRACKET:
       {
-        ReqRosDistro reqRosDistro = (ReqRosDistro)theEObject;
-        T result = caseReqRosDistro(reqRosDistro);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DeployModelPackage.ROS_DISTRO_LIST:
-      {
-        RosDistroList rosDistroList = (RosDistroList)theEObject;
-        T result = caseRosDistroList(rosDistroList);
+        MultiValueListBracket multiValueListBracket = (MultiValueListBracket)theEObject;
+        T result = caseMultiValueListBracket(multiValueListBracket);
+        if (result == null) result = caseMultiValueList(multiValueListBracket);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -199,10 +196,10 @@ public class DeployModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DeployModelPackage.DEPENDENCY:
+      case DeployModelPackage.DEPENDENCY_TYPES:
       {
-        Dependency dependency = (Dependency)theEObject;
-        T result = caseDependency(dependency);
+        DependencyTypes dependencyTypes = (DependencyTypes)theEObject;
+        T result = caseDependencyTypes(dependencyTypes);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -210,7 +207,7 @@ public class DeployModelSwitch<T> extends Switch<T>
       {
         LocalPackage localPackage = (LocalPackage)theEObject;
         T result = caseLocalPackage(localPackage);
-        if (result == null) result = caseDependency(localPackage);
+        if (result == null) result = caseDependencyTypes(localPackage);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -218,7 +215,7 @@ public class DeployModelSwitch<T> extends Switch<T>
       {
         GitPackage gitPackage = (GitPackage)theEObject;
         T result = caseGitPackage(gitPackage);
-        if (result == null) result = caseDependency(gitPackage);
+        if (result == null) result = caseDependencyTypes(gitPackage);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -233,20 +230,6 @@ public class DeployModelSwitch<T> extends Switch<T>
       {
         AptRepositoryInstance aptRepositoryInstance = (AptRepositoryInstance)theEObject;
         T result = caseAptRepositoryInstance(aptRepositoryInstance);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DeployModelPackage.START_COMMANDS:
-      {
-        StartCommands startCommands = (StartCommands)theEObject;
-        T result = caseStartCommands(startCommands);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DeployModelPackage.LIST_START_COMMANDS:
-      {
-        ListStartCommands listStartCommands = (ListStartCommands)theEObject;
-        T result = caseListStartCommands(listStartCommands);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -271,20 +254,6 @@ public class DeployModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DeployModelPackage.IMAGE_TYPE_LIST:
-      {
-        ImageTypeList imageTypeList = (ImageTypeList)theEObject;
-        T result = caseImageTypeList(imageTypeList);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DeployModelPackage.IMAGE_VERSION_LIST:
-      {
-        ImageVersionList imageVersionList = (ImageVersionList)theEObject;
-        T result = caseImageVersionList(imageVersionList);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case DeployModelPackage.REPOSITORY_DESCRIPTION:
       {
         RepositoryDescription repositoryDescription = (RepositoryDescription)theEObject;
@@ -303,6 +272,50 @@ public class DeployModelSwitch<T> extends Switch<T>
       {
         Repository repository = (Repository)theEObject;
         T result = caseRepository(repository);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DeployModelPackage.CI_SETTING:
+      {
+        CISetting ciSetting = (CISetting)theEObject;
+        T result = caseCISetting(ciSetting);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DeployModelPackage.MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST:
+      {
+        MultiMonolithicImplementationNameList multiMonolithicImplementationNameList = (MultiMonolithicImplementationNameList)theEObject;
+        T result = caseMultiMonolithicImplementationNameList(multiMonolithicImplementationNameList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DeployModelPackage.MULTI_MONOLITHIC_IMPLEMENTATION_NAME_PRE_LIST:
+      {
+        MultiMonolithicImplementationNamePreList multiMonolithicImplementationNamePreList = (MultiMonolithicImplementationNamePreList)theEObject;
+        T result = caseMultiMonolithicImplementationNamePreList(multiMonolithicImplementationNamePreList);
+        if (result == null) result = caseMultiMonolithicImplementationNameList(multiMonolithicImplementationNamePreList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DeployModelPackage.MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST_BRACKET:
+      {
+        MultiMonolithicImplementationNameListBracket multiMonolithicImplementationNameListBracket = (MultiMonolithicImplementationNameListBracket)theEObject;
+        T result = caseMultiMonolithicImplementationNameListBracket(multiMonolithicImplementationNameListBracket);
+        if (result == null) result = caseMultiMonolithicImplementationNameList(multiMonolithicImplementationNameListBracket);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DeployModelPackage.CI_PARAMETERS:
+      {
+        CIParameters ciParameters = (CIParameters)theEObject;
+        T result = caseCIParameters(ciParameters);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DeployModelPackage.GROUPED_PROPERTIES:
+      {
+        GroupedProperties groupedProperties = (GroupedProperties)theEObject;
+        T result = caseGroupedProperties(groupedProperties);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -455,113 +468,97 @@ public class DeployModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Resource Requirement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Property Express Type</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Resource Requirement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Property Express Type</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseResourceRequirement(ResourceRequirement object)
+  public T casePropertyExpressType(PropertyExpressType object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Req Operating System</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Common Property Single Value</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Req Operating System</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Common Property Single Value</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseReqOperatingSystem(ReqOperatingSystem object)
+  public T caseCommonPropertySingleValue(CommonPropertySingleValue object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Operating System Type List</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Common Property Multi Value</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Operating System Type List</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Common Property Multi Value</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseOperatingSystemTypeList(OperatingSystemTypeList object)
+  public T caseCommonPropertyMultiValue(CommonPropertyMultiValue object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Req Processor Architecture</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Multi Value List</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Req Processor Architecture</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Multi Value List</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseReqProcessorArchitecture(ReqProcessorArchitecture object)
+  public T caseMultiValueList(MultiValueList object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Processor Architecture Type List</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Multi Value List Pre List</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Processor Architecture Type List</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Multi Value List Pre List</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseProcessorArchitectureTypeList(ProcessorArchitectureTypeList object)
+  public T caseMultiValueListPreList(MultiValueListPreList object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Req Ros Distro</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Multi Value List Bracket</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Req Ros Distro</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Multi Value List Bracket</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseReqRosDistro(ReqRosDistro object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Ros Distro List</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Ros Distro List</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRosDistroList(RosDistroList object)
+  public T caseMultiValueListBracket(MultiValueListBracket object)
   {
     return null;
   }
@@ -599,17 +596,17 @@ public class DeployModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Dependency</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Dependency Types</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Dependency</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Dependency Types</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDependency(Dependency object)
+  public T caseDependencyTypes(DependencyTypes object)
   {
     return null;
   }
@@ -679,38 +676,6 @@ public class DeployModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Start Commands</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Start Commands</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStartCommands(StartCommands object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>List Start Commands</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>List Start Commands</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseListStartCommands(ListStartCommands object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Stack Implementation Description</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -759,38 +724,6 @@ public class DeployModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Image Type List</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Image Type List</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseImageTypeList(ImageTypeList object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Image Version List</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Image Version List</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseImageVersionList(ImageVersionList object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Repository Description</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -834,6 +767,102 @@ public class DeployModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseRepository(Repository object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>CI Setting</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>CI Setting</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCISetting(CISetting object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Multi Monolithic Implementation Name List</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Multi Monolithic Implementation Name List</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMultiMonolithicImplementationNameList(MultiMonolithicImplementationNameList object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Multi Monolithic Implementation Name Pre List</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Multi Monolithic Implementation Name Pre List</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMultiMonolithicImplementationNamePreList(MultiMonolithicImplementationNamePreList object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Multi Monolithic Implementation Name List Bracket</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Multi Monolithic Implementation Name List Bracket</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMultiMonolithicImplementationNameListBracket(MultiMonolithicImplementationNameListBracket object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>CI Parameters</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>CI Parameters</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCIParameters(CIParameters object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Grouped Properties</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Grouped Properties</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGroupedProperties(GroupedProperties object)
   {
     return null;
   }

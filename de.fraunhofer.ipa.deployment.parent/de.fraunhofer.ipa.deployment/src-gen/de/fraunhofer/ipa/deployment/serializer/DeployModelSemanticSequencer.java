@@ -6,35 +6,33 @@ package de.fraunhofer.ipa.deployment.serializer;
 import com.google.inject.Inject;
 import de.fraunhofer.ipa.deployment.deployModel.AptRepositoryInstance;
 import de.fraunhofer.ipa.deployment.deployModel.BuildRequirements;
+import de.fraunhofer.ipa.deployment.deployModel.CIParameters;
+import de.fraunhofer.ipa.deployment.deployModel.CISetting;
+import de.fraunhofer.ipa.deployment.deployModel.CommonPropertyMultiValue;
+import de.fraunhofer.ipa.deployment.deployModel.CommonPropertySingleValue;
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
 import de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements;
 import de.fraunhofer.ipa.deployment.deployModel.GitPackage;
+import de.fraunhofer.ipa.deployment.deployModel.GroupedProperties;
 import de.fraunhofer.ipa.deployment.deployModel.ImageDescription;
-import de.fraunhofer.ipa.deployment.deployModel.ImageTypeList;
-import de.fraunhofer.ipa.deployment.deployModel.ImageVersionList;
 import de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactAbstract;
 import de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactDescription;
-import de.fraunhofer.ipa.deployment.deployModel.ListStartCommands;
 import de.fraunhofer.ipa.deployment.deployModel.LocalPackage;
 import de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription;
+import de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameListBracket;
+import de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNamePreList;
+import de.fraunhofer.ipa.deployment.deployModel.MultiValueListBracket;
+import de.fraunhofer.ipa.deployment.deployModel.MultiValueListPreList;
 import de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact;
-import de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypeList;
 import de.fraunhofer.ipa.deployment.deployModel.PackageDescription;
-import de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypeList;
 import de.fraunhofer.ipa.deployment.deployModel.Repository;
 import de.fraunhofer.ipa.deployment.deployModel.RepositoryDescription;
 import de.fraunhofer.ipa.deployment.deployModel.RepositorySpec;
 import de.fraunhofer.ipa.deployment.deployModel.ReqBuildDependencies;
 import de.fraunhofer.ipa.deployment.deployModel.ReqDependencyRepositories;
-import de.fraunhofer.ipa.deployment.deployModel.ReqOperatingSystem;
-import de.fraunhofer.ipa.deployment.deployModel.ReqProcessorArchitecture;
-import de.fraunhofer.ipa.deployment.deployModel.ReqRosDistro;
-import de.fraunhofer.ipa.deployment.deployModel.ResourceRequirement;
 import de.fraunhofer.ipa.deployment.deployModel.ResourceRequirements;
 import de.fraunhofer.ipa.deployment.deployModel.ReuseImplementationArtifact;
-import de.fraunhofer.ipa.deployment.deployModel.RosDistroList;
 import de.fraunhofer.ipa.deployment.deployModel.StackImplementationDescription;
-import de.fraunhofer.ipa.deployment.deployModel.StartCommands;
 import de.fraunhofer.ipa.deployment.deployModel.Yaml;
 import de.fraunhofer.ipa.deployment.deployModel.YamlContent;
 import de.fraunhofer.ipa.deployment.services.DeployModelGrammarAccess;
@@ -69,20 +67,29 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case DeployModelPackage.BUILD_REQUIREMENTS:
 				sequence_BuildRequirements(context, (BuildRequirements) semanticObject); 
 				return; 
+			case DeployModelPackage.CI_PARAMETERS:
+				sequence_CIParameters(context, (CIParameters) semanticObject); 
+				return; 
+			case DeployModelPackage.CI_SETTING:
+				sequence_CISetting(context, (CISetting) semanticObject); 
+				return; 
+			case DeployModelPackage.COMMON_PROPERTY_MULTI_VALUE:
+				sequence_CommonPropertyMultiValue(context, (CommonPropertyMultiValue) semanticObject); 
+				return; 
+			case DeployModelPackage.COMMON_PROPERTY_SINGLE_VALUE:
+				sequence_CommonPropertySingleValue(context, (CommonPropertySingleValue) semanticObject); 
+				return; 
 			case DeployModelPackage.DEPLOYMENT_REQUIREMENTS:
 				sequence_DeploymentRequirements(context, (DeploymentRequirements) semanticObject); 
 				return; 
 			case DeployModelPackage.GIT_PACKAGE:
 				sequence_GitPackage(context, (GitPackage) semanticObject); 
 				return; 
+			case DeployModelPackage.GROUPED_PROPERTIES:
+				sequence_GroupedProperties(context, (GroupedProperties) semanticObject); 
+				return; 
 			case DeployModelPackage.IMAGE_DESCRIPTION:
 				sequence_ImageDescription(context, (ImageDescription) semanticObject); 
-				return; 
-			case DeployModelPackage.IMAGE_TYPE_LIST:
-				sequence_ImageTypeList(context, (ImageTypeList) semanticObject); 
-				return; 
-			case DeployModelPackage.IMAGE_VERSION_LIST:
-				sequence_ImageVersionList(context, (ImageVersionList) semanticObject); 
 				return; 
 			case DeployModelPackage.IMPLEMENTATION_ARTIFACT_ABSTRACT:
 				sequence_ImplementationArtifactAbstract(context, (ImplementationArtifactAbstract) semanticObject); 
@@ -90,26 +97,29 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case DeployModelPackage.IMPLEMENTATION_ARTIFACT_DESCRIPTION:
 				sequence_ImplementationArtifactDescription(context, (ImplementationArtifactDescription) semanticObject); 
 				return; 
-			case DeployModelPackage.LIST_START_COMMANDS:
-				sequence_ListStartCommands(context, (ListStartCommands) semanticObject); 
-				return; 
 			case DeployModelPackage.LOCAL_PACKAGE:
 				sequence_LocalPackage(context, (LocalPackage) semanticObject); 
 				return; 
 			case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION:
 				sequence_MonolithicImplementationDescription(context, (MonolithicImplementationDescription) semanticObject); 
 				return; 
+			case DeployModelPackage.MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST_BRACKET:
+				sequence_MultiMonolithicImplementationNameListBracket(context, (MultiMonolithicImplementationNameListBracket) semanticObject); 
+				return; 
+			case DeployModelPackage.MULTI_MONOLITHIC_IMPLEMENTATION_NAME_PRE_LIST:
+				sequence_MultiMonolithicImplementationNamePreList(context, (MultiMonolithicImplementationNamePreList) semanticObject); 
+				return; 
+			case DeployModelPackage.MULTI_VALUE_LIST_BRACKET:
+				sequence_MultiValueListBracket(context, (MultiValueListBracket) semanticObject); 
+				return; 
+			case DeployModelPackage.MULTI_VALUE_LIST_PRE_LIST:
+				sequence_MultiValueListPreList(context, (MultiValueListPreList) semanticObject); 
+				return; 
 			case DeployModelPackage.NEW_IMPLEMENTATION_ARTIFACT:
 				sequence_NewImplementationArtifact(context, (NewImplementationArtifact) semanticObject); 
 				return; 
-			case DeployModelPackage.OPERATING_SYSTEM_TYPE_LIST:
-				sequence_OperatingSystemTypeList(context, (OperatingSystemTypeList) semanticObject); 
-				return; 
 			case DeployModelPackage.PACKAGE_DESCRIPTION:
 				sequence_PackageDescription(context, (PackageDescription) semanticObject); 
-				return; 
-			case DeployModelPackage.PROCESSOR_ARCHITECTURE_TYPE_LIST:
-				sequence_ProcessorArchitectureTypeList(context, (ProcessorArchitectureTypeList) semanticObject); 
 				return; 
 			case DeployModelPackage.REPOSITORY:
 				sequence_Repository(context, (Repository) semanticObject); 
@@ -126,32 +136,14 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case DeployModelPackage.REQ_DEPENDENCY_REPOSITORIES:
 				sequence_ReqDependencyRepositories(context, (ReqDependencyRepositories) semanticObject); 
 				return; 
-			case DeployModelPackage.REQ_OPERATING_SYSTEM:
-				sequence_ReqOperatingSystem(context, (ReqOperatingSystem) semanticObject); 
-				return; 
-			case DeployModelPackage.REQ_PROCESSOR_ARCHITECTURE:
-				sequence_ReqProcessorArchitecture(context, (ReqProcessorArchitecture) semanticObject); 
-				return; 
-			case DeployModelPackage.REQ_ROS_DISTRO:
-				sequence_ReqRosDistro(context, (ReqRosDistro) semanticObject); 
-				return; 
-			case DeployModelPackage.RESOURCE_REQUIREMENT:
-				sequence_ResourceRequirement(context, (ResourceRequirement) semanticObject); 
-				return; 
 			case DeployModelPackage.RESOURCE_REQUIREMENTS:
 				sequence_ResourceRequirements(context, (ResourceRequirements) semanticObject); 
 				return; 
 			case DeployModelPackage.REUSE_IMPLEMENTATION_ARTIFACT:
 				sequence_ReuseImplementationArtifact(context, (ReuseImplementationArtifact) semanticObject); 
 				return; 
-			case DeployModelPackage.ROS_DISTRO_LIST:
-				sequence_RosDistroList(context, (RosDistroList) semanticObject); 
-				return; 
 			case DeployModelPackage.STACK_IMPLEMENTATION_DESCRIPTION:
 				sequence_StackImplementationDescription(context, (StackImplementationDescription) semanticObject); 
-				return; 
-			case DeployModelPackage.START_COMMANDS:
-				sequence_StartCommands(context, (StartCommands) semanticObject); 
 				return; 
 			case DeployModelPackage.YAML:
 				sequence_Yaml(context, (Yaml) semanticObject); 
@@ -184,7 +176,13 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     BuildRequirements returns BuildRequirements
 	 *
 	 * Constraint:
-	 *     (name='buildRequirements' buildDependencies=ReqBuildDependencies? dependencyRepositories=ReqDependencyRepositories?)
+	 *     (
+	 *         ReqRosDistros=MultiValueList 
+	 *         ReqTestRosDistros=MultiValueList? 
+	 *         ReqBuildDependencies=ReqBuildDependencies? 
+	 *         ReqDependencyRepositories=ReqDependencyRepositories? 
+	 *         ReqCMakeArgs=MultiValueList?
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_BuildRequirements(ISerializationContext context, BuildRequirements semanticObject) {
@@ -195,10 +193,86 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     CIParameters returns CIParameters
+	 *
+	 * Constraint:
+	 *     (type=ID parameters+=GroupedProperties+)
+	 * </pre>
+	 */
+	protected void sequence_CIParameters(ISerializationContext context, CIParameters semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     CISetting returns CISetting
+	 *
+	 * Constraint:
+	 *     (type='CISetting:' ciTypes=MultiValueList appliedRepos=MultiMonolithicImplementationNameList reqBranchPrefix=ID ciParameters+=CIParameters*)
+	 * </pre>
+	 */
+	protected void sequence_CISetting(ISerializationContext context, CISetting semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     PropertyExpressType returns CommonPropertyMultiValue
+	 *     CommonPropertyMultiValue returns CommonPropertyMultiValue
+	 *
+	 * Constraint:
+	 *     (name=ID value=MultiValueList)
+	 * </pre>
+	 */
+	protected void sequence_CommonPropertyMultiValue(ISerializationContext context, CommonPropertyMultiValue semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.PROPERTY_EXPRESS_TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.PROPERTY_EXPRESS_TYPE__NAME));
+			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.COMMON_PROPERTY_MULTI_VALUE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.COMMON_PROPERTY_MULTI_VALUE__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getCommonPropertyMultiValueAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCommonPropertyMultiValueAccess().getValueMultiValueListParserRuleCall_5_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     PropertyExpressType returns CommonPropertySingleValue
+	 *     CommonPropertySingleValue returns CommonPropertySingleValue
+	 *
+	 * Constraint:
+	 *     (name=ID value=ValueTypes)
+	 * </pre>
+	 */
+	protected void sequence_CommonPropertySingleValue(ISerializationContext context, CommonPropertySingleValue semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.PROPERTY_EXPRESS_TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.PROPERTY_EXPRESS_TYPE__NAME));
+			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.COMMON_PROPERTY_SINGLE_VALUE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.COMMON_PROPERTY_SINGLE_VALUE__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getCommonPropertySingleValueAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCommonPropertySingleValueAccess().getValueValueTypesParserRuleCall_5_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     DeploymentRequirements returns DeploymentRequirements
 	 *
 	 * Constraint:
-	 *     (name='deployRequirements' operatingSystem=ReqOperatingSystem processorArchitecture=ReqProcessorArchitecture rosDistro=ReqRosDistro?)
+	 *     requirements+=PropertyExpressType+
 	 * </pre>
 	 */
 	protected void sequence_DeploymentRequirements(ISerializationContext context, DeploymentRequirements semanticObject) {
@@ -209,11 +283,11 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Dependency returns GitPackage
+	 *     DependencyTypes returns GitPackage
 	 *     GitPackage returns GitPackage
 	 *
 	 * Constraint:
-	 *     (path=URL name=ID branch=STRING?)
+	 *     (name=ID path=URL visibility=ID?)
 	 * </pre>
 	 */
 	protected void sequence_GitPackage(ISerializationContext context, GitPackage semanticObject) {
@@ -224,42 +298,40 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     GroupedProperties returns GroupedProperties
+	 *
+	 * Constraint:
+	 *     (type=ID properties+=PropertyExpressType+)
+	 * </pre>
+	 */
+	protected void sequence_GroupedProperties(ISerializationContext context, GroupedProperties semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     ImageDescription returns ImageDescription
 	 *
 	 * Constraint:
-	 *     (types+=ImageTypeList name=[MonolithicImplementationDescription|QualifiedName] imageVersions=ImageVersionList)
+	 *     (types=MultiValueList name=[MonolithicImplementationDescription|QualifiedName] imageTags=MultiValueList)
 	 * </pre>
 	 */
 	protected void sequence_ImageDescription(ISerializationContext context, ImageDescription semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     ImageTypeList returns ImageTypeList
-	 *
-	 * Constraint:
-	 *     (children+=ImageTypes children+=ImageTypes*)
-	 * </pre>
-	 */
-	protected void sequence_ImageTypeList(ISerializationContext context, ImageTypeList semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     ImageVersionList returns ImageVersionList
-	 *
-	 * Constraint:
-	 *     (children+=ImageVersionTypes children+=ImageVersionTypes*)
-	 * </pre>
-	 */
-	protected void sequence_ImageVersionList(ISerializationContext context, ImageVersionList semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__TYPES) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__TYPES));
+			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__NAME));
+			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__IMAGE_TAGS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__IMAGE_TAGS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getImageDescriptionAccess().getTypesMultiValueListParserRuleCall_1_0(), semanticObject.getTypes());
+		feeder.accept(grammarAccess.getImageDescriptionAccess().getNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_3_0_1(), semanticObject.eGet(DeployModelPackage.Literals.IMAGE_DESCRIPTION__NAME, false));
+		feeder.accept(grammarAccess.getImageDescriptionAccess().getImageTagsMultiValueListParserRuleCall_5_0(), semanticObject.getImageTags());
+		feeder.finish();
 	}
 	
 	
@@ -269,23 +341,11 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     ImplementationArtifactAbstract returns ImplementationArtifactAbstract
 	 *
 	 * Constraint:
-	 *     (importedNamespace=QualifiedName name=[MonolithicImplementationDescription|QualifiedName] startCommands=StartCommands)
+	 *     (importedNamespace=QualifiedName name=[MonolithicImplementationDescription|QualifiedName] startCommands=MultiValueList?)
 	 * </pre>
 	 */
 	protected void sequence_ImplementationArtifactAbstract(ISerializationContext context, ImplementationArtifactAbstract semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.IMPLEMENTATION_ARTIFACT_ABSTRACT__IMPORTED_NAMESPACE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.IMPLEMENTATION_ARTIFACT_ABSTRACT__IMPORTED_NAMESPACE));
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.IMPLEMENTATION_ARTIFACT_ABSTRACT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.IMPLEMENTATION_ARTIFACT_ABSTRACT__NAME));
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.IMPLEMENTATION_ARTIFACT_ABSTRACT__START_COMMANDS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.IMPLEMENTATION_ARTIFACT_ABSTRACT__START_COMMANDS));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getImplementationArtifactAbstractAccess().getImportedNamespaceQualifiedNameParserRuleCall_2_0(), semanticObject.getImportedNamespace());
-		feeder.accept(grammarAccess.getImplementationArtifactAbstractAccess().getNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_5_0_1(), semanticObject.eGet(DeployModelPackage.Literals.IMPLEMENTATION_ARTIFACT_ABSTRACT__NAME, false));
-		feeder.accept(grammarAccess.getImplementationArtifactAbstractAccess().getStartCommandsStartCommandsParserRuleCall_6_0(), semanticObject.getStartCommands());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -295,7 +355,7 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     ImplementationArtifactDescription returns ImplementationArtifactDescription
 	 *
 	 * Constraint:
-	 *     (type='ImplementationArtifactDescription' (impl=NewImplementationArtifact | impl=ReuseImplementationArtifact))
+	 *     (impl=NewImplementationArtifact | impl=ReuseImplementationArtifact)
 	 * </pre>
 	 */
 	protected void sequence_ImplementationArtifactDescription(ISerializationContext context, ImplementationArtifactDescription semanticObject) {
@@ -306,37 +366,20 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     ListStartCommands returns ListStartCommands
-	 *
-	 * Constraint:
-	 *     (children+=STRING children+=STRING*)
-	 * </pre>
-	 */
-	protected void sequence_ListStartCommands(ISerializationContext context, ListStartCommands semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Dependency returns LocalPackage
+	 *     DependencyTypes returns LocalPackage
 	 *     LocalPackage returns LocalPackage
 	 *
 	 * Constraint:
-	 *     (importedNamespace=QualifiedName name=[MonolithicImplementationDescription|QualifiedName])
+	 *     name=[MonolithicImplementationDescription|QualifiedName]
 	 * </pre>
 	 */
 	protected void sequence_LocalPackage(ISerializationContext context, LocalPackage semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.LOCAL_PACKAGE__IMPORTED_NAMESPACE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.LOCAL_PACKAGE__IMPORTED_NAMESPACE));
 			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.LOCAL_PACKAGE__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.LOCAL_PACKAGE__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getLocalPackageAccess().getImportedNamespaceQualifiedNameParserRuleCall_2_0(), semanticObject.getImportedNamespace());
-		feeder.accept(grammarAccess.getLocalPackageAccess().getNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_5_0_1(), semanticObject.eGet(DeployModelPackage.Literals.LOCAL_PACKAGE__NAME, false));
+		feeder.accept(grammarAccess.getLocalPackageAccess().getNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_2_0_1(), semanticObject.eGet(DeployModelPackage.Literals.LOCAL_PACKAGE__NAME, false));
 		feeder.finish();
 	}
 	
@@ -354,7 +397,7 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *         description=STRING 
 	 *         mode=ImplementationModeType 
 	 *         branch=BranchType 
-	 *         impl=ImplementationArtifactDescription?
+	 *         implementation=NewImplementationArtifact?
 	 *     )
 	 * </pre>
 	 */
@@ -366,19 +409,14 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     NewImplementationArtifact returns NewImplementationArtifact
+	 *     MultiMonolithicImplementationNameList returns MultiMonolithicImplementationNameListBracket
+	 *     MultiMonolithicImplementationNameListBracket returns MultiMonolithicImplementationNameListBracket
 	 *
 	 * Constraint:
-	 *     (
-	 *         (name=LOCALPATH | name=URL) 
-	 *         deployRequirements=DeploymentRequirements 
-	 *         resourceRequirements=ResourceRequirements? 
-	 *         buildRequirements=BuildRequirements? 
-	 *         startCommands=StartCommands
-	 *     )
+	 *     (values+=[MonolithicImplementationDescription|QualifiedName] values+=[MonolithicImplementationDescription|QualifiedName]*)
 	 * </pre>
 	 */
-	protected void sequence_NewImplementationArtifact(ISerializationContext context, NewImplementationArtifact semanticObject) {
+	protected void sequence_MultiMonolithicImplementationNameListBracket(ISerializationContext context, MultiMonolithicImplementationNameListBracket semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -386,13 +424,64 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     OperatingSystemTypeList returns OperatingSystemTypeList
+	 *     MultiMonolithicImplementationNameList returns MultiMonolithicImplementationNamePreList
+	 *     MultiMonolithicImplementationNamePreList returns MultiMonolithicImplementationNamePreList
 	 *
 	 * Constraint:
-	 *     (children+=OperatingSystemTypes children+=OperatingSystemTypes*)
+	 *     values+=[MonolithicImplementationDescription|QualifiedName]*
 	 * </pre>
 	 */
-	protected void sequence_OperatingSystemTypeList(ISerializationContext context, OperatingSystemTypeList semanticObject) {
+	protected void sequence_MultiMonolithicImplementationNamePreList(ISerializationContext context, MultiMonolithicImplementationNamePreList semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     MultiValueList returns MultiValueListBracket
+	 *     MultiValueListBracket returns MultiValueListBracket
+	 *
+	 * Constraint:
+	 *     (values+=ValueTypes values+=ValueTypes*)
+	 * </pre>
+	 */
+	protected void sequence_MultiValueListBracket(ISerializationContext context, MultiValueListBracket semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     MultiValueList returns MultiValueListPreList
+	 *     MultiValueListPreList returns MultiValueListPreList
+	 *
+	 * Constraint:
+	 *     values+=ValueTypes*
+	 * </pre>
+	 */
+	protected void sequence_MultiValueListPreList(ISerializationContext context, MultiValueListPreList semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     NewImplementationArtifact returns NewImplementationArtifact
+	 *
+	 * Constraint:
+	 *     (
+	 *         (location=STRING | location=LOCALPATH | location=URL) 
+	 *         deployRequirements=DeploymentRequirements 
+	 *         resourceRequirements=ResourceRequirements? 
+	 *         buildRequirements=BuildRequirements? 
+	 *         startCommands=MultiValueList?
+	 *     )
+	 * </pre>
+	 */
+	protected void sequence_NewImplementationArtifact(ISerializationContext context, NewImplementationArtifact semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -420,20 +509,6 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 		feeder.accept(grammarAccess.getPackageDescriptionAccess().getImageDescriptionImageDescriptionParserRuleCall_5_0(), semanticObject.getImageDescription());
 		feeder.accept(grammarAccess.getPackageDescriptionAccess().getRepositoryDescriptionRepositoryDescriptionParserRuleCall_8_0(), semanticObject.getRepositoryDescription());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     ProcessorArchitectureTypeList returns ProcessorArchitectureTypeList
-	 *
-	 * Constraint:
-	 *     (children+=ProcessorArchitectureTypes children+=ProcessorArchitectureTypes*)
-	 * </pre>
-	 */
-	protected void sequence_ProcessorArchitectureTypeList(ISerializationContext context, ProcessorArchitectureTypeList semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -480,7 +555,7 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     Repository returns Repository
 	 *
 	 * Constraint:
-	 *     (type=RepositoryTypes path=STRING?)
+	 *     (type=ID path=STRING?)
 	 * </pre>
 	 */
 	protected void sequence_Repository(ISerializationContext context, Repository semanticObject) {
@@ -494,7 +569,7 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     ReqBuildDependencies returns ReqBuildDependencies
 	 *
 	 * Constraint:
-	 *     (name='dependOn:' dependencies+=Dependency+)
+	 *     dependencies+=DependencyTypes*
 	 * </pre>
 	 */
 	protected void sequence_ReqBuildDependencies(ISerializationContext context, ReqBuildDependencies semanticObject) {
@@ -508,7 +583,7 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     ReqDependencyRepositories returns ReqDependencyRepositories
 	 *
 	 * Constraint:
-	 *     (name='aptRepositories' children+=AptRepositoryInstance+)
+	 *     children+=AptRepositoryInstance+
 	 * </pre>
 	 */
 	protected void sequence_ReqDependencyRepositories(ISerializationContext context, ReqDependencyRepositories semanticObject) {
@@ -519,102 +594,10 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     ReqOperatingSystem returns ReqOperatingSystem
-	 *
-	 * Constraint:
-	 *     (name='os' value=OperatingSystemTypeList)
-	 * </pre>
-	 */
-	protected void sequence_ReqOperatingSystem(ISerializationContext context, ReqOperatingSystem semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.REQ_OPERATING_SYSTEM__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.REQ_OPERATING_SYSTEM__NAME));
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.REQ_OPERATING_SYSTEM__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.REQ_OPERATING_SYSTEM__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getReqOperatingSystemAccess().getNameOsKeyword_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getReqOperatingSystemAccess().getValueOperatingSystemTypeListParserRuleCall_5_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     ReqProcessorArchitecture returns ReqProcessorArchitecture
-	 *
-	 * Constraint:
-	 *     (name='processor_architecture' value=ProcessorArchitectureTypeList)
-	 * </pre>
-	 */
-	protected void sequence_ReqProcessorArchitecture(ISerializationContext context, ReqProcessorArchitecture semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.REQ_PROCESSOR_ARCHITECTURE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.REQ_PROCESSOR_ARCHITECTURE__NAME));
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.REQ_PROCESSOR_ARCHITECTURE__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.REQ_PROCESSOR_ARCHITECTURE__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getReqProcessorArchitectureAccess().getNameProcessor_architectureKeyword_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getReqProcessorArchitectureAccess().getValueProcessorArchitectureTypeListParserRuleCall_5_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     ReqRosDistro returns ReqRosDistro
-	 *
-	 * Constraint:
-	 *     (name='ros_distro' value=RosDistroList)
-	 * </pre>
-	 */
-	protected void sequence_ReqRosDistro(ISerializationContext context, ReqRosDistro semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.REQ_ROS_DISTRO__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.REQ_ROS_DISTRO__NAME));
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.REQ_ROS_DISTRO__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.REQ_ROS_DISTRO__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getReqRosDistroAccess().getNameRos_distroKeyword_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getReqRosDistroAccess().getValueRosDistroListParserRuleCall_5_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     ResourceRequirement returns ResourceRequirement
-	 *
-	 * Constraint:
-	 *     (name=ResourceReqTypes value=ScalarNumber)
-	 * </pre>
-	 */
-	protected void sequence_ResourceRequirement(ISerializationContext context, ResourceRequirement semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.RESOURCE_REQUIREMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.RESOURCE_REQUIREMENT__NAME));
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.RESOURCE_REQUIREMENT__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.RESOURCE_REQUIREMENT__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getResourceRequirementAccess().getNameResourceReqTypesEnumRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getResourceRequirementAccess().getValueScalarNumberParserRuleCall_5_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     ResourceRequirements returns ResourceRequirements
 	 *
 	 * Constraint:
-	 *     (name='resourceRequirements' requirements+=ResourceRequirement+)
+	 *     requirements+=PropertyExpressType+
 	 * </pre>
 	 */
 	protected void sequence_ResourceRequirements(ISerializationContext context, ResourceRequirements semanticObject) {
@@ -639,25 +622,11 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     RosDistroList returns RosDistroList
-	 *
-	 * Constraint:
-	 *     (children+=RosDistro children+=RosDistro*)
-	 * </pre>
-	 */
-	protected void sequence_RosDistroList(ISerializationContext context, RosDistroList semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     StackImplementationDescription returns StackImplementationDescription
 	 *
 	 * Constraint:
 	 *     (
-	 *         type='StackImplementationDescription' 
+	 *         type='StackImplementationDescription:' 
 	 *         name=QualifiedName 
 	 *         impRosmodel=QualifiedName? 
 	 *         description=STRING 
@@ -674,33 +643,10 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     StartCommands returns StartCommands
-	 *
-	 * Constraint:
-	 *     (name='startCommands:' startCommands=ListStartCommands)
-	 * </pre>
-	 */
-	protected void sequence_StartCommands(ISerializationContext context, StartCommands semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.START_COMMANDS__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.START_COMMANDS__NAME));
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.START_COMMANDS__START_COMMANDS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.START_COMMANDS__START_COMMANDS));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStartCommandsAccess().getNameStartCommandsKeyword_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getStartCommandsAccess().getStartCommandsListStartCommandsParserRuleCall_1_0(), semanticObject.getStartCommands());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     YamlContent returns YamlContent
 	 *
 	 * Constraint:
-	 *     (rootContent=MonolithicImplementationDescription | rootContent=StackImplementationDescription | rootContent=PackageDescription)
+	 *     (rootContent=MonolithicImplementationDescription | rootContent=StackImplementationDescription | rootContent=PackageDescription | rootContent=CISetting)
 	 * </pre>
 	 */
 	protected void sequence_YamlContent(ISerializationContext context, YamlContent semanticObject) {

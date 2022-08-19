@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactDescription#getType <em>Type</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactDescription#getImpl <em>Impl</em>}</li>
  * </ul>
  *
@@ -24,28 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ImplementationArtifactDescription extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' attribute.
-   * @see #setType(String)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getImplementationArtifactDescription_Type()
-   * @model
-   * @generated
-   */
-  String getType();
-
-  /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactDescription#getType <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' attribute.
-   * @see #getType()
-   * @generated
-   */
-  void setType(String value);
-
   /**
    * Returns the value of the '<em><b>Impl</b></em>' containment reference.
    * <!-- begin-user-doc -->

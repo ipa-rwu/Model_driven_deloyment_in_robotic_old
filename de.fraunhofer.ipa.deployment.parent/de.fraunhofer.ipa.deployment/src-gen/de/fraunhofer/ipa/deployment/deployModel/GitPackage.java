@@ -13,39 +13,17 @@ package de.fraunhofer.ipa.deployment.deployModel;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getPath <em>Path</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getName <em>Name</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getBranch <em>Branch</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getPath <em>Path</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getVisibility <em>Visibility</em>}</li>
  * </ul>
  *
  * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getGitPackage()
  * @model
  * @generated
  */
-public interface GitPackage extends Dependency
+public interface GitPackage extends DependencyTypes
 {
-  /**
-   * Returns the value of the '<em><b>Path</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Path</em>' attribute.
-   * @see #setPath(String)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getGitPackage_Path()
-   * @model
-   * @generated
-   */
-  String getPath();
-
-  /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getPath <em>Path</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Path</em>' attribute.
-   * @see #getPath()
-   * @generated
-   */
-  void setPath(String value);
-
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -69,25 +47,47 @@ public interface GitPackage extends Dependency
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Branch</b></em>' attribute.
+   * Returns the value of the '<em><b>Path</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Branch</em>' attribute.
-   * @see #setBranch(String)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getGitPackage_Branch()
+   * @return the value of the '<em>Path</em>' attribute.
+   * @see #setPath(String)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getGitPackage_Path()
    * @model
    * @generated
    */
-  String getBranch();
+  String getPath();
 
   /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getBranch <em>Branch</em>}' attribute.
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getPath <em>Path</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Branch</em>' attribute.
-   * @see #getBranch()
+   * @param value the new value of the '<em>Path</em>' attribute.
+   * @see #getPath()
    * @generated
    */
-  void setBranch(String value);
+  void setPath(String value);
+
+  /**
+   * Returns the value of the '<em><b>Visibility</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Visibility</em>' attribute.
+   * @see #setVisibility(String)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getGitPackage_Visibility()
+   * @model
+   * @generated
+   */
+  String getVisibility();
+
+  /**
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getVisibility <em>Visibility</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Visibility</em>' attribute.
+   * @see #getVisibility()
+   * @generated
+   */
+  void setVisibility(String value);
 
 } // GitPackage

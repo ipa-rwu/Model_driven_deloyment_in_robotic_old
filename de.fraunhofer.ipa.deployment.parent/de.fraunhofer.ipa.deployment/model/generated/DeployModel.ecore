@@ -17,7 +17,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" eType="#//ImplementationModeType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="branch" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="impl" eType="#//ImplementationArtifactDescription"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="implementation" eType="#//NewImplementationArtifact"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ImplementationModeType">
@@ -25,18 +25,17 @@
     <eLiterals name="ReleaseMode" value="1" literal="release"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NewImplementationArtifact">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deployRequirements" eType="#//DeploymentRequirements"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourceRequirements" eType="#//ResourceRequirements"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="buildRequirements" eType="#//BuildRequirements"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="startCommands" eType="#//StartCommands"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="startCommands" eType="#//MultiValueList"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ImplementationArtifactDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="impl" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
   </eClassifiers>
@@ -47,98 +46,59 @@
   <eClassifiers xsi:type="ecore:EClass" name="ImplementationArtifactAbstract">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//MonolithicImplementationDescription"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="startCommands" eType="#//StartCommands"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="startCommands" eType="#//MultiValueList"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DeploymentRequirements">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operatingSystem" eType="#//ReqOperatingSystem"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="processorArchitecture"
-        eType="#//ReqProcessorArchitecture" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rosDistro" eType="#//ReqRosDistro"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
+        eType="#//PropertyExpressType" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResourceRequirements">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
-        eType="#//ResourceRequirement" containment="true"/>
+        eType="#//PropertyExpressType" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ResourceRequirement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//ResourceReqTypes"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyExpressType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommonPropertySingleValue" eSuperTypes="#//PropertyExpressType">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ResourceReqTypes">
-    <eLiterals name="CPU" literal="cpus"/>
-    <eLiterals name="Memory" value="1" literal="memory"/>
-    <eLiterals name="MemorySawp" value="2" literal="memory_swap"/>
-    <eLiterals name="OomKillDisable" value="3" literal="oom_kill_disable"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReqOperatingSystem">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//OperatingSystemTypeList"
+  <eClassifiers xsi:type="ecore:EClass" name="CommonPropertyMultiValue" eSuperTypes="#//PropertyExpressType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//MultiValueList"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OperatingSystemTypeList">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="children" unique="false"
-        upperBound="-1" eType="#//OperatingSystemTypes"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiValueList">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReqProcessorArchitecture">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//ProcessorArchitectureTypeList"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProcessorArchitectureTypeList">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="children" unique="false"
-        upperBound="-1" eType="#//ProcessorArchitectureTypes"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReqRosDistro">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//RosDistroList"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RosDistroList">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="children" unique="false"
-        upperBound="-1" eType="#//RosDistro"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="OperatingSystemTypes">
-    <eLiterals name="ubuntu18" literal="ubuntu18"/>
-    <eLiterals name="ubuntu20" value="1" literal="ubuntu20"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="RosDistro">
-    <eLiterals name="melodic" literal="melodic"/>
-    <eLiterals name="noetic" value="1" literal="noetic"/>
-    <eLiterals name="foxy" value="2" literal="foxy"/>
-    <eLiterals name="galactic" value="3" literal="galactic"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ProcessorArchitectureTypes">
-    <eLiterals name="arm64" literal="arm64"/>
-    <eLiterals name="x86" value="1" literal="x86"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiValueListPreList" eSuperTypes="#//MultiValueList"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiValueListBracket" eSuperTypes="#//MultiValueList"/>
   <eClassifiers xsi:type="ecore:EClass" name="BuildRequirements">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="buildDependencies" eType="#//ReqBuildDependencies"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ReqRosDistros" eType="#//MultiValueList"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dependencyRepositories"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ReqTestRosDistros" eType="#//MultiValueList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ReqBuildDependencies" eType="#//ReqBuildDependencies"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ReqDependencyRepositories"
         eType="#//ReqDependencyRepositories" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ReqCMakeArgs" eType="#//MultiValueList"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReqBuildDependencies">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
-        eType="#//Dependency" containment="true"/>
+        eType="#//DependencyTypes" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Dependency"/>
-  <eClassifiers xsi:type="ecore:EClass" name="LocalPackage" eSuperTypes="#//Dependency">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DependencyTypes"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LocalPackage" eSuperTypes="#//DependencyTypes">
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//MonolithicImplementationDescription"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GitPackage" eSuperTypes="#//Dependency">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GitPackage" eSuperTypes="#//DependencyTypes">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="branch" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReqDependencyRepositories">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//AptRepositoryInstance" containment="true"/>
   </eClassifiers>
@@ -147,15 +107,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="keyLink" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="repositoryPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="updateRosDep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StartCommands">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="startCommands" eType="#//ListStartCommands"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ListStartCommands">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="children" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StackImplementationDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -174,29 +125,11 @@
         eType="#//RepositoryDescription" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ImageDescription">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
-        eType="#//ImageTypeList" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//MonolithicImplementationDescription"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="imageVersions" eType="#//ImageVersionList"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="types" eType="#//MultiValueList"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ImageTypeList">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="children" unique="false"
-        upperBound="-1" eType="#//ImageTypes"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ImageTypes">
-    <eLiterals name="DockerImage" literal="docker"/>
-    <eLiterals name="SnapImage" value="1" literal="snap"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ImageVersionList">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="children" unique="false"
-        upperBound="-1" eType="#//ImageVersionTypes"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ImageVersionTypes">
-    <eLiterals name="branch" literal="branch"/>
-    <eLiterals name="commitHash" value="1" literal="commit"/>
-    <eLiterals name="latest" value="2" literal="latest"/>
-    <eLiterals name="release" value="3" literal="release"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//MonolithicImplementationDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imageTags" eType="#//MultiValueList"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RepositoryDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="spec" upperBound="-1" eType="#//RepositorySpec"
@@ -208,12 +141,39 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Repository">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//RepositoryTypes"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="RepositoryTypes">
-    <eLiterals name="local" literal="local"/>
-    <eLiterals name="remote" value="1" literal="remote"/>
-    <eLiterals name="gitlab" value="2" literal="gitlab"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CISetting">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ciTypes" eType="#//MultiValueList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="appliedRepos" eType="#//MultiMonolithicImplementationNameList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reqBranchPrefix" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ciParameters" upperBound="-1"
+        eType="#//CIParameters" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiMonolithicImplementationNameList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="values" unique="false"
+        upperBound="-1" eType="#//MonolithicImplementationDescription"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiMonolithicImplementationNamePreList"
+      eSuperTypes="#//MultiMonolithicImplementationNameList"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiMonolithicImplementationNameListBracket"
+      eSuperTypes="#//MultiMonolithicImplementationNameList"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CIParameters">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//GroupedProperties" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GroupedProperties">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//PropertyExpressType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BOOLEAN">
+    <eLiterals name="FALSE" literal="false"/>
+    <eLiterals name="TRUE" value="1" literal="true"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -10,40 +10,9 @@
       <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ImplementationModeType/DebugMode"/>
       <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ImplementationModeType/ReleaseMode"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DeployModel.ecore#//ResourceReqTypes">
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ResourceReqTypes/CPU"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ResourceReqTypes/Memory"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ResourceReqTypes/MemorySawp"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ResourceReqTypes/OomKillDisable"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DeployModel.ecore#//OperatingSystemTypes">
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//OperatingSystemTypes/ubuntu18"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//OperatingSystemTypes/ubuntu20"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DeployModel.ecore#//RosDistro">
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//RosDistro/melodic"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//RosDistro/noetic"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//RosDistro/foxy"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//RosDistro/galactic"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DeployModel.ecore#//ProcessorArchitectureTypes">
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ProcessorArchitectureTypes/arm64"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ProcessorArchitectureTypes/x86"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DeployModel.ecore#//ImageTypes">
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ImageTypes/DockerImage"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ImageTypes/SnapImage"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DeployModel.ecore#//ImageVersionTypes">
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ImageVersionTypes/branch"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ImageVersionTypes/commitHash"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ImageVersionTypes/latest"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//ImageVersionTypes/release"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DeployModel.ecore#//RepositoryTypes">
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//RepositoryTypes/local"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//RepositoryTypes/remote"/>
-      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//RepositoryTypes/gitlab"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DeployModel.ecore#//BOOLEAN">
+      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//BOOLEAN/FALSE"/>
+      <genEnumLiterals ecoreEnumLiteral="DeployModel.ecore#//BOOLEAN/TRUE"/>
     </genEnums>
     <genClasses ecoreClass="DeployModel.ecore#//Yaml">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//Yaml/content"/>
@@ -58,17 +27,16 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//MonolithicImplementationDescription/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//MonolithicImplementationDescription/mode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//MonolithicImplementationDescription/branch"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//MonolithicImplementationDescription/impl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//MonolithicImplementationDescription/implementation"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//NewImplementationArtifact">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//NewImplementationArtifact/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//NewImplementationArtifact/location"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//NewImplementationArtifact/deployRequirements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//NewImplementationArtifact/resourceRequirements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//NewImplementationArtifact/buildRequirements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//NewImplementationArtifact/startCommands"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//ImplementationArtifactDescription">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ImplementationArtifactDescription/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ImplementationArtifactDescription/impl"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//ReuseImplementationArtifact">
@@ -80,61 +48,45 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ImplementationArtifactAbstract/startCommands"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//DeploymentRequirements">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//DeploymentRequirements/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//DeploymentRequirements/operatingSystem"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//DeploymentRequirements/processorArchitecture"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//DeploymentRequirements/rosDistro"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//DeploymentRequirements/requirements"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//ResourceRequirements">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ResourceRequirements/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ResourceRequirements/requirements"/>
     </genClasses>
-    <genClasses ecoreClass="DeployModel.ecore#//ResourceRequirement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ResourceRequirement/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ResourceRequirement/value"/>
+    <genClasses ecoreClass="DeployModel.ecore#//PropertyExpressType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//PropertyExpressType/name"/>
     </genClasses>
-    <genClasses ecoreClass="DeployModel.ecore#//ReqOperatingSystem">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ReqOperatingSystem/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ReqOperatingSystem/value"/>
+    <genClasses ecoreClass="DeployModel.ecore#//CommonPropertySingleValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//CommonPropertySingleValue/value"/>
     </genClasses>
-    <genClasses ecoreClass="DeployModel.ecore#//OperatingSystemTypeList">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//OperatingSystemTypeList/children"/>
+    <genClasses ecoreClass="DeployModel.ecore#//CommonPropertyMultiValue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//CommonPropertyMultiValue/value"/>
     </genClasses>
-    <genClasses ecoreClass="DeployModel.ecore#//ReqProcessorArchitecture">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ReqProcessorArchitecture/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ReqProcessorArchitecture/value"/>
+    <genClasses ecoreClass="DeployModel.ecore#//MultiValueList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//MultiValueList/values"/>
     </genClasses>
-    <genClasses ecoreClass="DeployModel.ecore#//ProcessorArchitectureTypeList">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ProcessorArchitectureTypeList/children"/>
-    </genClasses>
-    <genClasses ecoreClass="DeployModel.ecore#//ReqRosDistro">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ReqRosDistro/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ReqRosDistro/value"/>
-    </genClasses>
-    <genClasses ecoreClass="DeployModel.ecore#//RosDistroList">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//RosDistroList/children"/>
-    </genClasses>
+    <genClasses ecoreClass="DeployModel.ecore#//MultiValueListPreList"/>
+    <genClasses ecoreClass="DeployModel.ecore#//MultiValueListBracket"/>
     <genClasses ecoreClass="DeployModel.ecore#//BuildRequirements">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//BuildRequirements/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//BuildRequirements/buildDependencies"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//BuildRequirements/dependencyRepositories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//BuildRequirements/ReqRosDistros"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//BuildRequirements/ReqTestRosDistros"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//BuildRequirements/ReqBuildDependencies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//BuildRequirements/ReqDependencyRepositories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//BuildRequirements/ReqCMakeArgs"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//ReqBuildDependencies">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ReqBuildDependencies/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ReqBuildDependencies/dependencies"/>
     </genClasses>
-    <genClasses ecoreClass="DeployModel.ecore#//Dependency"/>
+    <genClasses ecoreClass="DeployModel.ecore#//DependencyTypes"/>
     <genClasses ecoreClass="DeployModel.ecore#//LocalPackage">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//LocalPackage/importedNamespace"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DeployModel.ecore#//LocalPackage/name"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//GitPackage">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//GitPackage/path"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//GitPackage/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//GitPackage/branch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//GitPackage/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//GitPackage/visibility"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//ReqDependencyRepositories">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ReqDependencyRepositories/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ReqDependencyRepositories/children"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//AptRepositoryInstance">
@@ -142,13 +94,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//AptRepositoryInstance/keyLink"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//AptRepositoryInstance/repositoryPath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//AptRepositoryInstance/updateRosDep"/>
-    </genClasses>
-    <genClasses ecoreClass="DeployModel.ecore#//StartCommands">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//StartCommands/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//StartCommands/startCommands"/>
-    </genClasses>
-    <genClasses ecoreClass="DeployModel.ecore#//ListStartCommands">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ListStartCommands/children"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//StackImplementationDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//StackImplementationDescription/type"/>
@@ -166,13 +111,7 @@
     <genClasses ecoreClass="DeployModel.ecore#//ImageDescription">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ImageDescription/types"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ImageDescription/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ImageDescription/imageVersions"/>
-    </genClasses>
-    <genClasses ecoreClass="DeployModel.ecore#//ImageTypeList">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ImageTypeList/children"/>
-    </genClasses>
-    <genClasses ecoreClass="DeployModel.ecore#//ImageVersionList">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//ImageVersionList/children"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ImageDescription/imageTags"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//RepositoryDescription">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//RepositoryDescription/spec"/>
@@ -184,6 +123,26 @@
     <genClasses ecoreClass="DeployModel.ecore#//Repository">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//Repository/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//Repository/path"/>
+    </genClasses>
+    <genClasses ecoreClass="DeployModel.ecore#//CISetting">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//CISetting/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//CISetting/ciTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//CISetting/appliedRepos"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//CISetting/reqBranchPrefix"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//CISetting/ciParameters"/>
+    </genClasses>
+    <genClasses ecoreClass="DeployModel.ecore#//MultiMonolithicImplementationNameList">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DeployModel.ecore#//MultiMonolithicImplementationNameList/values"/>
+    </genClasses>
+    <genClasses ecoreClass="DeployModel.ecore#//MultiMonolithicImplementationNamePreList"/>
+    <genClasses ecoreClass="DeployModel.ecore#//MultiMonolithicImplementationNameListBracket"/>
+    <genClasses ecoreClass="DeployModel.ecore#//CIParameters">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//CIParameters/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//CIParameters/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="DeployModel.ecore#//GroupedProperties">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//GroupedProperties/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//GroupedProperties/properties"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

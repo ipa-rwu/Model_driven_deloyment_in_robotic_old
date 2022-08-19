@@ -5,45 +5,39 @@ package de.fraunhofer.ipa.deployment.deployModel.impl;
 
 import de.fraunhofer.ipa.deployment.deployModel.AptRepositoryInstance;
 import de.fraunhofer.ipa.deployment.deployModel.BuildRequirements;
-import de.fraunhofer.ipa.deployment.deployModel.Dependency;
+import de.fraunhofer.ipa.deployment.deployModel.CIParameters;
+import de.fraunhofer.ipa.deployment.deployModel.CISetting;
+import de.fraunhofer.ipa.deployment.deployModel.CommonPropertyMultiValue;
+import de.fraunhofer.ipa.deployment.deployModel.CommonPropertySingleValue;
+import de.fraunhofer.ipa.deployment.deployModel.DependencyTypes;
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelFactory;
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
 import de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements;
 import de.fraunhofer.ipa.deployment.deployModel.GitPackage;
+import de.fraunhofer.ipa.deployment.deployModel.GroupedProperties;
 import de.fraunhofer.ipa.deployment.deployModel.ImageDescription;
-import de.fraunhofer.ipa.deployment.deployModel.ImageTypeList;
-import de.fraunhofer.ipa.deployment.deployModel.ImageTypes;
-import de.fraunhofer.ipa.deployment.deployModel.ImageVersionList;
-import de.fraunhofer.ipa.deployment.deployModel.ImageVersionTypes;
 import de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactAbstract;
 import de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactDescription;
 import de.fraunhofer.ipa.deployment.deployModel.ImplementationModeType;
-import de.fraunhofer.ipa.deployment.deployModel.ListStartCommands;
 import de.fraunhofer.ipa.deployment.deployModel.LocalPackage;
 import de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription;
+import de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameList;
+import de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameListBracket;
+import de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNamePreList;
+import de.fraunhofer.ipa.deployment.deployModel.MultiValueList;
+import de.fraunhofer.ipa.deployment.deployModel.MultiValueListBracket;
+import de.fraunhofer.ipa.deployment.deployModel.MultiValueListPreList;
 import de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact;
-import de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypeList;
-import de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypes;
 import de.fraunhofer.ipa.deployment.deployModel.PackageDescription;
-import de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypeList;
-import de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypes;
+import de.fraunhofer.ipa.deployment.deployModel.PropertyExpressType;
 import de.fraunhofer.ipa.deployment.deployModel.Repository;
 import de.fraunhofer.ipa.deployment.deployModel.RepositoryDescription;
 import de.fraunhofer.ipa.deployment.deployModel.RepositorySpec;
-import de.fraunhofer.ipa.deployment.deployModel.RepositoryTypes;
 import de.fraunhofer.ipa.deployment.deployModel.ReqBuildDependencies;
 import de.fraunhofer.ipa.deployment.deployModel.ReqDependencyRepositories;
-import de.fraunhofer.ipa.deployment.deployModel.ReqOperatingSystem;
-import de.fraunhofer.ipa.deployment.deployModel.ReqProcessorArchitecture;
-import de.fraunhofer.ipa.deployment.deployModel.ReqRosDistro;
-import de.fraunhofer.ipa.deployment.deployModel.ResourceReqTypes;
-import de.fraunhofer.ipa.deployment.deployModel.ResourceRequirement;
 import de.fraunhofer.ipa.deployment.deployModel.ResourceRequirements;
 import de.fraunhofer.ipa.deployment.deployModel.ReuseImplementationArtifact;
-import de.fraunhofer.ipa.deployment.deployModel.RosDistro;
-import de.fraunhofer.ipa.deployment.deployModel.RosDistroList;
 import de.fraunhofer.ipa.deployment.deployModel.StackImplementationDescription;
-import de.fraunhofer.ipa.deployment.deployModel.StartCommands;
 import de.fraunhofer.ipa.deployment.deployModel.Yaml;
 import de.fraunhofer.ipa.deployment.deployModel.YamlContent;
 
@@ -131,49 +125,42 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass resourceRequirementEClass = null;
+  private EClass propertyExpressTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass reqOperatingSystemEClass = null;
+  private EClass commonPropertySingleValueEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass operatingSystemTypeListEClass = null;
+  private EClass commonPropertyMultiValueEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass reqProcessorArchitectureEClass = null;
+  private EClass multiValueListEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass processorArchitectureTypeListEClass = null;
+  private EClass multiValueListPreListEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass reqRosDistroEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass rosDistroListEClass = null;
+  private EClass multiValueListBracketEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -194,7 +181,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass dependencyEClass = null;
+  private EClass dependencyTypesEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -229,20 +216,6 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass startCommandsEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass listStartCommandsEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass stackImplementationDescriptionEClass = null;
 
   /**
@@ -258,20 +231,6 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   private EClass imageDescriptionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass imageTypeListEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass imageVersionListEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -299,6 +258,48 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass ciSettingEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass multiMonolithicImplementationNameListEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass multiMonolithicImplementationNamePreListEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass multiMonolithicImplementationNameListBracketEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ciParametersEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass groupedPropertiesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EEnum implementationModeTypeEEnum = null;
 
   /**
@@ -306,49 +307,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum resourceReqTypesEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum operatingSystemTypesEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum rosDistroEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum processorArchitectureTypesEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum imageTypesEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum imageVersionTypesEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum repositoryTypesEEnum = null;
+  private EEnum booleanEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -540,7 +499,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EReference getMonolithicImplementationDescription_Impl()
+  public EReference getMonolithicImplementationDescription_Implementation()
   {
     return (EReference)monolithicImplementationDescriptionEClass.getEStructuralFeatures().get(6);
   }
@@ -562,7 +521,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getNewImplementationArtifact_Name()
+  public EAttribute getNewImplementationArtifact_Location()
   {
     return (EAttribute)newImplementationArtifactEClass.getEStructuralFeatures().get(0);
   }
@@ -628,20 +587,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getImplementationArtifactDescription_Type()
-  {
-    return (EAttribute)implementationArtifactDescriptionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getImplementationArtifactDescription_Impl()
   {
-    return (EReference)implementationArtifactDescriptionEClass.getEStructuralFeatures().get(1);
+    return (EReference)implementationArtifactDescriptionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -727,42 +675,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getDeploymentRequirements_Name()
+  public EReference getDeploymentRequirements_Requirements()
   {
-    return (EAttribute)deploymentRequirementsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getDeploymentRequirements_OperatingSystem()
-  {
-    return (EReference)deploymentRequirementsEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getDeploymentRequirements_ProcessorArchitecture()
-  {
-    return (EReference)deploymentRequirementsEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getDeploymentRequirements_RosDistro()
-  {
-    return (EReference)deploymentRequirementsEClass.getEStructuralFeatures().get(3);
+    return (EReference)deploymentRequirementsEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -782,20 +697,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getResourceRequirements_Name()
-  {
-    return (EAttribute)resourceRequirementsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getResourceRequirements_Requirements()
   {
-    return (EReference)resourceRequirementsEClass.getEStructuralFeatures().get(1);
+    return (EReference)resourceRequirementsEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -804,9 +708,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EClass getResourceRequirement()
+  public EClass getPropertyExpressType()
   {
-    return resourceRequirementEClass;
+    return propertyExpressTypeEClass;
   }
 
   /**
@@ -815,9 +719,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getResourceRequirement_Name()
+  public EAttribute getPropertyExpressType_Name()
   {
-    return (EAttribute)resourceRequirementEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)propertyExpressTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -826,9 +730,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getResourceRequirement_Value()
+  public EClass getCommonPropertySingleValue()
   {
-    return (EAttribute)resourceRequirementEClass.getEStructuralFeatures().get(1);
+    return commonPropertySingleValueEClass;
   }
 
   /**
@@ -837,9 +741,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EClass getReqOperatingSystem()
+  public EAttribute getCommonPropertySingleValue_Value()
   {
-    return reqOperatingSystemEClass;
+    return (EAttribute)commonPropertySingleValueEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -848,9 +752,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getReqOperatingSystem_Name()
+  public EClass getCommonPropertyMultiValue()
   {
-    return (EAttribute)reqOperatingSystemEClass.getEStructuralFeatures().get(0);
+    return commonPropertyMultiValueEClass;
   }
 
   /**
@@ -859,9 +763,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EReference getReqOperatingSystem_Value()
+  public EReference getCommonPropertyMultiValue_Value()
   {
-    return (EReference)reqOperatingSystemEClass.getEStructuralFeatures().get(1);
+    return (EReference)commonPropertyMultiValueEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -870,9 +774,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EClass getOperatingSystemTypeList()
+  public EClass getMultiValueList()
   {
-    return operatingSystemTypeListEClass;
+    return multiValueListEClass;
   }
 
   /**
@@ -881,9 +785,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getOperatingSystemTypeList_Children()
+  public EAttribute getMultiValueList_Values()
   {
-    return (EAttribute)operatingSystemTypeListEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)multiValueListEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -892,9 +796,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EClass getReqProcessorArchitecture()
+  public EClass getMultiValueListPreList()
   {
-    return reqProcessorArchitectureEClass;
+    return multiValueListPreListEClass;
   }
 
   /**
@@ -903,97 +807,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getReqProcessorArchitecture_Name()
+  public EClass getMultiValueListBracket()
   {
-    return (EAttribute)reqProcessorArchitectureEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getReqProcessorArchitecture_Value()
-  {
-    return (EReference)reqProcessorArchitectureEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getProcessorArchitectureTypeList()
-  {
-    return processorArchitectureTypeListEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getProcessorArchitectureTypeList_Children()
-  {
-    return (EAttribute)processorArchitectureTypeListEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getReqRosDistro()
-  {
-    return reqRosDistroEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getReqRosDistro_Name()
-  {
-    return (EAttribute)reqRosDistroEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getReqRosDistro_Value()
-  {
-    return (EReference)reqRosDistroEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getRosDistroList()
-  {
-    return rosDistroListEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getRosDistroList_Children()
-  {
-    return (EAttribute)rosDistroListEClass.getEStructuralFeatures().get(0);
+    return multiValueListBracketEClass;
   }
 
   /**
@@ -1013,9 +829,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getBuildRequirements_Name()
+  public EReference getBuildRequirements_ReqRosDistros()
   {
-    return (EAttribute)buildRequirementsEClass.getEStructuralFeatures().get(0);
+    return (EReference)buildRequirementsEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1024,7 +840,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EReference getBuildRequirements_BuildDependencies()
+  public EReference getBuildRequirements_ReqTestRosDistros()
   {
     return (EReference)buildRequirementsEClass.getEStructuralFeatures().get(1);
   }
@@ -1035,9 +851,31 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EReference getBuildRequirements_DependencyRepositories()
+  public EReference getBuildRequirements_ReqBuildDependencies()
   {
     return (EReference)buildRequirementsEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBuildRequirements_ReqDependencyRepositories()
+  {
+    return (EReference)buildRequirementsEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBuildRequirements_ReqCMakeArgs()
+  {
+    return (EReference)buildRequirementsEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1057,20 +895,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getReqBuildDependencies_Name()
-  {
-    return (EAttribute)reqBuildDependenciesEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getReqBuildDependencies_Dependencies()
   {
-    return (EReference)reqBuildDependenciesEClass.getEStructuralFeatures().get(1);
+    return (EReference)reqBuildDependenciesEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1079,9 +906,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EClass getDependency()
+  public EClass getDependencyTypes()
   {
-    return dependencyEClass;
+    return dependencyTypesEClass;
   }
 
   /**
@@ -1101,20 +928,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getLocalPackage_ImportedNamespace()
-  {
-    return (EAttribute)localPackageEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getLocalPackage_Name()
   {
-    return (EReference)localPackageEClass.getEStructuralFeatures().get(1);
+    return (EReference)localPackageEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1134,7 +950,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getGitPackage_Path()
+  public EAttribute getGitPackage_Name()
   {
     return (EAttribute)gitPackageEClass.getEStructuralFeatures().get(0);
   }
@@ -1145,7 +961,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getGitPackage_Name()
+  public EAttribute getGitPackage_Path()
   {
     return (EAttribute)gitPackageEClass.getEStructuralFeatures().get(1);
   }
@@ -1156,7 +972,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getGitPackage_Branch()
+  public EAttribute getGitPackage_Visibility()
   {
     return (EAttribute)gitPackageEClass.getEStructuralFeatures().get(2);
   }
@@ -1178,20 +994,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EAttribute getReqDependencyRepositories_Name()
-  {
-    return (EAttribute)reqDependencyRepositoriesEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getReqDependencyRepositories_Children()
   {
-    return (EReference)reqDependencyRepositoriesEClass.getEStructuralFeatures().get(1);
+    return (EReference)reqDependencyRepositoriesEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1247,61 +1052,6 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
   public EAttribute getAptRepositoryInstance_UpdateRosDep()
   {
     return (EAttribute)aptRepositoryInstanceEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getStartCommands()
-  {
-    return startCommandsEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getStartCommands_Name()
-  {
-    return (EAttribute)startCommandsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getStartCommands_StartCommands()
-  {
-    return (EReference)startCommandsEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getListStartCommands()
-  {
-    return listStartCommandsEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getListStartCommands_Children()
-  {
-    return (EAttribute)listStartCommandsEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1464,53 +1214,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EReference getImageDescription_ImageVersions()
+  public EReference getImageDescription_ImageTags()
   {
     return (EReference)imageDescriptionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getImageTypeList()
-  {
-    return imageTypeListEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getImageTypeList_Children()
-  {
-    return (EAttribute)imageTypeListEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getImageVersionList()
-  {
-    return imageVersionListEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getImageVersionList_Children()
-  {
-    return (EAttribute)imageVersionListEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1607,6 +1313,182 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
+  public EClass getCISetting()
+  {
+    return ciSettingEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCISetting_Type()
+  {
+    return (EAttribute)ciSettingEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCISetting_CiTypes()
+  {
+    return (EReference)ciSettingEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCISetting_AppliedRepos()
+  {
+    return (EReference)ciSettingEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCISetting_ReqBranchPrefix()
+  {
+    return (EAttribute)ciSettingEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCISetting_CiParameters()
+  {
+    return (EReference)ciSettingEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMultiMonolithicImplementationNameList()
+  {
+    return multiMonolithicImplementationNameListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMultiMonolithicImplementationNameList_Values()
+  {
+    return (EReference)multiMonolithicImplementationNameListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMultiMonolithicImplementationNamePreList()
+  {
+    return multiMonolithicImplementationNamePreListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMultiMonolithicImplementationNameListBracket()
+  {
+    return multiMonolithicImplementationNameListBracketEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCIParameters()
+  {
+    return ciParametersEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCIParameters_Type()
+  {
+    return (EAttribute)ciParametersEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCIParameters_Parameters()
+  {
+    return (EReference)ciParametersEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGroupedProperties()
+  {
+    return groupedPropertiesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGroupedProperties_Type()
+  {
+    return (EAttribute)groupedPropertiesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGroupedProperties_Properties()
+  {
+    return (EReference)groupedPropertiesEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EEnum getImplementationModeType()
   {
     return implementationModeTypeEEnum;
@@ -1618,75 +1500,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EEnum getResourceReqTypes()
+  public EEnum getBOOLEAN()
   {
-    return resourceReqTypesEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EEnum getOperatingSystemTypes()
-  {
-    return operatingSystemTypesEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EEnum getRosDistro()
-  {
-    return rosDistroEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EEnum getProcessorArchitectureTypes()
-  {
-    return processorArchitectureTypesEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EEnum getImageTypes()
-  {
-    return imageTypesEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EEnum getImageVersionTypes()
-  {
-    return imageVersionTypesEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EEnum getRepositoryTypes()
-  {
-    return repositoryTypesEEnum;
+    return booleanEEnum;
   }
 
   /**
@@ -1733,17 +1549,16 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
     createEAttribute(monolithicImplementationDescriptionEClass, MONOLITHIC_IMPLEMENTATION_DESCRIPTION__DESCRIPTION);
     createEAttribute(monolithicImplementationDescriptionEClass, MONOLITHIC_IMPLEMENTATION_DESCRIPTION__MODE);
     createEAttribute(monolithicImplementationDescriptionEClass, MONOLITHIC_IMPLEMENTATION_DESCRIPTION__BRANCH);
-    createEReference(monolithicImplementationDescriptionEClass, MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPL);
+    createEReference(monolithicImplementationDescriptionEClass, MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPLEMENTATION);
 
     newImplementationArtifactEClass = createEClass(NEW_IMPLEMENTATION_ARTIFACT);
-    createEAttribute(newImplementationArtifactEClass, NEW_IMPLEMENTATION_ARTIFACT__NAME);
+    createEAttribute(newImplementationArtifactEClass, NEW_IMPLEMENTATION_ARTIFACT__LOCATION);
     createEReference(newImplementationArtifactEClass, NEW_IMPLEMENTATION_ARTIFACT__DEPLOY_REQUIREMENTS);
     createEReference(newImplementationArtifactEClass, NEW_IMPLEMENTATION_ARTIFACT__RESOURCE_REQUIREMENTS);
     createEReference(newImplementationArtifactEClass, NEW_IMPLEMENTATION_ARTIFACT__BUILD_REQUIREMENTS);
     createEReference(newImplementationArtifactEClass, NEW_IMPLEMENTATION_ARTIFACT__START_COMMANDS);
 
     implementationArtifactDescriptionEClass = createEClass(IMPLEMENTATION_ARTIFACT_DESCRIPTION);
-    createEAttribute(implementationArtifactDescriptionEClass, IMPLEMENTATION_ARTIFACT_DESCRIPTION__TYPE);
     createEReference(implementationArtifactDescriptionEClass, IMPLEMENTATION_ARTIFACT_DESCRIPTION__IMPL);
 
     reuseImplementationArtifactEClass = createEClass(REUSE_IMPLEMENTATION_ARTIFACT);
@@ -1755,62 +1570,48 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
     createEReference(implementationArtifactAbstractEClass, IMPLEMENTATION_ARTIFACT_ABSTRACT__START_COMMANDS);
 
     deploymentRequirementsEClass = createEClass(DEPLOYMENT_REQUIREMENTS);
-    createEAttribute(deploymentRequirementsEClass, DEPLOYMENT_REQUIREMENTS__NAME);
-    createEReference(deploymentRequirementsEClass, DEPLOYMENT_REQUIREMENTS__OPERATING_SYSTEM);
-    createEReference(deploymentRequirementsEClass, DEPLOYMENT_REQUIREMENTS__PROCESSOR_ARCHITECTURE);
-    createEReference(deploymentRequirementsEClass, DEPLOYMENT_REQUIREMENTS__ROS_DISTRO);
+    createEReference(deploymentRequirementsEClass, DEPLOYMENT_REQUIREMENTS__REQUIREMENTS);
 
     resourceRequirementsEClass = createEClass(RESOURCE_REQUIREMENTS);
-    createEAttribute(resourceRequirementsEClass, RESOURCE_REQUIREMENTS__NAME);
     createEReference(resourceRequirementsEClass, RESOURCE_REQUIREMENTS__REQUIREMENTS);
 
-    resourceRequirementEClass = createEClass(RESOURCE_REQUIREMENT);
-    createEAttribute(resourceRequirementEClass, RESOURCE_REQUIREMENT__NAME);
-    createEAttribute(resourceRequirementEClass, RESOURCE_REQUIREMENT__VALUE);
+    propertyExpressTypeEClass = createEClass(PROPERTY_EXPRESS_TYPE);
+    createEAttribute(propertyExpressTypeEClass, PROPERTY_EXPRESS_TYPE__NAME);
 
-    reqOperatingSystemEClass = createEClass(REQ_OPERATING_SYSTEM);
-    createEAttribute(reqOperatingSystemEClass, REQ_OPERATING_SYSTEM__NAME);
-    createEReference(reqOperatingSystemEClass, REQ_OPERATING_SYSTEM__VALUE);
+    commonPropertySingleValueEClass = createEClass(COMMON_PROPERTY_SINGLE_VALUE);
+    createEAttribute(commonPropertySingleValueEClass, COMMON_PROPERTY_SINGLE_VALUE__VALUE);
 
-    operatingSystemTypeListEClass = createEClass(OPERATING_SYSTEM_TYPE_LIST);
-    createEAttribute(operatingSystemTypeListEClass, OPERATING_SYSTEM_TYPE_LIST__CHILDREN);
+    commonPropertyMultiValueEClass = createEClass(COMMON_PROPERTY_MULTI_VALUE);
+    createEReference(commonPropertyMultiValueEClass, COMMON_PROPERTY_MULTI_VALUE__VALUE);
 
-    reqProcessorArchitectureEClass = createEClass(REQ_PROCESSOR_ARCHITECTURE);
-    createEAttribute(reqProcessorArchitectureEClass, REQ_PROCESSOR_ARCHITECTURE__NAME);
-    createEReference(reqProcessorArchitectureEClass, REQ_PROCESSOR_ARCHITECTURE__VALUE);
+    multiValueListEClass = createEClass(MULTI_VALUE_LIST);
+    createEAttribute(multiValueListEClass, MULTI_VALUE_LIST__VALUES);
 
-    processorArchitectureTypeListEClass = createEClass(PROCESSOR_ARCHITECTURE_TYPE_LIST);
-    createEAttribute(processorArchitectureTypeListEClass, PROCESSOR_ARCHITECTURE_TYPE_LIST__CHILDREN);
+    multiValueListPreListEClass = createEClass(MULTI_VALUE_LIST_PRE_LIST);
 
-    reqRosDistroEClass = createEClass(REQ_ROS_DISTRO);
-    createEAttribute(reqRosDistroEClass, REQ_ROS_DISTRO__NAME);
-    createEReference(reqRosDistroEClass, REQ_ROS_DISTRO__VALUE);
-
-    rosDistroListEClass = createEClass(ROS_DISTRO_LIST);
-    createEAttribute(rosDistroListEClass, ROS_DISTRO_LIST__CHILDREN);
+    multiValueListBracketEClass = createEClass(MULTI_VALUE_LIST_BRACKET);
 
     buildRequirementsEClass = createEClass(BUILD_REQUIREMENTS);
-    createEAttribute(buildRequirementsEClass, BUILD_REQUIREMENTS__NAME);
-    createEReference(buildRequirementsEClass, BUILD_REQUIREMENTS__BUILD_DEPENDENCIES);
-    createEReference(buildRequirementsEClass, BUILD_REQUIREMENTS__DEPENDENCY_REPOSITORIES);
+    createEReference(buildRequirementsEClass, BUILD_REQUIREMENTS__REQ_ROS_DISTROS);
+    createEReference(buildRequirementsEClass, BUILD_REQUIREMENTS__REQ_TEST_ROS_DISTROS);
+    createEReference(buildRequirementsEClass, BUILD_REQUIREMENTS__REQ_BUILD_DEPENDENCIES);
+    createEReference(buildRequirementsEClass, BUILD_REQUIREMENTS__REQ_DEPENDENCY_REPOSITORIES);
+    createEReference(buildRequirementsEClass, BUILD_REQUIREMENTS__REQ_CMAKE_ARGS);
 
     reqBuildDependenciesEClass = createEClass(REQ_BUILD_DEPENDENCIES);
-    createEAttribute(reqBuildDependenciesEClass, REQ_BUILD_DEPENDENCIES__NAME);
     createEReference(reqBuildDependenciesEClass, REQ_BUILD_DEPENDENCIES__DEPENDENCIES);
 
-    dependencyEClass = createEClass(DEPENDENCY);
+    dependencyTypesEClass = createEClass(DEPENDENCY_TYPES);
 
     localPackageEClass = createEClass(LOCAL_PACKAGE);
-    createEAttribute(localPackageEClass, LOCAL_PACKAGE__IMPORTED_NAMESPACE);
     createEReference(localPackageEClass, LOCAL_PACKAGE__NAME);
 
     gitPackageEClass = createEClass(GIT_PACKAGE);
-    createEAttribute(gitPackageEClass, GIT_PACKAGE__PATH);
     createEAttribute(gitPackageEClass, GIT_PACKAGE__NAME);
-    createEAttribute(gitPackageEClass, GIT_PACKAGE__BRANCH);
+    createEAttribute(gitPackageEClass, GIT_PACKAGE__PATH);
+    createEAttribute(gitPackageEClass, GIT_PACKAGE__VISIBILITY);
 
     reqDependencyRepositoriesEClass = createEClass(REQ_DEPENDENCY_REPOSITORIES);
-    createEAttribute(reqDependencyRepositoriesEClass, REQ_DEPENDENCY_REPOSITORIES__NAME);
     createEReference(reqDependencyRepositoriesEClass, REQ_DEPENDENCY_REPOSITORIES__CHILDREN);
 
     aptRepositoryInstanceEClass = createEClass(APT_REPOSITORY_INSTANCE);
@@ -1818,13 +1619,6 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
     createEAttribute(aptRepositoryInstanceEClass, APT_REPOSITORY_INSTANCE__KEY_LINK);
     createEAttribute(aptRepositoryInstanceEClass, APT_REPOSITORY_INSTANCE__REPOSITORY_PATH);
     createEAttribute(aptRepositoryInstanceEClass, APT_REPOSITORY_INSTANCE__UPDATE_ROS_DEP);
-
-    startCommandsEClass = createEClass(START_COMMANDS);
-    createEAttribute(startCommandsEClass, START_COMMANDS__NAME);
-    createEReference(startCommandsEClass, START_COMMANDS__START_COMMANDS);
-
-    listStartCommandsEClass = createEClass(LIST_START_COMMANDS);
-    createEAttribute(listStartCommandsEClass, LIST_START_COMMANDS__CHILDREN);
 
     stackImplementationDescriptionEClass = createEClass(STACK_IMPLEMENTATION_DESCRIPTION);
     createEAttribute(stackImplementationDescriptionEClass, STACK_IMPLEMENTATION_DESCRIPTION__TYPE);
@@ -1842,13 +1636,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
     imageDescriptionEClass = createEClass(IMAGE_DESCRIPTION);
     createEReference(imageDescriptionEClass, IMAGE_DESCRIPTION__TYPES);
     createEReference(imageDescriptionEClass, IMAGE_DESCRIPTION__NAME);
-    createEReference(imageDescriptionEClass, IMAGE_DESCRIPTION__IMAGE_VERSIONS);
-
-    imageTypeListEClass = createEClass(IMAGE_TYPE_LIST);
-    createEAttribute(imageTypeListEClass, IMAGE_TYPE_LIST__CHILDREN);
-
-    imageVersionListEClass = createEClass(IMAGE_VERSION_LIST);
-    createEAttribute(imageVersionListEClass, IMAGE_VERSION_LIST__CHILDREN);
+    createEReference(imageDescriptionEClass, IMAGE_DESCRIPTION__IMAGE_TAGS);
 
     repositoryDescriptionEClass = createEClass(REPOSITORY_DESCRIPTION);
     createEReference(repositoryDescriptionEClass, REPOSITORY_DESCRIPTION__SPEC);
@@ -1861,15 +1649,31 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
     createEAttribute(repositoryEClass, REPOSITORY__TYPE);
     createEAttribute(repositoryEClass, REPOSITORY__PATH);
 
+    ciSettingEClass = createEClass(CI_SETTING);
+    createEAttribute(ciSettingEClass, CI_SETTING__TYPE);
+    createEReference(ciSettingEClass, CI_SETTING__CI_TYPES);
+    createEReference(ciSettingEClass, CI_SETTING__APPLIED_REPOS);
+    createEAttribute(ciSettingEClass, CI_SETTING__REQ_BRANCH_PREFIX);
+    createEReference(ciSettingEClass, CI_SETTING__CI_PARAMETERS);
+
+    multiMonolithicImplementationNameListEClass = createEClass(MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST);
+    createEReference(multiMonolithicImplementationNameListEClass, MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST__VALUES);
+
+    multiMonolithicImplementationNamePreListEClass = createEClass(MULTI_MONOLITHIC_IMPLEMENTATION_NAME_PRE_LIST);
+
+    multiMonolithicImplementationNameListBracketEClass = createEClass(MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST_BRACKET);
+
+    ciParametersEClass = createEClass(CI_PARAMETERS);
+    createEAttribute(ciParametersEClass, CI_PARAMETERS__TYPE);
+    createEReference(ciParametersEClass, CI_PARAMETERS__PARAMETERS);
+
+    groupedPropertiesEClass = createEClass(GROUPED_PROPERTIES);
+    createEAttribute(groupedPropertiesEClass, GROUPED_PROPERTIES__TYPE);
+    createEReference(groupedPropertiesEClass, GROUPED_PROPERTIES__PROPERTIES);
+
     // Create enums
     implementationModeTypeEEnum = createEEnum(IMPLEMENTATION_MODE_TYPE);
-    resourceReqTypesEEnum = createEEnum(RESOURCE_REQ_TYPES);
-    operatingSystemTypesEEnum = createEEnum(OPERATING_SYSTEM_TYPES);
-    rosDistroEEnum = createEEnum(ROS_DISTRO);
-    processorArchitectureTypesEEnum = createEEnum(PROCESSOR_ARCHITECTURE_TYPES);
-    imageTypesEEnum = createEEnum(IMAGE_TYPES);
-    imageVersionTypesEEnum = createEEnum(IMAGE_VERSION_TYPES);
-    repositoryTypesEEnum = createEEnum(REPOSITORY_TYPES);
+    booleanEEnum = createEEnum(BOOLEAN);
   }
 
   /**
@@ -1901,8 +1705,14 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    localPackageEClass.getESuperTypes().add(this.getDependency());
-    gitPackageEClass.getESuperTypes().add(this.getDependency());
+    commonPropertySingleValueEClass.getESuperTypes().add(this.getPropertyExpressType());
+    commonPropertyMultiValueEClass.getESuperTypes().add(this.getPropertyExpressType());
+    multiValueListPreListEClass.getESuperTypes().add(this.getMultiValueList());
+    multiValueListBracketEClass.getESuperTypes().add(this.getMultiValueList());
+    localPackageEClass.getESuperTypes().add(this.getDependencyTypes());
+    gitPackageEClass.getESuperTypes().add(this.getDependencyTypes());
+    multiMonolithicImplementationNamePreListEClass.getESuperTypes().add(this.getMultiMonolithicImplementationNameList());
+    multiMonolithicImplementationNameListBracketEClass.getESuperTypes().add(this.getMultiMonolithicImplementationNameList());
 
     // Initialize classes and features; add operations and parameters
     initEClass(yamlEClass, Yaml.class, "Yaml", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1918,17 +1728,16 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
     initEAttribute(getMonolithicImplementationDescription_Description(), ecorePackage.getEString(), "description", null, 0, 1, MonolithicImplementationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMonolithicImplementationDescription_Mode(), this.getImplementationModeType(), "mode", null, 0, 1, MonolithicImplementationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMonolithicImplementationDescription_Branch(), ecorePackage.getEString(), "branch", null, 0, 1, MonolithicImplementationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMonolithicImplementationDescription_Impl(), this.getImplementationArtifactDescription(), null, "impl", null, 0, 1, MonolithicImplementationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMonolithicImplementationDescription_Implementation(), this.getNewImplementationArtifact(), null, "implementation", null, 0, 1, MonolithicImplementationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(newImplementationArtifactEClass, NewImplementationArtifact.class, "NewImplementationArtifact", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getNewImplementationArtifact_Name(), ecorePackage.getEString(), "name", null, 0, 1, NewImplementationArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getNewImplementationArtifact_Location(), ecorePackage.getEString(), "location", null, 0, 1, NewImplementationArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNewImplementationArtifact_DeployRequirements(), this.getDeploymentRequirements(), null, "deployRequirements", null, 0, 1, NewImplementationArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNewImplementationArtifact_ResourceRequirements(), this.getResourceRequirements(), null, "resourceRequirements", null, 0, 1, NewImplementationArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNewImplementationArtifact_BuildRequirements(), this.getBuildRequirements(), null, "buildRequirements", null, 0, 1, NewImplementationArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getNewImplementationArtifact_StartCommands(), this.getStartCommands(), null, "startCommands", null, 0, 1, NewImplementationArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNewImplementationArtifact_StartCommands(), this.getMultiValueList(), null, "startCommands", null, 0, 1, NewImplementationArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(implementationArtifactDescriptionEClass, ImplementationArtifactDescription.class, "ImplementationArtifactDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImplementationArtifactDescription_Type(), ecorePackage.getEString(), "type", null, 0, 1, ImplementationArtifactDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getImplementationArtifactDescription_Impl(), ecorePackage.getEObject(), null, "impl", null, 0, 1, ImplementationArtifactDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(reuseImplementationArtifactEClass, ReuseImplementationArtifact.class, "ReuseImplementationArtifact", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1937,65 +1746,51 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
     initEClass(implementationArtifactAbstractEClass, ImplementationArtifactAbstract.class, "ImplementationArtifactAbstract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImplementationArtifactAbstract_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, ImplementationArtifactAbstract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getImplementationArtifactAbstract_Name(), this.getMonolithicImplementationDescription(), null, "name", null, 0, 1, ImplementationArtifactAbstract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getImplementationArtifactAbstract_StartCommands(), this.getStartCommands(), null, "startCommands", null, 0, 1, ImplementationArtifactAbstract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getImplementationArtifactAbstract_StartCommands(), this.getMultiValueList(), null, "startCommands", null, 0, 1, ImplementationArtifactAbstract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(deploymentRequirementsEClass, DeploymentRequirements.class, "DeploymentRequirements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDeploymentRequirements_Name(), ecorePackage.getEString(), "name", null, 0, 1, DeploymentRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeploymentRequirements_OperatingSystem(), this.getReqOperatingSystem(), null, "operatingSystem", null, 0, 1, DeploymentRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeploymentRequirements_ProcessorArchitecture(), this.getReqProcessorArchitecture(), null, "processorArchitecture", null, 0, 1, DeploymentRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeploymentRequirements_RosDistro(), this.getReqRosDistro(), null, "rosDistro", null, 0, 1, DeploymentRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeploymentRequirements_Requirements(), this.getPropertyExpressType(), null, "requirements", null, 0, -1, DeploymentRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(resourceRequirementsEClass, ResourceRequirements.class, "ResourceRequirements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getResourceRequirements_Name(), ecorePackage.getEString(), "name", null, 0, 1, ResourceRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getResourceRequirements_Requirements(), this.getResourceRequirement(), null, "requirements", null, 0, -1, ResourceRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getResourceRequirements_Requirements(), this.getPropertyExpressType(), null, "requirements", null, 0, -1, ResourceRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(resourceRequirementEClass, ResourceRequirement.class, "ResourceRequirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getResourceRequirement_Name(), this.getResourceReqTypes(), "name", null, 0, 1, ResourceRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getResourceRequirement_Value(), ecorePackage.getEString(), "value", null, 0, 1, ResourceRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(propertyExpressTypeEClass, PropertyExpressType.class, "PropertyExpressType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPropertyExpressType_Name(), ecorePackage.getEString(), "name", null, 0, 1, PropertyExpressType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(reqOperatingSystemEClass, ReqOperatingSystem.class, "ReqOperatingSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getReqOperatingSystem_Name(), ecorePackage.getEString(), "name", null, 0, 1, ReqOperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getReqOperatingSystem_Value(), this.getOperatingSystemTypeList(), null, "value", null, 0, 1, ReqOperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(commonPropertySingleValueEClass, CommonPropertySingleValue.class, "CommonPropertySingleValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCommonPropertySingleValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, CommonPropertySingleValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(operatingSystemTypeListEClass, OperatingSystemTypeList.class, "OperatingSystemTypeList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getOperatingSystemTypeList_Children(), this.getOperatingSystemTypes(), "children", null, 0, -1, OperatingSystemTypeList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(commonPropertyMultiValueEClass, CommonPropertyMultiValue.class, "CommonPropertyMultiValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCommonPropertyMultiValue_Value(), this.getMultiValueList(), null, "value", null, 0, 1, CommonPropertyMultiValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(reqProcessorArchitectureEClass, ReqProcessorArchitecture.class, "ReqProcessorArchitecture", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getReqProcessorArchitecture_Name(), ecorePackage.getEString(), "name", null, 0, 1, ReqProcessorArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getReqProcessorArchitecture_Value(), this.getProcessorArchitectureTypeList(), null, "value", null, 0, 1, ReqProcessorArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(multiValueListEClass, MultiValueList.class, "MultiValueList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMultiValueList_Values(), ecorePackage.getEString(), "values", null, 0, -1, MultiValueList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(processorArchitectureTypeListEClass, ProcessorArchitectureTypeList.class, "ProcessorArchitectureTypeList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProcessorArchitectureTypeList_Children(), this.getProcessorArchitectureTypes(), "children", null, 0, -1, ProcessorArchitectureTypeList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(multiValueListPreListEClass, MultiValueListPreList.class, "MultiValueListPreList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(reqRosDistroEClass, ReqRosDistro.class, "ReqRosDistro", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getReqRosDistro_Name(), ecorePackage.getEString(), "name", null, 0, 1, ReqRosDistro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getReqRosDistro_Value(), this.getRosDistroList(), null, "value", null, 0, 1, ReqRosDistro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(rosDistroListEClass, RosDistroList.class, "RosDistroList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRosDistroList_Children(), this.getRosDistro(), "children", null, 0, -1, RosDistroList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(multiValueListBracketEClass, MultiValueListBracket.class, "MultiValueListBracket", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(buildRequirementsEClass, BuildRequirements.class, "BuildRequirements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBuildRequirements_Name(), ecorePackage.getEString(), "name", null, 0, 1, BuildRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBuildRequirements_BuildDependencies(), this.getReqBuildDependencies(), null, "buildDependencies", null, 0, 1, BuildRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBuildRequirements_DependencyRepositories(), this.getReqDependencyRepositories(), null, "dependencyRepositories", null, 0, 1, BuildRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBuildRequirements_ReqRosDistros(), this.getMultiValueList(), null, "ReqRosDistros", null, 0, 1, BuildRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBuildRequirements_ReqTestRosDistros(), this.getMultiValueList(), null, "ReqTestRosDistros", null, 0, 1, BuildRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBuildRequirements_ReqBuildDependencies(), this.getReqBuildDependencies(), null, "ReqBuildDependencies", null, 0, 1, BuildRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBuildRequirements_ReqDependencyRepositories(), this.getReqDependencyRepositories(), null, "ReqDependencyRepositories", null, 0, 1, BuildRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBuildRequirements_ReqCMakeArgs(), this.getMultiValueList(), null, "ReqCMakeArgs", null, 0, 1, BuildRequirements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(reqBuildDependenciesEClass, ReqBuildDependencies.class, "ReqBuildDependencies", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getReqBuildDependencies_Name(), ecorePackage.getEString(), "name", null, 0, 1, ReqBuildDependencies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getReqBuildDependencies_Dependencies(), this.getDependency(), null, "dependencies", null, 0, -1, ReqBuildDependencies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getReqBuildDependencies_Dependencies(), this.getDependencyTypes(), null, "dependencies", null, 0, -1, ReqBuildDependencies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(dependencyEClass, Dependency.class, "Dependency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(dependencyTypesEClass, DependencyTypes.class, "DependencyTypes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(localPackageEClass, LocalPackage.class, "LocalPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLocalPackage_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, LocalPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLocalPackage_Name(), this.getMonolithicImplementationDescription(), null, "name", null, 0, 1, LocalPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gitPackageEClass, GitPackage.class, "GitPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGitPackage_Path(), ecorePackage.getEString(), "path", null, 0, 1, GitPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGitPackage_Name(), ecorePackage.getEString(), "name", null, 0, 1, GitPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGitPackage_Branch(), ecorePackage.getEString(), "branch", null, 0, 1, GitPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGitPackage_Path(), ecorePackage.getEString(), "path", null, 0, 1, GitPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGitPackage_Visibility(), ecorePackage.getEString(), "visibility", null, 0, 1, GitPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(reqDependencyRepositoriesEClass, ReqDependencyRepositories.class, "ReqDependencyRepositories", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getReqDependencyRepositories_Name(), ecorePackage.getEString(), "name", null, 0, 1, ReqDependencyRepositories.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getReqDependencyRepositories_Children(), this.getAptRepositoryInstance(), null, "children", null, 0, -1, ReqDependencyRepositories.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aptRepositoryInstanceEClass, AptRepositoryInstance.class, "AptRepositoryInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2003,13 +1798,6 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
     initEAttribute(getAptRepositoryInstance_KeyLink(), ecorePackage.getEString(), "keyLink", null, 0, 1, AptRepositoryInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAptRepositoryInstance_RepositoryPath(), ecorePackage.getEString(), "repositoryPath", null, 0, 1, AptRepositoryInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAptRepositoryInstance_UpdateRosDep(), ecorePackage.getEString(), "updateRosDep", null, 0, 1, AptRepositoryInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(startCommandsEClass, StartCommands.class, "StartCommands", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStartCommands_Name(), ecorePackage.getEString(), "name", null, 0, 1, StartCommands.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStartCommands_StartCommands(), this.getListStartCommands(), null, "startCommands", null, 0, 1, StartCommands.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(listStartCommandsEClass, ListStartCommands.class, "ListStartCommands", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getListStartCommands_Children(), ecorePackage.getEString(), "children", null, 0, -1, ListStartCommands.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stackImplementationDescriptionEClass, StackImplementationDescription.class, "StackImplementationDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStackImplementationDescription_Type(), ecorePackage.getEString(), "type", null, 0, 1, StackImplementationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2025,15 +1813,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
     initEReference(getPackageDescription_RepositoryDescription(), this.getRepositoryDescription(), null, "repositoryDescription", null, 0, 1, PackageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(imageDescriptionEClass, ImageDescription.class, "ImageDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getImageDescription_Types(), this.getImageTypeList(), null, "types", null, 0, -1, ImageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getImageDescription_Types(), this.getMultiValueList(), null, "types", null, 0, 1, ImageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getImageDescription_Name(), this.getMonolithicImplementationDescription(), null, "name", null, 0, 1, ImageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getImageDescription_ImageVersions(), this.getImageVersionList(), null, "imageVersions", null, 0, 1, ImageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(imageTypeListEClass, ImageTypeList.class, "ImageTypeList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImageTypeList_Children(), this.getImageTypes(), "children", null, 0, -1, ImageTypeList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(imageVersionListEClass, ImageVersionList.class, "ImageVersionList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImageVersionList_Children(), this.getImageVersionTypes(), "children", null, 0, -1, ImageVersionList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getImageDescription_ImageTags(), this.getMultiValueList(), null, "imageTags", null, 0, 1, ImageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(repositoryDescriptionEClass, RepositoryDescription.class, "RepositoryDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getRepositoryDescription_Spec(), this.getRepositorySpec(), null, "spec", null, 0, -1, RepositoryDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2043,48 +1825,39 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
     initEReference(getRepositorySpec_Repository(), this.getRepository(), null, "repository", null, 0, 1, RepositorySpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(repositoryEClass, Repository.class, "Repository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRepository_Type(), this.getRepositoryTypes(), "type", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRepository_Type(), ecorePackage.getEString(), "type", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRepository_Path(), ecorePackage.getEString(), "path", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(ciSettingEClass, CISetting.class, "CISetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCISetting_Type(), ecorePackage.getEString(), "type", null, 0, 1, CISetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCISetting_CiTypes(), this.getMultiValueList(), null, "ciTypes", null, 0, 1, CISetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCISetting_AppliedRepos(), this.getMultiMonolithicImplementationNameList(), null, "appliedRepos", null, 0, 1, CISetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCISetting_ReqBranchPrefix(), ecorePackage.getEString(), "reqBranchPrefix", null, 0, 1, CISetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCISetting_CiParameters(), this.getCIParameters(), null, "ciParameters", null, 0, -1, CISetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(multiMonolithicImplementationNameListEClass, MultiMonolithicImplementationNameList.class, "MultiMonolithicImplementationNameList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMultiMonolithicImplementationNameList_Values(), this.getMonolithicImplementationDescription(), null, "values", null, 0, -1, MultiMonolithicImplementationNameList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(multiMonolithicImplementationNamePreListEClass, MultiMonolithicImplementationNamePreList.class, "MultiMonolithicImplementationNamePreList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(multiMonolithicImplementationNameListBracketEClass, MultiMonolithicImplementationNameListBracket.class, "MultiMonolithicImplementationNameListBracket", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(ciParametersEClass, CIParameters.class, "CIParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCIParameters_Type(), ecorePackage.getEString(), "type", null, 0, 1, CIParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCIParameters_Parameters(), this.getGroupedProperties(), null, "parameters", null, 0, -1, CIParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(groupedPropertiesEClass, GroupedProperties.class, "GroupedProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGroupedProperties_Type(), ecorePackage.getEString(), "type", null, 0, 1, GroupedProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGroupedProperties_Properties(), this.getPropertyExpressType(), null, "properties", null, 0, -1, GroupedProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(implementationModeTypeEEnum, ImplementationModeType.class, "ImplementationModeType");
     addEEnumLiteral(implementationModeTypeEEnum, ImplementationModeType.DEBUG_MODE);
     addEEnumLiteral(implementationModeTypeEEnum, ImplementationModeType.RELEASE_MODE);
 
-    initEEnum(resourceReqTypesEEnum, ResourceReqTypes.class, "ResourceReqTypes");
-    addEEnumLiteral(resourceReqTypesEEnum, ResourceReqTypes.CPU);
-    addEEnumLiteral(resourceReqTypesEEnum, ResourceReqTypes.MEMORY);
-    addEEnumLiteral(resourceReqTypesEEnum, ResourceReqTypes.MEMORY_SAWP);
-    addEEnumLiteral(resourceReqTypesEEnum, ResourceReqTypes.OOM_KILL_DISABLE);
-
-    initEEnum(operatingSystemTypesEEnum, OperatingSystemTypes.class, "OperatingSystemTypes");
-    addEEnumLiteral(operatingSystemTypesEEnum, OperatingSystemTypes.UBUNTU18);
-    addEEnumLiteral(operatingSystemTypesEEnum, OperatingSystemTypes.UBUNTU20);
-
-    initEEnum(rosDistroEEnum, RosDistro.class, "RosDistro");
-    addEEnumLiteral(rosDistroEEnum, RosDistro.MELODIC);
-    addEEnumLiteral(rosDistroEEnum, RosDistro.NOETIC);
-    addEEnumLiteral(rosDistroEEnum, RosDistro.FOXY);
-    addEEnumLiteral(rosDistroEEnum, RosDistro.GALACTIC);
-
-    initEEnum(processorArchitectureTypesEEnum, ProcessorArchitectureTypes.class, "ProcessorArchitectureTypes");
-    addEEnumLiteral(processorArchitectureTypesEEnum, ProcessorArchitectureTypes.ARM64);
-    addEEnumLiteral(processorArchitectureTypesEEnum, ProcessorArchitectureTypes.X86);
-
-    initEEnum(imageTypesEEnum, ImageTypes.class, "ImageTypes");
-    addEEnumLiteral(imageTypesEEnum, ImageTypes.DOCKER_IMAGE);
-    addEEnumLiteral(imageTypesEEnum, ImageTypes.SNAP_IMAGE);
-
-    initEEnum(imageVersionTypesEEnum, ImageVersionTypes.class, "ImageVersionTypes");
-    addEEnumLiteral(imageVersionTypesEEnum, ImageVersionTypes.BRANCH);
-    addEEnumLiteral(imageVersionTypesEEnum, ImageVersionTypes.COMMIT_HASH);
-    addEEnumLiteral(imageVersionTypesEEnum, ImageVersionTypes.LATEST);
-    addEEnumLiteral(imageVersionTypesEEnum, ImageVersionTypes.RELEASE);
-
-    initEEnum(repositoryTypesEEnum, RepositoryTypes.class, "RepositoryTypes");
-    addEEnumLiteral(repositoryTypesEEnum, RepositoryTypes.LOCAL);
-    addEEnumLiteral(repositoryTypesEEnum, RepositoryTypes.REMOTE);
-    addEEnumLiteral(repositoryTypesEEnum, RepositoryTypes.GITLAB);
+    initEEnum(booleanEEnum, de.fraunhofer.ipa.deployment.deployModel.BOOLEAN.class, "BOOLEAN");
+    addEEnumLiteral(booleanEEnum, de.fraunhofer.ipa.deployment.deployModel.BOOLEAN.FALSE);
+    addEEnumLiteral(booleanEEnum, de.fraunhofer.ipa.deployment.deployModel.BOOLEAN.TRUE);
 
     // Create resource
     createResource(eNS_URI);

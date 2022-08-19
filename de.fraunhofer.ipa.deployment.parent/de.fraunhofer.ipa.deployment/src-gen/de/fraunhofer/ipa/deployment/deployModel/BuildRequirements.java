@@ -14,9 +14,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getName <em>Name</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getBuildDependencies <em>Build Dependencies</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getDependencyRepositories <em>Dependency Repositories</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqRosDistros <em>Req Ros Distros</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqTestRosDistros <em>Req Test Ros Distros</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqBuildDependencies <em>Req Build Dependencies</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqDependencyRepositories <em>Req Dependency Repositories</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqCMakeArgs <em>Req CMake Args</em>}</li>
  * </ul>
  *
  * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getBuildRequirements()
@@ -26,69 +28,113 @@ import org.eclipse.emf.ecore.EObject;
 public interface BuildRequirements extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Req Ros Distros</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getBuildRequirements_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Build Dependencies</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Build Dependencies</em>' containment reference.
-   * @see #setBuildDependencies(ReqBuildDependencies)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getBuildRequirements_BuildDependencies()
+   * @return the value of the '<em>Req Ros Distros</em>' containment reference.
+   * @see #setReqRosDistros(MultiValueList)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getBuildRequirements_ReqRosDistros()
    * @model containment="true"
    * @generated
    */
-  ReqBuildDependencies getBuildDependencies();
+  MultiValueList getReqRosDistros();
 
   /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getBuildDependencies <em>Build Dependencies</em>}' containment reference.
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqRosDistros <em>Req Ros Distros</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Build Dependencies</em>' containment reference.
-   * @see #getBuildDependencies()
+   * @param value the new value of the '<em>Req Ros Distros</em>' containment reference.
+   * @see #getReqRosDistros()
    * @generated
    */
-  void setBuildDependencies(ReqBuildDependencies value);
+  void setReqRosDistros(MultiValueList value);
 
   /**
-   * Returns the value of the '<em><b>Dependency Repositories</b></em>' containment reference.
+   * Returns the value of the '<em><b>Req Test Ros Distros</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Dependency Repositories</em>' containment reference.
-   * @see #setDependencyRepositories(ReqDependencyRepositories)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getBuildRequirements_DependencyRepositories()
+   * @return the value of the '<em>Req Test Ros Distros</em>' containment reference.
+   * @see #setReqTestRosDistros(MultiValueList)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getBuildRequirements_ReqTestRosDistros()
    * @model containment="true"
    * @generated
    */
-  ReqDependencyRepositories getDependencyRepositories();
+  MultiValueList getReqTestRosDistros();
 
   /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getDependencyRepositories <em>Dependency Repositories</em>}' containment reference.
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqTestRosDistros <em>Req Test Ros Distros</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Dependency Repositories</em>' containment reference.
-   * @see #getDependencyRepositories()
+   * @param value the new value of the '<em>Req Test Ros Distros</em>' containment reference.
+   * @see #getReqTestRosDistros()
    * @generated
    */
-  void setDependencyRepositories(ReqDependencyRepositories value);
+  void setReqTestRosDistros(MultiValueList value);
+
+  /**
+   * Returns the value of the '<em><b>Req Build Dependencies</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Req Build Dependencies</em>' containment reference.
+   * @see #setReqBuildDependencies(ReqBuildDependencies)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getBuildRequirements_ReqBuildDependencies()
+   * @model containment="true"
+   * @generated
+   */
+  ReqBuildDependencies getReqBuildDependencies();
+
+  /**
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqBuildDependencies <em>Req Build Dependencies</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Req Build Dependencies</em>' containment reference.
+   * @see #getReqBuildDependencies()
+   * @generated
+   */
+  void setReqBuildDependencies(ReqBuildDependencies value);
+
+  /**
+   * Returns the value of the '<em><b>Req Dependency Repositories</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Req Dependency Repositories</em>' containment reference.
+   * @see #setReqDependencyRepositories(ReqDependencyRepositories)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getBuildRequirements_ReqDependencyRepositories()
+   * @model containment="true"
+   * @generated
+   */
+  ReqDependencyRepositories getReqDependencyRepositories();
+
+  /**
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqDependencyRepositories <em>Req Dependency Repositories</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Req Dependency Repositories</em>' containment reference.
+   * @see #getReqDependencyRepositories()
+   * @generated
+   */
+  void setReqDependencyRepositories(ReqDependencyRepositories value);
+
+  /**
+   * Returns the value of the '<em><b>Req CMake Args</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Req CMake Args</em>' containment reference.
+   * @see #setReqCMakeArgs(MultiValueList)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getBuildRequirements_ReqCMakeArgs()
+   * @model containment="true"
+   * @generated
+   */
+  MultiValueList getReqCMakeArgs();
+
+  /**
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqCMakeArgs <em>Req CMake Args</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Req CMake Args</em>' containment reference.
+   * @see #getReqCMakeArgs()
+   * @generated
+   */
+  void setReqCMakeArgs(MultiValueList value);
 
 } // BuildRequirements

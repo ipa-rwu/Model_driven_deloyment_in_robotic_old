@@ -5,18 +5,21 @@ package de.fraunhofer.ipa.deployment.deployModel.impl;
 
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
 import de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements;
-import de.fraunhofer.ipa.deployment.deployModel.ReqOperatingSystem;
-import de.fraunhofer.ipa.deployment.deployModel.ReqProcessorArchitecture;
-import de.fraunhofer.ipa.deployment.deployModel.ReqRosDistro;
+import de.fraunhofer.ipa.deployment.deployModel.PropertyExpressType;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,10 +29,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.DeploymentRequirementsImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.DeploymentRequirementsImpl#getOperatingSystem <em>Operating System</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.DeploymentRequirementsImpl#getProcessorArchitecture <em>Processor Architecture</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.DeploymentRequirementsImpl#getRosDistro <em>Ros Distro</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.DeploymentRequirementsImpl#getRequirements <em>Requirements</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,54 +37,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class DeploymentRequirementsImpl extends MinimalEObjectImpl.Container implements DeploymentRequirements
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getRequirements() <em>Requirements</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getRequirements()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getOperatingSystem() <em>Operating System</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOperatingSystem()
-   * @generated
-   * @ordered
-   */
-  protected ReqOperatingSystem operatingSystem;
-
-  /**
-   * The cached value of the '{@link #getProcessorArchitecture() <em>Processor Architecture</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getProcessorArchitecture()
-   * @generated
-   * @ordered
-   */
-  protected ReqProcessorArchitecture processorArchitecture;
-
-  /**
-   * The cached value of the '{@link #getRosDistro() <em>Ros Distro</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRosDistro()
-   * @generated
-   * @ordered
-   */
-  protected ReqRosDistro rosDistro;
+  protected EList<PropertyExpressType> requirements;
 
   /**
    * <!-- begin-user-doc -->
@@ -113,173 +73,13 @@ public class DeploymentRequirementsImpl extends MinimalEObjectImpl.Container imp
    * @generated
    */
   @Override
-  public String getName()
+  public EList<PropertyExpressType> getRequirements()
   {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.DEPLOYMENT_REQUIREMENTS__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ReqOperatingSystem getOperatingSystem()
-  {
-    return operatingSystem;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetOperatingSystem(ReqOperatingSystem newOperatingSystem, NotificationChain msgs)
-  {
-    ReqOperatingSystem oldOperatingSystem = operatingSystem;
-    operatingSystem = newOperatingSystem;
-    if (eNotificationRequired())
+    if (requirements == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.DEPLOYMENT_REQUIREMENTS__OPERATING_SYSTEM, oldOperatingSystem, newOperatingSystem);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      requirements = new EObjectContainmentEList<PropertyExpressType>(PropertyExpressType.class, this, DeployModelPackage.DEPLOYMENT_REQUIREMENTS__REQUIREMENTS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setOperatingSystem(ReqOperatingSystem newOperatingSystem)
-  {
-    if (newOperatingSystem != operatingSystem)
-    {
-      NotificationChain msgs = null;
-      if (operatingSystem != null)
-        msgs = ((InternalEObject)operatingSystem).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.DEPLOYMENT_REQUIREMENTS__OPERATING_SYSTEM, null, msgs);
-      if (newOperatingSystem != null)
-        msgs = ((InternalEObject)newOperatingSystem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.DEPLOYMENT_REQUIREMENTS__OPERATING_SYSTEM, null, msgs);
-      msgs = basicSetOperatingSystem(newOperatingSystem, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.DEPLOYMENT_REQUIREMENTS__OPERATING_SYSTEM, newOperatingSystem, newOperatingSystem));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ReqProcessorArchitecture getProcessorArchitecture()
-  {
-    return processorArchitecture;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetProcessorArchitecture(ReqProcessorArchitecture newProcessorArchitecture, NotificationChain msgs)
-  {
-    ReqProcessorArchitecture oldProcessorArchitecture = processorArchitecture;
-    processorArchitecture = newProcessorArchitecture;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.DEPLOYMENT_REQUIREMENTS__PROCESSOR_ARCHITECTURE, oldProcessorArchitecture, newProcessorArchitecture);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setProcessorArchitecture(ReqProcessorArchitecture newProcessorArchitecture)
-  {
-    if (newProcessorArchitecture != processorArchitecture)
-    {
-      NotificationChain msgs = null;
-      if (processorArchitecture != null)
-        msgs = ((InternalEObject)processorArchitecture).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.DEPLOYMENT_REQUIREMENTS__PROCESSOR_ARCHITECTURE, null, msgs);
-      if (newProcessorArchitecture != null)
-        msgs = ((InternalEObject)newProcessorArchitecture).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.DEPLOYMENT_REQUIREMENTS__PROCESSOR_ARCHITECTURE, null, msgs);
-      msgs = basicSetProcessorArchitecture(newProcessorArchitecture, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.DEPLOYMENT_REQUIREMENTS__PROCESSOR_ARCHITECTURE, newProcessorArchitecture, newProcessorArchitecture));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ReqRosDistro getRosDistro()
-  {
-    return rosDistro;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetRosDistro(ReqRosDistro newRosDistro, NotificationChain msgs)
-  {
-    ReqRosDistro oldRosDistro = rosDistro;
-    rosDistro = newRosDistro;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.DEPLOYMENT_REQUIREMENTS__ROS_DISTRO, oldRosDistro, newRosDistro);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setRosDistro(ReqRosDistro newRosDistro)
-  {
-    if (newRosDistro != rosDistro)
-    {
-      NotificationChain msgs = null;
-      if (rosDistro != null)
-        msgs = ((InternalEObject)rosDistro).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.DEPLOYMENT_REQUIREMENTS__ROS_DISTRO, null, msgs);
-      if (newRosDistro != null)
-        msgs = ((InternalEObject)newRosDistro).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.DEPLOYMENT_REQUIREMENTS__ROS_DISTRO, null, msgs);
-      msgs = basicSetRosDistro(newRosDistro, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.DEPLOYMENT_REQUIREMENTS__ROS_DISTRO, newRosDistro, newRosDistro));
+    return requirements;
   }
 
   /**
@@ -292,12 +92,8 @@ public class DeploymentRequirementsImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__OPERATING_SYSTEM:
-        return basicSetOperatingSystem(null, msgs);
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__PROCESSOR_ARCHITECTURE:
-        return basicSetProcessorArchitecture(null, msgs);
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__ROS_DISTRO:
-        return basicSetRosDistro(null, msgs);
+      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__REQUIREMENTS:
+        return ((InternalEList<?>)getRequirements()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -312,14 +108,8 @@ public class DeploymentRequirementsImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__NAME:
-        return getName();
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__OPERATING_SYSTEM:
-        return getOperatingSystem();
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__PROCESSOR_ARCHITECTURE:
-        return getProcessorArchitecture();
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__ROS_DISTRO:
-        return getRosDistro();
+      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__REQUIREMENTS:
+        return getRequirements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -329,22 +119,15 @@ public class DeploymentRequirementsImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__NAME:
-        setName((String)newValue);
-        return;
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__OPERATING_SYSTEM:
-        setOperatingSystem((ReqOperatingSystem)newValue);
-        return;
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__PROCESSOR_ARCHITECTURE:
-        setProcessorArchitecture((ReqProcessorArchitecture)newValue);
-        return;
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__ROS_DISTRO:
-        setRosDistro((ReqRosDistro)newValue);
+      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__REQUIREMENTS:
+        getRequirements().clear();
+        getRequirements().addAll((Collection<? extends PropertyExpressType>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -360,17 +143,8 @@ public class DeploymentRequirementsImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__OPERATING_SYSTEM:
-        setOperatingSystem((ReqOperatingSystem)null);
-        return;
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__PROCESSOR_ARCHITECTURE:
-        setProcessorArchitecture((ReqProcessorArchitecture)null);
-        return;
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__ROS_DISTRO:
-        setRosDistro((ReqRosDistro)null);
+      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__REQUIREMENTS:
+        getRequirements().clear();
         return;
     }
     super.eUnset(featureID);
@@ -386,33 +160,10 @@ public class DeploymentRequirementsImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__OPERATING_SYSTEM:
-        return operatingSystem != null;
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__PROCESSOR_ARCHITECTURE:
-        return processorArchitecture != null;
-      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__ROS_DISTRO:
-        return rosDistro != null;
+      case DeployModelPackage.DEPLOYMENT_REQUIREMENTS__REQUIREMENTS:
+        return requirements != null && !requirements.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //DeploymentRequirementsImpl

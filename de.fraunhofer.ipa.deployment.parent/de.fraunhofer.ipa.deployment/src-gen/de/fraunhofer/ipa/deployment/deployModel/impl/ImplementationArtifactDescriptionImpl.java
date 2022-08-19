@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImplementationArtifactDescriptionImpl#getType <em>Type</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImplementationArtifactDescriptionImpl#getImpl <em>Impl</em>}</li>
  * </ul>
  *
@@ -32,26 +31,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class ImplementationArtifactDescriptionImpl extends MinimalEObjectImpl.Container implements ImplementationArtifactDescription
 {
-  /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected static final String TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected String type = TYPE_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getImpl() <em>Impl</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -81,31 +60,6 @@ public class ImplementationArtifactDescriptionImpl extends MinimalEObjectImpl.Co
   protected EClass eStaticClass()
   {
     return DeployModelPackage.Literals.IMPLEMENTATION_ARTIFACT_DESCRIPTION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setType(String newType)
-  {
-    String oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.IMPLEMENTATION_ARTIFACT_DESCRIPTION__TYPE, oldType, type));
   }
 
   /**
@@ -184,8 +138,6 @@ public class ImplementationArtifactDescriptionImpl extends MinimalEObjectImpl.Co
   {
     switch (featureID)
     {
-      case DeployModelPackage.IMPLEMENTATION_ARTIFACT_DESCRIPTION__TYPE:
-        return getType();
       case DeployModelPackage.IMPLEMENTATION_ARTIFACT_DESCRIPTION__IMPL:
         return getImpl();
     }
@@ -202,9 +154,6 @@ public class ImplementationArtifactDescriptionImpl extends MinimalEObjectImpl.Co
   {
     switch (featureID)
     {
-      case DeployModelPackage.IMPLEMENTATION_ARTIFACT_DESCRIPTION__TYPE:
-        setType((String)newValue);
-        return;
       case DeployModelPackage.IMPLEMENTATION_ARTIFACT_DESCRIPTION__IMPL:
         setImpl((EObject)newValue);
         return;
@@ -222,9 +171,6 @@ public class ImplementationArtifactDescriptionImpl extends MinimalEObjectImpl.Co
   {
     switch (featureID)
     {
-      case DeployModelPackage.IMPLEMENTATION_ARTIFACT_DESCRIPTION__TYPE:
-        setType(TYPE_EDEFAULT);
-        return;
       case DeployModelPackage.IMPLEMENTATION_ARTIFACT_DESCRIPTION__IMPL:
         setImpl((EObject)null);
         return;
@@ -242,29 +188,10 @@ public class ImplementationArtifactDescriptionImpl extends MinimalEObjectImpl.Co
   {
     switch (featureID)
     {
-      case DeployModelPackage.IMPLEMENTATION_ARTIFACT_DESCRIPTION__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case DeployModelPackage.IMPLEMENTATION_ARTIFACT_DESCRIPTION__IMPL:
         return impl != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (type: ");
-    result.append(type);
-    result.append(')');
-    return result.toString();
   }
 
 } //ImplementationArtifactDescriptionImpl

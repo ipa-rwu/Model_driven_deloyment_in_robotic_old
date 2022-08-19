@@ -58,24 +58,28 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final RuleCall cRootContentMonolithicImplementationDescriptionParserRuleCall_0_0 = (RuleCall)cRootContentAlternatives_0.eContents().get(0);
 		private final RuleCall cRootContentStackImplementationDescriptionParserRuleCall_0_1 = (RuleCall)cRootContentAlternatives_0.eContents().get(1);
 		private final RuleCall cRootContentPackageDescriptionParserRuleCall_0_2 = (RuleCall)cRootContentAlternatives_0.eContents().get(2);
+		private final RuleCall cRootContentCISettingParserRuleCall_0_3 = (RuleCall)cRootContentAlternatives_0.eContents().get(3);
 		
 		//YamlContent:
 		//  rootContent=(MonolithicImplementationDescription|
 		//    StackImplementationDescription|
-		//    PackageDescription
+		//    PackageDescription|
+		//    CISetting
 		//  )
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//rootContent=(MonolithicImplementationDescription|
 		//  StackImplementationDescription|
-		//  PackageDescription
+		//  PackageDescription|
+		//  CISetting
 		//)
 		public Assignment getRootContentAssignment() { return cRootContentAssignment; }
 		
 		//(MonolithicImplementationDescription|
 		//    StackImplementationDescription|
-		//    PackageDescription
+		//    PackageDescription|
+		//    CISetting
 		//  )
 		public Alternatives getRootContentAlternatives_0() { return cRootContentAlternatives_0; }
 		
@@ -87,6 +91,9 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		
 		//PackageDescription
 		public RuleCall getRootContentPackageDescriptionParserRuleCall_0_2() { return cRootContentPackageDescriptionParserRuleCall_0_2; }
+		
+		//CISetting
+		public RuleCall getRootContentCISettingParserRuleCall_0_3() { return cRootContentCISettingParserRuleCall_0_3; }
 	}
 	public class MonolithicImplementationDescriptionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.MonolithicImplementationDescription");
@@ -110,8 +117,10 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Keyword cBranchKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		private final Assignment cBranchAssignment_10 = (Assignment)cGroup.eContents().get(10);
 		private final RuleCall cBranchBranchTypeParserRuleCall_10_0 = (RuleCall)cBranchAssignment_10.eContents().get(0);
-		private final Assignment cImplAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cImplImplementationArtifactDescriptionParserRuleCall_11_0 = (RuleCall)cImplAssignment_11.eContents().get(0);
+		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
+		private final Keyword cImplementationArtifactDescriptionKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Assignment cImplementationAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
+		private final RuleCall cImplementationNewImplementationArtifactParserRuleCall_11_1_0 = (RuleCall)cImplementationAssignment_11_1.eContents().get(0);
 		private final RuleCall cDEDENTTerminalRuleCall_12 = (RuleCall)cGroup.eContents().get(12);
 		
 		//MonolithicImplementationDescription:
@@ -123,7 +132,7 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//    'description:' description=STRING
 		//    'mode:' mode=ImplementationModeType
 		//    'branch:' branch=BranchType
-		//    (impl=ImplementationArtifactDescription)?
+		//    ('ImplementationArtifactDescription:' implementation=NewImplementationArtifact)?
 		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -136,7 +145,7 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//  'description:' description=STRING
 		//  'mode:' mode=ImplementationModeType
 		//  'branch:' branch=BranchType
-		//  (impl=ImplementationArtifactDescription)?
+		//  ('ImplementationArtifactDescription:' implementation=NewImplementationArtifact)?
 		//DEDENT
 		public Group getGroup() { return cGroup; }
 		
@@ -198,11 +207,17 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//BranchType
 		public RuleCall getBranchBranchTypeParserRuleCall_10_0() { return cBranchBranchTypeParserRuleCall_10_0; }
 		
-		//(impl=ImplementationArtifactDescription)?
-		public Assignment getImplAssignment_11() { return cImplAssignment_11; }
+		//('ImplementationArtifactDescription:' implementation=NewImplementationArtifact)?
+		public Group getGroup_11() { return cGroup_11; }
 		
-		//ImplementationArtifactDescription
-		public RuleCall getImplImplementationArtifactDescriptionParserRuleCall_11_0() { return cImplImplementationArtifactDescriptionParserRuleCall_11_0; }
+		//'ImplementationArtifactDescription:'
+		public Keyword getImplementationArtifactDescriptionKeyword_11_0() { return cImplementationArtifactDescriptionKeyword_11_0; }
+		
+		//implementation=NewImplementationArtifact
+		public Assignment getImplementationAssignment_11_1() { return cImplementationAssignment_11_1; }
+		
+		//NewImplementationArtifact
+		public RuleCall getImplementationNewImplementationArtifactParserRuleCall_11_1_0() { return cImplementationNewImplementationArtifactParserRuleCall_11_1_0; }
 		
 		//DEDENT
 		public RuleCall getDEDENTTerminalRuleCall_12() { return cDEDENTTerminalRuleCall_12; }
@@ -257,132 +272,158 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	public class NewImplementationArtifactElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.NewImplementationArtifact");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLocationKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final Alternatives cNameAlternatives_2_0 = (Alternatives)cNameAssignment_2.eContents().get(0);
-		private final RuleCall cNameLOCALPATHTerminalRuleCall_2_0_0 = (RuleCall)cNameAlternatives_2_0.eContents().get(0);
-		private final RuleCall cNameURLTerminalRuleCall_2_0_1 = (RuleCall)cNameAlternatives_2_0.eContents().get(1);
-		private final Assignment cDeployRequirementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cDeployRequirementsDeploymentRequirementsParserRuleCall_3_0 = (RuleCall)cDeployRequirementsAssignment_3.eContents().get(0);
-		private final Assignment cResourceRequirementsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cResourceRequirementsResourceRequirementsParserRuleCall_4_0 = (RuleCall)cResourceRequirementsAssignment_4.eContents().get(0);
-		private final Assignment cBuildRequirementsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cBuildRequirementsBuildRequirementsParserRuleCall_5_0 = (RuleCall)cBuildRequirementsAssignment_5.eContents().get(0);
-		private final Assignment cStartCommandsAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cStartCommandsStartCommandsParserRuleCall_6_0 = (RuleCall)cStartCommandsAssignment_6.eContents().get(0);
+		private final RuleCall cINDENTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cLocationKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cLocationAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Alternatives cLocationAlternatives_2_0 = (Alternatives)cLocationAssignment_2.eContents().get(0);
+		private final RuleCall cLocationSTRINGTerminalRuleCall_2_0_0 = (RuleCall)cLocationAlternatives_2_0.eContents().get(0);
+		private final RuleCall cLocationLOCALPATHTerminalRuleCall_2_0_1 = (RuleCall)cLocationAlternatives_2_0.eContents().get(1);
+		private final RuleCall cLocationURLTerminalRuleCall_2_0_2 = (RuleCall)cLocationAlternatives_2_0.eContents().get(2);
+		private final Keyword cDeployRequirementsKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cDeployRequirementsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cDeployRequirementsDeploymentRequirementsParserRuleCall_4_0 = (RuleCall)cDeployRequirementsAssignment_4.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cResourceRequirementsKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cResourceRequirementsAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cResourceRequirementsResourceRequirementsParserRuleCall_5_1_0 = (RuleCall)cResourceRequirementsAssignment_5_1.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cBuildRequirementsKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cBuildRequirementsAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cBuildRequirementsBuildRequirementsParserRuleCall_6_1_0 = (RuleCall)cBuildRequirementsAssignment_6_1.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cStartCommandsKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cStartCommandsAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cStartCommandsMultiValueListParserRuleCall_7_1_0 = (RuleCall)cStartCommandsAssignment_7_1.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_8 = (RuleCall)cGroup.eContents().get(8);
 		
 		//NewImplementationArtifact:
-		//  'location'':'name=(LOCALPATH|URL)
-		//  deployRequirements = DeploymentRequirements
-		//  (resourceRequirements = ResourceRequirements)?
-		//  (buildRequirements = BuildRequirements)?
-		//  startCommands = StartCommands
+		//    INDENT
+		//      'location:' location=(STRING|LOCALPATH|URL)
+		//      'deployRequirements:' deployRequirements = DeploymentRequirements
+		//      ('resourceRequirements:' resourceRequirements = ResourceRequirements)?
+		//      ('buildRequirements:' buildRequirements = BuildRequirements)?
+		//      ('startCommands:' startCommands = MultiValueList)?
+		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'location'':'name=(LOCALPATH|URL)
-		//deployRequirements = DeploymentRequirements
-		//(resourceRequirements = ResourceRequirements)?
-		//(buildRequirements = BuildRequirements)?
-		//startCommands = StartCommands
+		//  INDENT
+		//    'location:' location=(STRING|LOCALPATH|URL)
+		//    'deployRequirements:' deployRequirements = DeploymentRequirements
+		//    ('resourceRequirements:' resourceRequirements = ResourceRequirements)?
+		//    ('buildRequirements:' buildRequirements = BuildRequirements)?
+		//    ('startCommands:' startCommands = MultiValueList)?
+		//DEDENT
 		public Group getGroup() { return cGroup; }
 		
-		//'location'
-		public Keyword getLocationKeyword_0() { return cLocationKeyword_0; }
+		//INDENT
+		public RuleCall getINDENTTerminalRuleCall_0() { return cINDENTTerminalRuleCall_0; }
 		
-		//':'
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		//'location:'
+		public Keyword getLocationKeyword_1() { return cLocationKeyword_1; }
 		
-		//name=(LOCALPATH|URL)
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		//location=(STRING|LOCALPATH|URL)
+		public Assignment getLocationAssignment_2() { return cLocationAssignment_2; }
 		
-		//(LOCALPATH|URL)
-		public Alternatives getNameAlternatives_2_0() { return cNameAlternatives_2_0; }
+		//(STRING|LOCALPATH|URL)
+		public Alternatives getLocationAlternatives_2_0() { return cLocationAlternatives_2_0; }
+		
+		//STRING
+		public RuleCall getLocationSTRINGTerminalRuleCall_2_0_0() { return cLocationSTRINGTerminalRuleCall_2_0_0; }
 		
 		//LOCALPATH
-		public RuleCall getNameLOCALPATHTerminalRuleCall_2_0_0() { return cNameLOCALPATHTerminalRuleCall_2_0_0; }
+		public RuleCall getLocationLOCALPATHTerminalRuleCall_2_0_1() { return cLocationLOCALPATHTerminalRuleCall_2_0_1; }
 		
 		//URL
-		public RuleCall getNameURLTerminalRuleCall_2_0_1() { return cNameURLTerminalRuleCall_2_0_1; }
+		public RuleCall getLocationURLTerminalRuleCall_2_0_2() { return cLocationURLTerminalRuleCall_2_0_2; }
+		
+		//'deployRequirements:'
+		public Keyword getDeployRequirementsKeyword_3() { return cDeployRequirementsKeyword_3; }
 		
 		//deployRequirements = DeploymentRequirements
-		public Assignment getDeployRequirementsAssignment_3() { return cDeployRequirementsAssignment_3; }
+		public Assignment getDeployRequirementsAssignment_4() { return cDeployRequirementsAssignment_4; }
 		
 		//DeploymentRequirements
-		public RuleCall getDeployRequirementsDeploymentRequirementsParserRuleCall_3_0() { return cDeployRequirementsDeploymentRequirementsParserRuleCall_3_0; }
+		public RuleCall getDeployRequirementsDeploymentRequirementsParserRuleCall_4_0() { return cDeployRequirementsDeploymentRequirementsParserRuleCall_4_0; }
 		
-		//(resourceRequirements = ResourceRequirements)?
-		public Assignment getResourceRequirementsAssignment_4() { return cResourceRequirementsAssignment_4; }
+		//('resourceRequirements:' resourceRequirements = ResourceRequirements)?
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'resourceRequirements:'
+		public Keyword getResourceRequirementsKeyword_5_0() { return cResourceRequirementsKeyword_5_0; }
+		
+		//resourceRequirements = ResourceRequirements
+		public Assignment getResourceRequirementsAssignment_5_1() { return cResourceRequirementsAssignment_5_1; }
 		
 		//ResourceRequirements
-		public RuleCall getResourceRequirementsResourceRequirementsParserRuleCall_4_0() { return cResourceRequirementsResourceRequirementsParserRuleCall_4_0; }
+		public RuleCall getResourceRequirementsResourceRequirementsParserRuleCall_5_1_0() { return cResourceRequirementsResourceRequirementsParserRuleCall_5_1_0; }
 		
-		//(buildRequirements = BuildRequirements)?
-		public Assignment getBuildRequirementsAssignment_5() { return cBuildRequirementsAssignment_5; }
+		//('buildRequirements:' buildRequirements = BuildRequirements)?
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'buildRequirements:'
+		public Keyword getBuildRequirementsKeyword_6_0() { return cBuildRequirementsKeyword_6_0; }
+		
+		//buildRequirements = BuildRequirements
+		public Assignment getBuildRequirementsAssignment_6_1() { return cBuildRequirementsAssignment_6_1; }
 		
 		//BuildRequirements
-		public RuleCall getBuildRequirementsBuildRequirementsParserRuleCall_5_0() { return cBuildRequirementsBuildRequirementsParserRuleCall_5_0; }
+		public RuleCall getBuildRequirementsBuildRequirementsParserRuleCall_6_1_0() { return cBuildRequirementsBuildRequirementsParserRuleCall_6_1_0; }
 		
-		//startCommands = StartCommands
-		public Assignment getStartCommandsAssignment_6() { return cStartCommandsAssignment_6; }
+		//('startCommands:' startCommands = MultiValueList)?
+		public Group getGroup_7() { return cGroup_7; }
 		
-		//StartCommands
-		public RuleCall getStartCommandsStartCommandsParserRuleCall_6_0() { return cStartCommandsStartCommandsParserRuleCall_6_0; }
+		//'startCommands:'
+		public Keyword getStartCommandsKeyword_7_0() { return cStartCommandsKeyword_7_0; }
+		
+		//startCommands = MultiValueList
+		public Assignment getStartCommandsAssignment_7_1() { return cStartCommandsAssignment_7_1; }
+		
+		//MultiValueList
+		public RuleCall getStartCommandsMultiValueListParserRuleCall_7_1_0() { return cStartCommandsMultiValueListParserRuleCall_7_1_0; }
+		
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_8() { return cDEDENTTerminalRuleCall_8; }
 	}
 	public class ImplementationArtifactDescriptionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ImplementationArtifactDescription");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cTypeImplementationArtifactDescriptionKeyword_0_0 = (Keyword)cTypeAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final RuleCall cINDENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Assignment cImplAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final Alternatives cImplAlternatives_3_0 = (Alternatives)cImplAssignment_3.eContents().get(0);
-		private final RuleCall cImplNewImplementationArtifactParserRuleCall_3_0_0 = (RuleCall)cImplAlternatives_3_0.eContents().get(0);
-		private final RuleCall cImplReuseImplementationArtifactParserRuleCall_3_0_1 = (RuleCall)cImplAlternatives_3_0.eContents().get(1);
-		private final RuleCall cDEDENTTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final RuleCall cINDENTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cImplAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Alternatives cImplAlternatives_1_0 = (Alternatives)cImplAssignment_1.eContents().get(0);
+		private final RuleCall cImplNewImplementationArtifactParserRuleCall_1_0_0 = (RuleCall)cImplAlternatives_1_0.eContents().get(0);
+		private final RuleCall cImplReuseImplementationArtifactParserRuleCall_1_0_1 = (RuleCall)cImplAlternatives_1_0.eContents().get(1);
+		private final RuleCall cDEDENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//ImplementationArtifactDescription:
-		//  type='ImplementationArtifactDescription'':'
 		//  INDENT
 		//    impl=(NewImplementationArtifact | ReuseImplementationArtifact)
 		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//type='ImplementationArtifactDescription'':'
 		//INDENT
 		//  impl=(NewImplementationArtifact | ReuseImplementationArtifact)
 		//DEDENT
 		public Group getGroup() { return cGroup; }
 		
-		//type='ImplementationArtifactDescription'
-		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
-		
-		//'ImplementationArtifactDescription'
-		public Keyword getTypeImplementationArtifactDescriptionKeyword_0_0() { return cTypeImplementationArtifactDescriptionKeyword_0_0; }
-		
-		//':'
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
-		
 		//INDENT
-		public RuleCall getINDENTTerminalRuleCall_2() { return cINDENTTerminalRuleCall_2; }
+		public RuleCall getINDENTTerminalRuleCall_0() { return cINDENTTerminalRuleCall_0; }
 		
 		//impl=(NewImplementationArtifact | ReuseImplementationArtifact)
-		public Assignment getImplAssignment_3() { return cImplAssignment_3; }
+		public Assignment getImplAssignment_1() { return cImplAssignment_1; }
 		
 		//(NewImplementationArtifact | ReuseImplementationArtifact)
-		public Alternatives getImplAlternatives_3_0() { return cImplAlternatives_3_0; }
+		public Alternatives getImplAlternatives_1_0() { return cImplAlternatives_1_0; }
 		
 		//NewImplementationArtifact
-		public RuleCall getImplNewImplementationArtifactParserRuleCall_3_0_0() { return cImplNewImplementationArtifactParserRuleCall_3_0_0; }
+		public RuleCall getImplNewImplementationArtifactParserRuleCall_1_0_0() { return cImplNewImplementationArtifactParserRuleCall_1_0_0; }
 		
 		//ReuseImplementationArtifact
-		public RuleCall getImplReuseImplementationArtifactParserRuleCall_3_0_1() { return cImplReuseImplementationArtifactParserRuleCall_3_0_1; }
+		public RuleCall getImplReuseImplementationArtifactParserRuleCall_1_0_1() { return cImplReuseImplementationArtifactParserRuleCall_1_0_1; }
 		
 		//DEDENT
-		public RuleCall getDEDENTTerminalRuleCall_4() { return cDEDENTTerminalRuleCall_4; }
+		public RuleCall getDEDENTTerminalRuleCall_2() { return cDEDENTTerminalRuleCall_2; }
 	}
 	public class ReuseImplementationArtifactElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ReuseImplementationArtifact");
@@ -420,15 +461,17 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Assignment cNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final CrossReference cNameMonolithicImplementationDescriptionCrossReference_5_0 = (CrossReference)cNameAssignment_5.eContents().get(0);
 		private final RuleCall cNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_5_0_1 = (RuleCall)cNameMonolithicImplementationDescriptionCrossReference_5_0.eContents().get(1);
-		private final Assignment cStartCommandsAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cStartCommandsStartCommandsParserRuleCall_6_0 = (RuleCall)cStartCommandsAssignment_6.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cStartCommandsKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cStartCommandsAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cStartCommandsMultiValueListParserRuleCall_6_1_0 = (RuleCall)cStartCommandsAssignment_6_1.eContents().get(0);
 		private final RuleCall cDEDENTTerminalRuleCall_7 = (RuleCall)cGroup.eContents().get(7);
 		
 		//ImplementationArtifactAbstract:
 		//  PreListElement 'import:' importedNamespace=QualifiedName
 		//  INDENT
 		//    'name:' name=[MonolithicImplementationDescription|QualifiedName]
-		//    (startCommands = StartCommands)
+		//    ('startCommands:' startCommands = MultiValueList)?
 		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -436,7 +479,7 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//PreListElement 'import:' importedNamespace=QualifiedName
 		//INDENT
 		//  'name:' name=[MonolithicImplementationDescription|QualifiedName]
-		//  (startCommands = StartCommands)
+		//  ('startCommands:' startCommands = MultiValueList)?
 		//DEDENT
 		public Group getGroup() { return cGroup; }
 		
@@ -467,11 +510,17 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//QualifiedName
 		public RuleCall getNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_5_0_1() { return cNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_5_0_1; }
 		
-		//(startCommands = StartCommands)
-		public Assignment getStartCommandsAssignment_6() { return cStartCommandsAssignment_6; }
+		//('startCommands:' startCommands = MultiValueList)?
+		public Group getGroup_6() { return cGroup_6; }
 		
-		//StartCommands
-		public RuleCall getStartCommandsStartCommandsParserRuleCall_6_0() { return cStartCommandsStartCommandsParserRuleCall_6_0; }
+		//'startCommands:'
+		public Keyword getStartCommandsKeyword_6_0() { return cStartCommandsKeyword_6_0; }
+		
+		//startCommands = MultiValueList
+		public Assignment getStartCommandsAssignment_6_1() { return cStartCommandsAssignment_6_1; }
+		
+		//MultiValueList
+		public RuleCall getStartCommandsMultiValueListParserRuleCall_6_1_0() { return cStartCommandsMultiValueListParserRuleCall_6_1_0; }
 		
 		//DEDENT
 		public RuleCall getDEDENTTerminalRuleCall_7() { return cDEDENTTerminalRuleCall_7; }
@@ -479,115 +528,125 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	public class DeploymentRequirementsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.DeploymentRequirements");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cNameDeployRequirementsKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cOperatingSystemAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cOperatingSystemReqOperatingSystemParserRuleCall_2_0 = (RuleCall)cOperatingSystemAssignment_2.eContents().get(0);
-		private final Assignment cProcessorArchitectureAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cProcessorArchitectureReqProcessorArchitectureParserRuleCall_3_0 = (RuleCall)cProcessorArchitectureAssignment_3.eContents().get(0);
-		private final Assignment cRosDistroAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cRosDistroReqRosDistroParserRuleCall_4_0 = (RuleCall)cRosDistroAssignment_4.eContents().get(0);
+		private final Action cDeploymentRequirementsAction_0 = (Action)cGroup.eContents().get(0);
+		private final RuleCall cINDENTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cRequirementsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cRequirementsPropertyExpressTypeParserRuleCall_2_0 = (RuleCall)cRequirementsAssignment_2.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//DeploymentRequirements:
-		//  name='deployRequirements'':'
-		//  operatingSystem = ReqOperatingSystem
-		//  processorArchitecture = ReqProcessorArchitecture
-		//  (rosDistro= ReqRosDistro)?
+		//  {DeploymentRequirements}
+		//  INDENT
+		//      requirements += PropertyExpressType+
+		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name='deployRequirements'':'
-		//operatingSystem = ReqOperatingSystem
-		//processorArchitecture = ReqProcessorArchitecture
-		//(rosDistro= ReqRosDistro)?
+		//{DeploymentRequirements}
+		//INDENT
+		//    requirements += PropertyExpressType+
+		//DEDENT
 		public Group getGroup() { return cGroup; }
 		
-		//name='deployRequirements'
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//{DeploymentRequirements}
+		public Action getDeploymentRequirementsAction_0() { return cDeploymentRequirementsAction_0; }
 		
-		//'deployRequirements'
-		public Keyword getNameDeployRequirementsKeyword_0_0() { return cNameDeployRequirementsKeyword_0_0; }
+		//INDENT
+		public RuleCall getINDENTTerminalRuleCall_1() { return cINDENTTerminalRuleCall_1; }
 		
-		//':'
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		//requirements += PropertyExpressType+
+		public Assignment getRequirementsAssignment_2() { return cRequirementsAssignment_2; }
 		
-		//operatingSystem = ReqOperatingSystem
-		public Assignment getOperatingSystemAssignment_2() { return cOperatingSystemAssignment_2; }
+		//PropertyExpressType
+		public RuleCall getRequirementsPropertyExpressTypeParserRuleCall_2_0() { return cRequirementsPropertyExpressTypeParserRuleCall_2_0; }
 		
-		//ReqOperatingSystem
-		public RuleCall getOperatingSystemReqOperatingSystemParserRuleCall_2_0() { return cOperatingSystemReqOperatingSystemParserRuleCall_2_0; }
-		
-		//processorArchitecture = ReqProcessorArchitecture
-		public Assignment getProcessorArchitectureAssignment_3() { return cProcessorArchitectureAssignment_3; }
-		
-		//ReqProcessorArchitecture
-		public RuleCall getProcessorArchitectureReqProcessorArchitectureParserRuleCall_3_0() { return cProcessorArchitectureReqProcessorArchitectureParserRuleCall_3_0; }
-		
-		//(rosDistro= ReqRosDistro)?
-		public Assignment getRosDistroAssignment_4() { return cRosDistroAssignment_4; }
-		
-		//ReqRosDistro
-		public RuleCall getRosDistroReqRosDistroParserRuleCall_4_0() { return cRosDistroReqRosDistroParserRuleCall_4_0; }
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_3() { return cDEDENTTerminalRuleCall_3; }
 	}
 	public class ResourceRequirementsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ResourceRequirements");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cNameResourceRequirementsKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Action cResourceRequirementsAction_0 = (Action)cGroup.eContents().get(0);
+		private final RuleCall cINDENTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		private final Assignment cRequirementsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cRequirementsResourceRequirementParserRuleCall_2_0 = (RuleCall)cRequirementsAssignment_2.eContents().get(0);
+		private final RuleCall cRequirementsPropertyExpressTypeParserRuleCall_2_0 = (RuleCall)cRequirementsAssignment_2.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//ResourceRequirements:
-		//  name='resourceRequirements'':'
-		//  requirements += (ResourceRequirement)+
+		//    {ResourceRequirements}
+		//  INDENT
+		//      requirements += PropertyExpressType+
+		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name='resourceRequirements'':'
-		//requirements += (ResourceRequirement)+
+		//  {ResourceRequirements}
+		//INDENT
+		//    requirements += PropertyExpressType+
+		//DEDENT
 		public Group getGroup() { return cGroup; }
 		
-		//name='resourceRequirements'
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//{ResourceRequirements}
+		public Action getResourceRequirementsAction_0() { return cResourceRequirementsAction_0; }
 		
-		//'resourceRequirements'
-		public Keyword getNameResourceRequirementsKeyword_0_0() { return cNameResourceRequirementsKeyword_0_0; }
+		//INDENT
+		public RuleCall getINDENTTerminalRuleCall_1() { return cINDENTTerminalRuleCall_1; }
 		
-		//':'
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
-		
-		//requirements += (ResourceRequirement)+
+		//requirements += PropertyExpressType+
 		public Assignment getRequirementsAssignment_2() { return cRequirementsAssignment_2; }
 		
-		//(ResourceRequirement)
-		public RuleCall getRequirementsResourceRequirementParserRuleCall_2_0() { return cRequirementsResourceRequirementParserRuleCall_2_0; }
+		//PropertyExpressType
+		public RuleCall getRequirementsPropertyExpressTypeParserRuleCall_2_0() { return cRequirementsPropertyExpressTypeParserRuleCall_2_0; }
+		
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_3() { return cDEDENTTerminalRuleCall_3; }
 	}
-	public class ResourceRequirementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ResourceRequirement");
+	public class PropertyExpressTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.PropertyExpressType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cCommonPropertySingleValueParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCommonPropertyMultiValueParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//PropertyExpressType:
+		//    CommonPropertySingleValue
+		//    | CommonPropertyMultiValue
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//CommonPropertySingleValue
+		//| CommonPropertyMultiValue
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//CommonPropertySingleValue
+		public RuleCall getCommonPropertySingleValueParserRuleCall_0() { return cCommonPropertySingleValueParserRuleCall_0; }
+		
+		//CommonPropertyMultiValue
+		public RuleCall getCommonPropertyMultiValueParserRuleCall_1() { return cCommonPropertyMultiValueParserRuleCall_1; }
+	}
+	public class CommonPropertySingleValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.CommonPropertySingleValue");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cPreListElementParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Keyword cNameKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameResourceReqTypesEnumRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final RuleCall cINDENTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		private final Keyword cValueKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cValueScalarNumberParserRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
+		private final RuleCall cValueValueTypesParserRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
 		private final RuleCall cDEDENTTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
 		
-		//ResourceRequirement:
-		//  PreListElement 'name:' name=ResourceReqTypes
+		//CommonPropertySingleValue:
+		//  PreListElement 'name:' name=ID
 		//  INDENT
-		//    'value:' value=ScalarNumber
+		//    'value:' value = ValueTypes
 		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//PreListElement 'name:' name=ResourceReqTypes
+		//PreListElement 'name:' name=ID
 		//INDENT
-		//  'value:' value=ScalarNumber
+		//  'value:' value = ValueTypes
 		//DEDENT
 		public Group getGroup() { return cGroup; }
 		
@@ -597,11 +656,11 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//'name:'
 		public Keyword getNameKeyword_1() { return cNameKeyword_1; }
 		
-		//name=ResourceReqTypes
+		//name=ID
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
-		//ResourceReqTypes
-		public RuleCall getNameResourceReqTypesEnumRuleCall_2_0() { return cNameResourceReqTypesEnumRuleCall_2_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 		
 		//INDENT
 		public RuleCall getINDENTTerminalRuleCall_3() { return cINDENTTerminalRuleCall_3; }
@@ -609,413 +668,369 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//'value:'
 		public Keyword getValueKeyword_4() { return cValueKeyword_4; }
 		
-		//value=ScalarNumber
+		//value = ValueTypes
 		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
+		
+		//ValueTypes
+		public RuleCall getValueValueTypesParserRuleCall_5_0() { return cValueValueTypesParserRuleCall_5_0; }
+		
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_6() { return cDEDENTTerminalRuleCall_6; }
+	}
+	public class CommonPropertyMultiValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.CommonPropertyMultiValue");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cPreListElementParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cNameKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final RuleCall cINDENTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		private final Keyword cValueKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cValueMultiValueListParserRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
+		
+		//CommonPropertyMultiValue:
+		//  PreListElement 'name:' name=ID
+		//  INDENT
+		//    'value:' value=MultiValueList
+		//  DEDENT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//PreListElement 'name:' name=ID
+		//INDENT
+		//  'value:' value=MultiValueList
+		//DEDENT
+		public Group getGroup() { return cGroup; }
+		
+		//PreListElement
+		public RuleCall getPreListElementParserRuleCall_0() { return cPreListElementParserRuleCall_0; }
+		
+		//'name:'
+		public Keyword getNameKeyword_1() { return cNameKeyword_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//INDENT
+		public RuleCall getINDENTTerminalRuleCall_3() { return cINDENTTerminalRuleCall_3; }
+		
+		//'value:'
+		public Keyword getValueKeyword_4() { return cValueKeyword_4; }
+		
+		//value=MultiValueList
+		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
+		
+		//MultiValueList
+		public RuleCall getValueMultiValueListParserRuleCall_5_0() { return cValueMultiValueListParserRuleCall_5_0; }
+		
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_6() { return cDEDENTTerminalRuleCall_6; }
+	}
+	public class MultiValueListElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.MultiValueList");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cMultiValueListPreListParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cMultiValueListBracketParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//MultiValueList:
+		//    MultiValueListPreList
+		//    |MultiValueListBracket
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//MultiValueListPreList
+		//|MultiValueListBracket
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//MultiValueListPreList
+		public RuleCall getMultiValueListPreListParserRuleCall_0() { return cMultiValueListPreListParserRuleCall_0; }
+		
+		//MultiValueListBracket
+		public RuleCall getMultiValueListBracketParserRuleCall_1() { return cMultiValueListBracketParserRuleCall_1; }
+	}
+	public class MultiValueListPreListElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.MultiValueListPreList");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cMultiValueListPreListAction_0 = (Action)cGroup.eContents().get(0);
+		private final RuleCall cINDENTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final RuleCall cPreListElementParserRuleCall_2_0 = (RuleCall)cGroup_2.eContents().get(0);
+		private final Assignment cValuesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cValuesValueTypesParserRuleCall_2_1_0 = (RuleCall)cValuesAssignment_2_1.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		
+		//MultiValueListPreList:
+		//    {MultiValueListPreList}
+		//    INDENT
+		//      (PreListElement values+=ValueTypes)*
+		//  DEDENT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//  {MultiValueListPreList}
+		//  INDENT
+		//    (PreListElement values+=ValueTypes)*
+		//DEDENT
+		public Group getGroup() { return cGroup; }
+		
+		//{MultiValueListPreList}
+		public Action getMultiValueListPreListAction_0() { return cMultiValueListPreListAction_0; }
+		
+		//INDENT
+		public RuleCall getINDENTTerminalRuleCall_1() { return cINDENTTerminalRuleCall_1; }
+		
+		//(PreListElement values+=ValueTypes)*
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//PreListElement
+		public RuleCall getPreListElementParserRuleCall_2_0() { return cPreListElementParserRuleCall_2_0; }
+		
+		//values+=ValueTypes
+		public Assignment getValuesAssignment_2_1() { return cValuesAssignment_2_1; }
+		
+		//ValueTypes
+		public RuleCall getValuesValueTypesParserRuleCall_2_1_0() { return cValuesValueTypesParserRuleCall_2_1_0; }
+		
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_3() { return cDEDENTTerminalRuleCall_3; }
+	}
+	public class MultiValueListBracketElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.MultiValueListBracket");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cValuesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValuesValueTypesParserRuleCall_1_0 = (RuleCall)cValuesAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cValuesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cValuesValueTypesParserRuleCall_2_1_0 = (RuleCall)cValuesAssignment_2_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//MultiValueListBracket:
+		//  '[' (values+=ValueTypes) (',' values+=ValueTypes*)? ']'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'[' (values+=ValueTypes) (',' values+=ValueTypes*)? ']'
+		public Group getGroup() { return cGroup; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
+		
+		//(values+=ValueTypes)
+		public Assignment getValuesAssignment_1() { return cValuesAssignment_1; }
+		
+		//ValueTypes
+		public RuleCall getValuesValueTypesParserRuleCall_1_0() { return cValuesValueTypesParserRuleCall_1_0; }
+		
+		//(',' values+=ValueTypes*)?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//','
+		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
+		
+		//values+=ValueTypes*
+		public Assignment getValuesAssignment_2_1() { return cValuesAssignment_2_1; }
+		
+		//ValueTypes
+		public RuleCall getValuesValueTypesParserRuleCall_2_1_0() { return cValuesValueTypesParserRuleCall_2_1_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_3() { return cRightSquareBracketKeyword_3; }
+	}
+	public class ValueTypesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ValueTypes");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cSTRINGTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cScalarNumberParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//ValueTypes:
+		//    ID | STRING | ScalarNumber
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ID | STRING | ScalarNumber
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_1() { return cSTRINGTerminalRuleCall_1; }
 		
 		//ScalarNumber
-		public RuleCall getValueScalarNumberParserRuleCall_5_0() { return cValueScalarNumberParserRuleCall_5_0; }
-		
-		//DEDENT
-		public RuleCall getDEDENTTerminalRuleCall_6() { return cDEDENTTerminalRuleCall_6; }
-	}
-	public class ReqOperatingSystemElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ReqOperatingSystem");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cPreListElementParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Keyword cNameKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final Keyword cNameOsKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
-		private final RuleCall cINDENTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
-		private final Keyword cValueKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cValueOperatingSystemTypeListParserRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
-		private final RuleCall cDEDENTTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
-		
-		//ReqOperatingSystem:
-		//  PreListElement 'name:' name='os'
-		//  INDENT
-		//    'value:' value=OperatingSystemTypeList
-		//  DEDENT
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//PreListElement 'name:' name='os'
-		//INDENT
-		//  'value:' value=OperatingSystemTypeList
-		//DEDENT
-		public Group getGroup() { return cGroup; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_0() { return cPreListElementParserRuleCall_0; }
-		
-		//'name:'
-		public Keyword getNameKeyword_1() { return cNameKeyword_1; }
-		
-		//name='os'
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//'os'
-		public Keyword getNameOsKeyword_2_0() { return cNameOsKeyword_2_0; }
-		
-		//INDENT
-		public RuleCall getINDENTTerminalRuleCall_3() { return cINDENTTerminalRuleCall_3; }
-		
-		//'value:'
-		public Keyword getValueKeyword_4() { return cValueKeyword_4; }
-		
-		//value=OperatingSystemTypeList
-		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
-		
-		//OperatingSystemTypeList
-		public RuleCall getValueOperatingSystemTypeListParserRuleCall_5_0() { return cValueOperatingSystemTypeListParserRuleCall_5_0; }
-		
-		//DEDENT
-		public RuleCall getDEDENTTerminalRuleCall_6() { return cDEDENTTerminalRuleCall_6; }
-	}
-	public class OperatingSystemTypeListElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.OperatingSystemTypeList");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final RuleCall cPreListElementParserRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
-		private final Assignment cChildrenAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cChildrenOperatingSystemTypesEnumRuleCall_0_1_0 = (RuleCall)cChildrenAssignment_0_1.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final RuleCall cPreListElementParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
-		private final Assignment cChildrenAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cChildrenOperatingSystemTypesEnumRuleCall_1_1_0 = (RuleCall)cChildrenAssignment_1_1.eContents().get(0);
-		
-		//OperatingSystemTypeList:
-		//  (PreListElement children+=( OperatingSystemTypes))
-		//  (PreListElement children+=(OperatingSystemTypes)*)?
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//(PreListElement children+=( OperatingSystemTypes))
-		//(PreListElement children+=(OperatingSystemTypes)*)?
-		public Group getGroup() { return cGroup; }
-		
-		//(PreListElement children+=( OperatingSystemTypes))
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_0_0() { return cPreListElementParserRuleCall_0_0; }
-		
-		//children+=( OperatingSystemTypes)
-		public Assignment getChildrenAssignment_0_1() { return cChildrenAssignment_0_1; }
-		
-		//( OperatingSystemTypes)
-		public RuleCall getChildrenOperatingSystemTypesEnumRuleCall_0_1_0() { return cChildrenOperatingSystemTypesEnumRuleCall_0_1_0; }
-		
-		//(PreListElement children+=(OperatingSystemTypes)*)?
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_1_0() { return cPreListElementParserRuleCall_1_0; }
-		
-		//children+=(OperatingSystemTypes)*
-		public Assignment getChildrenAssignment_1_1() { return cChildrenAssignment_1_1; }
-		
-		//(OperatingSystemTypes)
-		public RuleCall getChildrenOperatingSystemTypesEnumRuleCall_1_1_0() { return cChildrenOperatingSystemTypesEnumRuleCall_1_1_0; }
-	}
-	public class ReqProcessorArchitectureElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ReqProcessorArchitecture");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cPreListElementParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Keyword cNameKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final Keyword cNameProcessor_architectureKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
-		private final RuleCall cINDENTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
-		private final Keyword cValueKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cValueProcessorArchitectureTypeListParserRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
-		private final RuleCall cDEDENTTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
-		
-		//ReqProcessorArchitecture:
-		//  PreListElement 'name:' name='processor_architecture'
-		//  INDENT
-		//    'value:' value=ProcessorArchitectureTypeList
-		//  DEDENT
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//PreListElement 'name:' name='processor_architecture'
-		//INDENT
-		//  'value:' value=ProcessorArchitectureTypeList
-		//DEDENT
-		public Group getGroup() { return cGroup; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_0() { return cPreListElementParserRuleCall_0; }
-		
-		//'name:'
-		public Keyword getNameKeyword_1() { return cNameKeyword_1; }
-		
-		//name='processor_architecture'
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//'processor_architecture'
-		public Keyword getNameProcessor_architectureKeyword_2_0() { return cNameProcessor_architectureKeyword_2_0; }
-		
-		//INDENT
-		public RuleCall getINDENTTerminalRuleCall_3() { return cINDENTTerminalRuleCall_3; }
-		
-		//'value:'
-		public Keyword getValueKeyword_4() { return cValueKeyword_4; }
-		
-		//value=ProcessorArchitectureTypeList
-		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
-		
-		//ProcessorArchitectureTypeList
-		public RuleCall getValueProcessorArchitectureTypeListParserRuleCall_5_0() { return cValueProcessorArchitectureTypeListParserRuleCall_5_0; }
-		
-		//DEDENT
-		public RuleCall getDEDENTTerminalRuleCall_6() { return cDEDENTTerminalRuleCall_6; }
-	}
-	public class ProcessorArchitectureTypeListElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ProcessorArchitectureTypeList");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final RuleCall cPreListElementParserRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
-		private final Assignment cChildrenAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cChildrenProcessorArchitectureTypesEnumRuleCall_0_1_0 = (RuleCall)cChildrenAssignment_0_1.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final RuleCall cPreListElementParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
-		private final Assignment cChildrenAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cChildrenProcessorArchitectureTypesEnumRuleCall_1_1_0 = (RuleCall)cChildrenAssignment_1_1.eContents().get(0);
-		
-		//ProcessorArchitectureTypeList:
-		//  (PreListElement children+=( ProcessorArchitectureTypes))
-		//  (PreListElement children+=(ProcessorArchitectureTypes)*)?
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//(PreListElement children+=( ProcessorArchitectureTypes))
-		//(PreListElement children+=(ProcessorArchitectureTypes)*)?
-		public Group getGroup() { return cGroup; }
-		
-		//(PreListElement children+=( ProcessorArchitectureTypes))
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_0_0() { return cPreListElementParserRuleCall_0_0; }
-		
-		//children+=( ProcessorArchitectureTypes)
-		public Assignment getChildrenAssignment_0_1() { return cChildrenAssignment_0_1; }
-		
-		//( ProcessorArchitectureTypes)
-		public RuleCall getChildrenProcessorArchitectureTypesEnumRuleCall_0_1_0() { return cChildrenProcessorArchitectureTypesEnumRuleCall_0_1_0; }
-		
-		//(PreListElement children+=(ProcessorArchitectureTypes)*)?
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_1_0() { return cPreListElementParserRuleCall_1_0; }
-		
-		//children+=(ProcessorArchitectureTypes)*
-		public Assignment getChildrenAssignment_1_1() { return cChildrenAssignment_1_1; }
-		
-		//(ProcessorArchitectureTypes)
-		public RuleCall getChildrenProcessorArchitectureTypesEnumRuleCall_1_1_0() { return cChildrenProcessorArchitectureTypesEnumRuleCall_1_1_0; }
-	}
-	public class ReqRosDistroElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ReqRosDistro");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cPreListElementParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Keyword cNameKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final Keyword cNameRos_distroKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
-		private final RuleCall cINDENTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
-		private final Keyword cValueKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cValueRosDistroListParserRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
-		private final RuleCall cDEDENTTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
-		
-		//ReqRosDistro:
-		//  PreListElement 'name:' name='ros_distro'
-		//  INDENT
-		//    'value:' value=RosDistroList
-		//  DEDENT
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//PreListElement 'name:' name='ros_distro'
-		//INDENT
-		//  'value:' value=RosDistroList
-		//DEDENT
-		public Group getGroup() { return cGroup; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_0() { return cPreListElementParserRuleCall_0; }
-		
-		//'name:'
-		public Keyword getNameKeyword_1() { return cNameKeyword_1; }
-		
-		//name='ros_distro'
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//'ros_distro'
-		public Keyword getNameRos_distroKeyword_2_0() { return cNameRos_distroKeyword_2_0; }
-		
-		//INDENT
-		public RuleCall getINDENTTerminalRuleCall_3() { return cINDENTTerminalRuleCall_3; }
-		
-		//'value:'
-		public Keyword getValueKeyword_4() { return cValueKeyword_4; }
-		
-		//value=RosDistroList
-		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
-		
-		//RosDistroList
-		public RuleCall getValueRosDistroListParserRuleCall_5_0() { return cValueRosDistroListParserRuleCall_5_0; }
-		
-		//DEDENT
-		public RuleCall getDEDENTTerminalRuleCall_6() { return cDEDENTTerminalRuleCall_6; }
-	}
-	public class RosDistroListElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.RosDistroList");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final RuleCall cPreListElementParserRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
-		private final Assignment cChildrenAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cChildrenRosDistroEnumRuleCall_0_1_0 = (RuleCall)cChildrenAssignment_0_1.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final RuleCall cPreListElementParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
-		private final Assignment cChildrenAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cChildrenRosDistroEnumRuleCall_1_1_0 = (RuleCall)cChildrenAssignment_1_1.eContents().get(0);
-		
-		//RosDistroList:
-		//  (PreListElement children+=( RosDistro))
-		//  (PreListElement children+=(RosDistro)*)?
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//(PreListElement children+=( RosDistro))
-		//(PreListElement children+=(RosDistro)*)?
-		public Group getGroup() { return cGroup; }
-		
-		//(PreListElement children+=( RosDistro))
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_0_0() { return cPreListElementParserRuleCall_0_0; }
-		
-		//children+=( RosDistro)
-		public Assignment getChildrenAssignment_0_1() { return cChildrenAssignment_0_1; }
-		
-		//( RosDistro)
-		public RuleCall getChildrenRosDistroEnumRuleCall_0_1_0() { return cChildrenRosDistroEnumRuleCall_0_1_0; }
-		
-		//(PreListElement children+=(RosDistro)*)?
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_1_0() { return cPreListElementParserRuleCall_1_0; }
-		
-		//children+=(RosDistro)*
-		public Assignment getChildrenAssignment_1_1() { return cChildrenAssignment_1_1; }
-		
-		//(RosDistro)
-		public RuleCall getChildrenRosDistroEnumRuleCall_1_1_0() { return cChildrenRosDistroEnumRuleCall_1_1_0; }
+		public RuleCall getScalarNumberParserRuleCall_2() { return cScalarNumberParserRuleCall_2; }
 	}
 	public class BuildRequirementsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.BuildRequirements");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cNameBuildRequirementsKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final RuleCall cINDENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Assignment cBuildDependenciesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cBuildDependenciesReqBuildDependenciesParserRuleCall_3_0 = (RuleCall)cBuildDependenciesAssignment_3.eContents().get(0);
-		private final Assignment cDependencyRepositoriesAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cDependencyRepositoriesReqDependencyRepositoriesParserRuleCall_4_0 = (RuleCall)cDependencyRepositoriesAssignment_4.eContents().get(0);
-		private final RuleCall cDEDENTTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
+		private final Action cBuildRequirementsAction_0 = (Action)cGroup.eContents().get(0);
+		private final RuleCall cINDENTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cRosDistrosKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cReqRosDistrosAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cReqRosDistrosMultiValueListParserRuleCall_3_0 = (RuleCall)cReqRosDistrosAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cTestRosDistrosKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cReqTestRosDistrosAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cReqTestRosDistrosMultiValueListParserRuleCall_4_1_0 = (RuleCall)cReqTestRosDistrosAssignment_4_1.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cDependOnKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cReqBuildDependenciesAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cReqBuildDependenciesReqBuildDependenciesParserRuleCall_5_1_0 = (RuleCall)cReqBuildDependenciesAssignment_5_1.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cAptRepositoriesKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cReqDependencyRepositoriesAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cReqDependencyRepositoriesReqDependencyRepositoriesParserRuleCall_6_1_0 = (RuleCall)cReqDependencyRepositoriesAssignment_6_1.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cCMakeArgsKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cReqCMakeArgsAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cReqCMakeArgsMultiValueListParserRuleCall_7_1_0 = (RuleCall)cReqCMakeArgsAssignment_7_1.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_8 = (RuleCall)cGroup.eContents().get(8);
 		
 		//BuildRequirements:
-		//  name='buildRequirements'':'
+		//  {BuildRequirements}
 		//  INDENT
-		//  (buildDependencies = ReqBuildDependencies)?
-		//  (dependencyRepositories = ReqDependencyRepositories)?
+		//      'rosDistros:' ReqRosDistros= MultiValueList
+		//      ('testRosDistros:' ReqTestRosDistros= MultiValueList)?
+		//      ('dependOn:' ReqBuildDependencies = ReqBuildDependencies)?
+		//      ('aptRepositories:' ReqDependencyRepositories = ReqDependencyRepositories)?
+		//      ('cMakeArgs:' ReqCMakeArgs=MultiValueList)?
 		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name='buildRequirements'':'
+		//{BuildRequirements}
 		//INDENT
-		//(buildDependencies = ReqBuildDependencies)?
-		//(dependencyRepositories = ReqDependencyRepositories)?
+		//    'rosDistros:' ReqRosDistros= MultiValueList
+		//    ('testRosDistros:' ReqTestRosDistros= MultiValueList)?
+		//    ('dependOn:' ReqBuildDependencies = ReqBuildDependencies)?
+		//    ('aptRepositories:' ReqDependencyRepositories = ReqDependencyRepositories)?
+		//    ('cMakeArgs:' ReqCMakeArgs=MultiValueList)?
 		//DEDENT
 		public Group getGroup() { return cGroup; }
 		
-		//name='buildRequirements'
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
-		
-		//'buildRequirements'
-		public Keyword getNameBuildRequirementsKeyword_0_0() { return cNameBuildRequirementsKeyword_0_0; }
-		
-		//':'
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		//{BuildRequirements}
+		public Action getBuildRequirementsAction_0() { return cBuildRequirementsAction_0; }
 		
 		//INDENT
-		public RuleCall getINDENTTerminalRuleCall_2() { return cINDENTTerminalRuleCall_2; }
+		public RuleCall getINDENTTerminalRuleCall_1() { return cINDENTTerminalRuleCall_1; }
 		
-		//(buildDependencies = ReqBuildDependencies)?
-		public Assignment getBuildDependenciesAssignment_3() { return cBuildDependenciesAssignment_3; }
+		//'rosDistros:'
+		public Keyword getRosDistrosKeyword_2() { return cRosDistrosKeyword_2; }
+		
+		//ReqRosDistros= MultiValueList
+		public Assignment getReqRosDistrosAssignment_3() { return cReqRosDistrosAssignment_3; }
+		
+		//MultiValueList
+		public RuleCall getReqRosDistrosMultiValueListParserRuleCall_3_0() { return cReqRosDistrosMultiValueListParserRuleCall_3_0; }
+		
+		//('testRosDistros:' ReqTestRosDistros= MultiValueList)?
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//'testRosDistros:'
+		public Keyword getTestRosDistrosKeyword_4_0() { return cTestRosDistrosKeyword_4_0; }
+		
+		//ReqTestRosDistros= MultiValueList
+		public Assignment getReqTestRosDistrosAssignment_4_1() { return cReqTestRosDistrosAssignment_4_1; }
+		
+		//MultiValueList
+		public RuleCall getReqTestRosDistrosMultiValueListParserRuleCall_4_1_0() { return cReqTestRosDistrosMultiValueListParserRuleCall_4_1_0; }
+		
+		//('dependOn:' ReqBuildDependencies = ReqBuildDependencies)?
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'dependOn:'
+		public Keyword getDependOnKeyword_5_0() { return cDependOnKeyword_5_0; }
+		
+		//ReqBuildDependencies = ReqBuildDependencies
+		public Assignment getReqBuildDependenciesAssignment_5_1() { return cReqBuildDependenciesAssignment_5_1; }
 		
 		//ReqBuildDependencies
-		public RuleCall getBuildDependenciesReqBuildDependenciesParserRuleCall_3_0() { return cBuildDependenciesReqBuildDependenciesParserRuleCall_3_0; }
+		public RuleCall getReqBuildDependenciesReqBuildDependenciesParserRuleCall_5_1_0() { return cReqBuildDependenciesReqBuildDependenciesParserRuleCall_5_1_0; }
 		
-		//(dependencyRepositories = ReqDependencyRepositories)?
-		public Assignment getDependencyRepositoriesAssignment_4() { return cDependencyRepositoriesAssignment_4; }
+		//('aptRepositories:' ReqDependencyRepositories = ReqDependencyRepositories)?
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'aptRepositories:'
+		public Keyword getAptRepositoriesKeyword_6_0() { return cAptRepositoriesKeyword_6_0; }
+		
+		//ReqDependencyRepositories = ReqDependencyRepositories
+		public Assignment getReqDependencyRepositoriesAssignment_6_1() { return cReqDependencyRepositoriesAssignment_6_1; }
 		
 		//ReqDependencyRepositories
-		public RuleCall getDependencyRepositoriesReqDependencyRepositoriesParserRuleCall_4_0() { return cDependencyRepositoriesReqDependencyRepositoriesParserRuleCall_4_0; }
+		public RuleCall getReqDependencyRepositoriesReqDependencyRepositoriesParserRuleCall_6_1_0() { return cReqDependencyRepositoriesReqDependencyRepositoriesParserRuleCall_6_1_0; }
+		
+		//('cMakeArgs:' ReqCMakeArgs=MultiValueList)?
+		public Group getGroup_7() { return cGroup_7; }
+		
+		//'cMakeArgs:'
+		public Keyword getCMakeArgsKeyword_7_0() { return cCMakeArgsKeyword_7_0; }
+		
+		//ReqCMakeArgs=MultiValueList
+		public Assignment getReqCMakeArgsAssignment_7_1() { return cReqCMakeArgsAssignment_7_1; }
+		
+		//MultiValueList
+		public RuleCall getReqCMakeArgsMultiValueListParserRuleCall_7_1_0() { return cReqCMakeArgsMultiValueListParserRuleCall_7_1_0; }
 		
 		//DEDENT
-		public RuleCall getDEDENTTerminalRuleCall_5() { return cDEDENTTerminalRuleCall_5; }
+		public RuleCall getDEDENTTerminalRuleCall_8() { return cDEDENTTerminalRuleCall_8; }
 	}
 	public class ReqBuildDependenciesElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ReqBuildDependencies");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cNameDependOnKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
-		private final Assignment cDependenciesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cDependenciesDependencyParserRuleCall_1_0 = (RuleCall)cDependenciesAssignment_1.eContents().get(0);
+		private final Action cReqBuildDependenciesAction_0 = (Action)cGroup.eContents().get(0);
+		private final RuleCall cINDENTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cDependenciesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cDependenciesDependencyTypesParserRuleCall_2_0 = (RuleCall)cDependenciesAssignment_2.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//ReqBuildDependencies:
-		//  name = 'dependOn:'
-		//    (dependencies+=Dependency)+
+		//  {ReqBuildDependencies}
+		//  INDENT
+		//    (dependencies+=DependencyTypes)*
+		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name = 'dependOn:'
-		//  (dependencies+=Dependency)+
+		//{ReqBuildDependencies}
+		//INDENT
+		//  (dependencies+=DependencyTypes)*
+		//DEDENT
 		public Group getGroup() { return cGroup; }
 		
-		//name = 'dependOn:'
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//{ReqBuildDependencies}
+		public Action getReqBuildDependenciesAction_0() { return cReqBuildDependenciesAction_0; }
 		
-		//'dependOn:'
-		public Keyword getNameDependOnKeyword_0_0() { return cNameDependOnKeyword_0_0; }
+		//INDENT
+		public RuleCall getINDENTTerminalRuleCall_1() { return cINDENTTerminalRuleCall_1; }
 		
-		//(dependencies+=Dependency)+
-		public Assignment getDependenciesAssignment_1() { return cDependenciesAssignment_1; }
+		//(dependencies+=DependencyTypes)*
+		public Assignment getDependenciesAssignment_2() { return cDependenciesAssignment_2; }
 		
-		//Dependency
-		public RuleCall getDependenciesDependencyParserRuleCall_1_0() { return cDependenciesDependencyParserRuleCall_1_0; }
+		//DependencyTypes
+		public RuleCall getDependenciesDependencyTypesParserRuleCall_2_0() { return cDependenciesDependencyTypesParserRuleCall_2_0; }
+		
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_3() { return cDEDENTTerminalRuleCall_3; }
 	}
-	public class DependencyElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.Dependency");
+	public class DependencyTypesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.DependencyTypes");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cLocalPackageParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cGitPackageParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//Dependency:
-		//  LocalPackage|GitPackage
+		//DependencyTypes:
+		//  LocalPackage | GitPackage
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//LocalPackage|GitPackage
+		//LocalPackage | GitPackage
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//LocalPackage
@@ -1028,128 +1043,102 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.LocalPackage");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cPreListElementParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Keyword cFromKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cImportedNamespaceAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cImportedNamespaceQualifiedNameParserRuleCall_2_0 = (RuleCall)cImportedNamespaceAssignment_2.eContents().get(0);
-		private final RuleCall cINDENTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
-		private final Keyword cNameKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cNameMonolithicImplementationDescriptionCrossReference_5_0 = (CrossReference)cNameAssignment_5.eContents().get(0);
-		private final RuleCall cNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_5_0_1 = (RuleCall)cNameMonolithicImplementationDescriptionCrossReference_5_0.eContents().get(1);
-		private final RuleCall cDEDENTTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
+		private final Keyword cNameKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cNameMonolithicImplementationDescriptionCrossReference_2_0 = (CrossReference)cNameAssignment_2.eContents().get(0);
+		private final RuleCall cNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cNameMonolithicImplementationDescriptionCrossReference_2_0.eContents().get(1);
 		
 		//LocalPackage:
-		//  PreListElement 'from:' importedNamespace=QualifiedName
-		//  INDENT
-		//  'name:' name = [MonolithicImplementationDescription|QualifiedName]
-		//  DEDENT
+		//    PreListElement 'name:' name = [MonolithicImplementationDescription|QualifiedName]
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//PreListElement 'from:' importedNamespace=QualifiedName
-		//INDENT
-		//'name:' name = [MonolithicImplementationDescription|QualifiedName]
-		//DEDENT
+		//PreListElement 'name:' name = [MonolithicImplementationDescription|QualifiedName]
 		public Group getGroup() { return cGroup; }
 		
 		//PreListElement
 		public RuleCall getPreListElementParserRuleCall_0() { return cPreListElementParserRuleCall_0; }
 		
-		//'from:'
-		public Keyword getFromKeyword_1() { return cFromKeyword_1; }
-		
-		//importedNamespace=QualifiedName
-		public Assignment getImportedNamespaceAssignment_2() { return cImportedNamespaceAssignment_2; }
-		
-		//QualifiedName
-		public RuleCall getImportedNamespaceQualifiedNameParserRuleCall_2_0() { return cImportedNamespaceQualifiedNameParserRuleCall_2_0; }
-		
-		//INDENT
-		public RuleCall getINDENTTerminalRuleCall_3() { return cINDENTTerminalRuleCall_3; }
-		
 		//'name:'
-		public Keyword getNameKeyword_4() { return cNameKeyword_4; }
+		public Keyword getNameKeyword_1() { return cNameKeyword_1; }
 		
 		//name = [MonolithicImplementationDescription|QualifiedName]
-		public Assignment getNameAssignment_5() { return cNameAssignment_5; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
 		//[MonolithicImplementationDescription|QualifiedName]
-		public CrossReference getNameMonolithicImplementationDescriptionCrossReference_5_0() { return cNameMonolithicImplementationDescriptionCrossReference_5_0; }
+		public CrossReference getNameMonolithicImplementationDescriptionCrossReference_2_0() { return cNameMonolithicImplementationDescriptionCrossReference_2_0; }
 		
 		//QualifiedName
-		public RuleCall getNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_5_0_1() { return cNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_5_0_1; }
-		
-		//DEDENT
-		public RuleCall getDEDENTTerminalRuleCall_6() { return cDEDENTTerminalRuleCall_6; }
+		public RuleCall getNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_2_0_1() { return cNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_2_0_1; }
 	}
 	public class GitPackageElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.GitPackage");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cPreListElementParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Keyword cFromKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cPathAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPathURLTerminalRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
+		private final Keyword cNameKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final RuleCall cINDENTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
-		private final Keyword cNameKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cNameIDTerminalRuleCall_5_0 = (RuleCall)cNameAssignment_5.eContents().get(0);
+		private final Keyword cLocationKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cPathAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cPathURLTerminalRuleCall_5_0 = (RuleCall)cPathAssignment_5.eContents().get(0);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cBranchKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cBranchAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final RuleCall cBranchSTRINGTerminalRuleCall_6_1_0 = (RuleCall)cBranchAssignment_6_1.eContents().get(0);
+		private final Keyword cVisibilityKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cVisibilityAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cVisibilityIDTerminalRuleCall_6_1_0 = (RuleCall)cVisibilityAssignment_6_1.eContents().get(0);
 		private final RuleCall cDEDENTTerminalRuleCall_7 = (RuleCall)cGroup.eContents().get(7);
 		
 		//GitPackage:
-		//  PreListElement  'from:' path = URL
+		//    PreListElement 'name:' name = ID
 		//  INDENT
-		// 'name:' name = ID
-		// ('branch:' branch = STRING)?
-		// DEDENT
+		//      'location:' path = URL
+		//      ('visibility:' visibility = ID)?
+		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		// PreListElement  'from:' path = URL
-		// INDENT
-		//'name:' name = ID
-		//('branch:' branch = STRING)?
+		//  PreListElement 'name:' name = ID
+		//INDENT
+		//    'location:' path = URL
+		//    ('visibility:' visibility = ID)?
 		//DEDENT
 		public Group getGroup() { return cGroup; }
 		
 		//PreListElement
 		public RuleCall getPreListElementParserRuleCall_0() { return cPreListElementParserRuleCall_0; }
 		
-		//'from:'
-		public Keyword getFromKeyword_1() { return cFromKeyword_1; }
+		//'name:'
+		public Keyword getNameKeyword_1() { return cNameKeyword_1; }
 		
-		//path = URL
-		public Assignment getPathAssignment_2() { return cPathAssignment_2; }
+		//name = ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
-		//URL
-		public RuleCall getPathURLTerminalRuleCall_2_0() { return cPathURLTerminalRuleCall_2_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 		
 		//INDENT
 		public RuleCall getINDENTTerminalRuleCall_3() { return cINDENTTerminalRuleCall_3; }
 		
-		//'name:'
-		public Keyword getNameKeyword_4() { return cNameKeyword_4; }
+		//'location:'
+		public Keyword getLocationKeyword_4() { return cLocationKeyword_4; }
 		
-		//name = ID
-		public Assignment getNameAssignment_5() { return cNameAssignment_5; }
+		//path = URL
+		public Assignment getPathAssignment_5() { return cPathAssignment_5; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_5_0() { return cNameIDTerminalRuleCall_5_0; }
+		//URL
+		public RuleCall getPathURLTerminalRuleCall_5_0() { return cPathURLTerminalRuleCall_5_0; }
 		
-		//('branch:' branch = STRING)?
+		//('visibility:' visibility = ID)?
 		public Group getGroup_6() { return cGroup_6; }
 		
-		//'branch:'
-		public Keyword getBranchKeyword_6_0() { return cBranchKeyword_6_0; }
+		//'visibility:'
+		public Keyword getVisibilityKeyword_6_0() { return cVisibilityKeyword_6_0; }
 		
-		//branch = STRING
-		public Assignment getBranchAssignment_6_1() { return cBranchAssignment_6_1; }
+		//visibility = ID
+		public Assignment getVisibilityAssignment_6_1() { return cVisibilityAssignment_6_1; }
 		
-		//STRING
-		public RuleCall getBranchSTRINGTerminalRuleCall_6_1_0() { return cBranchSTRINGTerminalRuleCall_6_1_0; }
+		//ID
+		public RuleCall getVisibilityIDTerminalRuleCall_6_1_0() { return cVisibilityIDTerminalRuleCall_6_1_0; }
 		
 		//DEDENT
 		public RuleCall getDEDENTTerminalRuleCall_7() { return cDEDENTTerminalRuleCall_7; }
@@ -1157,36 +1146,34 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	public class ReqDependencyRepositoriesElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ReqDependencyRepositories");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cNameAptRepositoriesKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cChildrenAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cChildrenAptRepositoryInstanceParserRuleCall_2_0 = (RuleCall)cChildrenAssignment_2.eContents().get(0);
+		private final RuleCall cINDENTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cChildrenAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cChildrenAptRepositoryInstanceParserRuleCall_1_0 = (RuleCall)cChildrenAssignment_1.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//ReqDependencyRepositories:
-		//  name='aptRepositories'':'
+		//  INDENT
 		//  children+=(AptRepositoryInstance)+
+		//    DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name='aptRepositories'':'
+		//INDENT
 		//children+=(AptRepositoryInstance)+
+		//  DEDENT
 		public Group getGroup() { return cGroup; }
 		
-		//name='aptRepositories'
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
-		
-		//'aptRepositories'
-		public Keyword getNameAptRepositoriesKeyword_0_0() { return cNameAptRepositoriesKeyword_0_0; }
-		
-		//':'
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		//INDENT
+		public RuleCall getINDENTTerminalRuleCall_0() { return cINDENTTerminalRuleCall_0; }
 		
 		//children+=(AptRepositoryInstance)+
-		public Assignment getChildrenAssignment_2() { return cChildrenAssignment_2; }
+		public Assignment getChildrenAssignment_1() { return cChildrenAssignment_1; }
 		
 		//(AptRepositoryInstance)
-		public RuleCall getChildrenAptRepositoryInstanceParserRuleCall_2_0() { return cChildrenAptRepositoryInstanceParserRuleCall_2_0; }
+		public RuleCall getChildrenAptRepositoryInstanceParserRuleCall_1_0() { return cChildrenAptRepositoryInstanceParserRuleCall_1_0; }
+		
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_2() { return cDEDENTTerminalRuleCall_2; }
 	}
 	public class AptRepositoryInstanceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.AptRepositoryInstance");
@@ -1274,181 +1261,105 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//DEDENT
 		public RuleCall getDEDENTTerminalRuleCall_9() { return cDEDENTTerminalRuleCall_9; }
 	}
-	public class StartCommandsElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.StartCommands");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cNameStartCommandsKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
-		private final Assignment cStartCommandsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cStartCommandsListStartCommandsParserRuleCall_1_0 = (RuleCall)cStartCommandsAssignment_1.eContents().get(0);
-		
-		//StartCommands:
-		//  name = 'startCommands:'
-		//  startCommands=ListStartCommands
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//name = 'startCommands:'
-		//startCommands=ListStartCommands
-		public Group getGroup() { return cGroup; }
-		
-		//name = 'startCommands:'
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
-		
-		//'startCommands:'
-		public Keyword getNameStartCommandsKeyword_0_0() { return cNameStartCommandsKeyword_0_0; }
-		
-		//startCommands=ListStartCommands
-		public Assignment getStartCommandsAssignment_1() { return cStartCommandsAssignment_1; }
-		
-		//ListStartCommands
-		public RuleCall getStartCommandsListStartCommandsParserRuleCall_1_0() { return cStartCommandsListStartCommandsParserRuleCall_1_0; }
-	}
-	public class ListStartCommandsElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ListStartCommands");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final RuleCall cPreListElementParserRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
-		private final Assignment cChildrenAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cChildrenSTRINGTerminalRuleCall_0_1_0 = (RuleCall)cChildrenAssignment_0_1.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final RuleCall cPreListElementParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
-		private final Assignment cChildrenAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cChildrenSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cChildrenAssignment_1_1.eContents().get(0);
-		
-		//ListStartCommands:
-		//  (PreListElement children+=(STRING))
-		//  (PreListElement children+=(STRING)*)?
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//(PreListElement children+=(STRING))
-		//(PreListElement children+=(STRING)*)?
-		public Group getGroup() { return cGroup; }
-		
-		//(PreListElement children+=(STRING))
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_0_0() { return cPreListElementParserRuleCall_0_0; }
-		
-		//children+=(STRING)
-		public Assignment getChildrenAssignment_0_1() { return cChildrenAssignment_0_1; }
-		
-		//(STRING)
-		public RuleCall getChildrenSTRINGTerminalRuleCall_0_1_0() { return cChildrenSTRINGTerminalRuleCall_0_1_0; }
-		
-		//(PreListElement children+=(STRING)*)?
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_1_0() { return cPreListElementParserRuleCall_1_0; }
-		
-		//children+=(STRING)*
-		public Assignment getChildrenAssignment_1_1() { return cChildrenAssignment_1_1; }
-		
-		//(STRING)
-		public RuleCall getChildrenSTRINGTerminalRuleCall_1_1_0() { return cChildrenSTRINGTerminalRuleCall_1_1_0; }
-	}
 	public class StackImplementationDescriptionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.StackImplementationDescription");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cTypeStackImplementationDescriptionKeyword_0_0 = (Keyword)cTypeAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final RuleCall cINDENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Keyword cNameKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cNameQualifiedNameParserRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cImplementsRosModelKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cImpRosmodelAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cImpRosmodelQualifiedNameParserRuleCall_5_1_0 = (RuleCall)cImpRosmodelAssignment_5_1.eContents().get(0);
-		private final Keyword cDescriptionKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cDescriptionAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cDescriptionSTRINGTerminalRuleCall_7_0 = (RuleCall)cDescriptionAssignment_7.eContents().get(0);
-		private final Keyword cModeKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cModeAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cModeImplementationModeTypeEnumRuleCall_9_0 = (RuleCall)cModeAssignment_9.eContents().get(0);
+		private final RuleCall cINDENTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cNameKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameQualifiedNameParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cImplementsRosModelKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cImpRosmodelAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cImpRosmodelQualifiedNameParserRuleCall_4_1_0 = (RuleCall)cImpRosmodelAssignment_4_1.eContents().get(0);
+		private final Keyword cDescriptionKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cDescriptionAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cDescriptionSTRINGTerminalRuleCall_6_0 = (RuleCall)cDescriptionAssignment_6.eContents().get(0);
+		private final Keyword cModeKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cModeAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cModeImplementationModeTypeEnumRuleCall_8_0 = (RuleCall)cModeAssignment_8.eContents().get(0);
+		private final Keyword cImplementationArtifactDescriptionKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		private final Assignment cImplAssignment_10 = (Assignment)cGroup.eContents().get(10);
 		private final RuleCall cImplImplementationArtifactDescriptionParserRuleCall_10_0 = (RuleCall)cImplAssignment_10.eContents().get(0);
 		private final RuleCall cDEDENTTerminalRuleCall_11 = (RuleCall)cGroup.eContents().get(11);
 		
 		//StackImplementationDescription:
-		//  type='StackImplementationDescription'':'
+		//  type='StackImplementationDescription:'
 		//  INDENT
 		//    'name:' name=QualifiedName
 		//  //  TODO: link to rosmodel
 		//    ('implementsRosModel:'impRosmodel=QualifiedName)?
 		//    'description:' description=STRING
 		//    'mode:' mode=ImplementationModeType
-		//    impl=ImplementationArtifactDescription
+		//    "ImplementationArtifactDescription:" impl=ImplementationArtifactDescription
 		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//type='StackImplementationDescription'':'
+		//type='StackImplementationDescription:'
 		//INDENT
 		//  'name:' name=QualifiedName
 		////  TODO: link to rosmodel
 		//  ('implementsRosModel:'impRosmodel=QualifiedName)?
 		//  'description:' description=STRING
 		//  'mode:' mode=ImplementationModeType
-		//  impl=ImplementationArtifactDescription
+		//  "ImplementationArtifactDescription:" impl=ImplementationArtifactDescription
 		//DEDENT
 		public Group getGroup() { return cGroup; }
 		
-		//type='StackImplementationDescription'
+		//type='StackImplementationDescription:'
 		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
 		
-		//'StackImplementationDescription'
+		//'StackImplementationDescription:'
 		public Keyword getTypeStackImplementationDescriptionKeyword_0_0() { return cTypeStackImplementationDescriptionKeyword_0_0; }
 		
-		//':'
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
-		
 		//INDENT
-		public RuleCall getINDENTTerminalRuleCall_2() { return cINDENTTerminalRuleCall_2; }
+		public RuleCall getINDENTTerminalRuleCall_1() { return cINDENTTerminalRuleCall_1; }
 		
 		//'name:'
-		public Keyword getNameKeyword_3() { return cNameKeyword_3; }
+		public Keyword getNameKeyword_2() { return cNameKeyword_2; }
 		
 		//name=QualifiedName
-		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
 		
 		//QualifiedName
-		public RuleCall getNameQualifiedNameParserRuleCall_4_0() { return cNameQualifiedNameParserRuleCall_4_0; }
+		public RuleCall getNameQualifiedNameParserRuleCall_3_0() { return cNameQualifiedNameParserRuleCall_3_0; }
 		
 		////  TODO: link to rosmodel
 		//  ('implementsRosModel:'impRosmodel=QualifiedName)?
-		public Group getGroup_5() { return cGroup_5; }
+		public Group getGroup_4() { return cGroup_4; }
 		
 		//'implementsRosModel:'
-		public Keyword getImplementsRosModelKeyword_5_0() { return cImplementsRosModelKeyword_5_0; }
+		public Keyword getImplementsRosModelKeyword_4_0() { return cImplementsRosModelKeyword_4_0; }
 		
 		//impRosmodel=QualifiedName
-		public Assignment getImpRosmodelAssignment_5_1() { return cImpRosmodelAssignment_5_1; }
+		public Assignment getImpRosmodelAssignment_4_1() { return cImpRosmodelAssignment_4_1; }
 		
 		//QualifiedName
-		public RuleCall getImpRosmodelQualifiedNameParserRuleCall_5_1_0() { return cImpRosmodelQualifiedNameParserRuleCall_5_1_0; }
+		public RuleCall getImpRosmodelQualifiedNameParserRuleCall_4_1_0() { return cImpRosmodelQualifiedNameParserRuleCall_4_1_0; }
 		
 		//'description:'
-		public Keyword getDescriptionKeyword_6() { return cDescriptionKeyword_6; }
+		public Keyword getDescriptionKeyword_5() { return cDescriptionKeyword_5; }
 		
 		//description=STRING
-		public Assignment getDescriptionAssignment_7() { return cDescriptionAssignment_7; }
+		public Assignment getDescriptionAssignment_6() { return cDescriptionAssignment_6; }
 		
 		//STRING
-		public RuleCall getDescriptionSTRINGTerminalRuleCall_7_0() { return cDescriptionSTRINGTerminalRuleCall_7_0; }
+		public RuleCall getDescriptionSTRINGTerminalRuleCall_6_0() { return cDescriptionSTRINGTerminalRuleCall_6_0; }
 		
 		//'mode:'
-		public Keyword getModeKeyword_8() { return cModeKeyword_8; }
+		public Keyword getModeKeyword_7() { return cModeKeyword_7; }
 		
 		//mode=ImplementationModeType
-		public Assignment getModeAssignment_9() { return cModeAssignment_9; }
+		public Assignment getModeAssignment_8() { return cModeAssignment_8; }
 		
 		//ImplementationModeType
-		public RuleCall getModeImplementationModeTypeEnumRuleCall_9_0() { return cModeImplementationModeTypeEnumRuleCall_9_0; }
+		public RuleCall getModeImplementationModeTypeEnumRuleCall_8_0() { return cModeImplementationModeTypeEnumRuleCall_8_0; }
+		
+		//"ImplementationArtifactDescription:"
+		public Keyword getImplementationArtifactDescriptionKeyword_9() { return cImplementationArtifactDescriptionKeyword_9; }
 		
 		//impl=ImplementationArtifactDescription
 		public Assignment getImplAssignment_10() { return cImplAssignment_10; }
@@ -1480,11 +1391,11 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//  type='PackageDescription'':'
 		//  INDENT
 		//    'imageDescription:'
-		//  INDENT
-		//    imageDescription=ImageDescription
-		//  DEDENT
+		//      INDENT
+		//        imageDescription=ImageDescription
+		//      DEDENT
 		//    'repositoryDescription:'
-		//    repositoryDescription=RepositoryDescription
+		//        repositoryDescription=RepositoryDescription
 		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -1492,11 +1403,11 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//type='PackageDescription'':'
 		//INDENT
 		//  'imageDescription:'
-		//INDENT
-		//  imageDescription=ImageDescription
-		//DEDENT
+		//    INDENT
+		//      imageDescription=ImageDescription
+		//    DEDENT
 		//  'repositoryDescription:'
-		//  repositoryDescription=RepositoryDescription
+		//      repositoryDescription=RepositoryDescription
 		//DEDENT
 		public Group getGroup() { return cGroup; }
 		
@@ -1544,35 +1455,35 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cTypesKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cTypesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypesImageTypeListParserRuleCall_1_0 = (RuleCall)cTypesAssignment_1.eContents().get(0);
+		private final RuleCall cTypesMultiValueListParserRuleCall_1_0 = (RuleCall)cTypesAssignment_1.eContents().get(0);
 		private final Keyword cNameKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cNameMonolithicImplementationDescriptionCrossReference_3_0 = (CrossReference)cNameAssignment_3.eContents().get(0);
 		private final RuleCall cNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_3_0_1 = (RuleCall)cNameMonolithicImplementationDescriptionCrossReference_3_0.eContents().get(1);
-		private final Keyword cImageVersionsKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cImageVersionsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cImageVersionsImageVersionListParserRuleCall_5_0 = (RuleCall)cImageVersionsAssignment_5.eContents().get(0);
+		private final Keyword cImageTagsKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cImageTagsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cImageTagsMultiValueListParserRuleCall_5_0 = (RuleCall)cImageTagsAssignment_5.eContents().get(0);
 		
 		//ImageDescription:
-		//  'types:' types += ImageTypeList
+		//  'types:' types = MultiValueList
 		//  'name:' name= [MonolithicImplementationDescription|QualifiedName]
-		//  'imageVersions:' imageVersions = ImageVersionList
+		//  'imageTags:' imageTags = MultiValueList
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'types:' types += ImageTypeList
+		//'types:' types = MultiValueList
 		//'name:' name= [MonolithicImplementationDescription|QualifiedName]
-		//'imageVersions:' imageVersions = ImageVersionList
+		//'imageTags:' imageTags = MultiValueList
 		public Group getGroup() { return cGroup; }
 		
 		//'types:'
 		public Keyword getTypesKeyword_0() { return cTypesKeyword_0; }
 		
-		//types += ImageTypeList
+		//types = MultiValueList
 		public Assignment getTypesAssignment_1() { return cTypesAssignment_1; }
 		
-		//ImageTypeList
-		public RuleCall getTypesImageTypeListParserRuleCall_1_0() { return cTypesImageTypeListParserRuleCall_1_0; }
+		//MultiValueList
+		public RuleCall getTypesMultiValueListParserRuleCall_1_0() { return cTypesMultiValueListParserRuleCall_1_0; }
 		
 		//'name:'
 		public Keyword getNameKeyword_2() { return cNameKeyword_2; }
@@ -1586,120 +1497,46 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//QualifiedName
 		public RuleCall getNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_3_0_1() { return cNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_3_0_1; }
 		
-		//'imageVersions:'
-		public Keyword getImageVersionsKeyword_4() { return cImageVersionsKeyword_4; }
+		//'imageTags:'
+		public Keyword getImageTagsKeyword_4() { return cImageTagsKeyword_4; }
 		
-		//imageVersions = ImageVersionList
-		public Assignment getImageVersionsAssignment_5() { return cImageVersionsAssignment_5; }
+		//imageTags = MultiValueList
+		public Assignment getImageTagsAssignment_5() { return cImageTagsAssignment_5; }
 		
-		//ImageVersionList
-		public RuleCall getImageVersionsImageVersionListParserRuleCall_5_0() { return cImageVersionsImageVersionListParserRuleCall_5_0; }
-	}
-	public class ImageTypeListElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ImageTypeList");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cChildrenAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cChildrenImageTypesEnumRuleCall_1_0 = (RuleCall)cChildrenAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cChildrenAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cChildrenImageTypesEnumRuleCall_2_1_0 = (RuleCall)cChildrenAssignment_2_1.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		
-		//ImageTypeList:
-		//  '[' (children+=(ImageTypes)) (',' children+=(ImageTypes)*)? ']'
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'[' (children+=(ImageTypes)) (',' children+=(ImageTypes)*)? ']'
-		public Group getGroup() { return cGroup; }
-		
-		//'['
-		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
-		
-		//(children+=(ImageTypes))
-		public Assignment getChildrenAssignment_1() { return cChildrenAssignment_1; }
-		
-		//(ImageTypes)
-		public RuleCall getChildrenImageTypesEnumRuleCall_1_0() { return cChildrenImageTypesEnumRuleCall_1_0; }
-		
-		//(',' children+=(ImageTypes)*)?
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//','
-		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
-		
-		//children+=(ImageTypes)*
-		public Assignment getChildrenAssignment_2_1() { return cChildrenAssignment_2_1; }
-		
-		//(ImageTypes)
-		public RuleCall getChildrenImageTypesEnumRuleCall_2_1_0() { return cChildrenImageTypesEnumRuleCall_2_1_0; }
-		
-		//']'
-		public Keyword getRightSquareBracketKeyword_3() { return cRightSquareBracketKeyword_3; }
-	}
-	public class ImageVersionListElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ImageVersionList");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final RuleCall cPreListElementParserRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
-		private final Assignment cChildrenAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cChildrenImageVersionTypesEnumRuleCall_0_1_0 = (RuleCall)cChildrenAssignment_0_1.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final RuleCall cPreListElementParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
-		private final Assignment cChildrenAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cChildrenImageVersionTypesEnumRuleCall_1_1_0 = (RuleCall)cChildrenAssignment_1_1.eContents().get(0);
-		
-		//ImageVersionList:
-		//  (PreListElement children+=( ImageVersionTypes))
-		//  (PreListElement children+=(ImageVersionTypes)*)?
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//(PreListElement children+=( ImageVersionTypes))
-		//(PreListElement children+=(ImageVersionTypes)*)?
-		public Group getGroup() { return cGroup; }
-		
-		//(PreListElement children+=( ImageVersionTypes))
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_0_0() { return cPreListElementParserRuleCall_0_0; }
-		
-		//children+=( ImageVersionTypes)
-		public Assignment getChildrenAssignment_0_1() { return cChildrenAssignment_0_1; }
-		
-		//( ImageVersionTypes)
-		public RuleCall getChildrenImageVersionTypesEnumRuleCall_0_1_0() { return cChildrenImageVersionTypesEnumRuleCall_0_1_0; }
-		
-		//(PreListElement children+=(ImageVersionTypes)*)?
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//PreListElement
-		public RuleCall getPreListElementParserRuleCall_1_0() { return cPreListElementParserRuleCall_1_0; }
-		
-		//children+=(ImageVersionTypes)*
-		public Assignment getChildrenAssignment_1_1() { return cChildrenAssignment_1_1; }
-		
-		//(ImageVersionTypes)
-		public RuleCall getChildrenImageVersionTypesEnumRuleCall_1_1_0() { return cChildrenImageVersionTypesEnumRuleCall_1_1_0; }
+		//MultiValueList
+		public RuleCall getImageTagsMultiValueListParserRuleCall_5_0() { return cImageTagsMultiValueListParserRuleCall_5_0; }
 	}
 	public class RepositoryDescriptionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.RepositoryDescription");
-		private final Assignment cSpecAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cSpecRepositorySpecParserRuleCall_0 = (RuleCall)cSpecAssignment.eContents().get(0);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cINDENTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cSpecAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cSpecRepositorySpecParserRuleCall_1_0 = (RuleCall)cSpecAssignment_1.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//RepositoryDescription:
-		//  (spec+=RepositorySpec)+
+		//    INDENT
+		//      (spec+=RepositorySpec)+
+		//  DEDENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//  INDENT
+		//    (spec+=RepositorySpec)+
+		//DEDENT
+		public Group getGroup() { return cGroup; }
+		
+		//INDENT
+		public RuleCall getINDENTTerminalRuleCall_0() { return cINDENTTerminalRuleCall_0; }
+		
 		//(spec+=RepositorySpec)+
-		public Assignment getSpecAssignment() { return cSpecAssignment; }
+		public Assignment getSpecAssignment_1() { return cSpecAssignment_1; }
 		
 		//RepositorySpec
-		public RuleCall getSpecRepositorySpecParserRuleCall_0() { return cSpecRepositorySpecParserRuleCall_0; }
+		public RuleCall getSpecRepositorySpecParserRuleCall_1_0() { return cSpecRepositorySpecParserRuleCall_1_0; }
+		
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_2() { return cDEDENTTerminalRuleCall_2; }
 	}
 	public class RepositorySpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.RepositorySpec");
@@ -1756,30 +1593,30 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cTypeKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeRepositoryTypesEnumRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final RuleCall cTypeIDTerminalRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cPathKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cPathAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cPathSTRINGTerminalRuleCall_2_1_0 = (RuleCall)cPathAssignment_2_1.eContents().get(0);
 		
 		//Repository:
-		//  'type:' type = RepositoryTypes
+		//  'type:' type = ID
 		//  ('path:' path=STRING)?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'type:' type = RepositoryTypes
+		//'type:' type = ID
 		//('path:' path=STRING)?
 		public Group getGroup() { return cGroup; }
 		
 		//'type:'
 		public Keyword getTypeKeyword_0() { return cTypeKeyword_0; }
 		
-		//type = RepositoryTypes
+		//type = ID
 		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
 		
-		//RepositoryTypes
-		public RuleCall getTypeRepositoryTypesEnumRuleCall_1_0() { return cTypeRepositoryTypesEnumRuleCall_1_0; }
+		//ID
+		public RuleCall getTypeIDTerminalRuleCall_1_0() { return cTypeIDTerminalRuleCall_1_0; }
 		
 		//('path:' path=STRING)?
 		public Group getGroup_2() { return cGroup_2; }
@@ -1792,6 +1629,304 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		
 		//STRING
 		public RuleCall getPathSTRINGTerminalRuleCall_2_1_0() { return cPathSTRINGTerminalRuleCall_2_1_0; }
+	}
+	public class CISettingElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.CISetting");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cTypeCISettingKeyword_0_0 = (Keyword)cTypeAssignment_0.eContents().get(0);
+		private final RuleCall cINDENTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cCiTypesKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCiTypesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCiTypesMultiValueListParserRuleCall_3_0 = (RuleCall)cCiTypesAssignment_3.eContents().get(0);
+		private final Keyword cAppliedReposKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cAppliedReposAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cAppliedReposMultiMonolithicImplementationNameListParserRuleCall_5_0 = (RuleCall)cAppliedReposAssignment_5.eContents().get(0);
+		private final Keyword cBranchPrefixTypeKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cReqBranchPrefixAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cReqBranchPrefixIDTerminalRuleCall_7_0 = (RuleCall)cReqBranchPrefixAssignment_7.eContents().get(0);
+		private final Assignment cCiParametersAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cCiParametersCIParametersParserRuleCall_8_0 = (RuleCall)cCiParametersAssignment_8.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_9 = (RuleCall)cGroup.eContents().get(9);
+		
+		//CISetting:
+		//  type='CISetting:'
+		//  INDENT
+		//      'ciTypes:' ciTypes = MultiValueList
+		//      'appliedRepos:' appliedRepos=MultiMonolithicImplementationNameList
+		//      'branchPrefixType:' reqBranchPrefix=ID
+		//      ciParameters+=(CIParameters)*
+		//  DEDENT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//type='CISetting:'
+		//INDENT
+		//    'ciTypes:' ciTypes = MultiValueList
+		//    'appliedRepos:' appliedRepos=MultiMonolithicImplementationNameList
+		//    'branchPrefixType:' reqBranchPrefix=ID
+		//    ciParameters+=(CIParameters)*
+		//DEDENT
+		public Group getGroup() { return cGroup; }
+		
+		//type='CISetting:'
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+		
+		//'CISetting:'
+		public Keyword getTypeCISettingKeyword_0_0() { return cTypeCISettingKeyword_0_0; }
+		
+		//INDENT
+		public RuleCall getINDENTTerminalRuleCall_1() { return cINDENTTerminalRuleCall_1; }
+		
+		//'ciTypes:'
+		public Keyword getCiTypesKeyword_2() { return cCiTypesKeyword_2; }
+		
+		//ciTypes = MultiValueList
+		public Assignment getCiTypesAssignment_3() { return cCiTypesAssignment_3; }
+		
+		//MultiValueList
+		public RuleCall getCiTypesMultiValueListParserRuleCall_3_0() { return cCiTypesMultiValueListParserRuleCall_3_0; }
+		
+		//'appliedRepos:'
+		public Keyword getAppliedReposKeyword_4() { return cAppliedReposKeyword_4; }
+		
+		//appliedRepos=MultiMonolithicImplementationNameList
+		public Assignment getAppliedReposAssignment_5() { return cAppliedReposAssignment_5; }
+		
+		//MultiMonolithicImplementationNameList
+		public RuleCall getAppliedReposMultiMonolithicImplementationNameListParserRuleCall_5_0() { return cAppliedReposMultiMonolithicImplementationNameListParserRuleCall_5_0; }
+		
+		//'branchPrefixType:'
+		public Keyword getBranchPrefixTypeKeyword_6() { return cBranchPrefixTypeKeyword_6; }
+		
+		//reqBranchPrefix=ID
+		public Assignment getReqBranchPrefixAssignment_7() { return cReqBranchPrefixAssignment_7; }
+		
+		//ID
+		public RuleCall getReqBranchPrefixIDTerminalRuleCall_7_0() { return cReqBranchPrefixIDTerminalRuleCall_7_0; }
+		
+		//ciParameters+=(CIParameters)*
+		public Assignment getCiParametersAssignment_8() { return cCiParametersAssignment_8; }
+		
+		//(CIParameters)
+		public RuleCall getCiParametersCIParametersParserRuleCall_8_0() { return cCiParametersCIParametersParserRuleCall_8_0; }
+		
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_9() { return cDEDENTTerminalRuleCall_9; }
+	}
+	public class MultiMonolithicImplementationNameListElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.MultiMonolithicImplementationNameList");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cMultiMonolithicImplementationNamePreListParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cMultiMonolithicImplementationNameListBracketParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//MultiMonolithicImplementationNameList:
+		//    MultiMonolithicImplementationNamePreList|
+		//    MultiMonolithicImplementationNameListBracket
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//MultiMonolithicImplementationNamePreList|
+		//MultiMonolithicImplementationNameListBracket
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//MultiMonolithicImplementationNamePreList
+		public RuleCall getMultiMonolithicImplementationNamePreListParserRuleCall_0() { return cMultiMonolithicImplementationNamePreListParserRuleCall_0; }
+		
+		//MultiMonolithicImplementationNameListBracket
+		public RuleCall getMultiMonolithicImplementationNameListBracketParserRuleCall_1() { return cMultiMonolithicImplementationNameListBracketParserRuleCall_1; }
+	}
+	public class MultiMonolithicImplementationNamePreListElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.MultiMonolithicImplementationNamePreList");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cMultiMonolithicImplementationNamePreListAction_0 = (Action)cGroup.eContents().get(0);
+		private final RuleCall cINDENTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final RuleCall cPreListElementParserRuleCall_2_0 = (RuleCall)cGroup_2.eContents().get(0);
+		private final Assignment cValuesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final CrossReference cValuesMonolithicImplementationDescriptionCrossReference_2_1_0 = (CrossReference)cValuesAssignment_2_1.eContents().get(0);
+		private final RuleCall cValuesMonolithicImplementationDescriptionQualifiedNameParserRuleCall_2_1_0_1 = (RuleCall)cValuesMonolithicImplementationDescriptionCrossReference_2_1_0.eContents().get(1);
+		private final RuleCall cDEDENTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		
+		//MultiMonolithicImplementationNamePreList:
+		//    {MultiMonolithicImplementationNamePreList} INDENT
+		//      (PreListElement values+=[MonolithicImplementationDescription|QualifiedName])*
+		//  DEDENT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//  {MultiMonolithicImplementationNamePreList} INDENT
+		//    (PreListElement values+=[MonolithicImplementationDescription|QualifiedName])*
+		//DEDENT
+		public Group getGroup() { return cGroup; }
+		
+		//{MultiMonolithicImplementationNamePreList}
+		public Action getMultiMonolithicImplementationNamePreListAction_0() { return cMultiMonolithicImplementationNamePreListAction_0; }
+		
+		//INDENT
+		public RuleCall getINDENTTerminalRuleCall_1() { return cINDENTTerminalRuleCall_1; }
+		
+		//(PreListElement values+=[MonolithicImplementationDescription|QualifiedName])*
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//PreListElement
+		public RuleCall getPreListElementParserRuleCall_2_0() { return cPreListElementParserRuleCall_2_0; }
+		
+		//values+=[MonolithicImplementationDescription|QualifiedName]
+		public Assignment getValuesAssignment_2_1() { return cValuesAssignment_2_1; }
+		
+		//[MonolithicImplementationDescription|QualifiedName]
+		public CrossReference getValuesMonolithicImplementationDescriptionCrossReference_2_1_0() { return cValuesMonolithicImplementationDescriptionCrossReference_2_1_0; }
+		
+		//QualifiedName
+		public RuleCall getValuesMonolithicImplementationDescriptionQualifiedNameParserRuleCall_2_1_0_1() { return cValuesMonolithicImplementationDescriptionQualifiedNameParserRuleCall_2_1_0_1; }
+		
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_3() { return cDEDENTTerminalRuleCall_3; }
+	}
+	public class MultiMonolithicImplementationNameListBracketElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.MultiMonolithicImplementationNameListBracket");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cValuesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cValuesMonolithicImplementationDescriptionCrossReference_1_0 = (CrossReference)cValuesAssignment_1.eContents().get(0);
+		private final RuleCall cValuesMonolithicImplementationDescriptionQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cValuesMonolithicImplementationDescriptionCrossReference_1_0.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cValuesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final CrossReference cValuesMonolithicImplementationDescriptionCrossReference_2_1_0 = (CrossReference)cValuesAssignment_2_1.eContents().get(0);
+		private final RuleCall cValuesMonolithicImplementationDescriptionQualifiedNameParserRuleCall_2_1_0_1 = (RuleCall)cValuesMonolithicImplementationDescriptionCrossReference_2_1_0.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//MultiMonolithicImplementationNameListBracket:
+		//  '[' (values+=[MonolithicImplementationDescription|QualifiedName]) (',' values+=[MonolithicImplementationDescription|QualifiedName]*)? ']'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'[' (values+=[MonolithicImplementationDescription|QualifiedName]) (',' values+=[MonolithicImplementationDescription|QualifiedName]*)? ']'
+		public Group getGroup() { return cGroup; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
+		
+		//(values+=[MonolithicImplementationDescription|QualifiedName])
+		public Assignment getValuesAssignment_1() { return cValuesAssignment_1; }
+		
+		//[MonolithicImplementationDescription|QualifiedName]
+		public CrossReference getValuesMonolithicImplementationDescriptionCrossReference_1_0() { return cValuesMonolithicImplementationDescriptionCrossReference_1_0; }
+		
+		//QualifiedName
+		public RuleCall getValuesMonolithicImplementationDescriptionQualifiedNameParserRuleCall_1_0_1() { return cValuesMonolithicImplementationDescriptionQualifiedNameParserRuleCall_1_0_1; }
+		
+		//(',' values+=[MonolithicImplementationDescription|QualifiedName]*)?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//','
+		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
+		
+		//values+=[MonolithicImplementationDescription|QualifiedName]*
+		public Assignment getValuesAssignment_2_1() { return cValuesAssignment_2_1; }
+		
+		//[MonolithicImplementationDescription|QualifiedName]
+		public CrossReference getValuesMonolithicImplementationDescriptionCrossReference_2_1_0() { return cValuesMonolithicImplementationDescriptionCrossReference_2_1_0; }
+		
+		//QualifiedName
+		public RuleCall getValuesMonolithicImplementationDescriptionQualifiedNameParserRuleCall_2_1_0_1() { return cValuesMonolithicImplementationDescriptionQualifiedNameParserRuleCall_2_1_0_1; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_3() { return cRightSquareBracketKeyword_3; }
+	}
+	public class CIParametersElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.CIParameters");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeIDTerminalRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cINDENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Assignment cParametersAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cParametersGroupedPropertiesParserRuleCall_3_0 = (RuleCall)cParametersAssignment_3.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		
+		//CIParameters:
+		//    type = ID":"
+		//    INDENT
+		//    (parameters += GroupedProperties)+
+		//    DEDENT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//type = ID":"
+		//INDENT
+		//(parameters += GroupedProperties)+
+		//DEDENT
+		public Group getGroup() { return cGroup; }
+		
+		//type = ID
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+		
+		//ID
+		public RuleCall getTypeIDTerminalRuleCall_0_0() { return cTypeIDTerminalRuleCall_0_0; }
+		
+		//":"
+		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		
+		//INDENT
+		public RuleCall getINDENTTerminalRuleCall_2() { return cINDENTTerminalRuleCall_2; }
+		
+		//(parameters += GroupedProperties)+
+		public Assignment getParametersAssignment_3() { return cParametersAssignment_3; }
+		
+		//GroupedProperties
+		public RuleCall getParametersGroupedPropertiesParserRuleCall_3_0() { return cParametersGroupedPropertiesParserRuleCall_3_0; }
+		
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_4() { return cDEDENTTerminalRuleCall_4; }
+	}
+	public class GroupedPropertiesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.GroupedProperties");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeIDTerminalRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cINDENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Assignment cPropertiesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cPropertiesPropertyExpressTypeParserRuleCall_3_0 = (RuleCall)cPropertiesAssignment_3.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		
+		//GroupedProperties:
+		//    type = ID":"
+		//  INDENT
+		//      (properties += PropertyExpressType)+
+		//  DEDENT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//  type = ID":"
+		//INDENT
+		//    (properties += PropertyExpressType)+
+		//DEDENT
+		public Group getGroup() { return cGroup; }
+		
+		//type = ID
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+		
+		//ID
+		public RuleCall getTypeIDTerminalRuleCall_0_0() { return cTypeIDTerminalRuleCall_0_0; }
+		
+		//":"
+		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		
+		//INDENT
+		public RuleCall getINDENTTerminalRuleCall_2() { return cINDENTTerminalRuleCall_2; }
+		
+		//(properties += PropertyExpressType)+
+		public Assignment getPropertiesAssignment_3() { return cPropertiesAssignment_3; }
+		
+		//PropertyExpressType
+		public RuleCall getPropertiesPropertyExpressTypeParserRuleCall_3_0() { return cPropertiesPropertyExpressTypeParserRuleCall_3_0; }
+		
+		//DEDENT
+		public RuleCall getDEDENTTerminalRuleCall_4() { return cDEDENTTerminalRuleCall_4; }
 	}
 	public class PreListElementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.PreListElement");
@@ -2068,279 +2203,33 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//'release'
 		public Keyword getReleaseModeReleaseKeyword_1_0() { return cReleaseModeReleaseKeyword_1_0; }
 	}
-	public class ResourceReqTypesElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ResourceReqTypes");
+	public class BOOLEANElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.BOOLEAN");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cCPUEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cCPUCpusKeyword_0_0 = (Keyword)cCPUEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cMemoryEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cMemoryMemoryKeyword_1_0 = (Keyword)cMemoryEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cMemorySawpEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cMemorySawpMemory_swapKeyword_2_0 = (Keyword)cMemorySawpEnumLiteralDeclaration_2.eContents().get(0);
-		private final EnumLiteralDeclaration cOomKillDisableEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
-		private final Keyword cOomKillDisableOom_kill_disableKeyword_3_0 = (Keyword)cOomKillDisableEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cFALSEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cFALSEFalseKeyword_0_0 = (Keyword)cFALSEEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cTRUEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cTRUETrueKeyword_1_0 = (Keyword)cTRUEEnumLiteralDeclaration_1.eContents().get(0);
 		
-		//enum ResourceReqTypes:
-		//  CPU="cpus"|
-		//  Memory='memory'|
-		//  MemorySawp='memory_swap'|
-		//  OomKillDisable='oom_kill_disable'
+		//enum BOOLEAN:
+		//    FALSE='false'|TRUE='true'
 		//;
 		public EnumRule getRule() { return rule; }
 		
-		//CPU="cpus"|
-		//Memory='memory'|
-		//MemorySawp='memory_swap'|
-		//OomKillDisable='oom_kill_disable'
+		//FALSE='false'|TRUE='true'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//CPU="cpus"
-		public EnumLiteralDeclaration getCPUEnumLiteralDeclaration_0() { return cCPUEnumLiteralDeclaration_0; }
+		//FALSE='false'
+		public EnumLiteralDeclaration getFALSEEnumLiteralDeclaration_0() { return cFALSEEnumLiteralDeclaration_0; }
 		
-		//"cpus"
-		public Keyword getCPUCpusKeyword_0_0() { return cCPUCpusKeyword_0_0; }
+		//'false'
+		public Keyword getFALSEFalseKeyword_0_0() { return cFALSEFalseKeyword_0_0; }
 		
-		//Memory='memory'
-		public EnumLiteralDeclaration getMemoryEnumLiteralDeclaration_1() { return cMemoryEnumLiteralDeclaration_1; }
+		//TRUE='true'
+		public EnumLiteralDeclaration getTRUEEnumLiteralDeclaration_1() { return cTRUEEnumLiteralDeclaration_1; }
 		
-		//'memory'
-		public Keyword getMemoryMemoryKeyword_1_0() { return cMemoryMemoryKeyword_1_0; }
-		
-		//MemorySawp='memory_swap'
-		public EnumLiteralDeclaration getMemorySawpEnumLiteralDeclaration_2() { return cMemorySawpEnumLiteralDeclaration_2; }
-		
-		//'memory_swap'
-		public Keyword getMemorySawpMemory_swapKeyword_2_0() { return cMemorySawpMemory_swapKeyword_2_0; }
-		
-		//OomKillDisable='oom_kill_disable'
-		public EnumLiteralDeclaration getOomKillDisableEnumLiteralDeclaration_3() { return cOomKillDisableEnumLiteralDeclaration_3; }
-		
-		//'oom_kill_disable'
-		public Keyword getOomKillDisableOom_kill_disableKeyword_3_0() { return cOomKillDisableOom_kill_disableKeyword_3_0; }
-	}
-	public class OperatingSystemTypesElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.OperatingSystemTypes");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cUbuntu18EnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cUbuntu18Ubuntu18Keyword_0_0 = (Keyword)cUbuntu18EnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cUbuntu20EnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cUbuntu20Ubuntu20Keyword_1_0 = (Keyword)cUbuntu20EnumLiteralDeclaration_1.eContents().get(0);
-		
-		//enum OperatingSystemTypes:
-		//  ubuntu18='ubuntu18'|
-		//  ubuntu20='ubuntu20'
-		//;
-		public EnumRule getRule() { return rule; }
-		
-		//ubuntu18='ubuntu18'|
-		//ubuntu20='ubuntu20'
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//ubuntu18='ubuntu18'
-		public EnumLiteralDeclaration getUbuntu18EnumLiteralDeclaration_0() { return cUbuntu18EnumLiteralDeclaration_0; }
-		
-		//'ubuntu18'
-		public Keyword getUbuntu18Ubuntu18Keyword_0_0() { return cUbuntu18Ubuntu18Keyword_0_0; }
-		
-		//ubuntu20='ubuntu20'
-		public EnumLiteralDeclaration getUbuntu20EnumLiteralDeclaration_1() { return cUbuntu20EnumLiteralDeclaration_1; }
-		
-		//'ubuntu20'
-		public Keyword getUbuntu20Ubuntu20Keyword_1_0() { return cUbuntu20Ubuntu20Keyword_1_0; }
-	}
-	public class RosDistroElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.RosDistro");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cMelodicEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cMelodicMelodicKeyword_0_0 = (Keyword)cMelodicEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cNoeticEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cNoeticNoeticKeyword_1_0 = (Keyword)cNoeticEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cFoxyEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cFoxyFoxyKeyword_2_0 = (Keyword)cFoxyEnumLiteralDeclaration_2.eContents().get(0);
-		private final EnumLiteralDeclaration cGalacticEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
-		private final Keyword cGalacticGalacticKeyword_3_0 = (Keyword)cGalacticEnumLiteralDeclaration_3.eContents().get(0);
-		
-		//enum RosDistro:
-		//  melodic='melodic'|noetic='noetic'|foxy='foxy'|galactic="galactic"
-		//;
-		public EnumRule getRule() { return rule; }
-		
-		//melodic='melodic'|noetic='noetic'|foxy='foxy'|galactic="galactic"
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//melodic='melodic'
-		public EnumLiteralDeclaration getMelodicEnumLiteralDeclaration_0() { return cMelodicEnumLiteralDeclaration_0; }
-		
-		//'melodic'
-		public Keyword getMelodicMelodicKeyword_0_0() { return cMelodicMelodicKeyword_0_0; }
-		
-		//noetic='noetic'
-		public EnumLiteralDeclaration getNoeticEnumLiteralDeclaration_1() { return cNoeticEnumLiteralDeclaration_1; }
-		
-		//'noetic'
-		public Keyword getNoeticNoeticKeyword_1_0() { return cNoeticNoeticKeyword_1_0; }
-		
-		//foxy='foxy'
-		public EnumLiteralDeclaration getFoxyEnumLiteralDeclaration_2() { return cFoxyEnumLiteralDeclaration_2; }
-		
-		//'foxy'
-		public Keyword getFoxyFoxyKeyword_2_0() { return cFoxyFoxyKeyword_2_0; }
-		
-		//galactic="galactic"
-		public EnumLiteralDeclaration getGalacticEnumLiteralDeclaration_3() { return cGalacticEnumLiteralDeclaration_3; }
-		
-		//"galactic"
-		public Keyword getGalacticGalacticKeyword_3_0() { return cGalacticGalacticKeyword_3_0; }
-	}
-	public class ProcessorArchitectureTypesElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ProcessorArchitectureTypes");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cArm64EnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cArm64Arm64Keyword_0_0 = (Keyword)cArm64EnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cX86EnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cX86X86Keyword_1_0 = (Keyword)cX86EnumLiteralDeclaration_1.eContents().get(0);
-		
-		//enum ProcessorArchitectureTypes:
-		//  arm64='arm64'|
-		//  x86='x86'
-		//;
-		public EnumRule getRule() { return rule; }
-		
-		//arm64='arm64'|
-		//x86='x86'
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//arm64='arm64'
-		public EnumLiteralDeclaration getArm64EnumLiteralDeclaration_0() { return cArm64EnumLiteralDeclaration_0; }
-		
-		//'arm64'
-		public Keyword getArm64Arm64Keyword_0_0() { return cArm64Arm64Keyword_0_0; }
-		
-		//x86='x86'
-		public EnumLiteralDeclaration getX86EnumLiteralDeclaration_1() { return cX86EnumLiteralDeclaration_1; }
-		
-		//'x86'
-		public Keyword getX86X86Keyword_1_0() { return cX86X86Keyword_1_0; }
-	}
-	public class ImageTypesElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ImageTypes");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cDockerImageEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cDockerImageDockerKeyword_0_0 = (Keyword)cDockerImageEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cSnapImageEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cSnapImageSnapKeyword_1_0 = (Keyword)cSnapImageEnumLiteralDeclaration_1.eContents().get(0);
-		
-		//enum ImageTypes:
-		//  DockerImage='docker'|
-		//  SnapImage='snap'
-		//;
-		public EnumRule getRule() { return rule; }
-		
-		//DockerImage='docker'|
-		//SnapImage='snap'
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//DockerImage='docker'
-		public EnumLiteralDeclaration getDockerImageEnumLiteralDeclaration_0() { return cDockerImageEnumLiteralDeclaration_0; }
-		
-		//'docker'
-		public Keyword getDockerImageDockerKeyword_0_0() { return cDockerImageDockerKeyword_0_0; }
-		
-		//SnapImage='snap'
-		public EnumLiteralDeclaration getSnapImageEnumLiteralDeclaration_1() { return cSnapImageEnumLiteralDeclaration_1; }
-		
-		//'snap'
-		public Keyword getSnapImageSnapKeyword_1_0() { return cSnapImageSnapKeyword_1_0; }
-	}
-	public class ImageVersionTypesElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ImageVersionTypes");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cBranchEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cBranchBranchKeyword_0_0 = (Keyword)cBranchEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cCommitHashEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cCommitHashCommitKeyword_1_0 = (Keyword)cCommitHashEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cLatestEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cLatestLatestKeyword_2_0 = (Keyword)cLatestEnumLiteralDeclaration_2.eContents().get(0);
-		private final EnumLiteralDeclaration cReleaseEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
-		private final Keyword cReleaseReleaseKeyword_3_0 = (Keyword)cReleaseEnumLiteralDeclaration_3.eContents().get(0);
-		
-		//enum ImageVersionTypes:
-		//  branch='branch'|
-		//  commitHash='commit'|
-		//  latest='latest'|
-		//  release='release'
-		//;
-		public EnumRule getRule() { return rule; }
-		
-		//branch='branch'|
-		//commitHash='commit'|
-		//latest='latest'|
-		//release='release'
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//branch='branch'
-		public EnumLiteralDeclaration getBranchEnumLiteralDeclaration_0() { return cBranchEnumLiteralDeclaration_0; }
-		
-		//'branch'
-		public Keyword getBranchBranchKeyword_0_0() { return cBranchBranchKeyword_0_0; }
-		
-		//commitHash='commit'
-		public EnumLiteralDeclaration getCommitHashEnumLiteralDeclaration_1() { return cCommitHashEnumLiteralDeclaration_1; }
-		
-		//'commit'
-		public Keyword getCommitHashCommitKeyword_1_0() { return cCommitHashCommitKeyword_1_0; }
-		
-		//latest='latest'
-		public EnumLiteralDeclaration getLatestEnumLiteralDeclaration_2() { return cLatestEnumLiteralDeclaration_2; }
-		
-		//'latest'
-		public Keyword getLatestLatestKeyword_2_0() { return cLatestLatestKeyword_2_0; }
-		
-		//release='release'
-		public EnumLiteralDeclaration getReleaseEnumLiteralDeclaration_3() { return cReleaseEnumLiteralDeclaration_3; }
-		
-		//'release'
-		public Keyword getReleaseReleaseKeyword_3_0() { return cReleaseReleaseKeyword_3_0; }
-	}
-	public class RepositoryTypesElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.RepositoryTypes");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cLocalEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cLocalLocalKeyword_0_0 = (Keyword)cLocalEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cRemoteEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cRemoteRemoteKeyword_1_0 = (Keyword)cRemoteEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cGitlabEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cGitlabGitlabKeyword_2_0 = (Keyword)cGitlabEnumLiteralDeclaration_2.eContents().get(0);
-		
-		//enum RepositoryTypes:
-		//  local="local"|
-		//  remote="remote"|
-		//  gitlab="gitlab"
-		//;
-		public EnumRule getRule() { return rule; }
-		
-		//local="local"|
-		//remote="remote"|
-		//gitlab="gitlab"
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//local="local"
-		public EnumLiteralDeclaration getLocalEnumLiteralDeclaration_0() { return cLocalEnumLiteralDeclaration_0; }
-		
-		//"local"
-		public Keyword getLocalLocalKeyword_0_0() { return cLocalLocalKeyword_0_0; }
-		
-		//remote="remote"
-		public EnumLiteralDeclaration getRemoteEnumLiteralDeclaration_1() { return cRemoteEnumLiteralDeclaration_1; }
-		
-		//"remote"
-		public Keyword getRemoteRemoteKeyword_1_0() { return cRemoteRemoteKeyword_1_0; }
-		
-		//gitlab="gitlab"
-		public EnumLiteralDeclaration getGitlabEnumLiteralDeclaration_2() { return cGitlabEnumLiteralDeclaration_2; }
-		
-		//"gitlab"
-		public Keyword getGitlabGitlabKeyword_2_0() { return cGitlabGitlabKeyword_2_0; }
+		//'true'
+		public Keyword getTRUETrueKeyword_1_0() { return cTRUETrueKeyword_1_0; }
 	}
 	
 	private final YamlElements pYaml;
@@ -2355,37 +2244,33 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	private final ImplementationArtifactAbstractElements pImplementationArtifactAbstract;
 	private final DeploymentRequirementsElements pDeploymentRequirements;
 	private final ResourceRequirementsElements pResourceRequirements;
-	private final ResourceRequirementElements pResourceRequirement;
-	private final ResourceReqTypesElements eResourceReqTypes;
-	private final ReqOperatingSystemElements pReqOperatingSystem;
-	private final OperatingSystemTypeListElements pOperatingSystemTypeList;
-	private final ReqProcessorArchitectureElements pReqProcessorArchitecture;
-	private final ProcessorArchitectureTypeListElements pProcessorArchitectureTypeList;
-	private final ReqRosDistroElements pReqRosDistro;
-	private final RosDistroListElements pRosDistroList;
-	private final OperatingSystemTypesElements eOperatingSystemTypes;
-	private final RosDistroElements eRosDistro;
-	private final ProcessorArchitectureTypesElements eProcessorArchitectureTypes;
+	private final PropertyExpressTypeElements pPropertyExpressType;
+	private final CommonPropertySingleValueElements pCommonPropertySingleValue;
+	private final CommonPropertyMultiValueElements pCommonPropertyMultiValue;
+	private final MultiValueListElements pMultiValueList;
+	private final MultiValueListPreListElements pMultiValueListPreList;
+	private final MultiValueListBracketElements pMultiValueListBracket;
+	private final ValueTypesElements pValueTypes;
 	private final BuildRequirementsElements pBuildRequirements;
 	private final ReqBuildDependenciesElements pReqBuildDependencies;
-	private final DependencyElements pDependency;
+	private final DependencyTypesElements pDependencyTypes;
 	private final LocalPackageElements pLocalPackage;
 	private final GitPackageElements pGitPackage;
 	private final ReqDependencyRepositoriesElements pReqDependencyRepositories;
 	private final AptRepositoryInstanceElements pAptRepositoryInstance;
-	private final StartCommandsElements pStartCommands;
-	private final ListStartCommandsElements pListStartCommands;
 	private final StackImplementationDescriptionElements pStackImplementationDescription;
 	private final PackageDescriptionElements pPackageDescription;
 	private final ImageDescriptionElements pImageDescription;
-	private final ImageTypeListElements pImageTypeList;
-	private final ImageTypesElements eImageTypes;
-	private final ImageVersionListElements pImageVersionList;
-	private final ImageVersionTypesElements eImageVersionTypes;
 	private final RepositoryDescriptionElements pRepositoryDescription;
 	private final RepositorySpecElements pRepositorySpec;
 	private final RepositoryElements pRepository;
-	private final RepositoryTypesElements eRepositoryTypes;
+	private final CISettingElements pCISetting;
+	private final MultiMonolithicImplementationNameListElements pMultiMonolithicImplementationNameList;
+	private final MultiMonolithicImplementationNamePreListElements pMultiMonolithicImplementationNamePreList;
+	private final MultiMonolithicImplementationNameListBracketElements pMultiMonolithicImplementationNameListBracket;
+	private final CIParametersElements pCIParameters;
+	private final GroupedPropertiesElements pGroupedProperties;
+	private final BOOLEANElements eBOOLEAN;
 	private final PreListElementElements pPreListElement;
 	private final ScalarNumberElements pScalarNumber;
 	private final NumberElements pNumber;
@@ -2421,37 +2306,33 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		this.pImplementationArtifactAbstract = new ImplementationArtifactAbstractElements();
 		this.pDeploymentRequirements = new DeploymentRequirementsElements();
 		this.pResourceRequirements = new ResourceRequirementsElements();
-		this.pResourceRequirement = new ResourceRequirementElements();
-		this.eResourceReqTypes = new ResourceReqTypesElements();
-		this.pReqOperatingSystem = new ReqOperatingSystemElements();
-		this.pOperatingSystemTypeList = new OperatingSystemTypeListElements();
-		this.pReqProcessorArchitecture = new ReqProcessorArchitectureElements();
-		this.pProcessorArchitectureTypeList = new ProcessorArchitectureTypeListElements();
-		this.pReqRosDistro = new ReqRosDistroElements();
-		this.pRosDistroList = new RosDistroListElements();
-		this.eOperatingSystemTypes = new OperatingSystemTypesElements();
-		this.eRosDistro = new RosDistroElements();
-		this.eProcessorArchitectureTypes = new ProcessorArchitectureTypesElements();
+		this.pPropertyExpressType = new PropertyExpressTypeElements();
+		this.pCommonPropertySingleValue = new CommonPropertySingleValueElements();
+		this.pCommonPropertyMultiValue = new CommonPropertyMultiValueElements();
+		this.pMultiValueList = new MultiValueListElements();
+		this.pMultiValueListPreList = new MultiValueListPreListElements();
+		this.pMultiValueListBracket = new MultiValueListBracketElements();
+		this.pValueTypes = new ValueTypesElements();
 		this.pBuildRequirements = new BuildRequirementsElements();
 		this.pReqBuildDependencies = new ReqBuildDependenciesElements();
-		this.pDependency = new DependencyElements();
+		this.pDependencyTypes = new DependencyTypesElements();
 		this.pLocalPackage = new LocalPackageElements();
 		this.pGitPackage = new GitPackageElements();
 		this.pReqDependencyRepositories = new ReqDependencyRepositoriesElements();
 		this.pAptRepositoryInstance = new AptRepositoryInstanceElements();
-		this.pStartCommands = new StartCommandsElements();
-		this.pListStartCommands = new ListStartCommandsElements();
 		this.pStackImplementationDescription = new StackImplementationDescriptionElements();
 		this.pPackageDescription = new PackageDescriptionElements();
 		this.pImageDescription = new ImageDescriptionElements();
-		this.pImageTypeList = new ImageTypeListElements();
-		this.eImageTypes = new ImageTypesElements();
-		this.pImageVersionList = new ImageVersionListElements();
-		this.eImageVersionTypes = new ImageVersionTypesElements();
 		this.pRepositoryDescription = new RepositoryDescriptionElements();
 		this.pRepositorySpec = new RepositorySpecElements();
 		this.pRepository = new RepositoryElements();
-		this.eRepositoryTypes = new RepositoryTypesElements();
+		this.pCISetting = new CISettingElements();
+		this.pMultiMonolithicImplementationNameList = new MultiMonolithicImplementationNameListElements();
+		this.pMultiMonolithicImplementationNamePreList = new MultiMonolithicImplementationNamePreListElements();
+		this.pMultiMonolithicImplementationNameListBracket = new MultiMonolithicImplementationNameListBracketElements();
+		this.pCIParameters = new CIParametersElements();
+		this.pGroupedProperties = new GroupedPropertiesElements();
+		this.eBOOLEAN = new BOOLEANElements();
 		this.pPreListElement = new PreListElementElements();
 		this.pScalarNumber = new ScalarNumberElements();
 		this.pNumber = new NumberElements();
@@ -2508,7 +2389,8 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	//YamlContent:
 	//  rootContent=(MonolithicImplementationDescription|
 	//    StackImplementationDescription|
-	//    PackageDescription
+	//    PackageDescription|
+	//    CISetting
 	//  )
 	//;
 	public YamlContentElements getYamlContentAccess() {
@@ -2528,7 +2410,7 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	//    'description:' description=STRING
 	//    'mode:' mode=ImplementationModeType
 	//    'branch:' branch=BranchType
-	//    (impl=ImplementationArtifactDescription)?
+	//    ('ImplementationArtifactDescription:' implementation=NewImplementationArtifact)?
 	//  DEDENT
 	//;
 	public MonolithicImplementationDescriptionElements getMonolithicImplementationDescriptionAccess() {
@@ -2573,11 +2455,13 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//NewImplementationArtifact:
-	//  'location'':'name=(LOCALPATH|URL)
-	//  deployRequirements = DeploymentRequirements
-	//  (resourceRequirements = ResourceRequirements)?
-	//  (buildRequirements = BuildRequirements)?
-	//  startCommands = StartCommands
+	//    INDENT
+	//      'location:' location=(STRING|LOCALPATH|URL)
+	//      'deployRequirements:' deployRequirements = DeploymentRequirements
+	//      ('resourceRequirements:' resourceRequirements = ResourceRequirements)?
+	//      ('buildRequirements:' buildRequirements = BuildRequirements)?
+	//      ('startCommands:' startCommands = MultiValueList)?
+	//  DEDENT
 	//;
 	public NewImplementationArtifactElements getNewImplementationArtifactAccess() {
 		return pNewImplementationArtifact;
@@ -2588,7 +2472,6 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//ImplementationArtifactDescription:
-	//  type='ImplementationArtifactDescription'':'
 	//  INDENT
 	//    impl=(NewImplementationArtifact | ReuseImplementationArtifact)
 	//  DEDENT
@@ -2616,7 +2499,7 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	//  PreListElement 'import:' importedNamespace=QualifiedName
 	//  INDENT
 	//    'name:' name=[MonolithicImplementationDescription|QualifiedName]
-	//    (startCommands = StartCommands)
+	//    ('startCommands:' startCommands = MultiValueList)?
 	//  DEDENT
 	//;
 	public ImplementationArtifactAbstractElements getImplementationArtifactAbstractAccess() {
@@ -2628,10 +2511,10 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//DeploymentRequirements:
-	//  name='deployRequirements'':'
-	//  operatingSystem = ReqOperatingSystem
-	//  processorArchitecture = ReqProcessorArchitecture
-	//  (rosDistro= ReqRosDistro)?
+	//  {DeploymentRequirements}
+	//  INDENT
+	//      requirements += PropertyExpressType+
+	//  DEDENT
 	//;
 	public DeploymentRequirementsElements getDeploymentRequirementsAccess() {
 		return pDeploymentRequirements;
@@ -2642,8 +2525,10 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//ResourceRequirements:
-	//  name='resourceRequirements'':'
-	//  requirements += (ResourceRequirement)+
+	//    {ResourceRequirements}
+	//  INDENT
+	//      requirements += PropertyExpressType+
+	//  DEDENT
 	//;
 	public ResourceRequirementsElements getResourceRequirementsAccess() {
 		return pResourceRequirements;
@@ -2653,152 +2538,102 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getResourceRequirementsAccess().getRule();
 	}
 	
-	//ResourceRequirement:
-	//  PreListElement 'name:' name=ResourceReqTypes
+	//PropertyExpressType:
+	//    CommonPropertySingleValue
+	//    | CommonPropertyMultiValue
+	//;
+	public PropertyExpressTypeElements getPropertyExpressTypeAccess() {
+		return pPropertyExpressType;
+	}
+	
+	public ParserRule getPropertyExpressTypeRule() {
+		return getPropertyExpressTypeAccess().getRule();
+	}
+	
+	//CommonPropertySingleValue:
+	//  PreListElement 'name:' name=ID
 	//  INDENT
-	//    'value:' value=ScalarNumber
+	//    'value:' value = ValueTypes
 	//  DEDENT
 	//;
-	public ResourceRequirementElements getResourceRequirementAccess() {
-		return pResourceRequirement;
+	public CommonPropertySingleValueElements getCommonPropertySingleValueAccess() {
+		return pCommonPropertySingleValue;
 	}
 	
-	public ParserRule getResourceRequirementRule() {
-		return getResourceRequirementAccess().getRule();
+	public ParserRule getCommonPropertySingleValueRule() {
+		return getCommonPropertySingleValueAccess().getRule();
 	}
 	
-	//enum ResourceReqTypes:
-	//  CPU="cpus"|
-	//  Memory='memory'|
-	//  MemorySawp='memory_swap'|
-	//  OomKillDisable='oom_kill_disable'
-	//;
-	public ResourceReqTypesElements getResourceReqTypesAccess() {
-		return eResourceReqTypes;
-	}
-	
-	public EnumRule getResourceReqTypesRule() {
-		return getResourceReqTypesAccess().getRule();
-	}
-	
-	//ReqOperatingSystem:
-	//  PreListElement 'name:' name='os'
+	//CommonPropertyMultiValue:
+	//  PreListElement 'name:' name=ID
 	//  INDENT
-	//    'value:' value=OperatingSystemTypeList
+	//    'value:' value=MultiValueList
 	//  DEDENT
 	//;
-	public ReqOperatingSystemElements getReqOperatingSystemAccess() {
-		return pReqOperatingSystem;
+	public CommonPropertyMultiValueElements getCommonPropertyMultiValueAccess() {
+		return pCommonPropertyMultiValue;
 	}
 	
-	public ParserRule getReqOperatingSystemRule() {
-		return getReqOperatingSystemAccess().getRule();
+	public ParserRule getCommonPropertyMultiValueRule() {
+		return getCommonPropertyMultiValueAccess().getRule();
 	}
 	
-	//OperatingSystemTypeList:
-	//  (PreListElement children+=( OperatingSystemTypes))
-	//  (PreListElement children+=(OperatingSystemTypes)*)?
+	//MultiValueList:
+	//    MultiValueListPreList
+	//    |MultiValueListBracket
 	//;
-	public OperatingSystemTypeListElements getOperatingSystemTypeListAccess() {
-		return pOperatingSystemTypeList;
+	public MultiValueListElements getMultiValueListAccess() {
+		return pMultiValueList;
 	}
 	
-	public ParserRule getOperatingSystemTypeListRule() {
-		return getOperatingSystemTypeListAccess().getRule();
+	public ParserRule getMultiValueListRule() {
+		return getMultiValueListAccess().getRule();
 	}
 	
-	//ReqProcessorArchitecture:
-	//  PreListElement 'name:' name='processor_architecture'
-	//  INDENT
-	//    'value:' value=ProcessorArchitectureTypeList
+	//MultiValueListPreList:
+	//    {MultiValueListPreList}
+	//    INDENT
+	//      (PreListElement values+=ValueTypes)*
 	//  DEDENT
 	//;
-	public ReqProcessorArchitectureElements getReqProcessorArchitectureAccess() {
-		return pReqProcessorArchitecture;
+	public MultiValueListPreListElements getMultiValueListPreListAccess() {
+		return pMultiValueListPreList;
 	}
 	
-	public ParserRule getReqProcessorArchitectureRule() {
-		return getReqProcessorArchitectureAccess().getRule();
+	public ParserRule getMultiValueListPreListRule() {
+		return getMultiValueListPreListAccess().getRule();
 	}
 	
-	//ProcessorArchitectureTypeList:
-	//  (PreListElement children+=( ProcessorArchitectureTypes))
-	//  (PreListElement children+=(ProcessorArchitectureTypes)*)?
+	//MultiValueListBracket:
+	//  '[' (values+=ValueTypes) (',' values+=ValueTypes*)? ']'
 	//;
-	public ProcessorArchitectureTypeListElements getProcessorArchitectureTypeListAccess() {
-		return pProcessorArchitectureTypeList;
+	public MultiValueListBracketElements getMultiValueListBracketAccess() {
+		return pMultiValueListBracket;
 	}
 	
-	public ParserRule getProcessorArchitectureTypeListRule() {
-		return getProcessorArchitectureTypeListAccess().getRule();
+	public ParserRule getMultiValueListBracketRule() {
+		return getMultiValueListBracketAccess().getRule();
 	}
 	
-	//ReqRosDistro:
-	//  PreListElement 'name:' name='ros_distro'
-	//  INDENT
-	//    'value:' value=RosDistroList
-	//  DEDENT
+	//ValueTypes:
+	//    ID | STRING | ScalarNumber
 	//;
-	public ReqRosDistroElements getReqRosDistroAccess() {
-		return pReqRosDistro;
+	public ValueTypesElements getValueTypesAccess() {
+		return pValueTypes;
 	}
 	
-	public ParserRule getReqRosDistroRule() {
-		return getReqRosDistroAccess().getRule();
-	}
-	
-	//RosDistroList:
-	//  (PreListElement children+=( RosDistro))
-	//  (PreListElement children+=(RosDistro)*)?
-	//;
-	public RosDistroListElements getRosDistroListAccess() {
-		return pRosDistroList;
-	}
-	
-	public ParserRule getRosDistroListRule() {
-		return getRosDistroListAccess().getRule();
-	}
-	
-	//enum OperatingSystemTypes:
-	//  ubuntu18='ubuntu18'|
-	//  ubuntu20='ubuntu20'
-	//;
-	public OperatingSystemTypesElements getOperatingSystemTypesAccess() {
-		return eOperatingSystemTypes;
-	}
-	
-	public EnumRule getOperatingSystemTypesRule() {
-		return getOperatingSystemTypesAccess().getRule();
-	}
-	
-	//enum RosDistro:
-	//  melodic='melodic'|noetic='noetic'|foxy='foxy'|galactic="galactic"
-	//;
-	public RosDistroElements getRosDistroAccess() {
-		return eRosDistro;
-	}
-	
-	public EnumRule getRosDistroRule() {
-		return getRosDistroAccess().getRule();
-	}
-	
-	//enum ProcessorArchitectureTypes:
-	//  arm64='arm64'|
-	//  x86='x86'
-	//;
-	public ProcessorArchitectureTypesElements getProcessorArchitectureTypesAccess() {
-		return eProcessorArchitectureTypes;
-	}
-	
-	public EnumRule getProcessorArchitectureTypesRule() {
-		return getProcessorArchitectureTypesAccess().getRule();
+	public ParserRule getValueTypesRule() {
+		return getValueTypesAccess().getRule();
 	}
 	
 	//BuildRequirements:
-	//  name='buildRequirements'':'
+	//  {BuildRequirements}
 	//  INDENT
-	//  (buildDependencies = ReqBuildDependencies)?
-	//  (dependencyRepositories = ReqDependencyRepositories)?
+	//      'rosDistros:' ReqRosDistros= MultiValueList
+	//      ('testRosDistros:' ReqTestRosDistros= MultiValueList)?
+	//      ('dependOn:' ReqBuildDependencies = ReqBuildDependencies)?
+	//      ('aptRepositories:' ReqDependencyRepositories = ReqDependencyRepositories)?
+	//      ('cMakeArgs:' ReqCMakeArgs=MultiValueList)?
 	//  DEDENT
 	//;
 	public BuildRequirementsElements getBuildRequirementsAccess() {
@@ -2810,8 +2645,10 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//ReqBuildDependencies:
-	//  name = 'dependOn:'
-	//    (dependencies+=Dependency)+
+	//  {ReqBuildDependencies}
+	//  INDENT
+	//    (dependencies+=DependencyTypes)*
+	//  DEDENT
 	//;
 	public ReqBuildDependenciesElements getReqBuildDependenciesAccess() {
 		return pReqBuildDependencies;
@@ -2821,22 +2658,19 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getReqBuildDependenciesAccess().getRule();
 	}
 	
-	//Dependency:
-	//  LocalPackage|GitPackage
+	//DependencyTypes:
+	//  LocalPackage | GitPackage
 	//;
-	public DependencyElements getDependencyAccess() {
-		return pDependency;
+	public DependencyTypesElements getDependencyTypesAccess() {
+		return pDependencyTypes;
 	}
 	
-	public ParserRule getDependencyRule() {
-		return getDependencyAccess().getRule();
+	public ParserRule getDependencyTypesRule() {
+		return getDependencyTypesAccess().getRule();
 	}
 	
 	//LocalPackage:
-	//  PreListElement 'from:' importedNamespace=QualifiedName
-	//  INDENT
-	//  'name:' name = [MonolithicImplementationDescription|QualifiedName]
-	//  DEDENT
+	//    PreListElement 'name:' name = [MonolithicImplementationDescription|QualifiedName]
 	//;
 	public LocalPackageElements getLocalPackageAccess() {
 		return pLocalPackage;
@@ -2847,11 +2681,11 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//GitPackage:
-	//  PreListElement  'from:' path = URL
+	//    PreListElement 'name:' name = ID
 	//  INDENT
-	// 'name:' name = ID
-	// ('branch:' branch = STRING)?
-	// DEDENT
+	//      'location:' path = URL
+	//      ('visibility:' visibility = ID)?
+	//  DEDENT
 	//;
 	public GitPackageElements getGitPackageAccess() {
 		return pGitPackage;
@@ -2862,8 +2696,9 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//ReqDependencyRepositories:
-	//  name='aptRepositories'':'
+	//  INDENT
 	//  children+=(AptRepositoryInstance)+
+	//    DEDENT
 	//;
 	public ReqDependencyRepositoriesElements getReqDependencyRepositoriesAccess() {
 		return pReqDependencyRepositories;
@@ -2889,39 +2724,15 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getAptRepositoryInstanceAccess().getRule();
 	}
 	
-	//StartCommands:
-	//  name = 'startCommands:'
-	//  startCommands=ListStartCommands
-	//;
-	public StartCommandsElements getStartCommandsAccess() {
-		return pStartCommands;
-	}
-	
-	public ParserRule getStartCommandsRule() {
-		return getStartCommandsAccess().getRule();
-	}
-	
-	//ListStartCommands:
-	//  (PreListElement children+=(STRING))
-	//  (PreListElement children+=(STRING)*)?
-	//;
-	public ListStartCommandsElements getListStartCommandsAccess() {
-		return pListStartCommands;
-	}
-	
-	public ParserRule getListStartCommandsRule() {
-		return getListStartCommandsAccess().getRule();
-	}
-	
 	//StackImplementationDescription:
-	//  type='StackImplementationDescription'':'
+	//  type='StackImplementationDescription:'
 	//  INDENT
 	//    'name:' name=QualifiedName
 	//  //  TODO: link to rosmodel
 	//    ('implementsRosModel:'impRosmodel=QualifiedName)?
 	//    'description:' description=STRING
 	//    'mode:' mode=ImplementationModeType
-	//    impl=ImplementationArtifactDescription
+	//    "ImplementationArtifactDescription:" impl=ImplementationArtifactDescription
 	//  DEDENT
 	//;
 	public StackImplementationDescriptionElements getStackImplementationDescriptionAccess() {
@@ -2936,11 +2747,11 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	//  type='PackageDescription'':'
 	//  INDENT
 	//    'imageDescription:'
-	//  INDENT
-	//    imageDescription=ImageDescription
-	//  DEDENT
+	//      INDENT
+	//        imageDescription=ImageDescription
+	//      DEDENT
 	//    'repositoryDescription:'
-	//    repositoryDescription=RepositoryDescription
+	//        repositoryDescription=RepositoryDescription
 	//  DEDENT
 	//;
 	public PackageDescriptionElements getPackageDescriptionAccess() {
@@ -2952,9 +2763,9 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//ImageDescription:
-	//  'types:' types += ImageTypeList
+	//  'types:' types = MultiValueList
 	//  'name:' name= [MonolithicImplementationDescription|QualifiedName]
-	//  'imageVersions:' imageVersions = ImageVersionList
+	//  'imageTags:' imageTags = MultiValueList
 	//;
 	public ImageDescriptionElements getImageDescriptionAccess() {
 		return pImageDescription;
@@ -2964,57 +2775,10 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getImageDescriptionAccess().getRule();
 	}
 	
-	//ImageTypeList:
-	//  '[' (children+=(ImageTypes)) (',' children+=(ImageTypes)*)? ']'
-	//;
-	public ImageTypeListElements getImageTypeListAccess() {
-		return pImageTypeList;
-	}
-	
-	public ParserRule getImageTypeListRule() {
-		return getImageTypeListAccess().getRule();
-	}
-	
-	//enum ImageTypes:
-	//  DockerImage='docker'|
-	//  SnapImage='snap'
-	//;
-	public ImageTypesElements getImageTypesAccess() {
-		return eImageTypes;
-	}
-	
-	public EnumRule getImageTypesRule() {
-		return getImageTypesAccess().getRule();
-	}
-	
-	//ImageVersionList:
-	//  (PreListElement children+=( ImageVersionTypes))
-	//  (PreListElement children+=(ImageVersionTypes)*)?
-	//;
-	public ImageVersionListElements getImageVersionListAccess() {
-		return pImageVersionList;
-	}
-	
-	public ParserRule getImageVersionListRule() {
-		return getImageVersionListAccess().getRule();
-	}
-	
-	//enum ImageVersionTypes:
-	//  branch='branch'|
-	//  commitHash='commit'|
-	//  latest='latest'|
-	//  release='release'
-	//;
-	public ImageVersionTypesElements getImageVersionTypesAccess() {
-		return eImageVersionTypes;
-	}
-	
-	public EnumRule getImageVersionTypesRule() {
-		return getImageVersionTypesAccess().getRule();
-	}
-	
 	//RepositoryDescription:
-	//  (spec+=RepositorySpec)+
+	//    INDENT
+	//      (spec+=RepositorySpec)+
+	//  DEDENT
 	//;
 	public RepositoryDescriptionElements getRepositoryDescriptionAccess() {
 		return pRepositoryDescription;
@@ -3039,7 +2803,7 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//Repository:
-	//  'type:' type = RepositoryTypes
+	//  'type:' type = ID
 	//  ('path:' path=STRING)?
 	//;
 	public RepositoryElements getRepositoryAccess() {
@@ -3050,17 +2814,96 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getRepositoryAccess().getRule();
 	}
 	
-	//enum RepositoryTypes:
-	//  local="local"|
-	//  remote="remote"|
-	//  gitlab="gitlab"
+	//CISetting:
+	//  type='CISetting:'
+	//  INDENT
+	//      'ciTypes:' ciTypes = MultiValueList
+	//      'appliedRepos:' appliedRepos=MultiMonolithicImplementationNameList
+	//      'branchPrefixType:' reqBranchPrefix=ID
+	//      ciParameters+=(CIParameters)*
+	//  DEDENT
 	//;
-	public RepositoryTypesElements getRepositoryTypesAccess() {
-		return eRepositoryTypes;
+	public CISettingElements getCISettingAccess() {
+		return pCISetting;
 	}
 	
-	public EnumRule getRepositoryTypesRule() {
-		return getRepositoryTypesAccess().getRule();
+	public ParserRule getCISettingRule() {
+		return getCISettingAccess().getRule();
+	}
+	
+	//MultiMonolithicImplementationNameList:
+	//    MultiMonolithicImplementationNamePreList|
+	//    MultiMonolithicImplementationNameListBracket
+	//;
+	public MultiMonolithicImplementationNameListElements getMultiMonolithicImplementationNameListAccess() {
+		return pMultiMonolithicImplementationNameList;
+	}
+	
+	public ParserRule getMultiMonolithicImplementationNameListRule() {
+		return getMultiMonolithicImplementationNameListAccess().getRule();
+	}
+	
+	//MultiMonolithicImplementationNamePreList:
+	//    {MultiMonolithicImplementationNamePreList} INDENT
+	//      (PreListElement values+=[MonolithicImplementationDescription|QualifiedName])*
+	//  DEDENT
+	//;
+	public MultiMonolithicImplementationNamePreListElements getMultiMonolithicImplementationNamePreListAccess() {
+		return pMultiMonolithicImplementationNamePreList;
+	}
+	
+	public ParserRule getMultiMonolithicImplementationNamePreListRule() {
+		return getMultiMonolithicImplementationNamePreListAccess().getRule();
+	}
+	
+	//MultiMonolithicImplementationNameListBracket:
+	//  '[' (values+=[MonolithicImplementationDescription|QualifiedName]) (',' values+=[MonolithicImplementationDescription|QualifiedName]*)? ']'
+	//;
+	public MultiMonolithicImplementationNameListBracketElements getMultiMonolithicImplementationNameListBracketAccess() {
+		return pMultiMonolithicImplementationNameListBracket;
+	}
+	
+	public ParserRule getMultiMonolithicImplementationNameListBracketRule() {
+		return getMultiMonolithicImplementationNameListBracketAccess().getRule();
+	}
+	
+	//CIParameters:
+	//    type = ID":"
+	//    INDENT
+	//    (parameters += GroupedProperties)+
+	//    DEDENT
+	//;
+	public CIParametersElements getCIParametersAccess() {
+		return pCIParameters;
+	}
+	
+	public ParserRule getCIParametersRule() {
+		return getCIParametersAccess().getRule();
+	}
+	
+	//GroupedProperties:
+	//    type = ID":"
+	//  INDENT
+	//      (properties += PropertyExpressType)+
+	//  DEDENT
+	//;
+	public GroupedPropertiesElements getGroupedPropertiesAccess() {
+		return pGroupedProperties;
+	}
+	
+	public ParserRule getGroupedPropertiesRule() {
+		return getGroupedPropertiesAccess().getRule();
+	}
+	
+	//enum BOOLEAN:
+	//    FALSE='false'|TRUE='true'
+	//;
+	public BOOLEANElements getBOOLEANAccess() {
+		return eBOOLEAN;
+	}
+	
+	public EnumRule getBOOLEANRule() {
+		return getBOOLEANAccess().getRule();
 	}
 	
 	//PreListElement hidden(SL_COMMENT):

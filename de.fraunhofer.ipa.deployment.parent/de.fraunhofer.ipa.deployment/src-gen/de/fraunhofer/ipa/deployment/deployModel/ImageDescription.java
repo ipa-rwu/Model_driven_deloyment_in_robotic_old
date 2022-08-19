@@ -3,8 +3,6 @@
  */
 package de.fraunhofer.ipa.deployment.deployModel;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getTypes <em>Types</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getName <em>Name</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getImageVersions <em>Image Versions</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getImageTags <em>Image Tags</em>}</li>
  * </ul>
  *
  * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getImageDescription()
@@ -28,16 +26,26 @@ import org.eclipse.emf.ecore.EObject;
 public interface ImageDescription extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Types</b></em>' containment reference list.
-   * The list contents are of type {@link de.fraunhofer.ipa.deployment.deployModel.ImageTypeList}.
+   * Returns the value of the '<em><b>Types</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Types</em>' containment reference list.
+   * @return the value of the '<em>Types</em>' containment reference.
+   * @see #setTypes(MultiValueList)
    * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getImageDescription_Types()
    * @model containment="true"
    * @generated
    */
-  EList<ImageTypeList> getTypes();
+  MultiValueList getTypes();
+
+  /**
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getTypes <em>Types</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Types</em>' containment reference.
+   * @see #getTypes()
+   * @generated
+   */
+  void setTypes(MultiValueList value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' reference.
@@ -62,25 +70,25 @@ public interface ImageDescription extends EObject
   void setName(MonolithicImplementationDescription value);
 
   /**
-   * Returns the value of the '<em><b>Image Versions</b></em>' containment reference.
+   * Returns the value of the '<em><b>Image Tags</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Image Versions</em>' containment reference.
-   * @see #setImageVersions(ImageVersionList)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getImageDescription_ImageVersions()
+   * @return the value of the '<em>Image Tags</em>' containment reference.
+   * @see #setImageTags(MultiValueList)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getImageDescription_ImageTags()
    * @model containment="true"
    * @generated
    */
-  ImageVersionList getImageVersions();
+  MultiValueList getImageTags();
 
   /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getImageVersions <em>Image Versions</em>}' containment reference.
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getImageTags <em>Image Tags</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Image Versions</em>' containment reference.
-   * @see #getImageVersions()
+   * @param value the new value of the '<em>Image Tags</em>' containment reference.
+   * @see #getImageTags()
    * @generated
    */
-  void setImageVersions(ImageVersionList value);
+  void setImageTags(MultiValueList value);
 
 } // ImageDescription

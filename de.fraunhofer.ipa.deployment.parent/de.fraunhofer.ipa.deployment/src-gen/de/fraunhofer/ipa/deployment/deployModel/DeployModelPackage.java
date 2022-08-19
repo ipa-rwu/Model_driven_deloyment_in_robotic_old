@@ -179,13 +179,13 @@ public interface DeployModelPackage extends EPackage
   int MONOLITHIC_IMPLEMENTATION_DESCRIPTION__BRANCH = 5;
 
   /**
-   * The feature id for the '<em><b>Impl</b></em>' containment reference.
+   * The feature id for the '<em><b>Implementation</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPL = 6;
+  int MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPLEMENTATION = 6;
 
   /**
    * The number of structural features of the '<em>Monolithic Implementation Description</em>' class.
@@ -207,13 +207,13 @@ public interface DeployModelPackage extends EPackage
   int NEW_IMPLEMENTATION_ARTIFACT = 3;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Location</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int NEW_IMPLEMENTATION_ARTIFACT__NAME = 0;
+  int NEW_IMPLEMENTATION_ARTIFACT__LOCATION = 0;
 
   /**
    * The feature id for the '<em><b>Deploy Requirements</b></em>' containment reference.
@@ -271,22 +271,13 @@ public interface DeployModelPackage extends EPackage
   int IMPLEMENTATION_ARTIFACT_DESCRIPTION = 4;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMPLEMENTATION_ARTIFACT_DESCRIPTION__TYPE = 0;
-
-  /**
    * The feature id for the '<em><b>Impl</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int IMPLEMENTATION_ARTIFACT_DESCRIPTION__IMPL = 1;
+  int IMPLEMENTATION_ARTIFACT_DESCRIPTION__IMPL = 0;
 
   /**
    * The number of structural features of the '<em>Implementation Artifact Description</em>' class.
@@ -295,7 +286,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int IMPLEMENTATION_ARTIFACT_DESCRIPTION_FEATURE_COUNT = 2;
+  int IMPLEMENTATION_ARTIFACT_DESCRIPTION_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReuseImplementationArtifactImpl <em>Reuse Implementation Artifact</em>}' class.
@@ -382,40 +373,13 @@ public interface DeployModelPackage extends EPackage
   int DEPLOYMENT_REQUIREMENTS = 7;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Requirements</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEPLOYMENT_REQUIREMENTS__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Operating System</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEPLOYMENT_REQUIREMENTS__OPERATING_SYSTEM = 1;
-
-  /**
-   * The feature id for the '<em><b>Processor Architecture</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEPLOYMENT_REQUIREMENTS__PROCESSOR_ARCHITECTURE = 2;
-
-  /**
-   * The feature id for the '<em><b>Ros Distro</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEPLOYMENT_REQUIREMENTS__ROS_DISTRO = 3;
+  int DEPLOYMENT_REQUIREMENTS__REQUIREMENTS = 0;
 
   /**
    * The number of structural features of the '<em>Deployment Requirements</em>' class.
@@ -424,7 +388,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEPLOYMENT_REQUIREMENTS_FEATURE_COUNT = 4;
+  int DEPLOYMENT_REQUIREMENTS_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ResourceRequirementsImpl <em>Resource Requirements</em>}' class.
@@ -437,22 +401,13 @@ public interface DeployModelPackage extends EPackage
   int RESOURCE_REQUIREMENTS = 8;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESOURCE_REQUIREMENTS__NAME = 0;
-
-  /**
    * The feature id for the '<em><b>Requirements</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESOURCE_REQUIREMENTS__REQUIREMENTS = 1;
+  int RESOURCE_REQUIREMENTS__REQUIREMENTS = 0;
 
   /**
    * The number of structural features of the '<em>Resource Requirements</em>' class.
@@ -461,17 +416,17 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RESOURCE_REQUIREMENTS_FEATURE_COUNT = 2;
+  int RESOURCE_REQUIREMENTS_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ResourceRequirementImpl <em>Resource Requirement</em>}' class.
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.PropertyExpressTypeImpl <em>Property Express Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.ResourceRequirementImpl
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getResourceRequirement()
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.PropertyExpressTypeImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getPropertyExpressType()
    * @generated
    */
-  int RESOURCE_REQUIREMENT = 9;
+  int PROPERTY_EXPRESS_TYPE = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -480,7 +435,35 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RESOURCE_REQUIREMENT__NAME = 0;
+  int PROPERTY_EXPRESS_TYPE__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Property Express Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_EXPRESS_TYPE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.CommonPropertySingleValueImpl <em>Common Property Single Value</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.CommonPropertySingleValueImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getCommonPropertySingleValue()
+   * @generated
+   */
+  int COMMON_PROPERTY_SINGLE_VALUE = 10;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMON_PROPERTY_SINGLE_VALUE__NAME = PROPERTY_EXPRESS_TYPE__NAME;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -489,26 +472,26 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RESOURCE_REQUIREMENT__VALUE = 1;
+  int COMMON_PROPERTY_SINGLE_VALUE__VALUE = PROPERTY_EXPRESS_TYPE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Resource Requirement</em>' class.
+   * The number of structural features of the '<em>Common Property Single Value</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESOURCE_REQUIREMENT_FEATURE_COUNT = 2;
+  int COMMON_PROPERTY_SINGLE_VALUE_FEATURE_COUNT = PROPERTY_EXPRESS_TYPE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqOperatingSystemImpl <em>Req Operating System</em>}' class.
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.CommonPropertyMultiValueImpl <em>Common Property Multi Value</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.ReqOperatingSystemImpl
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getReqOperatingSystem()
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.CommonPropertyMultiValueImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getCommonPropertyMultiValue()
    * @generated
    */
-  int REQ_OPERATING_SYSTEM = 10;
+  int COMMON_PROPERTY_MULTI_VALUE = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -517,7 +500,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQ_OPERATING_SYSTEM__NAME = 0;
+  int COMMON_PROPERTY_MULTI_VALUE__NAME = PROPERTY_EXPRESS_TYPE__NAME;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -526,174 +509,100 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQ_OPERATING_SYSTEM__VALUE = 1;
+  int COMMON_PROPERTY_MULTI_VALUE__VALUE = PROPERTY_EXPRESS_TYPE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Req Operating System</em>' class.
+   * The number of structural features of the '<em>Common Property Multi Value</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQ_OPERATING_SYSTEM_FEATURE_COUNT = 2;
+  int COMMON_PROPERTY_MULTI_VALUE_FEATURE_COUNT = PROPERTY_EXPRESS_TYPE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.OperatingSystemTypeListImpl <em>Operating System Type List</em>}' class.
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiValueListImpl <em>Multi Value List</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.OperatingSystemTypeListImpl
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getOperatingSystemTypeList()
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.MultiValueListImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getMultiValueList()
    * @generated
    */
-  int OPERATING_SYSTEM_TYPE_LIST = 11;
+  int MULTI_VALUE_LIST = 12;
 
   /**
-   * The feature id for the '<em><b>Children</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATING_SYSTEM_TYPE_LIST__CHILDREN = 0;
-
-  /**
-   * The number of structural features of the '<em>Operating System Type List</em>' class.
+   * The feature id for the '<em><b>Values</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATING_SYSTEM_TYPE_LIST_FEATURE_COUNT = 1;
+  int MULTI_VALUE_LIST__VALUES = 0;
 
   /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqProcessorArchitectureImpl <em>Req Processor Architecture</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.ReqProcessorArchitectureImpl
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getReqProcessorArchitecture()
-   * @generated
-   */
-  int REQ_PROCESSOR_ARCHITECTURE = 12;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The number of structural features of the '<em>Multi Value List</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQ_PROCESSOR_ARCHITECTURE__NAME = 0;
+  int MULTI_VALUE_LIST_FEATURE_COUNT = 1;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiValueListPreListImpl <em>Multi Value List Pre List</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.MultiValueListPreListImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getMultiValueListPreList()
+   * @generated
+   */
+  int MULTI_VALUE_LIST_PRE_LIST = 13;
+
+  /**
+   * The feature id for the '<em><b>Values</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQ_PROCESSOR_ARCHITECTURE__VALUE = 1;
+  int MULTI_VALUE_LIST_PRE_LIST__VALUES = MULTI_VALUE_LIST__VALUES;
 
   /**
-   * The number of structural features of the '<em>Req Processor Architecture</em>' class.
+   * The number of structural features of the '<em>Multi Value List Pre List</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQ_PROCESSOR_ARCHITECTURE_FEATURE_COUNT = 2;
+  int MULTI_VALUE_LIST_PRE_LIST_FEATURE_COUNT = MULTI_VALUE_LIST_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ProcessorArchitectureTypeListImpl <em>Processor Architecture Type List</em>}' class.
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiValueListBracketImpl <em>Multi Value List Bracket</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.ProcessorArchitectureTypeListImpl
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getProcessorArchitectureTypeList()
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.MultiValueListBracketImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getMultiValueListBracket()
    * @generated
    */
-  int PROCESSOR_ARCHITECTURE_TYPE_LIST = 13;
+  int MULTI_VALUE_LIST_BRACKET = 14;
 
   /**
-   * The feature id for the '<em><b>Children</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROCESSOR_ARCHITECTURE_TYPE_LIST__CHILDREN = 0;
-
-  /**
-   * The number of structural features of the '<em>Processor Architecture Type List</em>' class.
+   * The feature id for the '<em><b>Values</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROCESSOR_ARCHITECTURE_TYPE_LIST_FEATURE_COUNT = 1;
+  int MULTI_VALUE_LIST_BRACKET__VALUES = MULTI_VALUE_LIST__VALUES;
 
   /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqRosDistroImpl <em>Req Ros Distro</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.ReqRosDistroImpl
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getReqRosDistro()
-   * @generated
-   */
-  int REQ_ROS_DISTRO = 14;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The number of structural features of the '<em>Multi Value List Bracket</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQ_ROS_DISTRO__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REQ_ROS_DISTRO__VALUE = 1;
-
-  /**
-   * The number of structural features of the '<em>Req Ros Distro</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REQ_ROS_DISTRO_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.RosDistroListImpl <em>Ros Distro List</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.RosDistroListImpl
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getRosDistroList()
-   * @generated
-   */
-  int ROS_DISTRO_LIST = 15;
-
-  /**
-   * The feature id for the '<em><b>Children</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROS_DISTRO_LIST__CHILDREN = 0;
-
-  /**
-   * The number of structural features of the '<em>Ros Distro List</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROS_DISTRO_LIST_FEATURE_COUNT = 1;
+  int MULTI_VALUE_LIST_BRACKET_FEATURE_COUNT = MULTI_VALUE_LIST_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.BuildRequirementsImpl <em>Build Requirements</em>}' class.
@@ -703,34 +612,52 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getBuildRequirements()
    * @generated
    */
-  int BUILD_REQUIREMENTS = 16;
+  int BUILD_REQUIREMENTS = 15;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Req Ros Distros</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BUILD_REQUIREMENTS__NAME = 0;
+  int BUILD_REQUIREMENTS__REQ_ROS_DISTROS = 0;
 
   /**
-   * The feature id for the '<em><b>Build Dependencies</b></em>' containment reference.
+   * The feature id for the '<em><b>Req Test Ros Distros</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BUILD_REQUIREMENTS__BUILD_DEPENDENCIES = 1;
+  int BUILD_REQUIREMENTS__REQ_TEST_ROS_DISTROS = 1;
 
   /**
-   * The feature id for the '<em><b>Dependency Repositories</b></em>' containment reference.
+   * The feature id for the '<em><b>Req Build Dependencies</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BUILD_REQUIREMENTS__DEPENDENCY_REPOSITORIES = 2;
+  int BUILD_REQUIREMENTS__REQ_BUILD_DEPENDENCIES = 2;
+
+  /**
+   * The feature id for the '<em><b>Req Dependency Repositories</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILD_REQUIREMENTS__REQ_DEPENDENCY_REPOSITORIES = 3;
+
+  /**
+   * The feature id for the '<em><b>Req CMake Args</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILD_REQUIREMENTS__REQ_CMAKE_ARGS = 4;
 
   /**
    * The number of structural features of the '<em>Build Requirements</em>' class.
@@ -739,7 +666,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_REQUIREMENTS_FEATURE_COUNT = 3;
+  int BUILD_REQUIREMENTS_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqBuildDependenciesImpl <em>Req Build Dependencies</em>}' class.
@@ -749,16 +676,7 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getReqBuildDependencies()
    * @generated
    */
-  int REQ_BUILD_DEPENDENCIES = 17;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REQ_BUILD_DEPENDENCIES__NAME = 0;
+  int REQ_BUILD_DEPENDENCIES = 16;
 
   /**
    * The feature id for the '<em><b>Dependencies</b></em>' containment reference list.
@@ -767,7 +685,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQ_BUILD_DEPENDENCIES__DEPENDENCIES = 1;
+  int REQ_BUILD_DEPENDENCIES__DEPENDENCIES = 0;
 
   /**
    * The number of structural features of the '<em>Req Build Dependencies</em>' class.
@@ -776,26 +694,26 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQ_BUILD_DEPENDENCIES_FEATURE_COUNT = 2;
+  int REQ_BUILD_DEPENDENCIES_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.DependencyImpl <em>Dependency</em>}' class.
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.DependencyTypesImpl <em>Dependency Types</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DependencyImpl
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getDependency()
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DependencyTypesImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getDependencyTypes()
    * @generated
    */
-  int DEPENDENCY = 18;
+  int DEPENDENCY_TYPES = 17;
 
   /**
-   * The number of structural features of the '<em>Dependency</em>' class.
+   * The number of structural features of the '<em>Dependency Types</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEPENDENCY_FEATURE_COUNT = 0;
+  int DEPENDENCY_TYPES_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.LocalPackageImpl <em>Local Package</em>}' class.
@@ -805,16 +723,7 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getLocalPackage()
    * @generated
    */
-  int LOCAL_PACKAGE = 19;
-
-  /**
-   * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOCAL_PACKAGE__IMPORTED_NAMESPACE = DEPENDENCY_FEATURE_COUNT + 0;
+  int LOCAL_PACKAGE = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' reference.
@@ -823,7 +732,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOCAL_PACKAGE__NAME = DEPENDENCY_FEATURE_COUNT + 1;
+  int LOCAL_PACKAGE__NAME = DEPENDENCY_TYPES_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Local Package</em>' class.
@@ -832,7 +741,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOCAL_PACKAGE_FEATURE_COUNT = DEPENDENCY_FEATURE_COUNT + 2;
+  int LOCAL_PACKAGE_FEATURE_COUNT = DEPENDENCY_TYPES_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.GitPackageImpl <em>Git Package</em>}' class.
@@ -842,16 +751,7 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getGitPackage()
    * @generated
    */
-  int GIT_PACKAGE = 20;
-
-  /**
-   * The feature id for the '<em><b>Path</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GIT_PACKAGE__PATH = DEPENDENCY_FEATURE_COUNT + 0;
+  int GIT_PACKAGE = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -860,16 +760,25 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GIT_PACKAGE__NAME = DEPENDENCY_FEATURE_COUNT + 1;
+  int GIT_PACKAGE__NAME = DEPENDENCY_TYPES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Branch</b></em>' attribute.
+   * The feature id for the '<em><b>Path</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GIT_PACKAGE__BRANCH = DEPENDENCY_FEATURE_COUNT + 2;
+  int GIT_PACKAGE__PATH = DEPENDENCY_TYPES_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Visibility</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GIT_PACKAGE__VISIBILITY = DEPENDENCY_TYPES_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Git Package</em>' class.
@@ -878,7 +787,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GIT_PACKAGE_FEATURE_COUNT = DEPENDENCY_FEATURE_COUNT + 3;
+  int GIT_PACKAGE_FEATURE_COUNT = DEPENDENCY_TYPES_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqDependencyRepositoriesImpl <em>Req Dependency Repositories</em>}' class.
@@ -888,16 +797,7 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getReqDependencyRepositories()
    * @generated
    */
-  int REQ_DEPENDENCY_REPOSITORIES = 21;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REQ_DEPENDENCY_REPOSITORIES__NAME = 0;
+  int REQ_DEPENDENCY_REPOSITORIES = 20;
 
   /**
    * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -906,7 +806,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQ_DEPENDENCY_REPOSITORIES__CHILDREN = 1;
+  int REQ_DEPENDENCY_REPOSITORIES__CHILDREN = 0;
 
   /**
    * The number of structural features of the '<em>Req Dependency Repositories</em>' class.
@@ -915,7 +815,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQ_DEPENDENCY_REPOSITORIES_FEATURE_COUNT = 2;
+  int REQ_DEPENDENCY_REPOSITORIES_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.AptRepositoryInstanceImpl <em>Apt Repository Instance</em>}' class.
@@ -925,7 +825,7 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getAptRepositoryInstance()
    * @generated
    */
-  int APT_REPOSITORY_INSTANCE = 22;
+  int APT_REPOSITORY_INSTANCE = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -973,71 +873,6 @@ public interface DeployModelPackage extends EPackage
   int APT_REPOSITORY_INSTANCE_FEATURE_COUNT = 4;
 
   /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.StartCommandsImpl <em>Start Commands</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.StartCommandsImpl
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getStartCommands()
-   * @generated
-   */
-  int START_COMMANDS = 23;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int START_COMMANDS__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Start Commands</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int START_COMMANDS__START_COMMANDS = 1;
-
-  /**
-   * The number of structural features of the '<em>Start Commands</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int START_COMMANDS_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ListStartCommandsImpl <em>List Start Commands</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.ListStartCommandsImpl
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getListStartCommands()
-   * @generated
-   */
-  int LIST_START_COMMANDS = 24;
-
-  /**
-   * The feature id for the '<em><b>Children</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIST_START_COMMANDS__CHILDREN = 0;
-
-  /**
-   * The number of structural features of the '<em>List Start Commands</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIST_START_COMMANDS_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.StackImplementationDescriptionImpl <em>Stack Implementation Description</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1045,7 +880,7 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getStackImplementationDescription()
    * @generated
    */
-  int STACK_IMPLEMENTATION_DESCRIPTION = 25;
+  int STACK_IMPLEMENTATION_DESCRIPTION = 22;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1118,7 +953,7 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getPackageDescription()
    * @generated
    */
-  int PACKAGE_DESCRIPTION = 26;
+  int PACKAGE_DESCRIPTION = 23;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1164,10 +999,10 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getImageDescription()
    * @generated
    */
-  int IMAGE_DESCRIPTION = 27;
+  int IMAGE_DESCRIPTION = 24;
 
   /**
-   * The feature id for the '<em><b>Types</b></em>' containment reference list.
+   * The feature id for the '<em><b>Types</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1185,13 +1020,13 @@ public interface DeployModelPackage extends EPackage
   int IMAGE_DESCRIPTION__NAME = 1;
 
   /**
-   * The feature id for the '<em><b>Image Versions</b></em>' containment reference.
+   * The feature id for the '<em><b>Image Tags</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int IMAGE_DESCRIPTION__IMAGE_VERSIONS = 2;
+  int IMAGE_DESCRIPTION__IMAGE_TAGS = 2;
 
   /**
    * The number of structural features of the '<em>Image Description</em>' class.
@@ -1203,62 +1038,6 @@ public interface DeployModelPackage extends EPackage
   int IMAGE_DESCRIPTION_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageTypeListImpl <em>Image Type List</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.ImageTypeListImpl
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getImageTypeList()
-   * @generated
-   */
-  int IMAGE_TYPE_LIST = 28;
-
-  /**
-   * The feature id for the '<em><b>Children</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMAGE_TYPE_LIST__CHILDREN = 0;
-
-  /**
-   * The number of structural features of the '<em>Image Type List</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMAGE_TYPE_LIST_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageVersionListImpl <em>Image Version List</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.ImageVersionListImpl
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getImageVersionList()
-   * @generated
-   */
-  int IMAGE_VERSION_LIST = 29;
-
-  /**
-   * The feature id for the '<em><b>Children</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMAGE_VERSION_LIST__CHILDREN = 0;
-
-  /**
-   * The number of structural features of the '<em>Image Version List</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMAGE_VERSION_LIST_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.RepositoryDescriptionImpl <em>Repository Description</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1266,7 +1045,7 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getRepositoryDescription()
    * @generated
    */
-  int REPOSITORY_DESCRIPTION = 30;
+  int REPOSITORY_DESCRIPTION = 25;
 
   /**
    * The feature id for the '<em><b>Spec</b></em>' containment reference list.
@@ -1294,7 +1073,7 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getRepositorySpec()
    * @generated
    */
-  int REPOSITORY_SPEC = 31;
+  int REPOSITORY_SPEC = 26;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1331,7 +1110,7 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getRepository()
    * @generated
    */
-  int REPOSITORY = 32;
+  int REPOSITORY = 27;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1361,6 +1140,228 @@ public interface DeployModelPackage extends EPackage
   int REPOSITORY_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.CISettingImpl <em>CI Setting</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.CISettingImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getCISetting()
+   * @generated
+   */
+  int CI_SETTING = 28;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CI_SETTING__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Ci Types</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CI_SETTING__CI_TYPES = 1;
+
+  /**
+   * The feature id for the '<em><b>Applied Repos</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CI_SETTING__APPLIED_REPOS = 2;
+
+  /**
+   * The feature id for the '<em><b>Req Branch Prefix</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CI_SETTING__REQ_BRANCH_PREFIX = 3;
+
+  /**
+   * The feature id for the '<em><b>Ci Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CI_SETTING__CI_PARAMETERS = 4;
+
+  /**
+   * The number of structural features of the '<em>CI Setting</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CI_SETTING_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNameListImpl <em>Multi Monolithic Implementation Name List</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNameListImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getMultiMonolithicImplementationNameList()
+   * @generated
+   */
+  int MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST = 29;
+
+  /**
+   * The feature id for the '<em><b>Values</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST__VALUES = 0;
+
+  /**
+   * The number of structural features of the '<em>Multi Monolithic Implementation Name List</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNamePreListImpl <em>Multi Monolithic Implementation Name Pre List</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNamePreListImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getMultiMonolithicImplementationNamePreList()
+   * @generated
+   */
+  int MULTI_MONOLITHIC_IMPLEMENTATION_NAME_PRE_LIST = 30;
+
+  /**
+   * The feature id for the '<em><b>Values</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI_MONOLITHIC_IMPLEMENTATION_NAME_PRE_LIST__VALUES = MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST__VALUES;
+
+  /**
+   * The number of structural features of the '<em>Multi Monolithic Implementation Name Pre List</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI_MONOLITHIC_IMPLEMENTATION_NAME_PRE_LIST_FEATURE_COUNT = MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNameListBracketImpl <em>Multi Monolithic Implementation Name List Bracket</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNameListBracketImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getMultiMonolithicImplementationNameListBracket()
+   * @generated
+   */
+  int MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST_BRACKET = 31;
+
+  /**
+   * The feature id for the '<em><b>Values</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST_BRACKET__VALUES = MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST__VALUES;
+
+  /**
+   * The number of structural features of the '<em>Multi Monolithic Implementation Name List Bracket</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST_BRACKET_FEATURE_COUNT = MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.CIParametersImpl <em>CI Parameters</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.CIParametersImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getCIParameters()
+   * @generated
+   */
+  int CI_PARAMETERS = 32;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CI_PARAMETERS__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CI_PARAMETERS__PARAMETERS = 1;
+
+  /**
+   * The number of structural features of the '<em>CI Parameters</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CI_PARAMETERS_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.GroupedPropertiesImpl <em>Grouped Properties</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.GroupedPropertiesImpl
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getGroupedProperties()
+   * @generated
+   */
+  int GROUPED_PROPERTIES = 33;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUPED_PROPERTIES__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUPED_PROPERTIES__PROPERTIES = 1;
+
+  /**
+   * The number of structural features of the '<em>Grouped Properties</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUPED_PROPERTIES_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.ImplementationModeType <em>Implementation Mode Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1368,77 +1369,17 @@ public interface DeployModelPackage extends EPackage
    * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getImplementationModeType()
    * @generated
    */
-  int IMPLEMENTATION_MODE_TYPE = 33;
+  int IMPLEMENTATION_MODE_TYPE = 34;
 
   /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.ResourceReqTypes <em>Resource Req Types</em>}' enum.
+   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.BOOLEAN <em>BOOLEAN</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.ResourceReqTypes
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getResourceReqTypes()
+   * @see de.fraunhofer.ipa.deployment.deployModel.BOOLEAN
+   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getBOOLEAN()
    * @generated
    */
-  int RESOURCE_REQ_TYPES = 34;
-
-  /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypes <em>Operating System Types</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypes
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getOperatingSystemTypes()
-   * @generated
-   */
-  int OPERATING_SYSTEM_TYPES = 35;
-
-  /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.RosDistro <em>Ros Distro</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.RosDistro
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getRosDistro()
-   * @generated
-   */
-  int ROS_DISTRO = 36;
-
-  /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypes <em>Processor Architecture Types</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypes
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getProcessorArchitectureTypes()
-   * @generated
-   */
-  int PROCESSOR_ARCHITECTURE_TYPES = 37;
-
-  /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.ImageTypes <em>Image Types</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImageTypes
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getImageTypes()
-   * @generated
-   */
-  int IMAGE_TYPES = 38;
-
-  /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.ImageVersionTypes <em>Image Version Types</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImageVersionTypes
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getImageVersionTypes()
-   * @generated
-   */
-  int IMAGE_VERSION_TYPES = 39;
-
-  /**
-   * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.RepositoryTypes <em>Repository Types</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.fraunhofer.ipa.deployment.deployModel.RepositoryTypes
-   * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getRepositoryTypes()
-   * @generated
-   */
-  int REPOSITORY_TYPES = 40;
+  int BOOLEAN = 35;
 
 
   /**
@@ -1560,15 +1501,15 @@ public interface DeployModelPackage extends EPackage
   EAttribute getMonolithicImplementationDescription_Branch();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription#getImpl <em>Impl</em>}'.
+   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription#getImplementation <em>Implementation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Impl</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription#getImpl()
+   * @return the meta object for the containment reference '<em>Implementation</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription#getImplementation()
    * @see #getMonolithicImplementationDescription()
    * @generated
    */
-  EReference getMonolithicImplementationDescription_Impl();
+  EReference getMonolithicImplementationDescription_Implementation();
 
   /**
    * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact <em>New Implementation Artifact</em>}'.
@@ -1581,15 +1522,15 @@ public interface DeployModelPackage extends EPackage
   EClass getNewImplementationArtifact();
 
   /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getLocation <em>Location</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getName()
+   * @return the meta object for the attribute '<em>Location</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getLocation()
    * @see #getNewImplementationArtifact()
    * @generated
    */
-  EAttribute getNewImplementationArtifact_Name();
+  EAttribute getNewImplementationArtifact_Location();
 
   /**
    * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact#getDeployRequirements <em>Deploy Requirements</em>}'.
@@ -1644,17 +1585,6 @@ public interface DeployModelPackage extends EPackage
    * @generated
    */
   EClass getImplementationArtifactDescription();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactDescription#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactDescription#getType()
-   * @see #getImplementationArtifactDescription()
-   * @generated
-   */
-  EAttribute getImplementationArtifactDescription_Type();
 
   /**
    * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactDescription#getImpl <em>Impl</em>}'.
@@ -1742,48 +1672,15 @@ public interface DeployModelPackage extends EPackage
   EClass getDeploymentRequirements();
 
   /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getRequirements <em>Requirements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getName()
+   * @return the meta object for the containment reference list '<em>Requirements</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getRequirements()
    * @see #getDeploymentRequirements()
    * @generated
    */
-  EAttribute getDeploymentRequirements_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getOperatingSystem <em>Operating System</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Operating System</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getOperatingSystem()
-   * @see #getDeploymentRequirements()
-   * @generated
-   */
-  EReference getDeploymentRequirements_OperatingSystem();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getProcessorArchitecture <em>Processor Architecture</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Processor Architecture</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getProcessorArchitecture()
-   * @see #getDeploymentRequirements()
-   * @generated
-   */
-  EReference getDeploymentRequirements_ProcessorArchitecture();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getRosDistro <em>Ros Distro</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Ros Distro</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeploymentRequirements#getRosDistro()
-   * @see #getDeploymentRequirements()
-   * @generated
-   */
-  EReference getDeploymentRequirements_RosDistro();
+  EReference getDeploymentRequirements_Requirements();
 
   /**
    * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.ResourceRequirements <em>Resource Requirements</em>}'.
@@ -1794,17 +1691,6 @@ public interface DeployModelPackage extends EPackage
    * @generated
    */
   EClass getResourceRequirements();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.ResourceRequirements#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ResourceRequirements#getName()
-   * @see #getResourceRequirements()
-   * @generated
-   */
-  EAttribute getResourceRequirements_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link de.fraunhofer.ipa.deployment.deployModel.ResourceRequirements#getRequirements <em>Requirements</em>}'.
@@ -1818,195 +1704,108 @@ public interface DeployModelPackage extends EPackage
   EReference getResourceRequirements_Requirements();
 
   /**
-   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.ResourceRequirement <em>Resource Requirement</em>}'.
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.PropertyExpressType <em>Property Express Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Resource Requirement</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ResourceRequirement
+   * @return the meta object for class '<em>Property Express Type</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.PropertyExpressType
    * @generated
    */
-  EClass getResourceRequirement();
+  EClass getPropertyExpressType();
 
   /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.ResourceRequirement#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.PropertyExpressType#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ResourceRequirement#getName()
-   * @see #getResourceRequirement()
+   * @see de.fraunhofer.ipa.deployment.deployModel.PropertyExpressType#getName()
+   * @see #getPropertyExpressType()
    * @generated
    */
-  EAttribute getResourceRequirement_Name();
+  EAttribute getPropertyExpressType_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.ResourceRequirement#getValue <em>Value</em>}'.
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.CommonPropertySingleValue <em>Common Property Single Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Common Property Single Value</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CommonPropertySingleValue
+   * @generated
+   */
+  EClass getCommonPropertySingleValue();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.CommonPropertySingleValue#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ResourceRequirement#getValue()
-   * @see #getResourceRequirement()
+   * @see de.fraunhofer.ipa.deployment.deployModel.CommonPropertySingleValue#getValue()
+   * @see #getCommonPropertySingleValue()
    * @generated
    */
-  EAttribute getResourceRequirement_Value();
+  EAttribute getCommonPropertySingleValue_Value();
 
   /**
-   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.ReqOperatingSystem <em>Req Operating System</em>}'.
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.CommonPropertyMultiValue <em>Common Property Multi Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Req Operating System</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqOperatingSystem
+   * @return the meta object for class '<em>Common Property Multi Value</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CommonPropertyMultiValue
    * @generated
    */
-  EClass getReqOperatingSystem();
+  EClass getCommonPropertyMultiValue();
 
   /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.ReqOperatingSystem#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqOperatingSystem#getName()
-   * @see #getReqOperatingSystem()
-   * @generated
-   */
-  EAttribute getReqOperatingSystem_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.ReqOperatingSystem#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.CommonPropertyMultiValue#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Value</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqOperatingSystem#getValue()
-   * @see #getReqOperatingSystem()
+   * @see de.fraunhofer.ipa.deployment.deployModel.CommonPropertyMultiValue#getValue()
+   * @see #getCommonPropertyMultiValue()
    * @generated
    */
-  EReference getReqOperatingSystem_Value();
+  EReference getCommonPropertyMultiValue_Value();
 
   /**
-   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypeList <em>Operating System Type List</em>}'.
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.MultiValueList <em>Multi Value List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Operating System Type List</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypeList
+   * @return the meta object for class '<em>Multi Value List</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiValueList
    * @generated
    */
-  EClass getOperatingSystemTypeList();
+  EClass getMultiValueList();
 
   /**
-   * Returns the meta object for the attribute list '{@link de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypeList#getChildren <em>Children</em>}'.
+   * Returns the meta object for the attribute list '{@link de.fraunhofer.ipa.deployment.deployModel.MultiValueList#getValues <em>Values</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Children</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypeList#getChildren()
-   * @see #getOperatingSystemTypeList()
+   * @return the meta object for the attribute list '<em>Values</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiValueList#getValues()
+   * @see #getMultiValueList()
    * @generated
    */
-  EAttribute getOperatingSystemTypeList_Children();
+  EAttribute getMultiValueList_Values();
 
   /**
-   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.ReqProcessorArchitecture <em>Req Processor Architecture</em>}'.
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.MultiValueListPreList <em>Multi Value List Pre List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Req Processor Architecture</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqProcessorArchitecture
+   * @return the meta object for class '<em>Multi Value List Pre List</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiValueListPreList
    * @generated
    */
-  EClass getReqProcessorArchitecture();
+  EClass getMultiValueListPreList();
 
   /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.ReqProcessorArchitecture#getName <em>Name</em>}'.
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.MultiValueListBracket <em>Multi Value List Bracket</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqProcessorArchitecture#getName()
-   * @see #getReqProcessorArchitecture()
+   * @return the meta object for class '<em>Multi Value List Bracket</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiValueListBracket
    * @generated
    */
-  EAttribute getReqProcessorArchitecture_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.ReqProcessorArchitecture#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqProcessorArchitecture#getValue()
-   * @see #getReqProcessorArchitecture()
-   * @generated
-   */
-  EReference getReqProcessorArchitecture_Value();
-
-  /**
-   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypeList <em>Processor Architecture Type List</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Processor Architecture Type List</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypeList
-   * @generated
-   */
-  EClass getProcessorArchitectureTypeList();
-
-  /**
-   * Returns the meta object for the attribute list '{@link de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypeList#getChildren <em>Children</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Children</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypeList#getChildren()
-   * @see #getProcessorArchitectureTypeList()
-   * @generated
-   */
-  EAttribute getProcessorArchitectureTypeList_Children();
-
-  /**
-   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.ReqRosDistro <em>Req Ros Distro</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Req Ros Distro</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqRosDistro
-   * @generated
-   */
-  EClass getReqRosDistro();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.ReqRosDistro#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqRosDistro#getName()
-   * @see #getReqRosDistro()
-   * @generated
-   */
-  EAttribute getReqRosDistro_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.ReqRosDistro#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqRosDistro#getValue()
-   * @see #getReqRosDistro()
-   * @generated
-   */
-  EReference getReqRosDistro_Value();
-
-  /**
-   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.RosDistroList <em>Ros Distro List</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Ros Distro List</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.RosDistroList
-   * @generated
-   */
-  EClass getRosDistroList();
-
-  /**
-   * Returns the meta object for the attribute list '{@link de.fraunhofer.ipa.deployment.deployModel.RosDistroList#getChildren <em>Children</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Children</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.RosDistroList#getChildren()
-   * @see #getRosDistroList()
-   * @generated
-   */
-  EAttribute getRosDistroList_Children();
+  EClass getMultiValueListBracket();
 
   /**
    * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements <em>Build Requirements</em>}'.
@@ -2019,37 +1818,59 @@ public interface DeployModelPackage extends EPackage
   EClass getBuildRequirements();
 
   /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqRosDistros <em>Req Ros Distros</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getName()
+   * @return the meta object for the containment reference '<em>Req Ros Distros</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqRosDistros()
    * @see #getBuildRequirements()
    * @generated
    */
-  EAttribute getBuildRequirements_Name();
+  EReference getBuildRequirements_ReqRosDistros();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getBuildDependencies <em>Build Dependencies</em>}'.
+   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqTestRosDistros <em>Req Test Ros Distros</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Build Dependencies</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getBuildDependencies()
+   * @return the meta object for the containment reference '<em>Req Test Ros Distros</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqTestRosDistros()
    * @see #getBuildRequirements()
    * @generated
    */
-  EReference getBuildRequirements_BuildDependencies();
+  EReference getBuildRequirements_ReqTestRosDistros();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getDependencyRepositories <em>Dependency Repositories</em>}'.
+   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqBuildDependencies <em>Req Build Dependencies</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Dependency Repositories</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getDependencyRepositories()
+   * @return the meta object for the containment reference '<em>Req Build Dependencies</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqBuildDependencies()
    * @see #getBuildRequirements()
    * @generated
    */
-  EReference getBuildRequirements_DependencyRepositories();
+  EReference getBuildRequirements_ReqBuildDependencies();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqDependencyRepositories <em>Req Dependency Repositories</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Req Dependency Repositories</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqDependencyRepositories()
+   * @see #getBuildRequirements()
+   * @generated
+   */
+  EReference getBuildRequirements_ReqDependencyRepositories();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqCMakeArgs <em>Req CMake Args</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Req CMake Args</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.BuildRequirements#getReqCMakeArgs()
+   * @see #getBuildRequirements()
+   * @generated
+   */
+  EReference getBuildRequirements_ReqCMakeArgs();
 
   /**
    * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.ReqBuildDependencies <em>Req Build Dependencies</em>}'.
@@ -2060,17 +1881,6 @@ public interface DeployModelPackage extends EPackage
    * @generated
    */
   EClass getReqBuildDependencies();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.ReqBuildDependencies#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqBuildDependencies#getName()
-   * @see #getReqBuildDependencies()
-   * @generated
-   */
-  EAttribute getReqBuildDependencies_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link de.fraunhofer.ipa.deployment.deployModel.ReqBuildDependencies#getDependencies <em>Dependencies</em>}'.
@@ -2084,14 +1894,14 @@ public interface DeployModelPackage extends EPackage
   EReference getReqBuildDependencies_Dependencies();
 
   /**
-   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.Dependency <em>Dependency</em>}'.
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.DependencyTypes <em>Dependency Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Dependency</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.Dependency
+   * @return the meta object for class '<em>Dependency Types</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.DependencyTypes
    * @generated
    */
-  EClass getDependency();
+  EClass getDependencyTypes();
 
   /**
    * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.LocalPackage <em>Local Package</em>}'.
@@ -2102,17 +1912,6 @@ public interface DeployModelPackage extends EPackage
    * @generated
    */
   EClass getLocalPackage();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.LocalPackage#getImportedNamespace <em>Imported Namespace</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Imported Namespace</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.LocalPackage#getImportedNamespace()
-   * @see #getLocalPackage()
-   * @generated
-   */
-  EAttribute getLocalPackage_ImportedNamespace();
 
   /**
    * Returns the meta object for the reference '{@link de.fraunhofer.ipa.deployment.deployModel.LocalPackage#getName <em>Name</em>}'.
@@ -2136,17 +1935,6 @@ public interface DeployModelPackage extends EPackage
   EClass getGitPackage();
 
   /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getPath <em>Path</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Path</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.GitPackage#getPath()
-   * @see #getGitPackage()
-   * @generated
-   */
-  EAttribute getGitPackage_Path();
-
-  /**
    * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2158,15 +1946,26 @@ public interface DeployModelPackage extends EPackage
   EAttribute getGitPackage_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getBranch <em>Branch</em>}'.
+   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getPath <em>Path</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Branch</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.GitPackage#getBranch()
+   * @return the meta object for the attribute '<em>Path</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.GitPackage#getPath()
    * @see #getGitPackage()
    * @generated
    */
-  EAttribute getGitPackage_Branch();
+  EAttribute getGitPackage_Path();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.GitPackage#getVisibility <em>Visibility</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Visibility</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.GitPackage#getVisibility()
+   * @see #getGitPackage()
+   * @generated
+   */
+  EAttribute getGitPackage_Visibility();
 
   /**
    * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.ReqDependencyRepositories <em>Req Dependency Repositories</em>}'.
@@ -2177,17 +1976,6 @@ public interface DeployModelPackage extends EPackage
    * @generated
    */
   EClass getReqDependencyRepositories();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.ReqDependencyRepositories#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ReqDependencyRepositories#getName()
-   * @see #getReqDependencyRepositories()
-   * @generated
-   */
-  EAttribute getReqDependencyRepositories_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link de.fraunhofer.ipa.deployment.deployModel.ReqDependencyRepositories#getChildren <em>Children</em>}'.
@@ -2253,59 +2041,6 @@ public interface DeployModelPackage extends EPackage
    * @generated
    */
   EAttribute getAptRepositoryInstance_UpdateRosDep();
-
-  /**
-   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.StartCommands <em>Start Commands</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Start Commands</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.StartCommands
-   * @generated
-   */
-  EClass getStartCommands();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.StartCommands#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.StartCommands#getName()
-   * @see #getStartCommands()
-   * @generated
-   */
-  EAttribute getStartCommands_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.StartCommands#getStartCommands <em>Start Commands</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Start Commands</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.StartCommands#getStartCommands()
-   * @see #getStartCommands()
-   * @generated
-   */
-  EReference getStartCommands_StartCommands();
-
-  /**
-   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.ListStartCommands <em>List Start Commands</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>List Start Commands</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ListStartCommands
-   * @generated
-   */
-  EClass getListStartCommands();
-
-  /**
-   * Returns the meta object for the attribute list '{@link de.fraunhofer.ipa.deployment.deployModel.ListStartCommands#getChildren <em>Children</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Children</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ListStartCommands#getChildren()
-   * @see #getListStartCommands()
-   * @generated
-   */
-  EAttribute getListStartCommands_Children();
 
   /**
    * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.StackImplementationDescription <em>Stack Implementation Description</em>}'.
@@ -2437,10 +2172,10 @@ public interface DeployModelPackage extends EPackage
   EClass getImageDescription();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getTypes <em>Types</em>}'.
+   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getTypes <em>Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Types</em>'.
+   * @return the meta object for the containment reference '<em>Types</em>'.
    * @see de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getTypes()
    * @see #getImageDescription()
    * @generated
@@ -2459,57 +2194,15 @@ public interface DeployModelPackage extends EPackage
   EReference getImageDescription_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getImageVersions <em>Image Versions</em>}'.
+   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getImageTags <em>Image Tags</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Image Versions</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getImageVersions()
+   * @return the meta object for the containment reference '<em>Image Tags</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getImageTags()
    * @see #getImageDescription()
    * @generated
    */
-  EReference getImageDescription_ImageVersions();
-
-  /**
-   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.ImageTypeList <em>Image Type List</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Image Type List</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImageTypeList
-   * @generated
-   */
-  EClass getImageTypeList();
-
-  /**
-   * Returns the meta object for the attribute list '{@link de.fraunhofer.ipa.deployment.deployModel.ImageTypeList#getChildren <em>Children</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Children</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImageTypeList#getChildren()
-   * @see #getImageTypeList()
-   * @generated
-   */
-  EAttribute getImageTypeList_Children();
-
-  /**
-   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.ImageVersionList <em>Image Version List</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Image Version List</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImageVersionList
-   * @generated
-   */
-  EClass getImageVersionList();
-
-  /**
-   * Returns the meta object for the attribute list '{@link de.fraunhofer.ipa.deployment.deployModel.ImageVersionList#getChildren <em>Children</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Children</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImageVersionList#getChildren()
-   * @see #getImageVersionList()
-   * @generated
-   */
-  EAttribute getImageVersionList_Children();
+  EReference getImageDescription_ImageTags();
 
   /**
    * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.RepositoryDescription <em>Repository Description</em>}'.
@@ -2597,6 +2290,176 @@ public interface DeployModelPackage extends EPackage
   EAttribute getRepository_Path();
 
   /**
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.CISetting <em>CI Setting</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>CI Setting</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CISetting
+   * @generated
+   */
+  EClass getCISetting();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CISetting#getType()
+   * @see #getCISetting()
+   * @generated
+   */
+  EAttribute getCISetting_Type();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getCiTypes <em>Ci Types</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Ci Types</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CISetting#getCiTypes()
+   * @see #getCISetting()
+   * @generated
+   */
+  EReference getCISetting_CiTypes();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getAppliedRepos <em>Applied Repos</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Applied Repos</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CISetting#getAppliedRepos()
+   * @see #getCISetting()
+   * @generated
+   */
+  EReference getCISetting_AppliedRepos();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getReqBranchPrefix <em>Req Branch Prefix</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Req Branch Prefix</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CISetting#getReqBranchPrefix()
+   * @see #getCISetting()
+   * @generated
+   */
+  EAttribute getCISetting_ReqBranchPrefix();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getCiParameters <em>Ci Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Ci Parameters</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CISetting#getCiParameters()
+   * @see #getCISetting()
+   * @generated
+   */
+  EReference getCISetting_CiParameters();
+
+  /**
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameList <em>Multi Monolithic Implementation Name List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Multi Monolithic Implementation Name List</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameList
+   * @generated
+   */
+  EClass getMultiMonolithicImplementationNameList();
+
+  /**
+   * Returns the meta object for the reference list '{@link de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameList#getValues <em>Values</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Values</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameList#getValues()
+   * @see #getMultiMonolithicImplementationNameList()
+   * @generated
+   */
+  EReference getMultiMonolithicImplementationNameList_Values();
+
+  /**
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNamePreList <em>Multi Monolithic Implementation Name Pre List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Multi Monolithic Implementation Name Pre List</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNamePreList
+   * @generated
+   */
+  EClass getMultiMonolithicImplementationNamePreList();
+
+  /**
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameListBracket <em>Multi Monolithic Implementation Name List Bracket</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Multi Monolithic Implementation Name List Bracket</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameListBracket
+   * @generated
+   */
+  EClass getMultiMonolithicImplementationNameListBracket();
+
+  /**
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.CIParameters <em>CI Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>CI Parameters</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CIParameters
+   * @generated
+   */
+  EClass getCIParameters();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.CIParameters#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CIParameters#getType()
+   * @see #getCIParameters()
+   * @generated
+   */
+  EAttribute getCIParameters_Type();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.fraunhofer.ipa.deployment.deployModel.CIParameters#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parameters</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CIParameters#getParameters()
+   * @see #getCIParameters()
+   * @generated
+   */
+  EReference getCIParameters_Parameters();
+
+  /**
+   * Returns the meta object for class '{@link de.fraunhofer.ipa.deployment.deployModel.GroupedProperties <em>Grouped Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Grouped Properties</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.GroupedProperties
+   * @generated
+   */
+  EClass getGroupedProperties();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.GroupedProperties#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.GroupedProperties#getType()
+   * @see #getGroupedProperties()
+   * @generated
+   */
+  EAttribute getGroupedProperties_Type();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.fraunhofer.ipa.deployment.deployModel.GroupedProperties#getProperties <em>Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Properties</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.GroupedProperties#getProperties()
+   * @see #getGroupedProperties()
+   * @generated
+   */
+  EReference getGroupedProperties_Properties();
+
+  /**
    * Returns the meta object for enum '{@link de.fraunhofer.ipa.deployment.deployModel.ImplementationModeType <em>Implementation Mode Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2607,74 +2470,14 @@ public interface DeployModelPackage extends EPackage
   EEnum getImplementationModeType();
 
   /**
-   * Returns the meta object for enum '{@link de.fraunhofer.ipa.deployment.deployModel.ResourceReqTypes <em>Resource Req Types</em>}'.
+   * Returns the meta object for enum '{@link de.fraunhofer.ipa.deployment.deployModel.BOOLEAN <em>BOOLEAN</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Resource Req Types</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ResourceReqTypes
+   * @return the meta object for enum '<em>BOOLEAN</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.BOOLEAN
    * @generated
    */
-  EEnum getResourceReqTypes();
-
-  /**
-   * Returns the meta object for enum '{@link de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypes <em>Operating System Types</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Operating System Types</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypes
-   * @generated
-   */
-  EEnum getOperatingSystemTypes();
-
-  /**
-   * Returns the meta object for enum '{@link de.fraunhofer.ipa.deployment.deployModel.RosDistro <em>Ros Distro</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Ros Distro</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.RosDistro
-   * @generated
-   */
-  EEnum getRosDistro();
-
-  /**
-   * Returns the meta object for enum '{@link de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypes <em>Processor Architecture Types</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Processor Architecture Types</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypes
-   * @generated
-   */
-  EEnum getProcessorArchitectureTypes();
-
-  /**
-   * Returns the meta object for enum '{@link de.fraunhofer.ipa.deployment.deployModel.ImageTypes <em>Image Types</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Image Types</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImageTypes
-   * @generated
-   */
-  EEnum getImageTypes();
-
-  /**
-   * Returns the meta object for enum '{@link de.fraunhofer.ipa.deployment.deployModel.ImageVersionTypes <em>Image Version Types</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Image Version Types</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImageVersionTypes
-   * @generated
-   */
-  EEnum getImageVersionTypes();
-
-  /**
-   * Returns the meta object for enum '{@link de.fraunhofer.ipa.deployment.deployModel.RepositoryTypes <em>Repository Types</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Repository Types</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.RepositoryTypes
-   * @generated
-   */
-  EEnum getRepositoryTypes();
+  EEnum getBOOLEAN();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -2794,12 +2597,12 @@ public interface DeployModelPackage extends EPackage
     EAttribute MONOLITHIC_IMPLEMENTATION_DESCRIPTION__BRANCH = eINSTANCE.getMonolithicImplementationDescription_Branch();
 
     /**
-     * The meta object literal for the '<em><b>Impl</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Implementation</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPL = eINSTANCE.getMonolithicImplementationDescription_Impl();
+    EReference MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPLEMENTATION = eINSTANCE.getMonolithicImplementationDescription_Implementation();
 
     /**
      * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.NewImplementationArtifactImpl <em>New Implementation Artifact</em>}' class.
@@ -2812,12 +2615,12 @@ public interface DeployModelPackage extends EPackage
     EClass NEW_IMPLEMENTATION_ARTIFACT = eINSTANCE.getNewImplementationArtifact();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute NEW_IMPLEMENTATION_ARTIFACT__NAME = eINSTANCE.getNewImplementationArtifact_Name();
+    EAttribute NEW_IMPLEMENTATION_ARTIFACT__LOCATION = eINSTANCE.getNewImplementationArtifact_Location();
 
     /**
      * The meta object literal for the '<em><b>Deploy Requirements</b></em>' containment reference feature.
@@ -2860,14 +2663,6 @@ public interface DeployModelPackage extends EPackage
      * @generated
      */
     EClass IMPLEMENTATION_ARTIFACT_DESCRIPTION = eINSTANCE.getImplementationArtifactDescription();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IMPLEMENTATION_ARTIFACT_DESCRIPTION__TYPE = eINSTANCE.getImplementationArtifactDescription_Type();
 
     /**
      * The meta object literal for the '<em><b>Impl</b></em>' containment reference feature.
@@ -2940,36 +2735,12 @@ public interface DeployModelPackage extends EPackage
     EClass DEPLOYMENT_REQUIREMENTS = eINSTANCE.getDeploymentRequirements();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Requirements</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DEPLOYMENT_REQUIREMENTS__NAME = eINSTANCE.getDeploymentRequirements_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Operating System</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DEPLOYMENT_REQUIREMENTS__OPERATING_SYSTEM = eINSTANCE.getDeploymentRequirements_OperatingSystem();
-
-    /**
-     * The meta object literal for the '<em><b>Processor Architecture</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DEPLOYMENT_REQUIREMENTS__PROCESSOR_ARCHITECTURE = eINSTANCE.getDeploymentRequirements_ProcessorArchitecture();
-
-    /**
-     * The meta object literal for the '<em><b>Ros Distro</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DEPLOYMENT_REQUIREMENTS__ROS_DISTRO = eINSTANCE.getDeploymentRequirements_RosDistro();
+    EReference DEPLOYMENT_REQUIREMENTS__REQUIREMENTS = eINSTANCE.getDeploymentRequirements_Requirements();
 
     /**
      * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ResourceRequirementsImpl <em>Resource Requirements</em>}' class.
@@ -2982,14 +2753,6 @@ public interface DeployModelPackage extends EPackage
     EClass RESOURCE_REQUIREMENTS = eINSTANCE.getResourceRequirements();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute RESOURCE_REQUIREMENTS__NAME = eINSTANCE.getResourceRequirements_Name();
-
-    /**
      * The meta object literal for the '<em><b>Requirements</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2998,14 +2761,14 @@ public interface DeployModelPackage extends EPackage
     EReference RESOURCE_REQUIREMENTS__REQUIREMENTS = eINSTANCE.getResourceRequirements_Requirements();
 
     /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ResourceRequirementImpl <em>Resource Requirement</em>}' class.
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.PropertyExpressTypeImpl <em>Property Express Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.ResourceRequirementImpl
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getResourceRequirement()
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.PropertyExpressTypeImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getPropertyExpressType()
      * @generated
      */
-    EClass RESOURCE_REQUIREMENT = eINSTANCE.getResourceRequirement();
+    EClass PROPERTY_EXPRESS_TYPE = eINSTANCE.getPropertyExpressType();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -3013,7 +2776,17 @@ public interface DeployModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RESOURCE_REQUIREMENT__NAME = eINSTANCE.getResourceRequirement_Name();
+    EAttribute PROPERTY_EXPRESS_TYPE__NAME = eINSTANCE.getPropertyExpressType_Name();
+
+    /**
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.CommonPropertySingleValueImpl <em>Common Property Single Value</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.CommonPropertySingleValueImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getCommonPropertySingleValue()
+     * @generated
+     */
+    EClass COMMON_PROPERTY_SINGLE_VALUE = eINSTANCE.getCommonPropertySingleValue();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -3021,25 +2794,17 @@ public interface DeployModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RESOURCE_REQUIREMENT__VALUE = eINSTANCE.getResourceRequirement_Value();
+    EAttribute COMMON_PROPERTY_SINGLE_VALUE__VALUE = eINSTANCE.getCommonPropertySingleValue_Value();
 
     /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqOperatingSystemImpl <em>Req Operating System</em>}' class.
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.CommonPropertyMultiValueImpl <em>Common Property Multi Value</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.ReqOperatingSystemImpl
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getReqOperatingSystem()
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.CommonPropertyMultiValueImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getCommonPropertyMultiValue()
      * @generated
      */
-    EClass REQ_OPERATING_SYSTEM = eINSTANCE.getReqOperatingSystem();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute REQ_OPERATING_SYSTEM__NAME = eINSTANCE.getReqOperatingSystem_Name();
+    EClass COMMON_PROPERTY_MULTI_VALUE = eINSTANCE.getCommonPropertyMultiValue();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
@@ -3047,113 +2812,45 @@ public interface DeployModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference REQ_OPERATING_SYSTEM__VALUE = eINSTANCE.getReqOperatingSystem_Value();
+    EReference COMMON_PROPERTY_MULTI_VALUE__VALUE = eINSTANCE.getCommonPropertyMultiValue_Value();
 
     /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.OperatingSystemTypeListImpl <em>Operating System Type List</em>}' class.
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiValueListImpl <em>Multi Value List</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.OperatingSystemTypeListImpl
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getOperatingSystemTypeList()
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.MultiValueListImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getMultiValueList()
      * @generated
      */
-    EClass OPERATING_SYSTEM_TYPE_LIST = eINSTANCE.getOperatingSystemTypeList();
+    EClass MULTI_VALUE_LIST = eINSTANCE.getMultiValueList();
 
     /**
-     * The meta object literal for the '<em><b>Children</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute OPERATING_SYSTEM_TYPE_LIST__CHILDREN = eINSTANCE.getOperatingSystemTypeList_Children();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqProcessorArchitectureImpl <em>Req Processor Architecture</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.ReqProcessorArchitectureImpl
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getReqProcessorArchitecture()
-     * @generated
-     */
-    EClass REQ_PROCESSOR_ARCHITECTURE = eINSTANCE.getReqProcessorArchitecture();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute REQ_PROCESSOR_ARCHITECTURE__NAME = eINSTANCE.getReqProcessorArchitecture_Name();
+    EAttribute MULTI_VALUE_LIST__VALUES = eINSTANCE.getMultiValueList_Values();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiValueListPreListImpl <em>Multi Value List Pre List</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.MultiValueListPreListImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getMultiValueListPreList()
      * @generated
      */
-    EReference REQ_PROCESSOR_ARCHITECTURE__VALUE = eINSTANCE.getReqProcessorArchitecture_Value();
+    EClass MULTI_VALUE_LIST_PRE_LIST = eINSTANCE.getMultiValueListPreList();
 
     /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ProcessorArchitectureTypeListImpl <em>Processor Architecture Type List</em>}' class.
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiValueListBracketImpl <em>Multi Value List Bracket</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.ProcessorArchitectureTypeListImpl
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getProcessorArchitectureTypeList()
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.MultiValueListBracketImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getMultiValueListBracket()
      * @generated
      */
-    EClass PROCESSOR_ARCHITECTURE_TYPE_LIST = eINSTANCE.getProcessorArchitectureTypeList();
-
-    /**
-     * The meta object literal for the '<em><b>Children</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PROCESSOR_ARCHITECTURE_TYPE_LIST__CHILDREN = eINSTANCE.getProcessorArchitectureTypeList_Children();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqRosDistroImpl <em>Req Ros Distro</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.ReqRosDistroImpl
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getReqRosDistro()
-     * @generated
-     */
-    EClass REQ_ROS_DISTRO = eINSTANCE.getReqRosDistro();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute REQ_ROS_DISTRO__NAME = eINSTANCE.getReqRosDistro_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference REQ_ROS_DISTRO__VALUE = eINSTANCE.getReqRosDistro_Value();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.RosDistroListImpl <em>Ros Distro List</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.RosDistroListImpl
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getRosDistroList()
-     * @generated
-     */
-    EClass ROS_DISTRO_LIST = eINSTANCE.getRosDistroList();
-
-    /**
-     * The meta object literal for the '<em><b>Children</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ROS_DISTRO_LIST__CHILDREN = eINSTANCE.getRosDistroList_Children();
+    EClass MULTI_VALUE_LIST_BRACKET = eINSTANCE.getMultiValueListBracket();
 
     /**
      * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.BuildRequirementsImpl <em>Build Requirements</em>}' class.
@@ -3166,28 +2863,44 @@ public interface DeployModelPackage extends EPackage
     EClass BUILD_REQUIREMENTS = eINSTANCE.getBuildRequirements();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Req Ros Distros</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute BUILD_REQUIREMENTS__NAME = eINSTANCE.getBuildRequirements_Name();
+    EReference BUILD_REQUIREMENTS__REQ_ROS_DISTROS = eINSTANCE.getBuildRequirements_ReqRosDistros();
 
     /**
-     * The meta object literal for the '<em><b>Build Dependencies</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Req Test Ros Distros</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference BUILD_REQUIREMENTS__BUILD_DEPENDENCIES = eINSTANCE.getBuildRequirements_BuildDependencies();
+    EReference BUILD_REQUIREMENTS__REQ_TEST_ROS_DISTROS = eINSTANCE.getBuildRequirements_ReqTestRosDistros();
 
     /**
-     * The meta object literal for the '<em><b>Dependency Repositories</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Req Build Dependencies</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference BUILD_REQUIREMENTS__DEPENDENCY_REPOSITORIES = eINSTANCE.getBuildRequirements_DependencyRepositories();
+    EReference BUILD_REQUIREMENTS__REQ_BUILD_DEPENDENCIES = eINSTANCE.getBuildRequirements_ReqBuildDependencies();
+
+    /**
+     * The meta object literal for the '<em><b>Req Dependency Repositories</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUILD_REQUIREMENTS__REQ_DEPENDENCY_REPOSITORIES = eINSTANCE.getBuildRequirements_ReqDependencyRepositories();
+
+    /**
+     * The meta object literal for the '<em><b>Req CMake Args</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUILD_REQUIREMENTS__REQ_CMAKE_ARGS = eINSTANCE.getBuildRequirements_ReqCMakeArgs();
 
     /**
      * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqBuildDependenciesImpl <em>Req Build Dependencies</em>}' class.
@@ -3200,14 +2913,6 @@ public interface DeployModelPackage extends EPackage
     EClass REQ_BUILD_DEPENDENCIES = eINSTANCE.getReqBuildDependencies();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute REQ_BUILD_DEPENDENCIES__NAME = eINSTANCE.getReqBuildDependencies_Name();
-
-    /**
      * The meta object literal for the '<em><b>Dependencies</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3216,14 +2921,14 @@ public interface DeployModelPackage extends EPackage
     EReference REQ_BUILD_DEPENDENCIES__DEPENDENCIES = eINSTANCE.getReqBuildDependencies_Dependencies();
 
     /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.DependencyImpl <em>Dependency</em>}' class.
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.DependencyTypesImpl <em>Dependency Types</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DependencyImpl
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getDependency()
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DependencyTypesImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getDependencyTypes()
      * @generated
      */
-    EClass DEPENDENCY = eINSTANCE.getDependency();
+    EClass DEPENDENCY_TYPES = eINSTANCE.getDependencyTypes();
 
     /**
      * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.LocalPackageImpl <em>Local Package</em>}' class.
@@ -3234,14 +2939,6 @@ public interface DeployModelPackage extends EPackage
      * @generated
      */
     EClass LOCAL_PACKAGE = eINSTANCE.getLocalPackage();
-
-    /**
-     * The meta object literal for the '<em><b>Imported Namespace</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LOCAL_PACKAGE__IMPORTED_NAMESPACE = eINSTANCE.getLocalPackage_ImportedNamespace();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' reference feature.
@@ -3262,14 +2959,6 @@ public interface DeployModelPackage extends EPackage
     EClass GIT_PACKAGE = eINSTANCE.getGitPackage();
 
     /**
-     * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute GIT_PACKAGE__PATH = eINSTANCE.getGitPackage_Path();
-
-    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3278,12 +2967,20 @@ public interface DeployModelPackage extends EPackage
     EAttribute GIT_PACKAGE__NAME = eINSTANCE.getGitPackage_Name();
 
     /**
-     * The meta object literal for the '<em><b>Branch</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GIT_PACKAGE__BRANCH = eINSTANCE.getGitPackage_Branch();
+    EAttribute GIT_PACKAGE__PATH = eINSTANCE.getGitPackage_Path();
+
+    /**
+     * The meta object literal for the '<em><b>Visibility</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GIT_PACKAGE__VISIBILITY = eINSTANCE.getGitPackage_Visibility();
 
     /**
      * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ReqDependencyRepositoriesImpl <em>Req Dependency Repositories</em>}' class.
@@ -3294,14 +2991,6 @@ public interface DeployModelPackage extends EPackage
      * @generated
      */
     EClass REQ_DEPENDENCY_REPOSITORIES = eINSTANCE.getReqDependencyRepositories();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute REQ_DEPENDENCY_REPOSITORIES__NAME = eINSTANCE.getReqDependencyRepositories_Name();
 
     /**
      * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
@@ -3352,50 +3041,6 @@ public interface DeployModelPackage extends EPackage
      * @generated
      */
     EAttribute APT_REPOSITORY_INSTANCE__UPDATE_ROS_DEP = eINSTANCE.getAptRepositoryInstance_UpdateRosDep();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.StartCommandsImpl <em>Start Commands</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.StartCommandsImpl
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getStartCommands()
-     * @generated
-     */
-    EClass START_COMMANDS = eINSTANCE.getStartCommands();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute START_COMMANDS__NAME = eINSTANCE.getStartCommands_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Start Commands</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference START_COMMANDS__START_COMMANDS = eINSTANCE.getStartCommands_StartCommands();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ListStartCommandsImpl <em>List Start Commands</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.ListStartCommandsImpl
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getListStartCommands()
-     * @generated
-     */
-    EClass LIST_START_COMMANDS = eINSTANCE.getListStartCommands();
-
-    /**
-     * The meta object literal for the '<em><b>Children</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LIST_START_COMMANDS__CHILDREN = eINSTANCE.getListStartCommands_Children();
 
     /**
      * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.StackImplementationDescriptionImpl <em>Stack Implementation Description</em>}' class.
@@ -3500,7 +3145,7 @@ public interface DeployModelPackage extends EPackage
     EClass IMAGE_DESCRIPTION = eINSTANCE.getImageDescription();
 
     /**
-     * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Types</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3516,48 +3161,12 @@ public interface DeployModelPackage extends EPackage
     EReference IMAGE_DESCRIPTION__NAME = eINSTANCE.getImageDescription_Name();
 
     /**
-     * The meta object literal for the '<em><b>Image Versions</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Image Tags</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference IMAGE_DESCRIPTION__IMAGE_VERSIONS = eINSTANCE.getImageDescription_ImageVersions();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageTypeListImpl <em>Image Type List</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.ImageTypeListImpl
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getImageTypeList()
-     * @generated
-     */
-    EClass IMAGE_TYPE_LIST = eINSTANCE.getImageTypeList();
-
-    /**
-     * The meta object literal for the '<em><b>Children</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IMAGE_TYPE_LIST__CHILDREN = eINSTANCE.getImageTypeList_Children();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageVersionListImpl <em>Image Version List</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.ImageVersionListImpl
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getImageVersionList()
-     * @generated
-     */
-    EClass IMAGE_VERSION_LIST = eINSTANCE.getImageVersionList();
-
-    /**
-     * The meta object literal for the '<em><b>Children</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IMAGE_VERSION_LIST__CHILDREN = eINSTANCE.getImageVersionList_Children();
+    EReference IMAGE_DESCRIPTION__IMAGE_TAGS = eINSTANCE.getImageDescription_ImageTags();
 
     /**
      * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.RepositoryDescriptionImpl <em>Repository Description</em>}' class.
@@ -3630,6 +3239,146 @@ public interface DeployModelPackage extends EPackage
     EAttribute REPOSITORY__PATH = eINSTANCE.getRepository_Path();
 
     /**
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.CISettingImpl <em>CI Setting</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.CISettingImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getCISetting()
+     * @generated
+     */
+    EClass CI_SETTING = eINSTANCE.getCISetting();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CI_SETTING__TYPE = eINSTANCE.getCISetting_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Ci Types</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CI_SETTING__CI_TYPES = eINSTANCE.getCISetting_CiTypes();
+
+    /**
+     * The meta object literal for the '<em><b>Applied Repos</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CI_SETTING__APPLIED_REPOS = eINSTANCE.getCISetting_AppliedRepos();
+
+    /**
+     * The meta object literal for the '<em><b>Req Branch Prefix</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CI_SETTING__REQ_BRANCH_PREFIX = eINSTANCE.getCISetting_ReqBranchPrefix();
+
+    /**
+     * The meta object literal for the '<em><b>Ci Parameters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CI_SETTING__CI_PARAMETERS = eINSTANCE.getCISetting_CiParameters();
+
+    /**
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNameListImpl <em>Multi Monolithic Implementation Name List</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNameListImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getMultiMonolithicImplementationNameList()
+     * @generated
+     */
+    EClass MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST = eINSTANCE.getMultiMonolithicImplementationNameList();
+
+    /**
+     * The meta object literal for the '<em><b>Values</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST__VALUES = eINSTANCE.getMultiMonolithicImplementationNameList_Values();
+
+    /**
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNamePreListImpl <em>Multi Monolithic Implementation Name Pre List</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNamePreListImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getMultiMonolithicImplementationNamePreList()
+     * @generated
+     */
+    EClass MULTI_MONOLITHIC_IMPLEMENTATION_NAME_PRE_LIST = eINSTANCE.getMultiMonolithicImplementationNamePreList();
+
+    /**
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNameListBracketImpl <em>Multi Monolithic Implementation Name List Bracket</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNameListBracketImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getMultiMonolithicImplementationNameListBracket()
+     * @generated
+     */
+    EClass MULTI_MONOLITHIC_IMPLEMENTATION_NAME_LIST_BRACKET = eINSTANCE.getMultiMonolithicImplementationNameListBracket();
+
+    /**
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.CIParametersImpl <em>CI Parameters</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.CIParametersImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getCIParameters()
+     * @generated
+     */
+    EClass CI_PARAMETERS = eINSTANCE.getCIParameters();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CI_PARAMETERS__TYPE = eINSTANCE.getCIParameters_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CI_PARAMETERS__PARAMETERS = eINSTANCE.getCIParameters_Parameters();
+
+    /**
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.GroupedPropertiesImpl <em>Grouped Properties</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.GroupedPropertiesImpl
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getGroupedProperties()
+     * @generated
+     */
+    EClass GROUPED_PROPERTIES = eINSTANCE.getGroupedProperties();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GROUPED_PROPERTIES__TYPE = eINSTANCE.getGroupedProperties_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GROUPED_PROPERTIES__PROPERTIES = eINSTANCE.getGroupedProperties_Properties();
+
+    /**
      * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.ImplementationModeType <em>Implementation Mode Type</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3640,74 +3389,14 @@ public interface DeployModelPackage extends EPackage
     EEnum IMPLEMENTATION_MODE_TYPE = eINSTANCE.getImplementationModeType();
 
     /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.ResourceReqTypes <em>Resource Req Types</em>}' enum.
+     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.BOOLEAN <em>BOOLEAN</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.ResourceReqTypes
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getResourceReqTypes()
+     * @see de.fraunhofer.ipa.deployment.deployModel.BOOLEAN
+     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getBOOLEAN()
      * @generated
      */
-    EEnum RESOURCE_REQ_TYPES = eINSTANCE.getResourceReqTypes();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypes <em>Operating System Types</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.OperatingSystemTypes
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getOperatingSystemTypes()
-     * @generated
-     */
-    EEnum OPERATING_SYSTEM_TYPES = eINSTANCE.getOperatingSystemTypes();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.RosDistro <em>Ros Distro</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.RosDistro
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getRosDistro()
-     * @generated
-     */
-    EEnum ROS_DISTRO = eINSTANCE.getRosDistro();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypes <em>Processor Architecture Types</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.ProcessorArchitectureTypes
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getProcessorArchitectureTypes()
-     * @generated
-     */
-    EEnum PROCESSOR_ARCHITECTURE_TYPES = eINSTANCE.getProcessorArchitectureTypes();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.ImageTypes <em>Image Types</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.ImageTypes
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getImageTypes()
-     * @generated
-     */
-    EEnum IMAGE_TYPES = eINSTANCE.getImageTypes();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.ImageVersionTypes <em>Image Version Types</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.ImageVersionTypes
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getImageVersionTypes()
-     * @generated
-     */
-    EEnum IMAGE_VERSION_TYPES = eINSTANCE.getImageVersionTypes();
-
-    /**
-     * The meta object literal for the '{@link de.fraunhofer.ipa.deployment.deployModel.RepositoryTypes <em>Repository Types</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.fraunhofer.ipa.deployment.deployModel.RepositoryTypes
-     * @see de.fraunhofer.ipa.deployment.deployModel.impl.DeployModelPackageImpl#getRepositoryTypes()
-     * @generated
-     */
-    EEnum REPOSITORY_TYPES = eINSTANCE.getRepositoryTypes();
+    EEnum BOOLEAN = eINSTANCE.getBOOLEAN();
 
   }
 

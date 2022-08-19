@@ -4,9 +4,9 @@
 package de.fraunhofer.ipa.deployment.deployModel.impl;
 
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
-import de.fraunhofer.ipa.deployment.deployModel.ImplementationArtifactDescription;
 import de.fraunhofer.ipa.deployment.deployModel.ImplementationModeType;
 import de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription;
+import de.fraunhofer.ipa.deployment.deployModel.NewImplementationArtifact;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.MonolithicImplementationDescriptionImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.MonolithicImplementationDescriptionImpl#getMode <em>Mode</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.MonolithicImplementationDescriptionImpl#getBranch <em>Branch</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.MonolithicImplementationDescriptionImpl#getImpl <em>Impl</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.MonolithicImplementationDescriptionImpl#getImplementation <em>Implementation</em>}</li>
  * </ul>
  *
  * @generated
@@ -159,14 +159,14 @@ public class MonolithicImplementationDescriptionImpl extends MinimalEObjectImpl.
   protected String branch = BRANCH_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getImpl() <em>Impl</em>}' containment reference.
+   * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getImpl()
+   * @see #getImplementation()
    * @generated
    * @ordered
    */
-  protected ImplementationArtifactDescription impl;
+  protected NewImplementationArtifact implementation;
 
   /**
    * <!-- begin-user-doc -->
@@ -345,9 +345,9 @@ public class MonolithicImplementationDescriptionImpl extends MinimalEObjectImpl.
    * @generated
    */
   @Override
-  public ImplementationArtifactDescription getImpl()
+  public NewImplementationArtifact getImplementation()
   {
-    return impl;
+    return implementation;
   }
 
   /**
@@ -355,13 +355,13 @@ public class MonolithicImplementationDescriptionImpl extends MinimalEObjectImpl.
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetImpl(ImplementationArtifactDescription newImpl, NotificationChain msgs)
+  public NotificationChain basicSetImplementation(NewImplementationArtifact newImplementation, NotificationChain msgs)
   {
-    ImplementationArtifactDescription oldImpl = impl;
-    impl = newImpl;
+    NewImplementationArtifact oldImplementation = implementation;
+    implementation = newImplementation;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPL, oldImpl, newImpl);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPLEMENTATION, oldImplementation, newImplementation);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -373,20 +373,20 @@ public class MonolithicImplementationDescriptionImpl extends MinimalEObjectImpl.
    * @generated
    */
   @Override
-  public void setImpl(ImplementationArtifactDescription newImpl)
+  public void setImplementation(NewImplementationArtifact newImplementation)
   {
-    if (newImpl != impl)
+    if (newImplementation != implementation)
     {
       NotificationChain msgs = null;
-      if (impl != null)
-        msgs = ((InternalEObject)impl).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPL, null, msgs);
-      if (newImpl != null)
-        msgs = ((InternalEObject)newImpl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPL, null, msgs);
-      msgs = basicSetImpl(newImpl, msgs);
+      if (implementation != null)
+        msgs = ((InternalEObject)implementation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPLEMENTATION, null, msgs);
+      if (newImplementation != null)
+        msgs = ((InternalEObject)newImplementation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPLEMENTATION, null, msgs);
+      msgs = basicSetImplementation(newImplementation, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPL, newImpl, newImpl));
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPLEMENTATION, newImplementation, newImplementation));
   }
 
   /**
@@ -399,8 +399,8 @@ public class MonolithicImplementationDescriptionImpl extends MinimalEObjectImpl.
   {
     switch (featureID)
     {
-      case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPL:
-        return basicSetImpl(null, msgs);
+      case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPLEMENTATION:
+        return basicSetImplementation(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -427,8 +427,8 @@ public class MonolithicImplementationDescriptionImpl extends MinimalEObjectImpl.
         return getMode();
       case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__BRANCH:
         return getBranch();
-      case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPL:
-        return getImpl();
+      case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPLEMENTATION:
+        return getImplementation();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -461,8 +461,8 @@ public class MonolithicImplementationDescriptionImpl extends MinimalEObjectImpl.
       case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__BRANCH:
         setBranch((String)newValue);
         return;
-      case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPL:
-        setImpl((ImplementationArtifactDescription)newValue);
+      case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPLEMENTATION:
+        setImplementation((NewImplementationArtifact)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -496,8 +496,8 @@ public class MonolithicImplementationDescriptionImpl extends MinimalEObjectImpl.
       case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__BRANCH:
         setBranch(BRANCH_EDEFAULT);
         return;
-      case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPL:
-        setImpl((ImplementationArtifactDescription)null);
+      case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPLEMENTATION:
+        setImplementation((NewImplementationArtifact)null);
         return;
     }
     super.eUnset(featureID);
@@ -525,8 +525,8 @@ public class MonolithicImplementationDescriptionImpl extends MinimalEObjectImpl.
         return mode != MODE_EDEFAULT;
       case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__BRANCH:
         return BRANCH_EDEFAULT == null ? branch != null : !BRANCH_EDEFAULT.equals(branch);
-      case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPL:
-        return impl != null;
+      case DeployModelPackage.MONOLITHIC_IMPLEMENTATION_DESCRIPTION__IMPLEMENTATION:
+        return implementation != null;
     }
     return super.eIsSet(featureID);
   }

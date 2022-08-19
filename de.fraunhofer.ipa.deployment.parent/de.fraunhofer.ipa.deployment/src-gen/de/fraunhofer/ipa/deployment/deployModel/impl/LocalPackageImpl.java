@@ -22,34 +22,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.LocalPackageImpl#getImportedNamespace <em>Imported Namespace</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.LocalPackageImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class LocalPackageImpl extends DependencyImpl implements LocalPackage
+public class LocalPackageImpl extends DependencyTypesImpl implements LocalPackage
 {
-  /**
-   * The default value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getImportedNamespace()
-   * @generated
-   * @ordered
-   */
-  protected static final String IMPORTED_NAMESPACE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getImportedNamespace()
-   * @generated
-   * @ordered
-   */
-  protected String importedNamespace = IMPORTED_NAMESPACE_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getName() <em>Name</em>}' reference.
    * <!-- begin-user-doc -->
@@ -79,31 +58,6 @@ public class LocalPackageImpl extends DependencyImpl implements LocalPackage
   protected EClass eStaticClass()
   {
     return DeployModelPackage.Literals.LOCAL_PACKAGE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getImportedNamespace()
-  {
-    return importedNamespace;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setImportedNamespace(String newImportedNamespace)
-  {
-    String oldImportedNamespace = importedNamespace;
-    importedNamespace = newImportedNamespace;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.LOCAL_PACKAGE__IMPORTED_NAMESPACE, oldImportedNamespace, importedNamespace));
   }
 
   /**
@@ -161,8 +115,6 @@ public class LocalPackageImpl extends DependencyImpl implements LocalPackage
   {
     switch (featureID)
     {
-      case DeployModelPackage.LOCAL_PACKAGE__IMPORTED_NAMESPACE:
-        return getImportedNamespace();
       case DeployModelPackage.LOCAL_PACKAGE__NAME:
         if (resolve) return getName();
         return basicGetName();
@@ -180,9 +132,6 @@ public class LocalPackageImpl extends DependencyImpl implements LocalPackage
   {
     switch (featureID)
     {
-      case DeployModelPackage.LOCAL_PACKAGE__IMPORTED_NAMESPACE:
-        setImportedNamespace((String)newValue);
-        return;
       case DeployModelPackage.LOCAL_PACKAGE__NAME:
         setName((MonolithicImplementationDescription)newValue);
         return;
@@ -200,9 +149,6 @@ public class LocalPackageImpl extends DependencyImpl implements LocalPackage
   {
     switch (featureID)
     {
-      case DeployModelPackage.LOCAL_PACKAGE__IMPORTED_NAMESPACE:
-        setImportedNamespace(IMPORTED_NAMESPACE_EDEFAULT);
-        return;
       case DeployModelPackage.LOCAL_PACKAGE__NAME:
         setName((MonolithicImplementationDescription)null);
         return;
@@ -220,29 +166,10 @@ public class LocalPackageImpl extends DependencyImpl implements LocalPackage
   {
     switch (featureID)
     {
-      case DeployModelPackage.LOCAL_PACKAGE__IMPORTED_NAMESPACE:
-        return IMPORTED_NAMESPACE_EDEFAULT == null ? importedNamespace != null : !IMPORTED_NAMESPACE_EDEFAULT.equals(importedNamespace);
       case DeployModelPackage.LOCAL_PACKAGE__NAME:
         return name != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (importedNamespace: ");
-    result.append(importedNamespace);
-    result.append(')');
-    return result.toString();
   }
 
 } //LocalPackageImpl

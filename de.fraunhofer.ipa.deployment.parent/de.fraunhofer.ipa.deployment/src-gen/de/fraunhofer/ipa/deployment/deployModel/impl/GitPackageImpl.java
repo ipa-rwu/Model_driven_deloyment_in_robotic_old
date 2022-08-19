@@ -20,35 +20,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.GitPackageImpl#getPath <em>Path</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.GitPackageImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.GitPackageImpl#getBranch <em>Branch</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.GitPackageImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.GitPackageImpl#getVisibility <em>Visibility</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class GitPackageImpl extends DependencyImpl implements GitPackage
+public class GitPackageImpl extends DependencyTypesImpl implements GitPackage
 {
-  /**
-   * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPath()
-   * @generated
-   * @ordered
-   */
-  protected static final String PATH_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPath()
-   * @generated
-   * @ordered
-   */
-  protected String path = PATH_EDEFAULT;
-
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -70,24 +50,44 @@ public class GitPackageImpl extends DependencyImpl implements GitPackage
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getBranch() <em>Branch</em>}' attribute.
+   * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBranch()
+   * @see #getPath()
    * @generated
    * @ordered
    */
-  protected static final String BRANCH_EDEFAULT = null;
+  protected static final String PATH_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getBranch() <em>Branch</em>}' attribute.
+   * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBranch()
+   * @see #getPath()
    * @generated
    * @ordered
    */
-  protected String branch = BRANCH_EDEFAULT;
+  protected String path = PATH_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVisibility()
+   * @generated
+   * @ordered
+   */
+  protected static final String VISIBILITY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVisibility()
+   * @generated
+   * @ordered
+   */
+  protected String visibility = VISIBILITY_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -108,31 +108,6 @@ public class GitPackageImpl extends DependencyImpl implements GitPackage
   protected EClass eStaticClass()
   {
     return DeployModelPackage.Literals.GIT_PACKAGE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getPath()
-  {
-    return path;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setPath(String newPath)
-  {
-    String oldPath = path;
-    path = newPath;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.GIT_PACKAGE__PATH, oldPath, path));
   }
 
   /**
@@ -166,9 +141,9 @@ public class GitPackageImpl extends DependencyImpl implements GitPackage
    * @generated
    */
   @Override
-  public String getBranch()
+  public String getPath()
   {
-    return branch;
+    return path;
   }
 
   /**
@@ -177,12 +152,37 @@ public class GitPackageImpl extends DependencyImpl implements GitPackage
    * @generated
    */
   @Override
-  public void setBranch(String newBranch)
+  public void setPath(String newPath)
   {
-    String oldBranch = branch;
-    branch = newBranch;
+    String oldPath = path;
+    path = newPath;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.GIT_PACKAGE__BRANCH, oldBranch, branch));
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.GIT_PACKAGE__PATH, oldPath, path));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getVisibility()
+  {
+    return visibility;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setVisibility(String newVisibility)
+  {
+    String oldVisibility = visibility;
+    visibility = newVisibility;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.GIT_PACKAGE__VISIBILITY, oldVisibility, visibility));
   }
 
   /**
@@ -195,12 +195,12 @@ public class GitPackageImpl extends DependencyImpl implements GitPackage
   {
     switch (featureID)
     {
-      case DeployModelPackage.GIT_PACKAGE__PATH:
-        return getPath();
       case DeployModelPackage.GIT_PACKAGE__NAME:
         return getName();
-      case DeployModelPackage.GIT_PACKAGE__BRANCH:
-        return getBranch();
+      case DeployModelPackage.GIT_PACKAGE__PATH:
+        return getPath();
+      case DeployModelPackage.GIT_PACKAGE__VISIBILITY:
+        return getVisibility();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -215,14 +215,14 @@ public class GitPackageImpl extends DependencyImpl implements GitPackage
   {
     switch (featureID)
     {
-      case DeployModelPackage.GIT_PACKAGE__PATH:
-        setPath((String)newValue);
-        return;
       case DeployModelPackage.GIT_PACKAGE__NAME:
         setName((String)newValue);
         return;
-      case DeployModelPackage.GIT_PACKAGE__BRANCH:
-        setBranch((String)newValue);
+      case DeployModelPackage.GIT_PACKAGE__PATH:
+        setPath((String)newValue);
+        return;
+      case DeployModelPackage.GIT_PACKAGE__VISIBILITY:
+        setVisibility((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -238,14 +238,14 @@ public class GitPackageImpl extends DependencyImpl implements GitPackage
   {
     switch (featureID)
     {
-      case DeployModelPackage.GIT_PACKAGE__PATH:
-        setPath(PATH_EDEFAULT);
-        return;
       case DeployModelPackage.GIT_PACKAGE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case DeployModelPackage.GIT_PACKAGE__BRANCH:
-        setBranch(BRANCH_EDEFAULT);
+      case DeployModelPackage.GIT_PACKAGE__PATH:
+        setPath(PATH_EDEFAULT);
+        return;
+      case DeployModelPackage.GIT_PACKAGE__VISIBILITY:
+        setVisibility(VISIBILITY_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -261,12 +261,12 @@ public class GitPackageImpl extends DependencyImpl implements GitPackage
   {
     switch (featureID)
     {
-      case DeployModelPackage.GIT_PACKAGE__PATH:
-        return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
       case DeployModelPackage.GIT_PACKAGE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case DeployModelPackage.GIT_PACKAGE__BRANCH:
-        return BRANCH_EDEFAULT == null ? branch != null : !BRANCH_EDEFAULT.equals(branch);
+      case DeployModelPackage.GIT_PACKAGE__PATH:
+        return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
+      case DeployModelPackage.GIT_PACKAGE__VISIBILITY:
+        return VISIBILITY_EDEFAULT == null ? visibility != null : !VISIBILITY_EDEFAULT.equals(visibility);
     }
     return super.eIsSet(featureID);
   }
@@ -282,12 +282,12 @@ public class GitPackageImpl extends DependencyImpl implements GitPackage
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (path: ");
-    result.append(path);
-    result.append(", name: ");
+    result.append(" (name: ");
     result.append(name);
-    result.append(", branch: ");
-    result.append(branch);
+    result.append(", path: ");
+    result.append(path);
+    result.append(", visibility: ");
+    result.append(visibility);
     result.append(')');
     return result.toString();
   }
