@@ -21,8 +21,6 @@ variables:
     - "docker-build"
   tags: &simple_runner
     - asprunner
-  tags: &dd
-    - dd
 
 .build:
   stage: ${CI_JOB_NAME}
@@ -50,32 +48,33 @@ variables:
   variables:
     NAME: ${CI_JOB_NAME}_${ROS_DISTRO}
 
-phoenix_bridge:ros2:
+ret:ros2:
   extends:
     - .build
     - .on_ros2
   variables:
-    NAME: phoenix_bridge_${ROS_DISTRO}
+    NAME: ret_${ROS_DISTRO}
     FOLDER: "".""
   parallel:
     matrix:
       - ROS_DISTRO:
       	- humble
-      	- rolling
       	- foxy
       	- galactic
 
-phoenix_bridge:ros1:
+ret:ros1:
   extends:
     - .build
     - .on_ros1
   variables:
-    NAME: phoenix_bridge_${ROS_DISTRO}
+    NAME: ret_${ROS_DISTRO}
     FOLDER: "".""
   parallel:
     matrix:
       - ROS_DISTRO:
+      	- melodic
       	- noetic
+      	- kinetic
 
 
 .publish:
@@ -104,33 +103,34 @@ tags: *docker_runner
   needs:
     - build
 
-publish:phoenix_bridge:ros2:
+publish:ret:ros2:
   extends:
     - .publish
   - .on_ros2_merge_tag
   variables:
-    NAME: phoenix_bridge_${ROS_DISTRO}
+    NAME: ret_${ROS_DISTRO}
   needs:
-    - phoenix_bridge:ros2
+    - ret:ros2
   parallel:
     matrix:
       - ROS_DISTRO:
       	- humble
-      	- rolling
       	- foxy
       	- galactic
 
-publish:phoenix_bridge:ros1:
+publish:ret:ros1:
   extends:
     - .publish
   - .on_ros1_merge_tag
   variables:
-    NAME: phoenix_bridge_${ROS_DISTRO}
+    NAME: ret_${ROS_DISTRO}
   needs:
-    - phoenix_bridge:ros1
+    - ret:ros1
   parallel:
     matrix:
       - ROS_DISTRO:
+      	- melodic
       	- noetic
+      	- kinetic
 
 

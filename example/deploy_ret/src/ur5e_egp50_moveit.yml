@@ -35,13 +35,15 @@ MonolithicImplementationDescription:
    		- "roslaunch ur5e_egp50_moveit_config ur5e_egp50_moveit_planning_execution.launch"
 
 PackageDescription:
-  imageDescription:
-    types: [docker]
-    name: ur5e_egp50_moveit_config 
-    imageTags:
+	name: pack_ur5e_egp50_moveit_config
+	imageDescription:
+  	types: [docker]
+  	applyToImplementations: 
+  		- ur5e_egp50_moveit_config 
+  	imageTags:
 	    - branch
 	    - latest 
-  repositoryDescription:
+	repositoryDescription:
 	  - name: container_registry
 	    type: gitlab
 

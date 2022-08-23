@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.PackageDescription#getType <em>Type</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.PackageDescription#getName <em>Name</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.PackageDescription#getImageDescription <em>Image Description</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.PackageDescription#getRepositoryDescription <em>Repository Description</em>}</li>
  * </ul>
@@ -46,6 +47,28 @@ public interface PackageDescription extends EObject
    * @generated
    */
   void setType(String value);
+
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getPackageDescription_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.PackageDescription#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Image Description</b></em>' containment reference.

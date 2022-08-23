@@ -6,9 +6,9 @@ MonolithicImplementationDescription:
   ImplementationArtifactDescription:
     location: "."
     deployRequirements:
-	    - name: os 
-	      value: 
-	        - ubuntu 
+	    - name: os
+	      value:
+	        - ubuntu
 	    - name: processor_architecture
 	      value:
 	      	- x86_64
@@ -16,14 +16,14 @@ MonolithicImplementationDescription:
 	    - name: cpus
 	      value: 0.5
 	    - name: memory
-	      value: 1.5m 
-    buildRequirements: 
+	      value: 1.5m
+    buildRequirements:
     	rosDistros:
 	      - noetic
   	    - foxy
-  	    - galactic 
+  	    - galactic
   	  testRosDistros:
-  	  	- ros2 
+  	  	- ros2
 	    dependOn:
 	      - name: phoenix_dependencies
 	      	location: "https://gitlab.cc-asp.fraunhofer.de/ipa326/phoenix_dependencies.git"
@@ -32,44 +32,16 @@ MonolithicImplementationDescription:
 	   	- "roslaunch ret ret_application.launch robot:=ur_ros sim:=false"
 
 PackageDescription:
-  imageDescription: 
-    types: [docker]
-    name: phoenix_bridge
-    imageTags: 
-	    - branch  
-	    - latest 
+	name: pack_bridge
+	imageDescription:
+  	types: [docker]
+  	applyToImplementations: 
+  		- phoenix_bridge
+  	imageTags:
+	    - branch
+	    - latest
 	    - commit_tag
-  repositoryDescription:
+	repositoryDescription:
   	- name: container_registry
     	type: gitlab
-   
-CISetting:
-	ciTypes:
-		- gitlab 
-		- github 
-	appliedRepos:
-		- phoenix_bridge
-	branchPrefixType: ros_version
-	gitlab:
-		services: 
-			- name: docker_service
-				value: "docker:dind" 
-		tags:
-			- name: docker_runner_save_cache
-					value: "docker-build"
-			- name: simple_runner
-				value: asprunner
-			- name: dd
-				value: dd
-	github:  
-		services: 
-			- name: docker_service
-				value: "docker:dind"
-		tags: 
-			- name: docker_runner
-				value: "docker-build"
-			- name: simple_runner
-				value: asprunner
-			- name: dd 
-				value: dd
-	
+

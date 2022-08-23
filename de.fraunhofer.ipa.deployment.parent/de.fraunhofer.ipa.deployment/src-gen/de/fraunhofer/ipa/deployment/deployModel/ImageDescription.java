@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getTypes <em>Types</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getName <em>Name</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getAppiledImplementations <em>Appiled Implementations</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getImageTags <em>Image Tags</em>}</li>
  * </ul>
  *
@@ -48,26 +48,26 @@ public interface ImageDescription extends EObject
   void setTypes(MultiValueList value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' reference.
+   * Returns the value of the '<em><b>Appiled Implementations</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' reference.
-   * @see #setName(MonolithicImplementationDescription)
-   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getImageDescription_Name()
-   * @model
+   * @return the value of the '<em>Appiled Implementations</em>' containment reference.
+   * @see #setAppiledImplementations(MultiMonolithicImplementationNameList)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getImageDescription_AppiledImplementations()
+   * @model containment="true"
    * @generated
    */
-  MonolithicImplementationDescription getName();
+  MultiMonolithicImplementationNameList getAppiledImplementations();
 
   /**
-   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getName <em>Name</em>}' reference.
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getAppiledImplementations <em>Appiled Implementations</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' reference.
-   * @see #getName()
+   * @param value the new value of the '<em>Appiled Implementations</em>' containment reference.
+   * @see #getAppiledImplementations()
    * @generated
    */
-  void setName(MonolithicImplementationDescription value);
+  void setAppiledImplementations(MultiMonolithicImplementationNameList value);
 
   /**
    * Returns the value of the '<em><b>Image Tags</b></em>' containment reference.

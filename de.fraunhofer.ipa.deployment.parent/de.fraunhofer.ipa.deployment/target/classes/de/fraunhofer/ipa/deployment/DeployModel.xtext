@@ -189,6 +189,7 @@ StackImplementationDescription:
 PackageDescription:
   type='PackageDescription'':'
   INDENT
+  	'name:' name=QualifiedName
     'imageDescription:'
 	  INDENT
 	    imageDescription=ImageDescription
@@ -200,7 +201,7 @@ PackageDescription:
 
 ImageDescription:
   'types:' types = MultiValueList
-  'name:' name= [MonolithicImplementationDescription|QualifiedName]
+  'applyToImplementations:' appiledImplementations = MultiMonolithicImplementationNameList
   'imageTags:' imageTags = MultiValueList
 ;
 
@@ -226,8 +227,9 @@ Repository:
 CISetting:
   type='CISetting:'
   INDENT
+  	'name:' name=QualifiedName
   	'ciTypes:' ciTypes = MultiValueList
-  	'appliedRepos:' appliedRepos=MultiMonolithicImplementationNameList
+  	'applyToImplementations:' appliedRepos=MultiMonolithicImplementationNameList
   	'branchPrefixType:' reqBranchPrefix=ID
   	ciParameters+=(CIParameters)*
   DEDENT

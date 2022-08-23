@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.CISettingImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.CISettingImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.CISettingImpl#getCiTypes <em>Ci Types</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.CISettingImpl#getAppliedRepos <em>Applied Repos</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.CISettingImpl#getReqBranchPrefix <em>Req Branch Prefix</em>}</li>
@@ -63,6 +64,26 @@ public class CISettingImpl extends MinimalEObjectImpl.Container implements CISet
    * @ordered
    */
   protected String type = TYPE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getCiTypes() <em>Ci Types</em>}' containment reference.
@@ -158,6 +179,31 @@ public class CISettingImpl extends MinimalEObjectImpl.Container implements CISet
     type = newType;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.CI_SETTING__TYPE, oldType, type));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.CI_SETTING__NAME, oldName, name));
   }
 
   /**
@@ -332,6 +378,8 @@ public class CISettingImpl extends MinimalEObjectImpl.Container implements CISet
     {
       case DeployModelPackage.CI_SETTING__TYPE:
         return getType();
+      case DeployModelPackage.CI_SETTING__NAME:
+        return getName();
       case DeployModelPackage.CI_SETTING__CI_TYPES:
         return getCiTypes();
       case DeployModelPackage.CI_SETTING__APPLIED_REPOS:
@@ -357,6 +405,9 @@ public class CISettingImpl extends MinimalEObjectImpl.Container implements CISet
     {
       case DeployModelPackage.CI_SETTING__TYPE:
         setType((String)newValue);
+        return;
+      case DeployModelPackage.CI_SETTING__NAME:
+        setName((String)newValue);
         return;
       case DeployModelPackage.CI_SETTING__CI_TYPES:
         setCiTypes((MultiValueList)newValue);
@@ -388,6 +439,9 @@ public class CISettingImpl extends MinimalEObjectImpl.Container implements CISet
       case DeployModelPackage.CI_SETTING__TYPE:
         setType(TYPE_EDEFAULT);
         return;
+      case DeployModelPackage.CI_SETTING__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case DeployModelPackage.CI_SETTING__CI_TYPES:
         setCiTypes((MultiValueList)null);
         return;
@@ -416,6 +470,8 @@ public class CISettingImpl extends MinimalEObjectImpl.Container implements CISet
     {
       case DeployModelPackage.CI_SETTING__TYPE:
         return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+      case DeployModelPackage.CI_SETTING__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DeployModelPackage.CI_SETTING__CI_TYPES:
         return ciTypes != null;
       case DeployModelPackage.CI_SETTING__APPLIED_REPOS:
@@ -441,6 +497,8 @@ public class CISettingImpl extends MinimalEObjectImpl.Container implements CISet
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (type: ");
     result.append(type);
+    result.append(", name: ");
+    result.append(name);
     result.append(", reqBranchPrefix: ");
     result.append(reqBranchPrefix);
     result.append(')');

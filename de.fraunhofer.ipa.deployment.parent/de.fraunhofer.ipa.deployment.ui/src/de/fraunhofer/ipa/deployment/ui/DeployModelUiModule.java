@@ -9,8 +9,9 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
  * Use this class to register components to be used within the Eclipse IDE.
  */
 public class DeployModelUiModule extends AbstractDeployModelUiModule {
-
+	  
 	public DeployModelUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
+	
 }

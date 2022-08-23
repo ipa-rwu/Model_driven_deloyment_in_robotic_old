@@ -119,6 +119,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PackageDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imageDescription" eType="#//ImageDescription"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="repositoryDescription"
@@ -127,7 +128,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="ImageDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" eType="#//MultiValueList"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//MonolithicImplementationDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="appiledImplementations"
+        eType="#//MultiMonolithicImplementationNameList" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imageTags" eType="#//MultiValueList"
         containment="true"/>
   </eClassifiers>
@@ -146,6 +148,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CISetting">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ciTypes" eType="#//MultiValueList"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="appliedRepos" eType="#//MultiMonolithicImplementationNameList"

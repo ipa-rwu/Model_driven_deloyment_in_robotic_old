@@ -105,12 +105,13 @@
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//PackageDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//PackageDescription/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//PackageDescription/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//PackageDescription/imageDescription"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//PackageDescription/repositoryDescription"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//ImageDescription">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ImageDescription/types"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ImageDescription/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ImageDescription/appiledImplementations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//ImageDescription/imageTags"/>
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//RepositoryDescription">
@@ -126,6 +127,7 @@
     </genClasses>
     <genClasses ecoreClass="DeployModel.ecore#//CISetting">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//CISetting/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//CISetting/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//CISetting/ciTypes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DeployModel.ecore#//CISetting/appliedRepos"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DeployModel.ecore#//CISetting/reqBranchPrefix"/>

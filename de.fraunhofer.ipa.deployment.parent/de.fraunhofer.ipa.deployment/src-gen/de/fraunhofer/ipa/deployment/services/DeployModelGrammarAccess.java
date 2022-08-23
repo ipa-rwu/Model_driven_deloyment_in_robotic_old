@@ -1377,19 +1377,23 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Keyword cTypePackageDescriptionKeyword_0_0 = (Keyword)cTypeAssignment_0.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final RuleCall cINDENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Keyword cImageDescriptionKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final RuleCall cINDENTTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
-		private final Assignment cImageDescriptionAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cImageDescriptionImageDescriptionParserRuleCall_5_0 = (RuleCall)cImageDescriptionAssignment_5.eContents().get(0);
-		private final RuleCall cDEDENTTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
-		private final Keyword cRepositoryDescriptionKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cRepositoryDescriptionAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cRepositoryDescriptionRepositoryDescriptionParserRuleCall_8_0 = (RuleCall)cRepositoryDescriptionAssignment_8.eContents().get(0);
-		private final RuleCall cDEDENTTerminalRuleCall_9 = (RuleCall)cGroup.eContents().get(9);
+		private final Keyword cNameKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cNameQualifiedNameParserRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
+		private final Keyword cImageDescriptionKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final RuleCall cINDENTTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
+		private final Assignment cImageDescriptionAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cImageDescriptionImageDescriptionParserRuleCall_7_0 = (RuleCall)cImageDescriptionAssignment_7.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_8 = (RuleCall)cGroup.eContents().get(8);
+		private final Keyword cRepositoryDescriptionKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cRepositoryDescriptionAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cRepositoryDescriptionRepositoryDescriptionParserRuleCall_10_0 = (RuleCall)cRepositoryDescriptionAssignment_10.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_11 = (RuleCall)cGroup.eContents().get(11);
 		
 		//PackageDescription:
 		//  type='PackageDescription'':'
 		//  INDENT
+		//      'name:' name=QualifiedName
 		//    'imageDescription:'
 		//      INDENT
 		//        imageDescription=ImageDescription
@@ -1402,6 +1406,7 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		
 		//type='PackageDescription'':'
 		//INDENT
+		//    'name:' name=QualifiedName
 		//  'imageDescription:'
 		//    INDENT
 		//      imageDescription=ImageDescription
@@ -1423,32 +1428,41 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//INDENT
 		public RuleCall getINDENTTerminalRuleCall_2() { return cINDENTTerminalRuleCall_2; }
 		
+		//'name:'
+		public Keyword getNameKeyword_3() { return cNameKeyword_3; }
+		
+		//name=QualifiedName
+		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+		
+		//QualifiedName
+		public RuleCall getNameQualifiedNameParserRuleCall_4_0() { return cNameQualifiedNameParserRuleCall_4_0; }
+		
 		//'imageDescription:'
-		public Keyword getImageDescriptionKeyword_3() { return cImageDescriptionKeyword_3; }
+		public Keyword getImageDescriptionKeyword_5() { return cImageDescriptionKeyword_5; }
 		
 		//INDENT
-		public RuleCall getINDENTTerminalRuleCall_4() { return cINDENTTerminalRuleCall_4; }
+		public RuleCall getINDENTTerminalRuleCall_6() { return cINDENTTerminalRuleCall_6; }
 		
 		//imageDescription=ImageDescription
-		public Assignment getImageDescriptionAssignment_5() { return cImageDescriptionAssignment_5; }
+		public Assignment getImageDescriptionAssignment_7() { return cImageDescriptionAssignment_7; }
 		
 		//ImageDescription
-		public RuleCall getImageDescriptionImageDescriptionParserRuleCall_5_0() { return cImageDescriptionImageDescriptionParserRuleCall_5_0; }
+		public RuleCall getImageDescriptionImageDescriptionParserRuleCall_7_0() { return cImageDescriptionImageDescriptionParserRuleCall_7_0; }
 		
 		//DEDENT
-		public RuleCall getDEDENTTerminalRuleCall_6() { return cDEDENTTerminalRuleCall_6; }
+		public RuleCall getDEDENTTerminalRuleCall_8() { return cDEDENTTerminalRuleCall_8; }
 		
 		//'repositoryDescription:'
-		public Keyword getRepositoryDescriptionKeyword_7() { return cRepositoryDescriptionKeyword_7; }
+		public Keyword getRepositoryDescriptionKeyword_9() { return cRepositoryDescriptionKeyword_9; }
 		
 		//repositoryDescription=RepositoryDescription
-		public Assignment getRepositoryDescriptionAssignment_8() { return cRepositoryDescriptionAssignment_8; }
+		public Assignment getRepositoryDescriptionAssignment_10() { return cRepositoryDescriptionAssignment_10; }
 		
 		//RepositoryDescription
-		public RuleCall getRepositoryDescriptionRepositoryDescriptionParserRuleCall_8_0() { return cRepositoryDescriptionRepositoryDescriptionParserRuleCall_8_0; }
+		public RuleCall getRepositoryDescriptionRepositoryDescriptionParserRuleCall_10_0() { return cRepositoryDescriptionRepositoryDescriptionParserRuleCall_10_0; }
 		
 		//DEDENT
-		public RuleCall getDEDENTTerminalRuleCall_9() { return cDEDENTTerminalRuleCall_9; }
+		public RuleCall getDEDENTTerminalRuleCall_11() { return cDEDENTTerminalRuleCall_11; }
 	}
 	public class ImageDescriptionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.ImageDescription");
@@ -1456,23 +1470,22 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Keyword cTypesKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cTypesAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cTypesMultiValueListParserRuleCall_1_0 = (RuleCall)cTypesAssignment_1.eContents().get(0);
-		private final Keyword cNameKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cNameMonolithicImplementationDescriptionCrossReference_3_0 = (CrossReference)cNameAssignment_3.eContents().get(0);
-		private final RuleCall cNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_3_0_1 = (RuleCall)cNameMonolithicImplementationDescriptionCrossReference_3_0.eContents().get(1);
+		private final Keyword cApplyToImplementationsKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cAppiledImplementationsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cAppiledImplementationsMultiMonolithicImplementationNameListParserRuleCall_3_0 = (RuleCall)cAppiledImplementationsAssignment_3.eContents().get(0);
 		private final Keyword cImageTagsKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cImageTagsAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cImageTagsMultiValueListParserRuleCall_5_0 = (RuleCall)cImageTagsAssignment_5.eContents().get(0);
 		
 		//ImageDescription:
 		//  'types:' types = MultiValueList
-		//  'name:' name= [MonolithicImplementationDescription|QualifiedName]
+		//  'applyToImplementations:' appiledImplementations = MultiMonolithicImplementationNameList
 		//  'imageTags:' imageTags = MultiValueList
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'types:' types = MultiValueList
-		//'name:' name= [MonolithicImplementationDescription|QualifiedName]
+		//'applyToImplementations:' appiledImplementations = MultiMonolithicImplementationNameList
 		//'imageTags:' imageTags = MultiValueList
 		public Group getGroup() { return cGroup; }
 		
@@ -1485,17 +1498,14 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//MultiValueList
 		public RuleCall getTypesMultiValueListParserRuleCall_1_0() { return cTypesMultiValueListParserRuleCall_1_0; }
 		
-		//'name:'
-		public Keyword getNameKeyword_2() { return cNameKeyword_2; }
+		//'applyToImplementations:'
+		public Keyword getApplyToImplementationsKeyword_2() { return cApplyToImplementationsKeyword_2; }
 		
-		//name= [MonolithicImplementationDescription|QualifiedName]
-		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		//appiledImplementations = MultiMonolithicImplementationNameList
+		public Assignment getAppiledImplementationsAssignment_3() { return cAppiledImplementationsAssignment_3; }
 		
-		//[MonolithicImplementationDescription|QualifiedName]
-		public CrossReference getNameMonolithicImplementationDescriptionCrossReference_3_0() { return cNameMonolithicImplementationDescriptionCrossReference_3_0; }
-		
-		//QualifiedName
-		public RuleCall getNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_3_0_1() { return cNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_3_0_1; }
+		//MultiMonolithicImplementationNameList
+		public RuleCall getAppiledImplementationsMultiMonolithicImplementationNameListParserRuleCall_3_0() { return cAppiledImplementationsMultiMonolithicImplementationNameListParserRuleCall_3_0; }
 		
 		//'imageTags:'
 		public Keyword getImageTagsKeyword_4() { return cImageTagsKeyword_4; }
@@ -1636,24 +1646,28 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cTypeCISettingKeyword_0_0 = (Keyword)cTypeAssignment_0.eContents().get(0);
 		private final RuleCall cINDENTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		private final Keyword cCiTypesKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cCiTypesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cCiTypesMultiValueListParserRuleCall_3_0 = (RuleCall)cCiTypesAssignment_3.eContents().get(0);
-		private final Keyword cAppliedReposKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cAppliedReposAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cAppliedReposMultiMonolithicImplementationNameListParserRuleCall_5_0 = (RuleCall)cAppliedReposAssignment_5.eContents().get(0);
-		private final Keyword cBranchPrefixTypeKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cReqBranchPrefixAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cReqBranchPrefixIDTerminalRuleCall_7_0 = (RuleCall)cReqBranchPrefixAssignment_7.eContents().get(0);
-		private final Assignment cCiParametersAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cCiParametersCIParametersParserRuleCall_8_0 = (RuleCall)cCiParametersAssignment_8.eContents().get(0);
-		private final RuleCall cDEDENTTerminalRuleCall_9 = (RuleCall)cGroup.eContents().get(9);
+		private final Keyword cNameKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameQualifiedNameParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Keyword cCiTypesKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cCiTypesAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cCiTypesMultiValueListParserRuleCall_5_0 = (RuleCall)cCiTypesAssignment_5.eContents().get(0);
+		private final Keyword cApplyToImplementationsKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cAppliedReposAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cAppliedReposMultiMonolithicImplementationNameListParserRuleCall_7_0 = (RuleCall)cAppliedReposAssignment_7.eContents().get(0);
+		private final Keyword cBranchPrefixTypeKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cReqBranchPrefixAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cReqBranchPrefixIDTerminalRuleCall_9_0 = (RuleCall)cReqBranchPrefixAssignment_9.eContents().get(0);
+		private final Assignment cCiParametersAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cCiParametersCIParametersParserRuleCall_10_0 = (RuleCall)cCiParametersAssignment_10.eContents().get(0);
+		private final RuleCall cDEDENTTerminalRuleCall_11 = (RuleCall)cGroup.eContents().get(11);
 		
 		//CISetting:
 		//  type='CISetting:'
 		//  INDENT
+		//      'name:' name=QualifiedName
 		//      'ciTypes:' ciTypes = MultiValueList
-		//      'appliedRepos:' appliedRepos=MultiMonolithicImplementationNameList
+		//      'applyToImplementations:' appliedRepos=MultiMonolithicImplementationNameList
 		//      'branchPrefixType:' reqBranchPrefix=ID
 		//      ciParameters+=(CIParameters)*
 		//  DEDENT
@@ -1662,8 +1676,9 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		
 		//type='CISetting:'
 		//INDENT
+		//    'name:' name=QualifiedName
 		//    'ciTypes:' ciTypes = MultiValueList
-		//    'appliedRepos:' appliedRepos=MultiMonolithicImplementationNameList
+		//    'applyToImplementations:' appliedRepos=MultiMonolithicImplementationNameList
 		//    'branchPrefixType:' reqBranchPrefix=ID
 		//    ciParameters+=(CIParameters)*
 		//DEDENT
@@ -1678,41 +1693,50 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//INDENT
 		public RuleCall getINDENTTerminalRuleCall_1() { return cINDENTTerminalRuleCall_1; }
 		
+		//'name:'
+		public Keyword getNameKeyword_2() { return cNameKeyword_2; }
+		
+		//name=QualifiedName
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		
+		//QualifiedName
+		public RuleCall getNameQualifiedNameParserRuleCall_3_0() { return cNameQualifiedNameParserRuleCall_3_0; }
+		
 		//'ciTypes:'
-		public Keyword getCiTypesKeyword_2() { return cCiTypesKeyword_2; }
+		public Keyword getCiTypesKeyword_4() { return cCiTypesKeyword_4; }
 		
 		//ciTypes = MultiValueList
-		public Assignment getCiTypesAssignment_3() { return cCiTypesAssignment_3; }
+		public Assignment getCiTypesAssignment_5() { return cCiTypesAssignment_5; }
 		
 		//MultiValueList
-		public RuleCall getCiTypesMultiValueListParserRuleCall_3_0() { return cCiTypesMultiValueListParserRuleCall_3_0; }
+		public RuleCall getCiTypesMultiValueListParserRuleCall_5_0() { return cCiTypesMultiValueListParserRuleCall_5_0; }
 		
-		//'appliedRepos:'
-		public Keyword getAppliedReposKeyword_4() { return cAppliedReposKeyword_4; }
+		//'applyToImplementations:'
+		public Keyword getApplyToImplementationsKeyword_6() { return cApplyToImplementationsKeyword_6; }
 		
 		//appliedRepos=MultiMonolithicImplementationNameList
-		public Assignment getAppliedReposAssignment_5() { return cAppliedReposAssignment_5; }
+		public Assignment getAppliedReposAssignment_7() { return cAppliedReposAssignment_7; }
 		
 		//MultiMonolithicImplementationNameList
-		public RuleCall getAppliedReposMultiMonolithicImplementationNameListParserRuleCall_5_0() { return cAppliedReposMultiMonolithicImplementationNameListParserRuleCall_5_0; }
+		public RuleCall getAppliedReposMultiMonolithicImplementationNameListParserRuleCall_7_0() { return cAppliedReposMultiMonolithicImplementationNameListParserRuleCall_7_0; }
 		
 		//'branchPrefixType:'
-		public Keyword getBranchPrefixTypeKeyword_6() { return cBranchPrefixTypeKeyword_6; }
+		public Keyword getBranchPrefixTypeKeyword_8() { return cBranchPrefixTypeKeyword_8; }
 		
 		//reqBranchPrefix=ID
-		public Assignment getReqBranchPrefixAssignment_7() { return cReqBranchPrefixAssignment_7; }
+		public Assignment getReqBranchPrefixAssignment_9() { return cReqBranchPrefixAssignment_9; }
 		
 		//ID
-		public RuleCall getReqBranchPrefixIDTerminalRuleCall_7_0() { return cReqBranchPrefixIDTerminalRuleCall_7_0; }
+		public RuleCall getReqBranchPrefixIDTerminalRuleCall_9_0() { return cReqBranchPrefixIDTerminalRuleCall_9_0; }
 		
 		//ciParameters+=(CIParameters)*
-		public Assignment getCiParametersAssignment_8() { return cCiParametersAssignment_8; }
+		public Assignment getCiParametersAssignment_10() { return cCiParametersAssignment_10; }
 		
 		//(CIParameters)
-		public RuleCall getCiParametersCIParametersParserRuleCall_8_0() { return cCiParametersCIParametersParserRuleCall_8_0; }
+		public RuleCall getCiParametersCIParametersParserRuleCall_10_0() { return cCiParametersCIParametersParserRuleCall_10_0; }
 		
 		//DEDENT
-		public RuleCall getDEDENTTerminalRuleCall_9() { return cDEDENTTerminalRuleCall_9; }
+		public RuleCall getDEDENTTerminalRuleCall_11() { return cDEDENTTerminalRuleCall_11; }
 	}
 	public class MultiMonolithicImplementationNameListElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.deployment.DeployModel.MultiMonolithicImplementationNameList");
@@ -2746,6 +2770,7 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	//PackageDescription:
 	//  type='PackageDescription'':'
 	//  INDENT
+	//      'name:' name=QualifiedName
 	//    'imageDescription:'
 	//      INDENT
 	//        imageDescription=ImageDescription
@@ -2764,7 +2789,7 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	
 	//ImageDescription:
 	//  'types:' types = MultiValueList
-	//  'name:' name= [MonolithicImplementationDescription|QualifiedName]
+	//  'applyToImplementations:' appiledImplementations = MultiMonolithicImplementationNameList
 	//  'imageTags:' imageTags = MultiValueList
 	//;
 	public ImageDescriptionElements getImageDescriptionAccess() {
@@ -2817,8 +2842,9 @@ public class DeployModelGrammarAccess extends AbstractElementFinder.AbstractGram
 	//CISetting:
 	//  type='CISetting:'
 	//  INDENT
+	//      'name:' name=QualifiedName
 	//      'ciTypes:' ciTypes = MultiValueList
-	//      'appliedRepos:' appliedRepos=MultiMonolithicImplementationNameList
+	//      'applyToImplementations:' appliedRepos=MultiMonolithicImplementationNameList
 	//      'branchPrefixType:' reqBranchPrefix=ID
 	//      ciParameters+=(CIParameters)*
 	//  DEDENT

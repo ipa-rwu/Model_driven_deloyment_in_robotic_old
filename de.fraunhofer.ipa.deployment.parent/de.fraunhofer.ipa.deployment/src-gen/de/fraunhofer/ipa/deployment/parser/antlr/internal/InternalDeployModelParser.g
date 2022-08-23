@@ -2098,20 +2098,43 @@ rulePackageDescription returns [EObject current=null]
 		{
 			newLeafNode(this_INDENT_2, grammarAccess.getPackageDescriptionAccess().getINDENTTerminalRuleCall_2());
 		}
-		otherlv_3=ImageDescription
+		otherlv_3=Name
 		{
-			newLeafNode(otherlv_3, grammarAccess.getPackageDescriptionAccess().getImageDescriptionKeyword_3());
-		}
-		this_INDENT_4=RULE_INDENT
-		{
-			newLeafNode(this_INDENT_4, grammarAccess.getPackageDescriptionAccess().getINDENTTerminalRuleCall_4());
+			newLeafNode(otherlv_3, grammarAccess.getPackageDescriptionAccess().getNameKeyword_3());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPackageDescriptionAccess().getImageDescriptionImageDescriptionParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getPackageDescriptionAccess().getNameQualifiedNameParserRuleCall_4_0());
 				}
-				lv_imageDescription_5_0=ruleImageDescription
+				lv_name_4_0=ruleQualifiedName
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPackageDescriptionRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_4_0,
+						"de.fraunhofer.ipa.deployment.DeployModel.QualifiedName");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_5=ImageDescription
+		{
+			newLeafNode(otherlv_5, grammarAccess.getPackageDescriptionAccess().getImageDescriptionKeyword_5());
+		}
+		this_INDENT_6=RULE_INDENT
+		{
+			newLeafNode(this_INDENT_6, grammarAccess.getPackageDescriptionAccess().getINDENTTerminalRuleCall_6());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPackageDescriptionAccess().getImageDescriptionImageDescriptionParserRuleCall_7_0());
+				}
+				lv_imageDescription_7_0=ruleImageDescription
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPackageDescriptionRule());
@@ -2119,26 +2142,26 @@ rulePackageDescription returns [EObject current=null]
 					set(
 						$current,
 						"imageDescription",
-						lv_imageDescription_5_0,
+						lv_imageDescription_7_0,
 						"de.fraunhofer.ipa.deployment.DeployModel.ImageDescription");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		this_DEDENT_6=RULE_DEDENT
+		this_DEDENT_8=RULE_DEDENT
 		{
-			newLeafNode(this_DEDENT_6, grammarAccess.getPackageDescriptionAccess().getDEDENTTerminalRuleCall_6());
+			newLeafNode(this_DEDENT_8, grammarAccess.getPackageDescriptionAccess().getDEDENTTerminalRuleCall_8());
 		}
-		otherlv_7=RepositoryDescription
+		otherlv_9=RepositoryDescription
 		{
-			newLeafNode(otherlv_7, grammarAccess.getPackageDescriptionAccess().getRepositoryDescriptionKeyword_7());
+			newLeafNode(otherlv_9, grammarAccess.getPackageDescriptionAccess().getRepositoryDescriptionKeyword_9());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPackageDescriptionAccess().getRepositoryDescriptionRepositoryDescriptionParserRuleCall_8_0());
+					newCompositeNode(grammarAccess.getPackageDescriptionAccess().getRepositoryDescriptionRepositoryDescriptionParserRuleCall_10_0());
 				}
-				lv_repositoryDescription_8_0=ruleRepositoryDescription
+				lv_repositoryDescription_10_0=ruleRepositoryDescription
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPackageDescriptionRule());
@@ -2146,15 +2169,15 @@ rulePackageDescription returns [EObject current=null]
 					set(
 						$current,
 						"repositoryDescription",
-						lv_repositoryDescription_8_0,
+						lv_repositoryDescription_10_0,
 						"de.fraunhofer.ipa.deployment.DeployModel.RepositoryDescription");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		this_DEDENT_9=RULE_DEDENT
+		this_DEDENT_11=RULE_DEDENT
 		{
-			newLeafNode(this_DEDENT_9, grammarAccess.getPackageDescriptionAccess().getDEDENTTerminalRuleCall_9());
+			newLeafNode(this_DEDENT_11, grammarAccess.getPackageDescriptionAccess().getDEDENTTerminalRuleCall_11());
 		}
 	)
 ;
@@ -2198,22 +2221,25 @@ ruleImageDescription returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_2=Name
+		otherlv_2=ApplyToImplementations
 		{
-			newLeafNode(otherlv_2, grammarAccess.getImageDescriptionAccess().getNameKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getImageDescriptionAccess().getApplyToImplementationsKeyword_2());
 		}
 		(
 			(
 				{
+					newCompositeNode(grammarAccess.getImageDescriptionAccess().getAppiledImplementationsMultiMonolithicImplementationNameListParserRuleCall_3_0());
+				}
+				lv_appiledImplementations_3_0=ruleMultiMonolithicImplementationNameList
+				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getImageDescriptionRule());
+						$current = createModelElementForParent(grammarAccess.getImageDescriptionRule());
 					}
-				}
-				{
-					newCompositeNode(grammarAccess.getImageDescriptionAccess().getNameMonolithicImplementationDescriptionCrossReference_3_0());
-				}
-				ruleQualifiedName
-				{
+					set(
+						$current,
+						"appiledImplementations",
+						lv_appiledImplementations_3_0,
+						"de.fraunhofer.ipa.deployment.DeployModel.MultiMonolithicImplementationNameList");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -2464,16 +2490,39 @@ ruleCISetting returns [EObject current=null]
 		{
 			newLeafNode(this_INDENT_1, grammarAccess.getCISettingAccess().getINDENTTerminalRuleCall_1());
 		}
-		otherlv_2=CiTypes
+		otherlv_2=Name
 		{
-			newLeafNode(otherlv_2, grammarAccess.getCISettingAccess().getCiTypesKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getCISettingAccess().getNameKeyword_2());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getCISettingAccess().getCiTypesMultiValueListParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getCISettingAccess().getNameQualifiedNameParserRuleCall_3_0());
 				}
-				lv_ciTypes_3_0=ruleMultiValueList
+				lv_name_3_0=ruleQualifiedName
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCISettingRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_3_0,
+						"de.fraunhofer.ipa.deployment.DeployModel.QualifiedName");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_4=CiTypes
+		{
+			newLeafNode(otherlv_4, grammarAccess.getCISettingAccess().getCiTypesKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCISettingAccess().getCiTypesMultiValueListParserRuleCall_5_0());
+				}
+				lv_ciTypes_5_0=ruleMultiValueList
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getCISettingRule());
@@ -2481,22 +2530,22 @@ ruleCISetting returns [EObject current=null]
 					set(
 						$current,
 						"ciTypes",
-						lv_ciTypes_3_0,
+						lv_ciTypes_5_0,
 						"de.fraunhofer.ipa.deployment.DeployModel.MultiValueList");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_4=AppliedRepos
+		otherlv_6=ApplyToImplementations
 		{
-			newLeafNode(otherlv_4, grammarAccess.getCISettingAccess().getAppliedReposKeyword_4());
+			newLeafNode(otherlv_6, grammarAccess.getCISettingAccess().getApplyToImplementationsKeyword_6());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getCISettingAccess().getAppliedReposMultiMonolithicImplementationNameListParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getCISettingAccess().getAppliedReposMultiMonolithicImplementationNameListParserRuleCall_7_0());
 				}
-				lv_appliedRepos_5_0=ruleMultiMonolithicImplementationNameList
+				lv_appliedRepos_7_0=ruleMultiMonolithicImplementationNameList
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getCISettingRule());
@@ -2504,21 +2553,21 @@ ruleCISetting returns [EObject current=null]
 					set(
 						$current,
 						"appliedRepos",
-						lv_appliedRepos_5_0,
+						lv_appliedRepos_7_0,
 						"de.fraunhofer.ipa.deployment.DeployModel.MultiMonolithicImplementationNameList");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_6=BranchPrefixType
+		otherlv_8=BranchPrefixType
 		{
-			newLeafNode(otherlv_6, grammarAccess.getCISettingAccess().getBranchPrefixTypeKeyword_6());
+			newLeafNode(otherlv_8, grammarAccess.getCISettingAccess().getBranchPrefixTypeKeyword_8());
 		}
 		(
 			(
-				lv_reqBranchPrefix_7_0=RULE_ID
+				lv_reqBranchPrefix_9_0=RULE_ID
 				{
-					newLeafNode(lv_reqBranchPrefix_7_0, grammarAccess.getCISettingAccess().getReqBranchPrefixIDTerminalRuleCall_7_0());
+					newLeafNode(lv_reqBranchPrefix_9_0, grammarAccess.getCISettingAccess().getReqBranchPrefixIDTerminalRuleCall_9_0());
 				}
 				{
 					if ($current==null) {
@@ -2527,7 +2576,7 @@ ruleCISetting returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"reqBranchPrefix",
-						lv_reqBranchPrefix_7_0,
+						lv_reqBranchPrefix_9_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -2535,9 +2584,9 @@ ruleCISetting returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getCISettingAccess().getCiParametersCIParametersParserRuleCall_8_0());
+					newCompositeNode(grammarAccess.getCISettingAccess().getCiParametersCIParametersParserRuleCall_10_0());
 				}
-				lv_ciParameters_8_0=ruleCIParameters
+				lv_ciParameters_10_0=ruleCIParameters
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getCISettingRule());
@@ -2545,15 +2594,15 @@ ruleCISetting returns [EObject current=null]
 					add(
 						$current,
 						"ciParameters",
-						lv_ciParameters_8_0,
+						lv_ciParameters_10_0,
 						"de.fraunhofer.ipa.deployment.DeployModel.CIParameters");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		this_DEDENT_9=RULE_DEDENT
+		this_DEDENT_11=RULE_DEDENT
 		{
-			newLeafNode(this_DEDENT_9, grammarAccess.getCISettingAccess().getDEDENTTerminalRuleCall_9());
+			newLeafNode(this_DEDENT_11, grammarAccess.getCISettingAccess().getDEDENTTerminalRuleCall_11());
 		}
 	)
 ;

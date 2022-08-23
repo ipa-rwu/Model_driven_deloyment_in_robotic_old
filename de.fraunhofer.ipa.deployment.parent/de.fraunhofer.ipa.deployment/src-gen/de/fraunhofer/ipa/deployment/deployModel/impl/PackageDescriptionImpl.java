@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.PackageDescriptionImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.PackageDescriptionImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.PackageDescriptionImpl#getImageDescription <em>Image Description</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.PackageDescriptionImpl#getRepositoryDescription <em>Repository Description</em>}</li>
  * </ul>
@@ -53,6 +54,26 @@ public class PackageDescriptionImpl extends MinimalEObjectImpl.Container impleme
    * @ordered
    */
   protected String type = TYPE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getImageDescription() <em>Image Description</em>}' containment reference.
@@ -118,6 +139,31 @@ public class PackageDescriptionImpl extends MinimalEObjectImpl.Container impleme
     type = newType;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.PACKAGE_DESCRIPTION__TYPE, oldType, type));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.PACKAGE_DESCRIPTION__NAME, oldName, name));
   }
 
   /**
@@ -250,6 +296,8 @@ public class PackageDescriptionImpl extends MinimalEObjectImpl.Container impleme
     {
       case DeployModelPackage.PACKAGE_DESCRIPTION__TYPE:
         return getType();
+      case DeployModelPackage.PACKAGE_DESCRIPTION__NAME:
+        return getName();
       case DeployModelPackage.PACKAGE_DESCRIPTION__IMAGE_DESCRIPTION:
         return getImageDescription();
       case DeployModelPackage.PACKAGE_DESCRIPTION__REPOSITORY_DESCRIPTION:
@@ -270,6 +318,9 @@ public class PackageDescriptionImpl extends MinimalEObjectImpl.Container impleme
     {
       case DeployModelPackage.PACKAGE_DESCRIPTION__TYPE:
         setType((String)newValue);
+        return;
+      case DeployModelPackage.PACKAGE_DESCRIPTION__NAME:
+        setName((String)newValue);
         return;
       case DeployModelPackage.PACKAGE_DESCRIPTION__IMAGE_DESCRIPTION:
         setImageDescription((ImageDescription)newValue);
@@ -294,6 +345,9 @@ public class PackageDescriptionImpl extends MinimalEObjectImpl.Container impleme
       case DeployModelPackage.PACKAGE_DESCRIPTION__TYPE:
         setType(TYPE_EDEFAULT);
         return;
+      case DeployModelPackage.PACKAGE_DESCRIPTION__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case DeployModelPackage.PACKAGE_DESCRIPTION__IMAGE_DESCRIPTION:
         setImageDescription((ImageDescription)null);
         return;
@@ -316,6 +370,8 @@ public class PackageDescriptionImpl extends MinimalEObjectImpl.Container impleme
     {
       case DeployModelPackage.PACKAGE_DESCRIPTION__TYPE:
         return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+      case DeployModelPackage.PACKAGE_DESCRIPTION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DeployModelPackage.PACKAGE_DESCRIPTION__IMAGE_DESCRIPTION:
         return imageDescription != null;
       case DeployModelPackage.PACKAGE_DESCRIPTION__REPOSITORY_DESCRIPTION:
@@ -337,6 +393,8 @@ public class PackageDescriptionImpl extends MinimalEObjectImpl.Container impleme
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (type: ");
     result.append(type);
+    result.append(", name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

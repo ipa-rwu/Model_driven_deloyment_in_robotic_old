@@ -1159,9 +1159,20 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
+  public EAttribute getPackageDescription_Name()
+  {
+    return (EAttribute)packageDescriptionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getPackageDescription_ImageDescription()
   {
-    return (EReference)packageDescriptionEClass.getEStructuralFeatures().get(1);
+    return (EReference)packageDescriptionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1172,7 +1183,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
   @Override
   public EReference getPackageDescription_RepositoryDescription()
   {
-    return (EReference)packageDescriptionEClass.getEStructuralFeatures().get(2);
+    return (EReference)packageDescriptionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1203,7 +1214,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EReference getImageDescription_Name()
+  public EReference getImageDescription_AppiledImplementations()
   {
     return (EReference)imageDescriptionEClass.getEStructuralFeatures().get(1);
   }
@@ -1335,9 +1346,9 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EReference getCISetting_CiTypes()
+  public EAttribute getCISetting_Name()
   {
-    return (EReference)ciSettingEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)ciSettingEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1346,7 +1357,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
-  public EReference getCISetting_AppliedRepos()
+  public EReference getCISetting_CiTypes()
   {
     return (EReference)ciSettingEClass.getEStructuralFeatures().get(2);
   }
@@ -1357,9 +1368,20 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
    * @generated
    */
   @Override
+  public EReference getCISetting_AppliedRepos()
+  {
+    return (EReference)ciSettingEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getCISetting_ReqBranchPrefix()
   {
-    return (EAttribute)ciSettingEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)ciSettingEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1370,7 +1392,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
   @Override
   public EReference getCISetting_CiParameters()
   {
-    return (EReference)ciSettingEClass.getEStructuralFeatures().get(4);
+    return (EReference)ciSettingEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1630,12 +1652,13 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
 
     packageDescriptionEClass = createEClass(PACKAGE_DESCRIPTION);
     createEAttribute(packageDescriptionEClass, PACKAGE_DESCRIPTION__TYPE);
+    createEAttribute(packageDescriptionEClass, PACKAGE_DESCRIPTION__NAME);
     createEReference(packageDescriptionEClass, PACKAGE_DESCRIPTION__IMAGE_DESCRIPTION);
     createEReference(packageDescriptionEClass, PACKAGE_DESCRIPTION__REPOSITORY_DESCRIPTION);
 
     imageDescriptionEClass = createEClass(IMAGE_DESCRIPTION);
     createEReference(imageDescriptionEClass, IMAGE_DESCRIPTION__TYPES);
-    createEReference(imageDescriptionEClass, IMAGE_DESCRIPTION__NAME);
+    createEReference(imageDescriptionEClass, IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS);
     createEReference(imageDescriptionEClass, IMAGE_DESCRIPTION__IMAGE_TAGS);
 
     repositoryDescriptionEClass = createEClass(REPOSITORY_DESCRIPTION);
@@ -1651,6 +1674,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
 
     ciSettingEClass = createEClass(CI_SETTING);
     createEAttribute(ciSettingEClass, CI_SETTING__TYPE);
+    createEAttribute(ciSettingEClass, CI_SETTING__NAME);
     createEReference(ciSettingEClass, CI_SETTING__CI_TYPES);
     createEReference(ciSettingEClass, CI_SETTING__APPLIED_REPOS);
     createEAttribute(ciSettingEClass, CI_SETTING__REQ_BRANCH_PREFIX);
@@ -1809,12 +1833,13 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
 
     initEClass(packageDescriptionEClass, PackageDescription.class, "PackageDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPackageDescription_Type(), ecorePackage.getEString(), "type", null, 0, 1, PackageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPackageDescription_Name(), ecorePackage.getEString(), "name", null, 0, 1, PackageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPackageDescription_ImageDescription(), this.getImageDescription(), null, "imageDescription", null, 0, 1, PackageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPackageDescription_RepositoryDescription(), this.getRepositoryDescription(), null, "repositoryDescription", null, 0, 1, PackageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(imageDescriptionEClass, ImageDescription.class, "ImageDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getImageDescription_Types(), this.getMultiValueList(), null, "types", null, 0, 1, ImageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getImageDescription_Name(), this.getMonolithicImplementationDescription(), null, "name", null, 0, 1, ImageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getImageDescription_AppiledImplementations(), this.getMultiMonolithicImplementationNameList(), null, "appiledImplementations", null, 0, 1, ImageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getImageDescription_ImageTags(), this.getMultiValueList(), null, "imageTags", null, 0, 1, ImageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(repositoryDescriptionEClass, RepositoryDescription.class, "RepositoryDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1830,6 +1855,7 @@ public class DeployModelPackageImpl extends EPackageImpl implements DeployModelP
 
     initEClass(ciSettingEClass, CISetting.class, "CISetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCISetting_Type(), ecorePackage.getEString(), "type", null, 0, 1, CISetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCISetting_Name(), ecorePackage.getEString(), "name", null, 0, 1, CISetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCISetting_CiTypes(), this.getMultiValueList(), null, "ciTypes", null, 0, 1, CISetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCISetting_AppliedRepos(), this.getMultiMonolithicImplementationNameList(), null, "appliedRepos", null, 0, 1, CISetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCISetting_ReqBranchPrefix(), ecorePackage.getEString(), "reqBranchPrefix", null, 0, 1, CISetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

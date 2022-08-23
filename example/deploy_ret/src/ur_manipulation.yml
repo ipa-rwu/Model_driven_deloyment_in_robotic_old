@@ -19,11 +19,14 @@ MonolithicImplementationDescription:
   	    - galactic 
     startCommands:
     	- "roslaunch ur_manipulation ur5e_bringup.launch"
+    	
 PackageDescription:
+  name: pack_ur_manipulation
   imageDescription:
     types: [docker]
-    name: ur_manipulation 
-    imageTags: 
+    applyToImplementations:
+    	- ur_manipulation 
+    imageTags:  
 	    - branch  
 	    - latest 
 	    - commit_tag

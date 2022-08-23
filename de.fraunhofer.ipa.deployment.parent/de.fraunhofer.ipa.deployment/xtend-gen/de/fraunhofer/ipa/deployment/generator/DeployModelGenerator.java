@@ -6,20 +6,29 @@ package de.fraunhofer.ipa.deployment.generator;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import de.fraunhofer.ipa.deployment.deployModel.CISetting;
+import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
 import de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription;
 import de.fraunhofer.ipa.deployment.deployModel.PackageDescription;
+import de.fraunhofer.ipa.deployment.index.DeploymentIndex;
 import de.fraunhofer.ipa.deployment.utils.DeployModelUtils;
 import de.fraunhofer.ipa.deployment.validation.CommonRules;
-import java.util.ArrayList;
-import org.eclipse.emf.common.util.EList;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.MapExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -32,40 +41,101 @@ public class DeployModelGenerator extends AbstractGenerator {
   @Extension
   private GitLabCICompiler _gitLabCICompiler;
 
+  @Inject
+  @Extension
+  private ResourceDescriptionsProvider resourceDescriptionsProvider;
+
+  @Inject
+  @Extension
+  private DeploymentIndex _deploymentIndex;
+
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    Iterable<MonolithicImplementationDescription> monolithicImpls = Iterables.<MonolithicImplementationDescription>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), MonolithicImplementationDescription.class);
-    Iterable<PackageDescription> packageDess = Iterables.<PackageDescription>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), PackageDescription.class);
-    Iterable<CISetting> ciSettings = Iterables.<CISetting>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), CISetting.class);
+    final Iterable<MonolithicImplementationDescription> monolithicImpls = Iterables.<MonolithicImplementationDescription>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), MonolithicImplementationDescription.class);
+    final Iterable<PackageDescription> packageDess = Iterables.<PackageDescription>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), PackageDescription.class);
+    final Iterable<CISetting> ciSettings = Iterables.<CISetting>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), CISetting.class);
+    final ResourceSet rs = resource.getResourceSet();
+    final Function1<IEObjectDescription, QualifiedName> _function = new Function1<IEObjectDescription, QualifiedName>() {
+      public QualifiedName apply(final IEObjectDescription it) {
+        return it.getName();
+      }
+    };
+    final Function1<IEObjectDescription, Iterable<CISetting>> _function_1 = new Function1<IEObjectDescription, Iterable<CISetting>>() {
+      public Iterable<CISetting> apply(final IEObjectDescription it) {
+        return Iterables.<CISetting>filter(IteratorExtensions.<EObject>toIterable(rs.getResource(it.getEObjectURI().trimFragment(), true).getAllContents()), CISetting.class);
+      }
+    };
+    Map<QualifiedName, Iterable<CISetting>> allCisettingContentMap = MapExtensions.<QualifiedName, IEObjectDescription, Iterable<CISetting>>mapValues(IterableExtensions.<QualifiedName, IEObjectDescription>toMap(this._deploymentIndex.getVisibleEObjectsByType(resource, 
+      DeployModelPackage.Literals.CI_SETTING), _function), _function_1);
+    final Function1<IEObjectDescription, QualifiedName> _function_2 = new Function1<IEObjectDescription, QualifiedName>() {
+      public QualifiedName apply(final IEObjectDescription it) {
+        return it.getName();
+      }
+    };
+    final Function1<IEObjectDescription, Iterable<PackageDescription>> _function_3 = new Function1<IEObjectDescription, Iterable<PackageDescription>>() {
+      public Iterable<PackageDescription> apply(final IEObjectDescription it) {
+        return Iterables.<PackageDescription>filter(IteratorExtensions.<EObject>toIterable(rs.getResource(it.getEObjectURI().trimFragment(), true).getAllContents()), PackageDescription.class);
+      }
+    };
+    Map<QualifiedName, Iterable<PackageDescription>> allPackageDesContentMap = MapExtensions.<QualifiedName, IEObjectDescription, Iterable<PackageDescription>>mapValues(IterableExtensions.<QualifiedName, IEObjectDescription>toMap(this._deploymentIndex.getVisibleEObjectsByType(resource, 
+      DeployModelPackage.Literals.PACKAGE_DESCRIPTION), _function_2), _function_3);
     for (final MonolithicImplementationDescription monolithicImpl : monolithicImpls) {
       {
         System.out.println(String.format("monolithicImpl name: %s", monolithicImpl.getName()));
-        ArrayList<String> repoNames = CollectionLiterals.<String>newArrayList();
-        for (final CISetting ciSetting : ciSettings) {
+        System.out.println("--------------------------------------");
+        System.out.println();
+        Iterable<CISetting> _flatten = Iterables.<CISetting>concat(allCisettingContentMap.values());
+        for (final CISetting ciSetting : _flatten) {
           {
             boolean flagPackDes = false;
-            EList<MonolithicImplementationDescription> _values = ciSetting.getAppliedRepos().getValues();
-            for (final MonolithicImplementationDescription repo : _values) {
-              repoNames.add(repo.getName());
-            }
-            System.out.println(repoNames);
-            boolean _contains = repoNames.contains(monolithicImpl.getName());
+            System.out.print("ciSetting name: ");
+            System.out.println(ciSetting.getName());
+            System.out.print("appliedRepos: ");
+            final Function<MonolithicImplementationDescription, String> _function_4 = new Function<MonolithicImplementationDescription, String>() {
+              public String apply(final MonolithicImplementationDescription it) {
+                return it.getName();
+              }
+            };
+            System.out.println(ciSetting.getAppliedRepos().getValues().stream().<String>map(_function_4).collect(Collectors.<String>toList()));
+            System.out.println("--------------------------------------");
+            System.out.println();
+            final Function<MonolithicImplementationDescription, String> _function_5 = new Function<MonolithicImplementationDescription, String>() {
+              public String apply(final MonolithicImplementationDescription it) {
+                return it.getName();
+              }
+            };
+            boolean _contains = ciSetting.getAppliedRepos().getValues().stream().<String>map(_function_5).collect(Collectors.<String>toList()).contains(monolithicImpl.getName());
             if (_contains) {
-              for (final PackageDescription packageDes : packageDess) {
+              Iterable<PackageDescription> _flatten_1 = Iterables.<PackageDescription>concat(allPackageDesContentMap.values());
+              for (final PackageDescription packageDes : _flatten_1) {
                 {
-                  System.out.println(packageDes.getImageDescription().getName().getName());
-                  boolean _equals = packageDes.getImageDescription().getName().getName().equals(monolithicImpl.getName());
-                  if (_equals) {
-                    System.out.print("Find Pkg for");
-                    System.out.println(packageDes.getImageDescription().getName());
+                  System.out.print("packageDes.imageDescription.appiledImplementations.values: ");
+                  final Function<MonolithicImplementationDescription, String> _function_6 = new Function<MonolithicImplementationDescription, String>() {
+                    public String apply(final MonolithicImplementationDescription it) {
+                      return it.getName();
+                    }
+                  };
+                  System.out.println(
+                    packageDes.getImageDescription().getAppiledImplementations().getValues().stream().<String>map(_function_6).collect(Collectors.<String>toList()));
+                  System.out.println("--------------------------------------");
+                  System.out.println();
+                  final Function<MonolithicImplementationDescription, String> _function_7 = new Function<MonolithicImplementationDescription, String>() {
+                    public String apply(final MonolithicImplementationDescription it) {
+                      return it.getName();
+                    }
+                  };
+                  boolean _contains_1 = packageDes.getImageDescription().getAppiledImplementations().getValues().stream().<String>map(_function_7).collect(Collectors.<String>toList()).contains(monolithicImpl.getName());
+                  if (_contains_1) {
                     flagPackDes = true;
-                    boolean _contains_1 = ciSetting.getCiTypes().getValues().contains(DeployModelUtils.camelToLowerUnderscore(CommonRules.RepoTypes.Gitlab.name()));
-                    if (_contains_1) {
+                    boolean _contains_2 = ciSetting.getCiTypes().getValues().contains(DeployModelUtils.camelToLowerUnderscore(CommonRules.RepoTypes.Gitlab.name()));
+                    if (_contains_2) {
                       System.out.println(String.format("Generate CI for gitlab with pkg"));
                       fsa.generateFile(String.format("%s/%s.gitlab-ci.yml", monolithicImpl.getName(), monolithicImpl.getName()), 
                         this._gitLabCICompiler.compileGitlabCI(monolithicImpl, packageDes, ciSetting));
+                      fsa.generateFile(String.format("%s/ci/gitlab_templates/RULES.yml", monolithicImpl.getName()), 
+                        this._gitLabCICompiler.compileRules(monolithicImpl));
                     }
-                    boolean _contains_2 = ciSetting.getCiTypes().getValues().contains(DeployModelUtils.camelToLowerUnderscore(CommonRules.RepoTypes.Github.name()));
-                    if (_contains_2) {
+                    boolean _contains_3 = ciSetting.getCiTypes().getValues().contains(DeployModelUtils.camelToLowerUnderscore(CommonRules.RepoTypes.Github.name()));
+                    if (_contains_3) {
                       System.out.println(String.format("Generate CI for github with pkg"));
                     }
                   }

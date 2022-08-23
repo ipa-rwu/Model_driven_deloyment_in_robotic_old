@@ -965,13 +965,22 @@ public interface DeployModelPackage extends EPackage
   int PACKAGE_DESCRIPTION__TYPE = 0;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PACKAGE_DESCRIPTION__NAME = 1;
+
+  /**
    * The feature id for the '<em><b>Image Description</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PACKAGE_DESCRIPTION__IMAGE_DESCRIPTION = 1;
+  int PACKAGE_DESCRIPTION__IMAGE_DESCRIPTION = 2;
 
   /**
    * The feature id for the '<em><b>Repository Description</b></em>' containment reference.
@@ -980,7 +989,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PACKAGE_DESCRIPTION__REPOSITORY_DESCRIPTION = 2;
+  int PACKAGE_DESCRIPTION__REPOSITORY_DESCRIPTION = 3;
 
   /**
    * The number of structural features of the '<em>Package Description</em>' class.
@@ -989,7 +998,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PACKAGE_DESCRIPTION_FEATURE_COUNT = 3;
+  int PACKAGE_DESCRIPTION_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageDescriptionImpl <em>Image Description</em>}' class.
@@ -1011,13 +1020,13 @@ public interface DeployModelPackage extends EPackage
   int IMAGE_DESCRIPTION__TYPES = 0;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' reference.
+   * The feature id for the '<em><b>Appiled Implementations</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int IMAGE_DESCRIPTION__NAME = 1;
+  int IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS = 1;
 
   /**
    * The feature id for the '<em><b>Image Tags</b></em>' containment reference.
@@ -1159,13 +1168,22 @@ public interface DeployModelPackage extends EPackage
   int CI_SETTING__TYPE = 0;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CI_SETTING__NAME = 1;
+
+  /**
    * The feature id for the '<em><b>Ci Types</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CI_SETTING__CI_TYPES = 1;
+  int CI_SETTING__CI_TYPES = 2;
 
   /**
    * The feature id for the '<em><b>Applied Repos</b></em>' containment reference.
@@ -1174,7 +1192,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CI_SETTING__APPLIED_REPOS = 2;
+  int CI_SETTING__APPLIED_REPOS = 3;
 
   /**
    * The feature id for the '<em><b>Req Branch Prefix</b></em>' attribute.
@@ -1183,7 +1201,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CI_SETTING__REQ_BRANCH_PREFIX = 3;
+  int CI_SETTING__REQ_BRANCH_PREFIX = 4;
 
   /**
    * The feature id for the '<em><b>Ci Parameters</b></em>' containment reference list.
@@ -1192,7 +1210,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CI_SETTING__CI_PARAMETERS = 4;
+  int CI_SETTING__CI_PARAMETERS = 5;
 
   /**
    * The number of structural features of the '<em>CI Setting</em>' class.
@@ -1201,7 +1219,7 @@ public interface DeployModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CI_SETTING_FEATURE_COUNT = 5;
+  int CI_SETTING_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link de.fraunhofer.ipa.deployment.deployModel.impl.MultiMonolithicImplementationNameListImpl <em>Multi Monolithic Implementation Name List</em>}' class.
@@ -2140,6 +2158,17 @@ public interface DeployModelPackage extends EPackage
   EAttribute getPackageDescription_Type();
 
   /**
+   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.PackageDescription#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.PackageDescription#getName()
+   * @see #getPackageDescription()
+   * @generated
+   */
+  EAttribute getPackageDescription_Name();
+
+  /**
    * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.PackageDescription#getImageDescription <em>Image Description</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2183,15 +2212,15 @@ public interface DeployModelPackage extends EPackage
   EReference getImageDescription_Types();
 
   /**
-   * Returns the meta object for the reference '{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getAppiledImplementations <em>Appiled Implementations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Name</em>'.
-   * @see de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getName()
+   * @return the meta object for the containment reference '<em>Appiled Implementations</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getAppiledImplementations()
    * @see #getImageDescription()
    * @generated
    */
-  EReference getImageDescription_Name();
+  EReference getImageDescription_AppiledImplementations();
 
   /**
    * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.ImageDescription#getImageTags <em>Image Tags</em>}'.
@@ -2309,6 +2338,17 @@ public interface DeployModelPackage extends EPackage
    * @generated
    */
   EAttribute getCISetting_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.fraunhofer.ipa.deployment.deployModel.CISetting#getName()
+   * @see #getCISetting()
+   * @generated
+   */
+  EAttribute getCISetting_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getCiTypes <em>Ci Types</em>}'.
@@ -3119,6 +3159,14 @@ public interface DeployModelPackage extends EPackage
     EAttribute PACKAGE_DESCRIPTION__TYPE = eINSTANCE.getPackageDescription_Type();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PACKAGE_DESCRIPTION__NAME = eINSTANCE.getPackageDescription_Name();
+
+    /**
      * The meta object literal for the '<em><b>Image Description</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3153,12 +3201,12 @@ public interface DeployModelPackage extends EPackage
     EReference IMAGE_DESCRIPTION__TYPES = eINSTANCE.getImageDescription_Types();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Appiled Implementations</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference IMAGE_DESCRIPTION__NAME = eINSTANCE.getImageDescription_Name();
+    EReference IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS = eINSTANCE.getImageDescription_AppiledImplementations();
 
     /**
      * The meta object literal for the '<em><b>Image Tags</b></em>' containment reference feature.
@@ -3255,6 +3303,14 @@ public interface DeployModelPackage extends EPackage
      * @generated
      */
     EAttribute CI_SETTING__TYPE = eINSTANCE.getCISetting_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CI_SETTING__NAME = eINSTANCE.getCISetting_Name();
 
     /**
      * The meta object literal for the '<em><b>Ci Types</b></em>' containment reference feature.

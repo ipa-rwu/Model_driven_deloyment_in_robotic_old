@@ -5,16 +5,18 @@ package de.fraunhofer.ipa.deployment.generator
 
 import com.google.inject.Inject
 import de.fraunhofer.ipa.deployment.deployModel.CISetting
+import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage
 import de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription
 import de.fraunhofer.ipa.deployment.deployModel.PackageDescription
+import de.fraunhofer.ipa.deployment.index.DeploymentIndex
 import de.fraunhofer.ipa.deployment.utils.DeployModelUtils
 import de.fraunhofer.ipa.deployment.validation.CommonRules
+import java.util.stream.Collectors
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import java.util.stream.Collector
-import java.util.stream.Collectors
+import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 
 /**
  * Generates code from your model files on save.
@@ -26,49 +28,74 @@ class DeployModelGenerator extends AbstractGenerator {
 	@Inject
 	extension GitLabCICompiler
 	
+	@Inject
+	extension ResourceDescriptionsProvider resourceDescriptionsProvider
+	
+	@Inject
+	extension DeploymentIndex
+	
 	override
 	void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		var monolithicImpls = resource.allContents.toIterable.filter(MonolithicImplementationDescription)
-		var packageDess = resource.allContents.toIterable.filter(PackageDescription)
-		var ciSettings = resource.allContents.toIterable.filter(CISetting)
+		val monolithicImpls = resource.allContents.toIterable.filter(MonolithicImplementationDescription)
+		val packageDess = resource.allContents.toIterable.filter(PackageDescription)
+		val ciSettings = resource.allContents.toIterable.filter(CISetting)
 		
+		val rs =  resource.resourceSet
+					
+		var allCisettingContentMap = resource.getVisibleEObjectsByType(
+			DeployModelPackage.Literals.CI_SETTING).toMap[name].
+			mapValues[rs.getResource(getEObjectURI.trimFragment, true).allContents.toIterable.filter(CISetting)]
+			
+		var allPackageDesContentMap = resource.getVisibleEObjectsByType(
+			DeployModelPackage.Literals.PACKAGE_DESCRIPTION).toMap[name].
+			mapValues[rs.getResource(getEObjectURI.trimFragment, true).allContents.toIterable.filter(PackageDescription)]
+					
     for (monolithicImpl : monolithicImpls) {
-			System.out.println(String.format("monolithicImpl name: %s", monolithicImpl.getName()))  
-			var repoNames = newArrayList()
-			for(ciSetting: ciSettings){
-				// check if there is CI for this monolithicImpl
-				var flagPackDes = false
-				for(repo: ciSetting.appliedRepos.values){
-					repoNames.add(repo.getName)
-					}
-				System.out.println(repoNames)
-    		if(repoNames.contains(monolithicImpl.getName())){
-    			// 	check if there is packageDes for this monolithicImpl
-    			for(packageDes : packageDess){
-    				System.out.println(packageDes.imageDescription.name.name)
-    				if(packageDes.imageDescription.name.name.equals(monolithicImpl.getName())){
-    					System.out.print("Find Pkg for")
-    					System.out.println(packageDes.imageDescription.name)
-							flagPackDes = true
-							//	generate gitlab CI
-							if(ciSetting.ciTypes.values.contains(DeployModelUtils.camelToLowerUnderscore(CommonRules.RepoTypes.Gitlab.name))){
-									System.out.println(String.format("Generate CI for gitlab with pkg"))
-	    						fsa.generateFile(String.format("%s/%s.gitlab-ci.yml", monolithicImpl.getName(),monolithicImpl.getName()),
-	    							monolithicImpl.compileGitlabCI(packageDes, ciSetting))
-  							}
-							if(ciSetting.ciTypes.values.contains(DeployModelUtils.camelToLowerUnderscore(CommonRules.RepoTypes.Github.name))){
-									System.out.println(String.format("Generate CI for github with pkg"))
-  							}
+			System.out.println(String.format("monolithicImpl name: %s", monolithicImpl.getName()))
+		  System.out.println("--------------------------------------")
+		  System.out.println()
+		  
+			for(ciSetting : allCisettingContentMap.values.flatten){
+					// check if there is CI for this monolithicImpl
+					var flagPackDes = false
+					System.out.print("ciSetting name: ")
+					System.out.println(ciSetting.name)
+					System.out.print("appliedRepos: ")
+					System.out.println(ciSetting.appliedRepos.values.stream.map[name].collect(Collectors.toList))
+			  	System.out.println("--------------------------------------")
+		  		System.out.println()
+	    		if(ciSetting.appliedRepos.values.stream.map[name].collect(Collectors.toList).contains(monolithicImpl.getName())){
+	    			// 	check if there is packageDes for this monolithicImpl
+	    			for(packageDes : allPackageDesContentMap.values.flatten){
+		    				System.out.print("packageDes.imageDescription.appiledImplementations.values: ")
+								System.out.println(packageDes.imageDescription.appiledImplementations.values.
+		    					stream.map[name].collect(Collectors.toList))
+						  	System.out.println("--------------------------------------")
+					  		System.out.println()
+		    				if(packageDes.imageDescription.appiledImplementations.values.
+		    					stream.map[name].collect(Collectors.toList).contains(monolithicImpl.getName())
+		    				){
+									flagPackDes = true
+									//	generate gitlab CI
+									if(ciSetting.ciTypes.values.contains(DeployModelUtils.camelToLowerUnderscore(CommonRules.RepoTypes.Gitlab.name))){
+											System.out.println(String.format("Generate CI for gitlab with pkg"))
+			    						fsa.generateFile(String.format("%s/%s.gitlab-ci.yml", monolithicImpl.getName(),monolithicImpl.getName()),
+			    							monolithicImpl.compileGitlabCI(packageDes, ciSetting))
+			    						fsa.generateFile(String.format("%s/ci/gitlab_templates/RULES.yml", monolithicImpl.getName()),
+			    							monolithicImpl.compileRules)
+		  							}
+									if(ciSetting.ciTypes.values.contains(DeployModelUtils.camelToLowerUnderscore(CommonRules.RepoTypes.Github.name))){
+											System.out.println(String.format("Generate CI for github with pkg"))
+		  							}
+									}
+								}
+							if(flagPackDes==false){
+								System.out.println(String.format("Generate CI  without pkg"))
+								}
 							}
-						}
-						if(flagPackDes==false){
-							System.out.println(String.format("Generate CI  without pkg"))
-							}
-						}
 					}
     		}
 		}
-	
 }
 
 

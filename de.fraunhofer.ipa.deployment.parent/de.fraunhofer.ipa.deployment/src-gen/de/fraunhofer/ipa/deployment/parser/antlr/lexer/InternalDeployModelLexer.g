@@ -17,6 +17,8 @@ ImplementationArtifactDescription : 'ImplementationArtifactDescription:';
 
 StackImplementationDescription : 'StackImplementationDescription:';
 
+ApplyToImplementations : 'applyToImplementations:';
+
 RepositoryDescription : 'repositoryDescription:';
 
 ResourceRequirements : 'resourceRequirements:';
@@ -40,8 +42,6 @@ RepositoryPath : 'repositoryPath:';
 TestRosDistros : 'testRosDistros:';
 
 StartCommands : 'startCommands:';
-
-AppliedRepos : 'appliedRepos:';
 
 UpdateRosDep : 'updateRosDep:';
 

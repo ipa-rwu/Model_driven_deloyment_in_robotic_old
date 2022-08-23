@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getType <em>Type</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getName <em>Name</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getCiTypes <em>Ci Types</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getAppliedRepos <em>Applied Repos</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getReqBranchPrefix <em>Req Branch Prefix</em>}</li>
@@ -50,6 +51,28 @@ public interface CISetting extends EObject
    * @generated
    */
   void setType(String value);
+
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage#getCISetting_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link de.fraunhofer.ipa.deployment.deployModel.CISetting#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Ci Types</b></em>' containment reference.

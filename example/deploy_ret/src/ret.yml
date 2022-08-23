@@ -29,13 +29,15 @@ MonolithicImplementationDescription:
     	- "roslaunch ret ret_application.launch robot:=ur_ros sim:=false"
 
 PackageDescription:
-  imageDescription:
-    types: [docker]
-    name: ret
-    imageTags: 
-	    - branch  
-	    - latest 
+	name: pack_ret
+	imageDescription:
+  	types: [docker]
+  	applyToImplementations:
+  		- ret
+  	imageTags: 
+	    - branch
+	    - latest
 	    - commit_tag
-  repositoryDescription:
+	repositoryDescription:
 	  - name: container_registry
 	    type: gitlab         

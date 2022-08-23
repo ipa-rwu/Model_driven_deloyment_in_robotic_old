@@ -5,7 +5,7 @@ package de.fraunhofer.ipa.deployment.deployModel.impl;
 
 import de.fraunhofer.ipa.deployment.deployModel.DeployModelPackage;
 import de.fraunhofer.ipa.deployment.deployModel.ImageDescription;
-import de.fraunhofer.ipa.deployment.deployModel.MonolithicImplementationDescription;
+import de.fraunhofer.ipa.deployment.deployModel.MultiMonolithicImplementationNameList;
 import de.fraunhofer.ipa.deployment.deployModel.MultiValueList;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageDescriptionImpl#getTypes <em>Types</em>}</li>
- *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageDescriptionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageDescriptionImpl#getAppiledImplementations <em>Appiled Implementations</em>}</li>
  *   <li>{@link de.fraunhofer.ipa.deployment.deployModel.impl.ImageDescriptionImpl#getImageTags <em>Image Tags</em>}</li>
  * </ul>
  *
@@ -45,14 +45,14 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
   protected MultiValueList types;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' reference.
+   * The cached value of the '{@link #getAppiledImplementations() <em>Appiled Implementations</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getAppiledImplementations()
    * @generated
    * @ordered
    */
-  protected MonolithicImplementationDescription name;
+  protected MultiMonolithicImplementationNameList appiledImplementations;
 
   /**
    * The cached value of the '{@link #getImageTags() <em>Image Tags</em>}' containment reference.
@@ -141,19 +141,9 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
    * @generated
    */
   @Override
-  public MonolithicImplementationDescription getName()
+  public MultiMonolithicImplementationNameList getAppiledImplementations()
   {
-    if (name != null && name.eIsProxy())
-    {
-      InternalEObject oldName = (InternalEObject)name;
-      name = (MonolithicImplementationDescription)eResolveProxy(oldName);
-      if (name != oldName)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DeployModelPackage.IMAGE_DESCRIPTION__NAME, oldName, name));
-      }
-    }
-    return name;
+    return appiledImplementations;
   }
 
   /**
@@ -161,9 +151,16 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public MonolithicImplementationDescription basicGetName()
+  public NotificationChain basicSetAppiledImplementations(MultiMonolithicImplementationNameList newAppiledImplementations, NotificationChain msgs)
   {
-    return name;
+    MultiMonolithicImplementationNameList oldAppiledImplementations = appiledImplementations;
+    appiledImplementations = newAppiledImplementations;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DeployModelPackage.IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS, oldAppiledImplementations, newAppiledImplementations);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -172,12 +169,20 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
    * @generated
    */
   @Override
-  public void setName(MonolithicImplementationDescription newName)
+  public void setAppiledImplementations(MultiMonolithicImplementationNameList newAppiledImplementations)
   {
-    MonolithicImplementationDescription oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.IMAGE_DESCRIPTION__NAME, oldName, name));
+    if (newAppiledImplementations != appiledImplementations)
+    {
+      NotificationChain msgs = null;
+      if (appiledImplementations != null)
+        msgs = ((InternalEObject)appiledImplementations).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS, null, msgs);
+      if (newAppiledImplementations != null)
+        msgs = ((InternalEObject)newAppiledImplementations).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DeployModelPackage.IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS, null, msgs);
+      msgs = basicSetAppiledImplementations(newAppiledImplementations, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DeployModelPackage.IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS, newAppiledImplementations, newAppiledImplementations));
   }
 
   /**
@@ -242,6 +247,8 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
     {
       case DeployModelPackage.IMAGE_DESCRIPTION__TYPES:
         return basicSetTypes(null, msgs);
+      case DeployModelPackage.IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS:
+        return basicSetAppiledImplementations(null, msgs);
       case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS:
         return basicSetImageTags(null, msgs);
     }
@@ -260,9 +267,8 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
     {
       case DeployModelPackage.IMAGE_DESCRIPTION__TYPES:
         return getTypes();
-      case DeployModelPackage.IMAGE_DESCRIPTION__NAME:
-        if (resolve) return getName();
-        return basicGetName();
+      case DeployModelPackage.IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS:
+        return getAppiledImplementations();
       case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS:
         return getImageTags();
     }
@@ -282,8 +288,8 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
       case DeployModelPackage.IMAGE_DESCRIPTION__TYPES:
         setTypes((MultiValueList)newValue);
         return;
-      case DeployModelPackage.IMAGE_DESCRIPTION__NAME:
-        setName((MonolithicImplementationDescription)newValue);
+      case DeployModelPackage.IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS:
+        setAppiledImplementations((MultiMonolithicImplementationNameList)newValue);
         return;
       case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS:
         setImageTags((MultiValueList)newValue);
@@ -305,8 +311,8 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
       case DeployModelPackage.IMAGE_DESCRIPTION__TYPES:
         setTypes((MultiValueList)null);
         return;
-      case DeployModelPackage.IMAGE_DESCRIPTION__NAME:
-        setName((MonolithicImplementationDescription)null);
+      case DeployModelPackage.IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS:
+        setAppiledImplementations((MultiMonolithicImplementationNameList)null);
         return;
       case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS:
         setImageTags((MultiValueList)null);
@@ -327,8 +333,8 @@ public class ImageDescriptionImpl extends MinimalEObjectImpl.Container implement
     {
       case DeployModelPackage.IMAGE_DESCRIPTION__TYPES:
         return types != null;
-      case DeployModelPackage.IMAGE_DESCRIPTION__NAME:
-        return name != null;
+      case DeployModelPackage.IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS:
+        return appiledImplementations != null;
       case DeployModelPackage.IMAGE_DESCRIPTION__IMAGE_TAGS:
         return imageTags != null;
     }

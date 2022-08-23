@@ -210,7 +210,14 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     CISetting returns CISetting
 	 *
 	 * Constraint:
-	 *     (type='CISetting:' ciTypes=MultiValueList appliedRepos=MultiMonolithicImplementationNameList reqBranchPrefix=ID ciParameters+=CIParameters*)
+	 *     (
+	 *         type='CISetting:' 
+	 *         name=QualifiedName 
+	 *         ciTypes=MultiValueList 
+	 *         appliedRepos=MultiMonolithicImplementationNameList 
+	 *         reqBranchPrefix=ID 
+	 *         ciParameters+=CIParameters*
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_CISetting(ISerializationContext context, CISetting semanticObject) {
@@ -315,21 +322,21 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     ImageDescription returns ImageDescription
 	 *
 	 * Constraint:
-	 *     (types=MultiValueList name=[MonolithicImplementationDescription|QualifiedName] imageTags=MultiValueList)
+	 *     (types=MultiValueList appiledImplementations=MultiMonolithicImplementationNameList imageTags=MultiValueList)
 	 * </pre>
 	 */
 	protected void sequence_ImageDescription(ISerializationContext context, ImageDescription semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__TYPES) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__TYPES));
-			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__NAME));
+			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__APPILED_IMPLEMENTATIONS));
 			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__IMAGE_TAGS) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.IMAGE_DESCRIPTION__IMAGE_TAGS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getImageDescriptionAccess().getTypesMultiValueListParserRuleCall_1_0(), semanticObject.getTypes());
-		feeder.accept(grammarAccess.getImageDescriptionAccess().getNameMonolithicImplementationDescriptionQualifiedNameParserRuleCall_3_0_1(), semanticObject.eGet(DeployModelPackage.Literals.IMAGE_DESCRIPTION__NAME, false));
+		feeder.accept(grammarAccess.getImageDescriptionAccess().getAppiledImplementationsMultiMonolithicImplementationNameListParserRuleCall_3_0(), semanticObject.getAppiledImplementations());
 		feeder.accept(grammarAccess.getImageDescriptionAccess().getImageTagsMultiValueListParserRuleCall_5_0(), semanticObject.getImageTags());
 		feeder.finish();
 	}
@@ -492,13 +499,15 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     PackageDescription returns PackageDescription
 	 *
 	 * Constraint:
-	 *     (type='PackageDescription' imageDescription=ImageDescription repositoryDescription=RepositoryDescription)
+	 *     (type='PackageDescription' name=QualifiedName imageDescription=ImageDescription repositoryDescription=RepositoryDescription)
 	 * </pre>
 	 */
 	protected void sequence_PackageDescription(ISerializationContext context, PackageDescription semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.PACKAGE_DESCRIPTION__TYPE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.PACKAGE_DESCRIPTION__TYPE));
+			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.PACKAGE_DESCRIPTION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.PACKAGE_DESCRIPTION__NAME));
 			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.PACKAGE_DESCRIPTION__IMAGE_DESCRIPTION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeployModelPackage.Literals.PACKAGE_DESCRIPTION__IMAGE_DESCRIPTION));
 			if (transientValues.isValueTransient(semanticObject, DeployModelPackage.Literals.PACKAGE_DESCRIPTION__REPOSITORY_DESCRIPTION) == ValueTransient.YES)
@@ -506,8 +515,9 @@ public class DeployModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getPackageDescriptionAccess().getTypePackageDescriptionKeyword_0_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getPackageDescriptionAccess().getImageDescriptionImageDescriptionParserRuleCall_5_0(), semanticObject.getImageDescription());
-		feeder.accept(grammarAccess.getPackageDescriptionAccess().getRepositoryDescriptionRepositoryDescriptionParserRuleCall_8_0(), semanticObject.getRepositoryDescription());
+		feeder.accept(grammarAccess.getPackageDescriptionAccess().getNameQualifiedNameParserRuleCall_4_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPackageDescriptionAccess().getImageDescriptionImageDescriptionParserRuleCall_7_0(), semanticObject.getImageDescription());
+		feeder.accept(grammarAccess.getPackageDescriptionAccess().getRepositoryDescriptionRepositoryDescriptionParserRuleCall_10_0(), semanticObject.getRepositoryDescription());
 		feeder.finish();
 	}
 	

@@ -2,13 +2,13 @@ MonolithicImplementationDescription:
   name: phoenix_dependencies
   description: "phoenix dependencies"
   mode: debug
-  branch: any
+  branch: any 
   ImplementationArtifactDescription:
     location: "examples/phoenix_dependencies"
     deployRequirements:
-	    - name: os
+	    - name: os 
 	      value:
-	        - ubuntu 
+	        - ubuntu
 	    - name: processor_architecture
 	      value:
 	      	- x86_64
@@ -29,22 +29,25 @@ MonolithicImplementationDescription:
 	   	- "roslaunch ret ret_application.launch robot:=ur_ros sim:=false"
 
 PackageDescription:
-  imageDescription:  
-    types: [docker]
-    name: phoenix_dependencies
-    imageTags: 
-	    - branch  
-	    - latest 
-	    - commit_tag
-  repositoryDescription:
+	name: packaging
+	imageDescription:
+		types: [docker]
+		applyToImplementations:
+			- phoenix_dependencies
+		imageTags: 
+		  - branch  
+		  - latest 
+		  - commit_tag
+	repositoryDescription:
   	- name: container_registry
     	type: gitlab
    
 CISetting:
+	name: setup_ci
 	ciTypes:
 		- gitlab 
 		- github 
-	appliedRepos:
+	applyToImplementations:
 		- phoenix_dependencies
 		- ret
 	branchPrefixType: ros_version
